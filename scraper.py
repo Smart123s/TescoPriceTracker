@@ -6,7 +6,7 @@ import logging
 import argparse
 import sys
 import concurrent.futures
-from datetime import datetime
+from datetime import datetime, timedelta
 from lxml import etree
 from config import API_URL, HEADERS, SITEMAP_INDEX_URL
 from queries import FULL_PRODUCT_QUERY, PRICE_ONLY_QUERY
@@ -108,7 +108,7 @@ def process_product(tpnc, force=False, progress_prefix=""):
             try:
                 from dateutil import parser
                 last_scraped = parser.parse(prod['last_scraped_price'])
-                if (datetime.now() - last_scraped).days < 7:
+                if (datetime.now() - last_scraped) < timedelta(hours=12):
                     # logger.info(f"{progress_prefix}Skipping {tpnc}, scraped recently ({last_scraped})")
                     return
             except Exception as e:
