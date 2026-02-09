@@ -213,9 +213,11 @@ def process_product(tpnc, force=False, progress_prefix=""):
         db.upsert_product(tpnc, name, unit_measure, default_image_url, pack_size_val, pack_size_unit)
 
     # Insert Price History
-    db.insert_price(tpnc, price_actual, unit_price, unit_measure, is_promotion, promo_id, promo_desc, promo_start, promo_end, clubcard_price)
+    inserted = db.insert_price(tpnc, price_actual, unit_price, unit_measure, is_promotion, promo_id, promo_desc, promo_start, promo_end, clubcard_price)
+    
+    change_status = "Changed" if inserted else "Unchanged"
     promo_text = f" | Promo: {promo_desc} (CC: {clubcard_price})" if is_promotion else ""
-    logger.info(f"{progress_prefix}Processed {tpnc} ({'Update' if exists else 'New'}). Price: {price_actual}{promo_text}")
+    logger.info(f"{progress_prefix}Processed {tpnc} ({change_status}). Price: {price_actual}{promo_text}")
 
 def run_scraper(specific_items=None, force=False, threads=5):
     db.init_db()

@@ -57,17 +57,46 @@ def upsert_product(tpnc, name, unit_of_measure, default_image_url, pack_size_val
 def insert_price(tpnc, price_actual, unit_price, unit_measure, is_promotion, promotion_id, promotion_desc, promo_start, promo_end, clubcard_price):
     conn = get_db_connection()
     cur = conn.cursor()
-    cur.execute("""
-        INSERT INTO price_history 
-        (tpnc, timestamp, price_actual, unit_price, unit_measure, is_promotion, promotion_id, promotion_description, promotion_start, promotion_end, clubcard_price)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-    """, (tpnc, datetime.now(), price_actual, unit_price, unit_measure, is_promotion, promotion_id, promotion_desc, promo_start, promo_end, clubcard_price))
     
-    # Update last_scraped_price in products table
+    # Check for existing latest entry to avoid duplicates if data hasn't changed
+    cur.execute("""
+        SELECT price_actual, clubcard_price, is_promotion, promotion_description 
+        FROM price_history 
+        WHERE tpnc = ? 
+        ORDER BY id DESC 
+        LIMIT 1
+    """, (tpnc,))
+    last_entry = cur.fetchone()
+    
+    should_insert = True
+    if last_entry:
+        old_actual = last_entry['price_actual']
+        old_cc = last_entry['clubcard_price']
+        old_promo = bool(last_entry['is_promotion'])
+        old_desc = last_entry['promotion_description']
+        
+        # Treat None and empty string as similar for description comparison if needed, 
+        # but exact match is safer.
+        
+        if (old_actual == price_actual and 
+            old_cc == clubcard_price and 
+            old_promo == is_promotion and 
+            old_desc == promotion_desc):
+            should_insert = False
+
+    if should_insert:
+        cur.execute("""
+            INSERT INTO price_history 
+            (tpnc, timestamp, price_actual, unit_price, unit_measure, is_promotion, promotion_id, promotion_description, promotion_start, promotion_end, clubcard_price)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        """, (tpnc, datetime.now(), price_actual, unit_price, unit_measure, is_promotion, promotion_id, promotion_desc, promo_start, promo_end, clubcard_price))
+    
+    # Always update last_scraped_price in products table so we know we checked it
     cur.execute("UPDATE products SET last_scraped_price = ? WHERE tpnc = ?", (datetime.now(), tpnc))
     
     conn.commit()
     conn.close()
+    return should_insert
 
 def update_last_scraped_price(tpnc):
      conn = get_db_connection()
