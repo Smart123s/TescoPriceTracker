@@ -1,5 +1,6 @@
 import requests
 import re
+import os
 import time
 import random
 import logging
@@ -216,42 +217,57 @@ def process_product(tpnc, force=False, progress_prefix=""):
 
 def run_scraper(specific_items=None, force=False, threads=5):
     db.init_db()
+    executor = None
+    futures = []
     
-    if specific_items:
-        total = len(specific_items)
-        logger.info(f"Processing {total} specific items with {threads} threads...")
+    try:
+        items_to_process = []
         
-        with concurrent.futures.ThreadPoolExecutor(max_workers=threads) as executor:
-            futures = []
-            for i, tpnc in enumerate(specific_items, 1):
-                futures.append(executor.submit(process_product, tpnc, force=force, progress_prefix=f"[{i}/{total}] "))
-            concurrent.futures.wait(futures)
-        return
+        if specific_items:
+            items_to_process = specific_items
+            logger.info(f"Processing {len(items_to_process)} specific items with {threads} threads...")
+        else:
+            sitemaps = fetch_sitemap_index(SITEMAP_INDEX_URL)
+            logger.info(f"Found {len(sitemaps)} sitemaps.")
+            
+            all_product_ids = []
+            for sitemap_url in sitemaps:
+                logger.info(f"Fetching products from sitemap: {sitemap_url}")
+                ids = fetch_product_urls_from_sitemap(sitemap_url)
+                logger.info(f"Found {len(ids)} products in {sitemap_url}")
+                all_product_ids.extend(ids)
+            
+            # Remove duplicates
+            all_product_ids = list(dict.fromkeys(all_product_ids))
+            items_to_process = all_product_ids
+            logger.info(f"Total unique products to process: {len(items_to_process)}")
+            logger.info(f"Starting scrape with {threads} threads...")
 
-    sitemaps = fetch_sitemap_index(SITEMAP_INDEX_URL)
-    logger.info(f"Found {len(sitemaps)} sitemaps.")
-    
-    all_product_ids = []
-    for sitemap_url in sitemaps:
-        logger.info(f"Fetching products from sitemap: {sitemap_url}")
-        ids = fetch_product_urls_from_sitemap(sitemap_url)
-        logger.info(f"Found {len(ids)} products in {sitemap_url}")
-        all_product_ids.extend(ids)
-    
-    # Remove duplicates if any, preserving order
-    all_product_ids = list(dict.fromkeys(all_product_ids))
-    total_products = len(all_product_ids)
-    logger.info(f"Total unique products to process: {total_products}")
-    logger.info(f"Starting scrape with {threads} threads...")
-
-    with concurrent.futures.ThreadPoolExecutor(max_workers=threads) as executor:
-        futures = []
-        for i, tpnc in enumerate(all_product_ids, 1):
-            process_product_with_prefix = lambda t=tpnc, f=force, p=f"[{i}/{total_products}] ": process_product(t, force=f, progress_prefix=p)
-            futures.append(executor.submit(process_product, tpnc, force=force, progress_prefix=f"[{i}/{total_products}] "))
+        total = len(items_to_process)
+        executor = concurrent.futures.ThreadPoolExecutor(max_workers=threads)
+        
+        for i, tpnc in enumerate(items_to_process, 1):
+            futures.append(executor.submit(process_product, tpnc, force=force, progress_prefix=f"[{i}/{total}] "))
         
         # Wait for all tasks to complete
-        concurrent.futures.wait(futures)
+        # We use a loop with timeout to allow KeyboardInterrupt to be caught on Windows
+        done, not_done = concurrent.futures.wait(futures, timeout=1.0)
+        while not_done:
+            done, not_done = concurrent.futures.wait(futures, timeout=1.0)
+
+    except KeyboardInterrupt:
+        logger.warning("\nScraping interrupted by user. Stopping threads...")
+        if executor:
+            # Cancel all pending futures
+            for f in futures:
+                if not f.running() and not f.done():
+                    f.cancel()
+            executor.shutdown(wait=False)
+        # Force immediate exit, bypassing cleanup that waits for threads
+        os._exit(0)
+    finally:
+        if executor:
+            executor.shutdown(wait=True)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Tesco Price Scraper')
