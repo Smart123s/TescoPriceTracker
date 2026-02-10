@@ -1,5 +1,21 @@
+import os
+from dotenv import load_dotenv
+import logging
+
+# Load environment variables from .env file
+load_dotenv()
+
 API_URL = 'https://xapi.tesco.com/v1/graphql'
-API_KEY = 'API_KEY_HERE'
+API_KEY = os.getenv('API_KEY')
+
+# Log the API key being used (first 5 characters only)
+if API_KEY:
+    logger = logging.getLogger(__name__)
+    logger.info(f"API Key loaded: {API_KEY[:5]}..." if len(API_KEY) > 5 else "API Key loaded (too short)")
+else:
+    logger = logging.getLogger(__name__)
+    logger.warning("WARNING: API_KEY not found in environment variables! Check your .env file.")
+
 HEADERS = {
     'Accept': 'application/json',
     'content-type': 'application/json',
