@@ -1,83 +1,82 @@
-import sqlite3
+import json
 import os
+import glob
 from datetime import datetime
 
-DB_FILE = 'database.db'
-SCHEMA_FILE = 'schema.sql'
-
-def get_db_connection():
-    conn = sqlite3.connect(DB_FILE, timeout=30)
-    conn.row_factory = sqlite3.Row
-    return conn
+DATA_DIR = 'data'
 
 def init_db():
-    if not os.path.exists(DB_FILE):
-        print("Initializing database...")
-        conn = get_db_connection()
-        with open(SCHEMA_FILE, 'r') as f:
-            conn.executescript(f.read())
-        conn.commit()
-        conn.close()
-        print("Database initialized.")
-    else:
-        # Ensure schema is applied if db exists but tables might be missing (simple check)
-        conn = get_db_connection()
-        cursor = conn.cursor()
-        cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='products'")
-        if not cursor.fetchone():
-             with open(SCHEMA_FILE, 'r') as f:
-                conn.executescript(f.read())
-        conn.close()
+    if not os.path.exists(DATA_DIR):
+        print("Initializing data directory...")
+        os.makedirs(DATA_DIR)
+        print("Data directory initialized.")
+
+def get_product_file_path(tpnc):
+    return os.path.join(DATA_DIR, f"{tpnc}.json")
+
+def load_product_data(tpnc):
+    path = get_product_file_path(tpnc)
+    if not os.path.exists(path):
+        return None
+    try:
+        with open(path, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    except Exception as e:
+        print(f"Error loading product {tpnc}: {e}")
+        return None
+
+def save_product_data(tpnc, data):
+    path = get_product_file_path(tpnc)
+    try:
+        with open(path, 'w', encoding='utf-8') as f:
+            json.dump(data, f, indent=2, ensure_ascii=False)
+    except Exception as e:
+        print(f"Error saving product {tpnc}: {e}")
 
 def product_exists(tpnc):
-    conn = get_db_connection()
-    cur = conn.cursor()
-    cur.execute("SELECT 1 FROM products WHERE tpnc = ?", (tpnc,))
-    exists = cur.fetchone() is not None
-    conn.close()
-    return exists
+    return os.path.exists(get_product_file_path(tpnc))
 
 def upsert_product(tpnc, name, unit_of_measure, default_image_url, pack_size_value, pack_size_unit):
-    conn = get_db_connection()
-    cur = conn.cursor()
-    cur.execute("""
-        INSERT INTO products (tpnc, name, unit_of_measure, default_image_url, pack_size_value, pack_size_unit, last_scraped_static, last_scraped_price)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-        ON CONFLICT(tpnc) DO UPDATE SET
-            name=excluded.name,
-            unit_of_measure=excluded.unit_of_measure,
-            default_image_url=excluded.default_image_url,
-            pack_size_value=excluded.pack_size_value,
-            pack_size_unit=excluded.pack_size_unit,
-            last_scraped_static=excluded.last_scraped_static
-    """, (tpnc, name, unit_of_measure, default_image_url, pack_size_value, pack_size_unit, datetime.now(), datetime.now()))
-    conn.commit()
-    conn.close()
+    data = load_product_data(tpnc)
+    if not data:
+        data = {
+            "tpnc": str(tpnc),
+            "price_history": []
+        }
+    
+    data.update({
+        "name": name,
+        "unit_of_measure": unit_of_measure,
+        "default_image_url": default_image_url,
+        "pack_size_value": pack_size_value,
+        "pack_size_unit": pack_size_unit,
+        "last_scraped_static": datetime.now().isoformat(),
+        # Init last_scraped_price if missing
+        "last_scraped_price": data.get("last_scraped_price") 
+    })
+    
+    if not data["last_scraped_price"]:
+        data["last_scraped_price"] = datetime.now().isoformat()
+
+    save_product_data(tpnc, data)
 
 def insert_price(tpnc, price_actual, unit_price, unit_measure, is_promotion, promotion_id, promotion_desc, promo_start, promo_end, clubcard_price):
-    conn = get_db_connection()
-    cur = conn.cursor()
-    
-    # Check for existing latest entry to avoid duplicates if data hasn't changed
-    cur.execute("""
-        SELECT price_actual, clubcard_price, is_promotion, promotion_description 
-        FROM price_history 
-        WHERE tpnc = ? 
-        ORDER BY id DESC 
-        LIMIT 1
-    """, (tpnc,))
-    last_entry = cur.fetchone()
+    data = load_product_data(tpnc)
+    if not data:
+        data = { "tpnc": str(tpnc), "price_history": [] }
+
+    history = data.get("price_history", [])
     
     should_insert = True
-    if last_entry:
-        old_actual = last_entry['price_actual']
-        old_cc = last_entry['clubcard_price']
-        old_promo = bool(last_entry['is_promotion'])
-        old_desc = last_entry['promotion_description']
+    if history:
+        last_entry = history[-1]
         
-        # Treat None and empty string as similar for description comparison if needed, 
-        # but exact match is safer.
+        old_actual = last_entry.get('price_actual')
+        old_cc = last_entry.get('clubcard_price')
+        old_promo = last_entry.get('is_promotion')
+        old_desc = last_entry.get('promotion_description')
         
+        # Simple comparison
         if (old_actual == price_actual and 
             old_cc == clubcard_price and 
             old_promo == is_promotion and 
@@ -85,47 +84,75 @@ def insert_price(tpnc, price_actual, unit_price, unit_measure, is_promotion, pro
             should_insert = False
 
     if should_insert:
-        cur.execute("""
-            INSERT INTO price_history 
-            (tpnc, timestamp, price_actual, unit_price, unit_measure, is_promotion, promotion_id, promotion_description, promotion_start, promotion_end, clubcard_price)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        """, (tpnc, datetime.now(), price_actual, unit_price, unit_measure, is_promotion, promotion_id, promotion_desc, promo_start, promo_end, clubcard_price))
+        # Handle promo dates which might be strings or datetime objects
+        p_start = promo_start
+        if hasattr(promo_start, 'isoformat'):
+            p_start = promo_start.isoformat()
+            
+        p_end = promo_end
+        if hasattr(promo_end, 'isoformat'):
+            p_end = promo_end.isoformat()
+
+        new_entry = {
+            "timestamp": datetime.now().isoformat(),
+            "price_actual": price_actual,
+            "unit_price": unit_price,
+            "unit_measure": unit_measure,
+            "is_promotion": is_promotion,
+            "promotion_id": promotion_id,
+            "promotion_description": promotion_desc,
+            "promotion_start": p_start,
+            "promotion_end": p_end,
+            "clubcard_price": clubcard_price
+        }
+        history.append(new_entry)
+        data['price_history'] = history
     
-    # Always update last_scraped_price in products table so we know we checked it
-    cur.execute("UPDATE products SET last_scraped_price = ? WHERE tpnc = ?", (datetime.now(), tpnc))
-    
-    conn.commit()
-    conn.close()
+    data['last_scraped_price'] = datetime.now().isoformat()
+    save_product_data(tpnc, data)
     return should_insert
 
 def update_last_scraped_price(tpnc):
-     conn = get_db_connection()
-     cur = conn.cursor()
-     cur.execute("UPDATE products SET last_scraped_price = ? WHERE tpnc = ?", (datetime.now(), tpnc))
-     conn.commit()
-     conn.close()
+    data = load_product_data(tpnc)
+    if data:
+        data['last_scraped_price'] = datetime.now().isoformat()
+        save_product_data(tpnc, data)
 
 def get_product(tpnc):
-    conn = get_db_connection()
-    cur = conn.cursor()
-    cur.execute("SELECT * FROM products WHERE tpnc = ?", (tpnc,))
-    prod = cur.fetchone()
-    conn.close()
-    return prod
+    return load_product_data(tpnc)
 
 def get_price_history(tpnc):
-    conn = get_db_connection()
-    cur = conn.cursor()
-    cur.execute("SELECT * FROM price_history WHERE tpnc = ? ORDER BY timestamp DESC", (tpnc,))
-    rows = cur.fetchall()
-    conn.close()
-    return rows
+    data = load_product_data(tpnc)
+    if data:
+        # Return reversed history to simulate ORDER BY timestamp DESC
+        return list(reversed(data.get('price_history', [])))
+    return []
 
 def search_products(query):
-    conn = get_db_connection()
-    cur = conn.cursor()
-    search = f"%{query}%"
-    cur.execute("SELECT * FROM products WHERE name LIKE ? OR tpnc LIKE ? LIMIT 20", (search, search))
-    rows = cur.fetchall()
-    conn.close()
-    return rows
+    results = []
+    if not query:
+        return results
+        
+    query = query.lower()
+    files = glob.glob(os.path.join(DATA_DIR, "*.json"))
+    
+    for file_path in files:
+        try:
+            with open(file_path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                name = data.get('name', '')
+                tpnc = data.get('tpnc', '')
+                
+                match = False
+                if name and query in name.lower():
+                    match = True
+                if tpnc and query in str(tpnc):
+                    match = True
+                    
+                if match:
+                    results.append(data)
+                    if len(results) >= 20: 
+                        break
+        except Exception:
+            continue
+    return results

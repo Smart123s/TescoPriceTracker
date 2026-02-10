@@ -99,17 +99,12 @@ def process_product(tpnc, force=False, progress_prefix=""):
     if exists and not force:
         # Check if we need to update based on time
         prod = db.get_product(tpnc)
-        if prod and prod['last_scraped_price']:
-            last_scraped = datetime.strptime(prod['last_scraped_price'], '%Y-%m-%d %H:%M:%S.%f')
-            # If less than 7 days, skip, UNLESS we want to force check.
-            # But wait, SQLite default timestamp might be different string format.
-            # Let's try flexible parsing or just compare strings if ISO
-            # For simplicity, let's parse using dateutil which is robust
+        if prod and prod.get('last_scraped_price'):
             try:
                 from dateutil import parser
                 last_scraped = parser.parse(prod['last_scraped_price'])
+                # Only re-scrape if older than 12 hours
                 if (datetime.now() - last_scraped) < timedelta(hours=12):
-                    # logger.info(f"{progress_prefix}Skipping {tpnc}, scraped recently ({last_scraped})")
                     return
             except Exception as e:
                 logger.warning(f"{progress_prefix}Error parsing date for {tpnc}: {e}")
