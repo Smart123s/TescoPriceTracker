@@ -118,11 +118,11 @@ def process_product(tpnc, force=False, progress_prefix=""):
     
     data = get_product_api(tpnc, query_type)
     
-    if not data or 'data' not in data or not data['data']['product']:
+    if not data or 'tesco_price_tracker_data' not in data or not data['tesco_price_tracker_data']['product']:
         logger.warning(f"{progress_prefix}No data returned for {tpnc}. Response: {data}")
         return
 
-    product_data = data['data']['product']
+    product_data = data['tesco_price_tracker_data']['product']
     
     # Extract Price Info
     price_info = product_data.get('price')

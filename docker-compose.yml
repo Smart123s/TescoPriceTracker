@@ -1,0 +1,26 @@
+services:
+  webapp:
+    build: .
+    container_name: tesco_tracker_web
+    restart: unless-stopped
+    command: python app.py
+    volumes:
+      - ./tesco_price_tracker_data:/app/tesco_price_tracker_data
+    ports:
+      - "50001:50001"
+    env_file:
+      - .env
+    environment:
+      - TZ=Europe/Budapest
+
+  scheduler:
+    build: .
+    container_name: tesco_tracker_scheduler
+    restart: unless-stopped
+    command: python scheduler.py
+    volumes:
+      - ./tesco_price_tracker_data:/app/tesco_price_tracker_data
+    env_file:
+      - .env
+    environment:
+      - TZ=Europe/Budapest

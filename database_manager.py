@@ -3,7 +3,7 @@ import os
 import glob
 from datetime import datetime
 
-DATA_DIR = 'data'
+DATA_DIR = 'tesco_price_tracker_data'
 
 def init_db():
     if not os.path.exists(DATA_DIR):
