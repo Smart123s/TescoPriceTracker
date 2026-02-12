@@ -302,10 +302,15 @@ function calculateStats(prices) {
  */
 function findInsertionPoint() {
   // Strategy -1: Prefer explicit product block identified by class used on Tesco pages.
-  // The class `mnwM3actwF_P5wK` appears in both languages — insert right *after* it.
+  // The class `mnwM3actwF_P5wK` appears in both languages — normally insert after it.
+  // Exception: when the selector references a <section> element (common in the MFE)
+  // we want to insert BEFORE that section so the tracker appears above the accordion
+  // rather than being pushed to the bottom of the page.
   const specialBlock = document.querySelector('.mnwM3actwF_P5wK');
   if (specialBlock) {
-    return { element: specialBlock, mode: "after" };
+    const tag = (specialBlock.tagName || "").toLowerCase();
+    const mode = tag === "section" ? "before" : "after";
+    return { element: specialBlock, mode };
   }
 
   // Strategy 0: Exact match based on the section ID from screenshot.
