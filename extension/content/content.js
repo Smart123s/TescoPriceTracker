@@ -431,6 +431,77 @@ function findInsertionPoint() {
   return null;
 }
 
+// ── Theme State ──────────────────────────────
+
+let g_currentTheme = getSystemTheme();
+
+function getSystemTheme() {
+  return (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+}
+
+function getMoonIcon() {
+  return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
+}
+
+function getSunIcon() {
+  return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;
+}
+
+function toggleTheme() {
+  const newTheme = g_currentTheme === 'dark' ? 'light' : 'dark';
+  applyTheme(newTheme);
+}
+
+function applyTheme(theme) {
+  g_currentTheme = theme;
+  const container = document.getElementById(CONTAINER_ID);
+  if (!container) return;
+
+  const toggleBtn = container.querySelector('.tpt-theme-toggle');
+  
+  if (theme === 'dark') {
+    container.classList.add('tpt-theme-dark');
+    if (toggleBtn) {
+      toggleBtn.innerHTML = getSunIcon();
+      toggleBtn.title = 'Switch to Light Mode';
+    }
+  } else {
+    container.classList.remove('tpt-theme-dark');
+    if (toggleBtn) {
+      toggleBtn.innerHTML = getMoonIcon();
+      toggleBtn.title = 'Switch to Dark Mode';
+    }
+  }
+
+  // Update chart colors if chart exists
+  if (g_chartInstance) {
+    updateChartTheme(g_chartInstance, theme);
+  }
+}
+
+function updateChartTheme(chart, theme) {
+  const isDark = (theme === 'dark');
+  const axisColor = isDark ? '#9aa9bf' : '#64748b';
+  const gridColor = isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.06)';
+  const tooltipBg = isDark ? '#1e293b' : '#1e293b'; // Tooltip usually dark is fine, or adapt
+  const tooltipText = '#f8fafc';
+  
+  // Update scales
+  if (chart.options.scales.x) {
+    chart.options.scales.x.ticks.color = axisColor;
+  }
+  if (chart.options.scales.y) {
+    chart.options.scales.y.ticks.color = axisColor;
+    chart.options.scales.y.grid.color = gridColor;
+  }
+
+  // Update no-data plugin text (if we could access it easily - simplistic approach for now)
+  // Re-creating gradient might be tricky without full context, 
+  // but we can update point borders etc.
+  
+  chart.update('none'); // Update without animation
+}
+
 // ── Chart & UI Injection ─────────────────────
 
 async function injectPriceTracker() {
@@ -503,12 +574,30 @@ async function injectPriceTracker() {
   // Title
   const title = document.createElement("div");
   title.className = "tpt-title";
-  title.innerHTML = `
+  
+  // Title Text/Icon Wrapper
+  const titleLeft = document.createElement("div");
+  titleLeft.style.cssText = "display:flex; align-items:center; gap:8px;";
+  titleLeft.innerHTML = `
     <svg class="tpt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
       <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
     </svg>
     ${t.title}
   `;
+  title.appendChild(titleLeft);
+
+  // Theme Toggle Button
+  const toggleBtn = document.createElement("button");
+  toggleBtn.className = "tpt-theme-toggle";
+  toggleBtn.type = "button";
+  toggleBtn.innerHTML = g_currentTheme === 'dark' ? getSunIcon() : getMoonIcon();
+  toggleBtn.title = g_currentTheme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode';
+  toggleBtn.onclick = (e) => {
+    e.stopPropagation();
+    toggleTheme();
+  };
+  title.appendChild(toggleBtn);
+
   container.appendChild(title);
 
   // Chart Canvas
@@ -594,6 +683,10 @@ async function injectPriceTracker() {
 
     // ── Render Chart ──
     renderChart(canvas, labels, prices, clubcardPrices, stats, t);
+    
+    // Apply current theme (sets class and button icon)
+    applyTheme(g_currentTheme);
+
   } finally {
     g_isInjecting = false;
   }
@@ -616,6 +709,11 @@ function renderChart(canvas, labels, prices, clubcardPrices, stats, t) {
     console.warn('Error while destroying previous chart (harmless):', err);
   }
 
+  // Theme colors
+  const isDark = (g_currentTheme === 'dark');
+  const axisColor = isDark ? '#9aa9bf' : '#64748b';
+  const gridColor = isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.06)';
+
   // Create gradient fill
   const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
   gradient.addColorStop(0, "rgba(0, 83, 159, 0.35)");
@@ -633,7 +731,7 @@ function renderChart(canvas, labels, prices, clubcardPrices, stats, t) {
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.font = '14px sans-serif';
-        ctx.fillStyle = '#94a3b8';
+        ctx.fillStyle = isDark ? '#94a3b8' : '#64748b'; // slightly simplified
         ctx.fillText(t.noData, width / 2, height / 2);
         ctx.restore();
       }
@@ -694,7 +792,8 @@ function renderChart(canvas, labels, prices, clubcardPrices, stats, t) {
           labels: {
             boxWidth: 12,
             usePointStyle: true,
-            font: { size: 10 }
+            font: { size: 10 },
+            color: axisColor
           }
         },
         tooltip: {
@@ -719,7 +818,7 @@ function renderChart(canvas, labels, prices, clubcardPrices, stats, t) {
             display: false,
           },
           ticks: {
-            color: "#64748b",
+            color: axisColor,
             font: { size: 11 },
             maxRotation: 45,
             maxTicksLimit: 10,
@@ -727,10 +826,10 @@ function renderChart(canvas, labels, prices, clubcardPrices, stats, t) {
         },
         y: {
           grid: {
-            color: "rgba(0, 0, 0, 0.06)",
+            color: gridColor,
           },
           ticks: {
-            color: "#64748b",
+            color: axisColor,
             font: { size: 11 },
             callback: function (value) {
               return value.toLocaleString(getLocale()) + " Ft";
