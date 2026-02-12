@@ -425,15 +425,27 @@ async function injectPriceTracker() {
   if (g_isInjecting) return; // Prevent concurrent injections
   g_isInjecting = true;
   try {
-    // Don't inject twice
-    if (document.getElementById(CONTAINER_ID)) return;
+    // If container already exists, only skip when a chart instance is present.
+    const existingContainer = document.getElementById(CONTAINER_ID);
+    if (existingContainer) {
+      const existingCanvas = existingContainer.querySelector('canvas');
+      if (existingCanvas && (existingCanvas._tptChart || g_chartInstance)) {
+        // chart already present and healthy → nothing to do
+        return;
+      }
+      // container exists but chart is missing/stale — remove it and re-create
+      existingContainer.remove();
+    }
 
     const t = getStrings();
     const insertion = findInsertionPoint();
 
     if (!insertion) {
-      console.warn("[TescoPriceTracker] Could not find injection point.");
-      return;
+      // If we cannot find the ideal insertion point (SPA / different DOM),
+      // fall back to appending the tracker to <body> so the chart remains visible
+      // (prevents the "appears then disappears" problem when the product DOM is transient).
+      console.warn("[TescoPriceTracker] Could not find injection point — falling back to document.body.");
+      insertion = { element: document.body, mode: "append" };
     }
 
     // Fetch Real Data Only
@@ -548,11 +560,13 @@ async function injectPriceTracker() {
   footer.textContent = `${t.footer}`;
     container.appendChild(footer);
 
-    // Insert chart: BEFORE "About this product" or AFTER the hero section
+    // Insert chart: BEFORE "About this product", AFTER the hero section, or append as fallback
     if (insertion.mode === "before") {
       insertion.element.parentNode.insertBefore(container, insertion.element);
-    } else {
+    } else if (insertion.mode === "after") {
       insertion.element.parentNode.insertBefore(container, insertion.element.nextSibling);
+    } else { // append / fallback
+      insertion.element.appendChild(container);
     }
 
     // ── Render Chart ──
@@ -564,6 +578,20 @@ async function injectPriceTracker() {
 
 function renderChart(canvas, labels, prices, clubcardPrices, stats, t) {
   const ctx = canvas.getContext("2d");
+
+  // Destroy any previous Chart instance attached to this canvas to avoid flicker/leaks
+  try {
+    if (g_chartInstance && typeof g_chartInstance.destroy === 'function') {
+      g_chartInstance.destroy();
+    }
+    // also attempt to clear Chart.getChart if Chart.js exposes it
+    if (window.Chart && window.Chart.getChart) {
+      const existing = window.Chart.getChart(canvas);
+      if (existing) existing.destroy();
+    }
+  } catch (err) {
+    console.warn('Error while destroying previous chart (harmless):', err);
+  }
 
   // Create gradient fill
   const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
@@ -589,7 +617,8 @@ function renderChart(canvas, labels, prices, clubcardPrices, stats, t) {
     }
   };
 
-  new Chart(ctx, {
+  // Create the Chart instance and store it globally so we can destroy it later
+  g_chartInstance = new Chart(ctx, {
     type: "line",
     data: {
       labels: labels,
@@ -745,11 +774,24 @@ function renderChart(canvas, labels, prices, clubcardPrices, stats, t) {
       },
     ],
   });
+
+  // expose instance on the canvas for extra safety/debugging
+  try { canvas._tptChart = g_chartInstance; } catch (e) { /* ignore */ }
 }
 
 // ── Remove Tracker ───────────────────────────
 
 function removePriceTracker() {
+  // Destroy chart instance if present to avoid orphaned canvases
+  try {
+    if (g_chartInstance && typeof g_chartInstance.destroy === 'function') {
+      g_chartInstance.destroy();
+      g_chartInstance = null;
+    }
+  } catch (err) {
+    console.warn('Failed to destroy chart instance during removal:', err);
+  }
+
   const container = document.getElementById(CONTAINER_ID);
   if (container) container.remove();
 }
@@ -759,6 +801,8 @@ function removePriceTracker() {
 let g_isEnabled = false;
 let g_observer = null;
 let g_isInjecting = false;
+// Keep reference to the Chart.js instance so we can destroy/recreate it reliably
+let g_chartInstance = null;
 
 browser.runtime.onMessage.addListener((message) => {
   if (message.type === "SET_ENABLED") {
@@ -782,13 +826,30 @@ function startObserver() {
 
   g_observer = new MutationObserver(() => {
     if (!g_isEnabled) return;
-    if (document.getElementById(CONTAINER_ID)) return;
 
-    // Debounce the potentially expensive findInsertionPoint check
-    if (g_debounceTimer) clearTimeout(g_debounceTimer);
-    g_debounceTimer = setTimeout(() => {
-      injectPriceTracker();
-    }, 200);
+    const container = document.getElementById(CONTAINER_ID);
+
+    // If container is missing → try to inject
+    if (!container) {
+      if (g_debounceTimer) clearTimeout(g_debounceTimer);
+      g_debounceTimer = setTimeout(() => {
+        injectPriceTracker();
+      }, 200);
+      return;
+    }
+
+    // If container exists but the chart instance is missing or canvas collapsed, re-render
+    const canvas = container.querySelector('canvas');
+    const canvasMissingChart = !canvas || !(canvas._tptChart || g_chartInstance);
+    const canvasCollapsed = canvas && (canvas.clientWidth === 0 || canvas.clientHeight === 0);
+    if (canvasMissingChart || canvasCollapsed) {
+      if (g_debounceTimer) clearTimeout(g_debounceTimer);
+      g_debounceTimer = setTimeout(() => {
+        // remove stale container and re-inject
+        container.remove();
+        injectPriceTracker();
+      }, 200);
+    }
   });
 
   g_observer.observe(document.body, {
