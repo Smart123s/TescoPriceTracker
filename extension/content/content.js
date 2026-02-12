@@ -441,11 +441,20 @@ async function injectPriceTracker() {
     const insertion = findInsertionPoint();
 
     if (!insertion) {
-      // If we cannot find the ideal insertion point (SPA / different DOM),
-      // fall back to appending the tracker to <body> so the chart remains visible
-      // (prevents the "appears then disappears" problem when the product DOM is transient).
-      console.warn("[TescoPriceTracker] Could not find injection point — falling back to document.body.");
-      insertion = { element: document.body, mode: "append" };
+      // If we cannot find the ideal injection point, try a safer site container
+      // (prefer <main> / role=main / #content / SPA root). Only as a last resort
+      // prepend to <body> instead of appending so the card doesn't travel to the page bottom.
+      console.warn("[TescoPriceTracker] Could not find injection point — using fallback insertion.");
+
+      const fallback = document.querySelector(
+        'main, [role="main"], #content, .page-content, #root, #app, [data-auto="page-content"]'
+      );
+
+      if (fallback) {
+        insertion = { element: fallback, mode: "prepend" };
+      } else {
+        insertion = { element: document.body, mode: "prepend" };
+      }
     }
 
     // Fetch Real Data Only
@@ -560,11 +569,13 @@ async function injectPriceTracker() {
   footer.textContent = `${t.footer}`;
     container.appendChild(footer);
 
-    // Insert chart: BEFORE "About this product", AFTER the hero section, or append as fallback
+    // Insert chart: BEFORE "About this product", AFTER the hero section, PREPEND, or append as fallback
     if (insertion.mode === "before") {
       insertion.element.parentNode.insertBefore(container, insertion.element);
     } else if (insertion.mode === "after") {
       insertion.element.parentNode.insertBefore(container, insertion.element.nextSibling);
+    } else if (insertion.mode === "prepend") {
+      insertion.element.insertBefore(container, insertion.element.firstChild);
     } else { // append / fallback
       insertion.element.appendChild(container);
     }
