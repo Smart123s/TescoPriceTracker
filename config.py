@@ -1,9 +1,8 @@
 import os
-from dotenv import load_dotenv
 import logging
 
-# Load environment variables from .env file
-load_dotenv()
+# Environment variables are expected to be set in the environment
+# (e.g. Docker, Portainer, or OS environment variables)
 
 API_URL = 'https://xapi.tesco.com/v1/graphql'
 API_KEY = os.getenv('API_KEY')

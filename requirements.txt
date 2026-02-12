@@ -3,6 +3,5 @@ flask
 lxml
 python-dateutil
 schedule
-python-dotenv
 pycron
 pytz
