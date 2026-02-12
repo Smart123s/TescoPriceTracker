@@ -1,11 +1,19 @@
-from flask import Flask, render_template, request, abort
+from flask import Flask, render_template, request, abort, jsonify
 import database_manager as db
 from datetime import datetime
 
 app = Flask(__name__)
 
+@app.after_request
+def after_request(response):
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
+    return response
+
 @app.template_filter('datetimeformat')
 def datetimeformat(value, format='%Y-%m-%d %H:%M'):
+
     if value is None:
         return ""
     try:
@@ -48,6 +56,18 @@ def product_detail(tpnc):
         clubcard_prices.append(h['clubcard_price'] if h['clubcard_price'] else None)
 
     return render_template('product.html', product=product, history=history, dates=dates, prices=prices, clubcard_prices=clubcard_prices)
+
+@app.route('/api/history/<tpnc>')
+def api_history(tpnc):
+    product = db.get_product(tpnc)
+    if not product:
+        return jsonify({'error': 'Product not found'}), 404
+        
+    history = db.get_price_history(tpnc)
+    return jsonify({
+        'name': product.get('name'),
+        'history': history
+    })
 
 if __name__ == '__main__':
     # Ensure DB is ready

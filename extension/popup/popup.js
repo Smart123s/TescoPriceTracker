@@ -6,6 +6,12 @@
 // and content scripts can react accordingly.
 // ============================================
 
+// Standardize browser namespace (Chrome vs Firefox)
+// Firefox uses 'browser', while Chrome uses 'chrome'.
+if (typeof browser === "undefined") {
+  globalThis.browser = chrome;
+}
+
 const toggleSwitch = document.getElementById("toggle-switch");
 const statusDot = document.getElementById("status-dot");
 const statusText = document.getElementById("status-text");
@@ -24,8 +30,8 @@ function updateUI(isEnabled) {
 
 // Load the saved state when popup opens.
 browser.storage.local.get("extensionEnabled").then((result) => {
-  // Default to disabled if no saved state exists.
-  const isEnabled = result.extensionEnabled ?? false;
+  // Default to enabled if no saved state exists.
+  const isEnabled = result.extensionEnabled ?? true;
   updateUI(isEnabled);
 });
 

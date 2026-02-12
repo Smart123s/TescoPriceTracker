@@ -1,21 +1,136 @@
 /* ============================================
-   CONTENT STYLES — Firefox Extension Template
+   CONTENT STYLES — Tesco Price Tracker
    ============================================
-   Styles for the injected Hello World banner.
+   Styles for the injected price-history chart
+   and statistics panel on Tesco product pages.
    ============================================ */
 
-#my-extension-hello-banner {
+/* ── Main Container ─────────────────────────── */
+
+#tpt-price-tracker-container {
   position: relative;
-  z-index: 2147483647; /* highest possible — stay above everything */
   width: 100%;
-  padding: 12px 20px;
-  background: linear-gradient(135deg, #7c3aed, #6d28d9);
-  color: #ffffff;
+  max-width: 960px;
+  margin: 32px auto;
+  padding: 28px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
   font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
-  font-size: 15px;
-  font-weight: 600;
-  text-align: center;
-  letter-spacing: 0.3px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   box-sizing: border-box;
+  z-index: 100;
+  clear: both;
+}
+
+/* ── Title ──────────────────────────────────── */
+
+.tpt-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 17px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #00539f;
+}
+
+.tpt-icon {
+  width: 22px;
+  height: 22px;
+  color: #00539f;
+  flex-shrink: 0;
+}
+
+/* ── Chart Wrapper ──────────────────────────── */
+
+.tpt-chart-wrapper {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  margin-bottom: 20px;
+  padding: 4px;
+  background: #fafbfc;
+  border-radius: 8px;
+  border: 1px solid #f1f5f9;
+}
+
+.tpt-chart-wrapper canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* ── Stats Grid ─────────────────────────────── */
+
+.tpt-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.tpt-stat-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 12px;
+  text-align: center;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.tpt-stat-card:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
+}
+
+.tpt-stat-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #64748b;
+  margin-bottom: 4px;
+}
+
+.tpt-stat-value {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.tpt-stat-low {
+  color: #16a34a !important;
+}
+
+.tpt-stat-high {
+  color: #dc2626 !important;
+}
+
+/* ── Footer ─────────────────────────────────── */
+
+.tpt-footer {
+  text-align: center;
+  font-size: 11px;
+  color: #94a3b8;
+  padding-top: 8px;
+  border-top: 1px solid #f1f5f9;
+}
+
+/* ── Responsive ─────────────────────────────── */
+
+@media (max-width: 600px) {
+  #tpt-price-tracker-container {
+    padding: 16px;
+    margin: 16px auto;
+  }
+
+  .tpt-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tpt-chart-wrapper {
+    height: 220px;
+  }
 }

@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "My Extension Template",
-  "version": "1.0.0",
-  "description": "A clean Firefox extension template with enable/disable toggle and content injection.",
+  "name": "Tesco Price Tracker",
+  "version": "1.1.0",
+  "description": "Tracks and displays price history charts on Tesco Hungary product pages.",
   "author": "Your Name",
 
   "permissions": [
@@ -12,7 +12,9 @@
   ],
 
   "host_permissions": [
-    "<all_urls>"
+    "https://bevasarlas.tesco.hu/*",
+    "http://localhost:5000/*",
+    "http://127.0.0.1:5000/*"
   ],
 
   "background": {
@@ -39,17 +41,21 @@
 
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
-      "js": ["content/content.js"],
+      "matches": [
+        "https://bevasarlas.tesco.hu/groceries/en-HU/products/*",
+        "https://bevasarlas.tesco.hu/groceries/hu-HU/products/*",
+        "https://bevasarlas.tesco.hu/groceries/*/products/*"
+      ],
+      "js": ["content/chart.umd.min.js", "content/content.js"],
       "css": ["content/content.css"],
-      "run_at": "document_end"
+      "run_at": "document_idle"
     }
   ],
 
   "browser_specific_settings": {
     "gecko": {
-      "id": "my-extension-template@example.com",
-      "strict_min_version": "128.0"
+      "id": "tesco-price-tracker@example.com",
+      "strict_min_version": "109.0"
     }
   }
 }
