@@ -125,7 +125,10 @@ function formatDate(dateObj, locale) {
 
 // Parse ISO string safely
 function parseDate(str) {
-  const d = new Date(str);
+  if (!str) return new Date();
+  // Truncate fractional part to avoid issues with 6-digit microseconds (Python default)
+  const safeStr = str.split('.')[0];
+  const d = new Date(safeStr);
   // Reset time to midnight to ensure daily alignment
   d.setHours(0, 0, 0, 0);
   return d;
@@ -419,47 +422,50 @@ function findInsertionPoint() {
 // ── Chart & UI Injection ─────────────────────
 
 async function injectPriceTracker() {
-  // Don't inject twice
-  if (document.getElementById(CONTAINER_ID)) return;
+  if (g_isInjecting) return; // Prevent concurrent injections
+  g_isInjecting = true;
+  try {
+    // Don't inject twice
+    if (document.getElementById(CONTAINER_ID)) return;
 
-  const t = getStrings();
-  const insertion = findInsertionPoint();
+    const t = getStrings();
+    const insertion = findInsertionPoint();
 
-  if (!insertion) {
-    console.warn("[TescoPriceTracker] Could not find injection point.");
-    return;
-  }
-
-  // Fetch Real Data Only
-  const realHistory = await getRealData();
-  
-  let labels = [];
-  let prices = [];
-  let clubcardPrices = [];
-  let hasHistory = false;
-
-  if (realHistory && realHistory.length > 0) {
-    const processed = processRealData(realHistory);
-    // Double check we have labels
-    if (processed.labels && processed.labels.length > 0) {
-      labels = processed.labels;
-      prices = processed.prices;
-      clubcardPrices = processed.clubcardPrices;
-      hasHistory = true;
+    if (!insertion) {
+      console.warn("[TescoPriceTracker] Could not find injection point.");
+      return;
     }
-  }
 
-  const stats = calculateStats(prices);
+    // Fetch Real Data Only
+    const realHistory = await getRealData();
+    
+    let labels = [];
+    let prices = [];
+    let clubcardPrices = [];
+    let hasHistory = false;
 
-  // If we have access to the page's current price, update "current" stat to match it exactly
-  const pagePrice = readPagePrice();
-  if (pagePrice) {
-    stats.current = pagePrice;
-  }
+    if (realHistory && realHistory.length > 0) {
+      const processed = processRealData(realHistory);
+      // Double check we have labels
+      if (processed.labels && processed.labels.length > 0) {
+        labels = processed.labels;
+        prices = processed.prices;
+        clubcardPrices = processed.clubcardPrices;
+        hasHistory = true;
+      }
+    }
 
-  // ── Build Container ──
-  const container = document.createElement("div");
-  container.id = CONTAINER_ID;
+    const stats = calculateStats(prices);
+
+    // If we have access to the page's current price, update "current" stat to match it exactly
+    const pagePrice = readPagePrice();
+    if (pagePrice) {
+      stats.current = pagePrice;
+    }
+
+    // ── Build Container ──
+    const container = document.createElement("div");
+    container.id = CONTAINER_ID;
 
   // Title
   const title = document.createElement("div");
@@ -540,17 +546,20 @@ async function injectPriceTracker() {
   
   // Custom footer text
   footer.textContent = `${t.footer}`;
-  container.appendChild(footer);
+    container.appendChild(footer);
 
-  // Insert chart: BEFORE "About this product" or AFTER the hero section
-  if (insertion.mode === "before") {
-    insertion.element.parentNode.insertBefore(container, insertion.element);
-  } else {
-    insertion.element.parentNode.insertBefore(container, insertion.element.nextSibling);
+    // Insert chart: BEFORE "About this product" or AFTER the hero section
+    if (insertion.mode === "before") {
+      insertion.element.parentNode.insertBefore(container, insertion.element);
+    } else {
+      insertion.element.parentNode.insertBefore(container, insertion.element.nextSibling);
+    }
+
+    // ── Render Chart ──
+    renderChart(canvas, labels, prices, clubcardPrices, stats, t);
+  } finally {
+    g_isInjecting = false;
   }
-
-  // ── Render Chart ──
-  renderChart(canvas, labels, prices, clubcardPrices, stats, t);
 }
 
 function renderChart(canvas, labels, prices, clubcardPrices, stats, t) {
@@ -749,6 +758,7 @@ function removePriceTracker() {
 
 let g_isEnabled = false;
 let g_observer = null;
+let g_isInjecting = false;
 
 browser.runtime.onMessage.addListener((message) => {
   if (message.type === "SET_ENABLED") {

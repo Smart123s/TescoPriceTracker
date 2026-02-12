@@ -47,12 +47,17 @@ async function handleToggle(enabled) {
 
 async function fetchHistory(tpnc) {
   try {
-    const response = await fetch(`http://localhost:5000/api/history/${tpnc}`);
+    // Fetch hosted JSON directly by ID (public CDN-style endpoint)
+    const response = await fetch(`https://tesco-price-tracker.tmbpeter.com/${tpnc}.json`);
     if (!response.ok) {
         throw new Error(`Server returned ${response.status}`);
     }
     const data = await response.json();
-    return data;
+    // Normalize to the shape the content script expects
+    return {
+      name: data.name,
+      history: data.price_history || [],
+    };
   } catch (error) {
     console.error("Fetch error:", error);
     throw error;
