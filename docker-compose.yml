@@ -8,8 +8,6 @@ services:
       - ${DATA_FOLDER}:/app/data
     ports:
       - "50001:50001"
-    env_file:
-      - .env
     environment:
       - TZ=Europe/Budapest
 
@@ -20,7 +18,5 @@ services:
     command: python scheduler.py
     volumes:
       - ${DATA_FOLDER}:/app/data
-    env_file:
-      - .env
     environment:
       - TZ=Europe/Budapest
