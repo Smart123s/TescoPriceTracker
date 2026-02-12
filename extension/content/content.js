@@ -301,6 +301,13 @@ function calculateStats(prices) {
  * Returns { element, mode } where mode is "before" or "after", or null.
  */
 function findInsertionPoint() {
+  // Strategy -1: Prefer explicit product block identified by class used on Tesco pages.
+  // The class `mnwM3actwF_P5wK` appears in both languages — insert right *after* it.
+  const specialBlock = document.querySelector('.mnwM3actwF_P5wK');
+  if (specialBlock) {
+    return { element: specialBlock, mode: "after" };
+  }
+
   // Strategy 0: Exact match based on the section ID from screenshot.
   // This is the "About this product" accordion section.
   const descriptionHeader = document.getElementById("accordion-header-product-description");
