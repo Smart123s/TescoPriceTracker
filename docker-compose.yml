@@ -13,7 +13,6 @@ services:
   #     - "50001:50001"
   #   environment:
   #     - TZ=Europe/Budapest
-
   scheduler:
     image: ghcr.io/smart123s/tescopricetracker:latest
     container_name: tesco_tracker_scheduler
@@ -23,3 +22,9 @@ services:
       - ${DATA_FOLDER}:/app/data
     environment:
       - TZ=Europe/Budapest
+  watchtower:
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --interval 300  # Check every 5 minutes
+    restart: always
