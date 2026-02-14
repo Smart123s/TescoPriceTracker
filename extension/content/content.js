@@ -139,11 +139,14 @@ function parseDate(str) {
 /**
  * Fetch real history from the local Python backend via background script
  */
-async function getRealData() {
-  // Extract TPNC
+function getTpncFromUrl() {
   const match = window.location.pathname.match(/\/products\/(\d+)/);
-  if (!match) return null;
-  const tpnc = match[1];
+  return match ? match[1] : null;
+}
+
+async function getRealData() {
+  const tpnc = getTpncFromUrl();
+  if (!tpnc) return null;
 
   try {
     const response = await browser.runtime.sendMessage({
@@ -303,34 +306,70 @@ function calculateStats(prices) {
  * Returns { element, mode } where mode is "before" or "after", or null.
  */
 function findInsertionPoint() {
-  // Strategy -1: Prefer explicit product block identified by class used on Tesco pages.
-  // The class `mnwM3actwF_P5wK` appears in both languages — normally insert after it.
-  // Exception: when the selector references a <section> element (common in the MFE)
-  // we want to insert BEFORE that section so the tracker appears above the accordion
-  // rather than being pushed to the bottom of the page.
-  const specialBlock = document.querySelector('.mnwM3actwF_P5wK');
-  if (specialBlock) {
-    const tag = (specialBlock.tagName || "").toLowerCase();
-    const mode = tag === "section" ? "before" : "after";
-    return { element: specialBlock, mode };
+  // Strategy 0 (New Priority): Under the Product Image section
+  // As explicitly requested, we look for the product image container/section.
+  const imageSection = document.querySelector('section[aria-label="product images"]') || 
+                       document.querySelector('section[aria-label="termékképek"]') ||
+                       document.querySelector('[data-auto="product-image"]') ||
+                       document.querySelector('.product-image__container');
+  
+  if (imageSection) {
+    // On the new Tesco Layout, the image and product info are often siblings.
+    // We want to find the top-most common parent of the 'hero' area to insert after it.
+    let hero = imageSection;
+    // Walk up to find the container that likely holds both image and details
+    for (let i = 0; i < 3; i++) {
+        if (hero.parentElement && 
+            (hero.parentElement.classList.contains('mfe-pdp-wrapper') || 
+             hero.parentElement.tagName === 'MAIN' ||
+             hero.parentElement.classList.contains('product-details-page'))) {
+            break;
+        }
+        if (hero.parentElement) hero = hero.parentElement;
+    }
+    return { element: hero, mode: "after" };
   }
 
-  // Strategy 0: Exact match based on the section ID from screenshot.
-  // This is the "About this product" accordion section.
+  // Strategy 1: Check for the specific accordion container seen in the site's markup.
+  // This is typically the "About this product" section.
+  const accordionSelector = [
+    '[data-auto="pdp-overview-accordion"]',
+    '[data-testid="accordion"]',
+    '.UKSL9q_container', // From screenshot
+    '[class*="pop-overview-accordion"]',
+    '[class*="pdp-overview-accordion"]'
+  ].join(',');
+  
+  const accordion = document.querySelector(accordionSelector);
+  if (accordion) {
+    // Walk up to the top-most level of this section if it's inside a wrapper
+    let target = accordion;
+    if (accordion.parentElement && accordion.parentElement.classList.contains('azuiwe2GnJXyab4')) {
+      target = accordion.parentElement;
+    }
+    return { element: target, mode: "before" };
+  }
+
+  // Strategy 0: Exact match based on the description header ID.
   const descriptionHeader = document.getElementById("accordion-header-product-description");
   if (descriptionHeader) {
-    // We want to place the chart BEFORE the entire accordion that contains this header.
-    // Looking at the screenshot, the accordion is wrapped in a container with data-auto="pdp-overview-accordion"
-    const accordionContainer = descriptionHeader.closest('[data-auto="pdp-overview-accordion"]');
-    if (accordionContainer) {
-      return { element: accordionContainer, mode: "before" };
+    const container = descriptionHeader.closest('[data-auto*="accordion"]') || 
+                      descriptionHeader.closest('section') || 
+                      descriptionHeader.closest('.UKSL9q_item')?.parentElement;
+    if (container) {
+      return { element: container, mode: "before" };
     }
-    // Fallback: closest section if the data-auto attribute is missing/changed
-    const section = descriptionHeader.closest('section');
-    if (section) return { element: section, mode: "before" };
   }
 
-  // Strategy 1 (primary): Find "About this product" / "A termékről" text
+  // Strategy 1: Prefer explicit product block identified by class used on Tesco pages.
+  // mnwM3actwF_P5wK / mnwM3actwF_PSwK etc.
+  const specialBlock = document.querySelector('[class*="mnwM3actwF_P"]') || 
+                       document.querySelector('[class*="mnwM3actwF_S"]');
+  if (specialBlock) {
+    return { element: specialBlock, mode: "before" };
+  }
+
+  // Strategy 2 (primary): Find "About this product" / "A termékről" text
   // anywhere in the DOM and insert right BEFORE its container.
   const allElements = document.querySelectorAll(
     "h2, h3, h4, button, span, div, [class*='heading'], [class*='title'], [class*='accordion'], [class*='Accordion']"
@@ -339,12 +378,12 @@ function findInsertionPoint() {
     // Only check direct text, not deeply nested children
     const ownText = Array.from(el.childNodes)
       .filter((n) => n.nodeType === Node.TEXT_NODE || n.nodeType === Node.ELEMENT_NODE)
-      .map((n) => n.textContent)
+      .map((n) => n.textContent.trim())
       .join("")
-      .trim()
       .toLowerCase();
 
-    if (ownText.includes("about this product") || ownText.includes("a termékről")) {
+    if (ownText === "about this product" || ownText === "a termékről" || 
+        ownText.includes("product description") || ownText.includes("termékleírás")) {
       // Walk up to a meaningful block container
       let section = el;
       while (section.parentElement && section.parentElement !== document.body) {
@@ -354,7 +393,7 @@ function findInsertionPoint() {
         if (
           parent.offsetWidth > document.body.offsetWidth * 0.5 &&
           (style.display === "block" || style.display === "flex") &&
-          parent.children.length <= 5
+          parent.children.length <= 10
         ) {
           section = parent;
           break;
@@ -365,7 +404,7 @@ function findInsertionPoint() {
     }
   }
 
-  // Strategy 2: TreeWalker text-node search (catches hidden/unusual markup)
+  // Strategy 3: TreeWalker text-node search (catches hidden/unusual markup)
   const walker = document.createTreeWalker(
     document.body,
     NodeFilter.SHOW_TEXT,
@@ -385,7 +424,7 @@ function findInsertionPoint() {
     let container = textNode.parentElement;
     for (let i = 0; i < 5 && container.parentElement && container.parentElement !== document.body; i++) {
       const parent = container.parentElement;
-      if (parent.offsetWidth > document.body.offsetWidth * 0.5 && parent.children.length <= 5) {
+      if (parent.offsetWidth > document.body.offsetWidth * 0.5 && parent.children.length <= 10) {
         container = parent;
         break;
       }
@@ -394,7 +433,7 @@ function findInsertionPoint() {
     return { element: container, mode: "before" };
   }
 
-  // Strategy 3: Find product price area and insert after the product hero wrapper
+  // Strategy 4: Find product price area and insert after the product hero wrapper
   const priceEl =
     document.querySelector('[data-auto="price-value"]') ||
     document.querySelector('[class*="price"]');
@@ -412,7 +451,7 @@ function findInsertionPoint() {
     return { element: el, mode: "after" };
   }
 
-  // Strategy 4: Fallback — product image
+  // Strategy 5: Fallback — product image
   const productImg =
     document.querySelector('img[src*="digitalcontent"][alt]') ||
     document.querySelector('[data-auto="product-image"] img') ||
@@ -508,17 +547,23 @@ function updateChartTheme(chart, theme) {
 
 async function injectPriceTracker() {
   if (g_isInjecting) return; // Prevent concurrent injections
+  
+  const tpnc = getTpncFromUrl();
+  if (!tpnc) return;
+
   g_isInjecting = true;
   try {
-    // If container already exists, only skip when a chart instance is present.
     const existingContainer = document.getElementById(CONTAINER_ID);
     if (existingContainer) {
-      const existingCanvas = existingContainer.querySelector('canvas');
-      if (existingCanvas && (existingCanvas._tptChart || g_chartInstance)) {
-        // chart already present and healthy → nothing to do
-        return;
+      // If the container is for the SAME product and already has a chart, do nothing.
+      if (existingContainer.dataset.tpnc === tpnc) {
+        const existingCanvas = existingContainer.querySelector('canvas');
+        if (existingCanvas && (existingCanvas._tptChart || g_chartInstance)) {
+           // Check if it's still in a reasonable place? No, let observer handle that.
+           return;
+        }
       }
-      // container exists but chart is missing/stale — remove it and re-create
+      // If it's a different product or broken, remove it.
       existingContainer.remove();
     }
 
@@ -527,7 +572,7 @@ async function injectPriceTracker() {
     let finalInsertion = insertion;
 
     if (!finalInsertion) {
-      console.warn("[TescoPriceTracker] Could not find injection point — using fallback insertion.");
+      console.warn("[TescoPriceTracker] Could not find insertion point — using fallback insertion.");
       const fallback = document.querySelector(
         'main, [role="main"], #content, .page-content, #root, #app, [data-auto="page-content"]'
       );
@@ -541,6 +586,7 @@ async function injectPriceTracker() {
     // ── Build Container (Placeholder) ──
     const container = document.createElement("div");
     container.id = CONTAINER_ID;
+    container.dataset.tpnc = tpnc; // Store current product ID
 
     // Title
     const title = document.createElement("div");
@@ -657,6 +703,13 @@ async function injectPriceTracker() {
     }
 
     // ── Update UI with Data ──
+    // Double check we are still on the same product after the async fetch
+    const currentTpnc = getTpncFromUrl();
+    if (currentTpnc !== tpnc) {
+      container.remove();
+      return;
+    }
+
     chartWrapper.classList.remove('tpt-loading');
     
     const stats = calculateStats(prices);
@@ -966,7 +1019,7 @@ function startObserver() {
     // If we are currently injecting (loading data), don't treat the partial container as stale
     if (g_isInjecting) return;
 
-    // If container exists but the chart instance is missing or canvas collapsed, re-render
+    // If container exists but the chart instance is missing, try to re-render or re-inject
     const canvas = container.querySelector('canvas');
     const chartWrapper = container.querySelector('.tpt-chart-wrapper');
     const isLoading = chartWrapper && chartWrapper.classList.contains('tpt-loading');
@@ -974,13 +1027,15 @@ function startObserver() {
     if (isLoading) return; // Still waiting for data, not an error
 
     const canvasMissingChart = !canvas || !(canvas._tptChart || g_chartInstance);
-    // Be careful with clientWidth/Height - sometimes it's 0 briefly during render
-    const canvasCollapsed = canvas && (canvas.clientWidth === 0 || canvas.clientHeight === 0);
+    // Removed canvasCollapsed check as it causes false-positives during SPA layout shifts
     
-    if (canvasMissingChart || canvasCollapsed) {
+    // Check if the TPNC matches the URL (robustness)
+    const tpnc = getTpncFromUrl();
+    const tpncChanged = tpnc && container.dataset.tpnc !== tpnc;
+
+    if (canvasMissingChart || tpncChanged) {
       if (g_debounceTimer) clearTimeout(g_debounceTimer);
       g_debounceTimer = setTimeout(() => {
-        // Double check injection state before removing
         if (g_isInjecting) return;
         
         container.remove();
@@ -1015,20 +1070,25 @@ browser.storage.local.get("extensionEnabled").then((result) => {
 
 // ── URL Change Detection (SPA) ───
 
-let lastUrl = location.href;
+let lastTpnc = getTpncFromUrl();
 
 // Use 'setInterval' as a lightweight polling fall-back for URL changes
-// which is often cheaper/more reliable than a massive document-wide MutationObserver for just the URL.
 setInterval(() => {
-  const url = location.href;
-  if (url !== lastUrl) {
-    lastUrl = url;
-    // When URL changes, we might need to remove old tracker if it's still there
-    // but invalid, or just trigger a re-injection attempt.
+  const currentTpnc = getTpncFromUrl();
+  if (currentTpnc !== lastTpnc) {
+    lastTpnc = currentTpnc;
+    
+    // Only remove and re-inject if the product ID actually changed.
+    // If we just navigated to a different section of the same product, keep it.
     const oldContainer = document.getElementById(CONTAINER_ID);
-    if (oldContainer) oldContainer.remove();
+    if (oldContainer) {
+       // If the ID changed, we must replace the tracker
+       if (currentTpnc) {
+          oldContainer.remove();
+       }
+    }
 
-    if (g_isEnabled) {
+    if (g_isEnabled && currentTpnc) {
       // Give React/Angular a moment to render the new page content
       setTimeout(() => injectPriceTracker().catch(console.error), 500); 
     }
