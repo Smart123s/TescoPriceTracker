@@ -1,101 +1,50 @@
-# 🧩 Firefox Extension Template (Manifest V3)
+# Tesco Price Tracker Extension
 
-A clean, minimal Firefox extension template with an **enable/disable popup toggle** and **content injection**. Built with **Manifest V3** — the newest extension standard supported by Firefox.
+A browser extension that tracks and visualizes price history for products on the Tesco Hungary website (`bevasarlas.tesco.hu`).
 
----
+## Features
 
-## 📁 Project Structure
+- **Price History Charts**: Automatically injects a Chart.js-based price history graph directly onto Tesco product pages.
+- **Detailed Statistics**: Shows lowest, highest, and average prices over the last 30 days.
+- **Multi-language Support**: Automatically detects and switches between English and Hungarian based on the page URL.
+- **Clubcard Price Support**: Tracks both regular and Clubcard-specific prices.
+- **Global Toggle**: Easily enable or disable the tracker via the extension popup menu.
 
-```
-firefox-extension/
-├── manifest.json            # Extension manifest (MV3)
-├── background/
-│   └── background.js        # Background script — state & messaging
-├── content/
-│   ├── content.js           # Content script — injects banner into pages
-│   └── content.css          # Styles for the injected banner
-├── popup/
-│   ├── popup.html           # Popup panel UI
-│   ├── popup.css            # Popup styles (dark theme)
-│   └── popup.js             # Popup logic — toggle switch
-├── icons/
-│   ├── icon-16.png          # Toolbar icon
-│   ├── icon-32.png
-│   ├── icon-48.png
-│   └── icon-128.png         # Add-on manager icon
-└── README.md
-```
+## Support Sites
 
----
+The extension is designed to work on:
+- `https://bevasarlas.tesco.hu/groceries/en-HU/products/*`
+- `https://bevasarlas.tesco.hu/groceries/hu-HU/products/*`
 
-## 🚀 How to Load in Firefox
+## Installation
 
-1. Open Firefox and navigate to `about:debugging#/runtime/this-firefox`
-2. Click **"Load Temporary Add-on…"**
-3. Select the `manifest.json` file inside the `firefox-extension/` folder
-4. The extension icon will appear in your toolbar — click it to open the popup
+### For Development (Manual Load)
 
----
+1. Open your browser's extensions page:
+   - **Chrome**: `chrome://extensions`
+   - **Firefox**: `about:debugging#/runtime/this-firefox` (or `about:addons`)
+2. Enable **Developer Mode**.
+3. Click **Load unpacked** (Chrome) or **Load Temporary Add-on** (Firefox).
+4. Select the `extension/` folder in this project.
 
-## 🔧 How It Works
+## How it Works
 
-| Component        | Role                                                                 |
-|------------------|----------------------------------------------------------------------|
-| **Popup**        | Toggle switch to enable/disable the extension                        |
-| **Background**   | Relays the toggle state to all open tabs via messaging               |
-| **Content**      | Injects a "Hello World" banner at the top of every page when enabled |
-| **Storage**      | `browser.storage.local` persists the enabled/disabled state          |
+1. **Content Script**: When you visit a supported Tesco product page, `content/content.js` identifies the product unique identifier (TPNC).
+2. **Data Fetching**: The extension requests historical price data from the backend or local storage.
+3. **Visualization**: Using [Chart.js](https://www.chartjs.org/), it renders a line chart showing price fluctuations.
+4. **Localization**: Labels are translated into English or Hungarian depending on the user's current Tesco site language.
 
-### Data Flow
+## Project Structure
 
-```
-Popup toggle  →  browser.storage.local  →  Background script
-                                             ↓
-                                        Sends message to all tabs
-                                             ↓
-                                        Content script shows/hides banner
-```
+- `manifest.json`: WebExtension metadata and permissions.
+- `background/`: Contains `background.js` for handling cross-tab messaging and background tasks.
+- `content/`: 
+  - `content.js`: The script that runs in the context of the Tesco website.
+  - `chart.umd.min.js`: The bundled Chart.js library.
+  - `content.css`: Styles for the injected chart container.
+- `popup/`: The small UI container seen when clicking the extension icon.
+- `icons/`: Essential icons for the extension.
 
----
+## License
 
-## 🎨 Customization Guide
-
-### Change the injected content
-Edit `content/content.js` — modify the `showBanner()` function to inject whatever HTML you want.
-
-### Change the banner style
-Edit `content/content.css` — change colors, position, fonts, etc.
-
-### Change the popup look
-Edit `popup/popup.css` — the theme variables are in `:root` at the top of the file.
-
-### Add new permissions
-Edit `manifest.json` — add to the `permissions` or `host_permissions` arrays as needed.
-
-### Replace icons
-Drop your own PNGs into the `icons/` folder (keep the same filenames and sizes).
-
----
-
-## 📋 Key Technologies
-
-- **Manifest V3** — latest Firefox extension manifest version
-- **`browser.*` API** — Firefox's native extension API (Promise-based)
-- **`browser.storage.local`** — persistent key-value storage
-- **`browser.runtime.sendMessage`** — inter-script messaging
-- **ES Modules** — modern JavaScript module syntax
-- **CSS Custom Properties** — theme variables for easy customization
-
----
-
-## ⚠️ Notes
-
-- This template targets **Firefox 128+** (set in `browser_specific_settings.gecko.strict_min_version`)
-- Temporary add-ons are removed when Firefox closes — for permanent install, you need to sign via [addons.mozilla.org](https://addons.mozilla.org)
-- The content script runs on **all URLs** — narrow the `matches` in `manifest.json` if needed
-
----
-
-## 📄 License
-
-MIT — use this template however you like.
+This project is licensed under the [LICENSE](../LICENSE) file in the root directory.
