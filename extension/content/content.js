@@ -480,17 +480,51 @@ function getSystemTheme() {
   return (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
 }
 
-function getMoonIcon() {
-  return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
-}
-
-function getSunIcon() {
-  return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;
-}
-
 function toggleTheme() {
   const newTheme = g_currentTheme === 'dark' ? 'light' : 'dark';
   applyTheme(newTheme);
+}
+
+function setButtonIcon(btn, isDark) {
+  btn.innerHTML = ''; // Clear existing
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("viewBox", "0 0 24 24");
+  svg.setAttribute("fill", "none");
+  svg.setAttribute("stroke", "currentColor");
+  svg.setAttribute("stroke-width", "2");
+  svg.setAttribute("stroke-linecap", "round");
+  svg.setAttribute("stroke-linejoin", "round");
+  svg.style.width = "20px";
+  svg.style.height = "20px";
+
+  if (isDark) {
+    // Sun Icon
+    const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    circle.setAttribute("cx", "12");
+    circle.setAttribute("cy", "12");
+    circle.setAttribute("r", "5");
+    svg.appendChild(circle);
+    
+    const lines = [
+      [12, 1, 12, 3], [12, 21, 12, 23], [4.22, 4.22, 5.64, 5.64],
+      [18.36, 18.36, 19.78, 19.78], [1, 12, 3, 12], [21, 12, 23, 12],
+      [4.22, 19.78, 5.64, 18.36], [18.36, 5.64, 19.78, 4.22]
+    ];
+    lines.forEach(([x1, y1, x2, y2]) => {
+      const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+      line.setAttribute("x1", x1);
+      line.setAttribute("y1", y1);
+      line.setAttribute("x2", x2);
+      line.setAttribute("y2", y2);
+      svg.appendChild(line);
+    });
+  } else {
+    // Moon Icon
+    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path.setAttribute("d", "M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z");
+    svg.appendChild(path);
+  }
+  btn.appendChild(svg);
 }
 
 function applyTheme(theme) {
@@ -503,13 +537,13 @@ function applyTheme(theme) {
   if (theme === 'dark') {
     container.classList.add('tpt-theme-dark');
     if (toggleBtn) {
-      toggleBtn.innerHTML = getSunIcon();
+      setButtonIcon(toggleBtn, true);
       toggleBtn.title = 'Switch to Light Mode';
     }
   } else {
     container.classList.remove('tpt-theme-dark');
     if (toggleBtn) {
-      toggleBtn.innerHTML = getMoonIcon();
+      setButtonIcon(toggleBtn, false);
       toggleBtn.title = 'Switch to Dark Mode';
     }
   }
@@ -541,6 +575,23 @@ function updateChartTheme(chart, theme) {
   // but we can update point borders etc.
   
   chart.update('none'); // Update without animation
+}
+
+function createStatCard(label, value, className = "") {
+  const card = document.createElement("div");
+  card.className = "tpt-stat-card";
+  
+  const labelDiv = document.createElement("div");
+  labelDiv.className = "tpt-stat-label";
+  labelDiv.textContent = label;
+  
+  const valueDiv = document.createElement("div");
+  valueDiv.className = "tpt-stat-value" + (className ? " " + className : "");
+  valueDiv.textContent = value;
+  
+  card.appendChild(labelDiv);
+  card.appendChild(valueDiv);
+  return card;
 }
 
 // ── Chart & UI Injection ─────────────────────
@@ -594,18 +645,26 @@ async function injectPriceTracker() {
     
     const titleLeft = document.createElement("div");
     titleLeft.style.cssText = "display:flex; align-items:center; gap:8px;";
-    titleLeft.innerHTML = `
-      <svg class="tpt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-      </svg>
-      ${t.title}
-    `;
+    
+    const titleIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    titleIcon.classList.add("tpt-icon");
+    titleIcon.setAttribute("viewBox", "0 0 24 24");
+    titleIcon.setAttribute("fill", "none");
+    titleIcon.setAttribute("stroke", "currentColor");
+    titleIcon.setAttribute("stroke-width", "2");
+    
+    const polyline = document.createElementNS("http://www.w3.org/2000/svg", "polyline");
+    polyline.setAttribute("points", "22 12 18 12 15 21 9 3 6 12 2 12");
+    titleIcon.appendChild(polyline);
+    
+    titleLeft.appendChild(titleIcon);
+    titleLeft.appendChild(document.createTextNode(t.title));
     title.appendChild(titleLeft);
 
     const toggleBtn = document.createElement("button");
     toggleBtn.className = "tpt-theme-toggle";
     toggleBtn.type = "button";
-    toggleBtn.innerHTML = g_currentTheme === 'dark' ? getSunIcon() : getMoonIcon();
+    setButtonIcon(toggleBtn, g_currentTheme === 'dark');
     toggleBtn.title = g_currentTheme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode';
     toggleBtn.onclick = (e) => {
       e.stopPropagation();
@@ -620,7 +679,15 @@ async function injectPriceTracker() {
     
     const loadingEl = document.createElement("div");
     loadingEl.className = "tpt-loading-spinner";
-    loadingEl.innerHTML = `<div class="spinner"></div><span>${t.loading}</span>`;
+    
+    const spinner = document.createElement("div");
+    spinner.className = "spinner";
+    loadingEl.appendChild(spinner);
+    
+    const loadingText = document.createElement("span");
+    loadingText.textContent = t.loading;
+    loadingEl.appendChild(loadingText);
+    
     chartWrapper.appendChild(loadingEl);
 
     const canvas = document.createElement("canvas");
@@ -637,32 +704,13 @@ async function injectPriceTracker() {
     const pagePrice = readPagePrice();
     const displayCurrent = pagePrice ? `${pagePrice.toLocaleString(locale)} Ft` : "—";
 
-    statsGrid.innerHTML = `
-      <div class="tpt-stat-card">
-        <div class="tpt-stat-label">${t.currentPrice}</div>
-        <div class="tpt-stat-value">${displayCurrent}</div>
-      </div>
-      <div class="tpt-stat-card">
-        <div class="tpt-stat-label">${t.lowestPrice}</div>
-        <div class="tpt-stat-value">...</div>
-      </div>
-      <div class="tpt-stat-card">
-        <div class="tpt-stat-label">${t.highestPrice}</div>
-        <div class="tpt-stat-value">...</div>
-      </div>
-      <div class="tpt-stat-card">
-        <div class="tpt-stat-label">${t.averagePrice}</div>
-        <div class="tpt-stat-value">...</div>
-      </div>
-      <div class="tpt-stat-card">
-        <div class="tpt-stat-label">${t.trend}</div>
-        <div class="tpt-stat-value">...</div>
-      </div>
-      <div class="tpt-stat-card">
-        <div class="tpt-stat-label">${t.priceRange}</div>
-        <div class="tpt-stat-value">...</div>
-      </div>
-    `;
+    statsGrid.appendChild(createStatCard(t.currentPrice, displayCurrent));
+    statsGrid.appendChild(createStatCard(t.lowestPrice, "..."));
+    statsGrid.appendChild(createStatCard(t.highestPrice, "..."));
+    statsGrid.appendChild(createStatCard(t.averagePrice, "..."));
+    statsGrid.appendChild(createStatCard(t.trend, "..."));
+    statsGrid.appendChild(createStatCard(t.priceRange, "..."));
+    
     container.appendChild(statsGrid);
 
     // Footer
@@ -733,7 +781,7 @@ async function injectPriceTracker() {
       statValues[2].textContent = fmtPrice(stats.max);
       statValues[2].className = "tpt-stat-value tpt-stat-high";
       statValues[3].textContent = fmtPrice(stats.avg);
-      statValues[4].innerHTML = fmtTrend(stats.trend, stats.trendPercent);
+      statValues[4].textContent = fmtTrend(stats.trend, stats.trendPercent);
       if (hasHistory && stats.trend !== 0) {
         statValues[4].style.color = trendColor;
       }
