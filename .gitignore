@@ -45,3 +45,5 @@ env.bak/
 venv.bak/
 
 data/
+
+.vscode/

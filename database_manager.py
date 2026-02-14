@@ -1,14 +1,31 @@
 import json
 import os
 import glob
+import sys
 from datetime import datetime
+from dotenv import load_dotenv
 
-DATA_DIR = 'data'
+# Load .env into environment (does NOT override existing environment vars by default)
+load_dotenv()
 
+# 1) runtime environment variable (highest priority)
+DATA_FOLDER_ENV = os.getenv('DATA_FOLDER')
+
+if DATA_FOLDER_ENV:
+    DATA_DIR = os.path.abspath(DATA_FOLDER_ENV)
+else:
+    # 2) detect virtualenv: prefer VIRTUAL_ENV env var, otherwise check sys.prefix/base_prefix
+    venv_path = os.getenv('VIRTUAL_ENV') or (sys.prefix if getattr(sys, 'base_prefix', sys.prefix) != sys.prefix else None)
+    if venv_path:
+        # keep data inside the active virtualenv
+        DATA_DIR = os.path.abspath(os.path.join(venv_path, 'data'))
+    else:
+        print("Error, no environment variable DATA_FOLDER set and no virtualenv detected. Please set DATA_FOLDER to a valid path.")
+        sys.exit(1)
 def init_db():
     if not os.path.exists(DATA_DIR):
-        print("Initializing data directory...")
-        os.makedirs(DATA_DIR)
+        print(f"Initializing data directory at {DATA_DIR}...")
+        os.makedirs(DATA_DIR, exist_ok=True)
         print("Data directory initialized.")
 
 def get_product_file_path(tpnc):

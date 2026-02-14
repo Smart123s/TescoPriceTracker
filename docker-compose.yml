@@ -1,18 +1,21 @@
+version: '3'
+
 services:
-  webapp:
-    build: .
-    container_name: tesco_tracker_web
-    restart: unless-stopped
-    command: python app.py
-    volumes:
-      - ${DATA_FOLDER}:/app/data
-    ports:
-      - "50001:50001"
-    environment:
-      - TZ=Europe/Budapest
+  # Currently disabled, we moved to a static web app model
+  # webapp:
+  #   image: ghcr.io/smart123s/tescopricetracker:latest
+  #   container_name: tesco_tracker_web
+  #   restart: unless-stopped
+  #   command: python app.py
+  #   volumes:
+  #     - ${DATA_FOLDER}:/app/data
+  #   ports:
+  #     - "50001:50001"
+  #   environment:
+  #     - TZ=Europe/Budapest
 
   scheduler:
-    build: .
+    image: ghcr.io/smart123s/tescopricetracker:latest
     container_name: tesco_tracker_scheduler
     restart: unless-stopped
     command: python scheduler.py
