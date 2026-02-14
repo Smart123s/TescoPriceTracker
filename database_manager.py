@@ -8,9 +8,7 @@ from dotenv import load_dotenv
 # Load .env into environment (does NOT override existing environment vars by default)
 load_dotenv()
 
-# 1) runtime environment variable (highest priority)
-DATA_FOLDER_ENV = os.getenv('DATA_FOLDER')
-
+DATA_FOLDER_ENV = os.getenv('DATA_FOLDER', '/app/data')
 if DATA_FOLDER_ENV:
     DATA_DIR = os.path.abspath(DATA_FOLDER_ENV)
 else:
