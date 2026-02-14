@@ -8,7 +8,7 @@ services:
   #   restart: unless-stopped
   #   command: python app.py
   #   volumes:
-  #     - ${DATA_FOLDER}:/app/data
+  #     - "${DATA_FOLDER}:/app/data"
   #   ports:
   #     - "50001:50001"
   #   environment:
@@ -19,9 +19,10 @@ services:
     restart: unless-stopped
     command: python scheduler.py
     volumes:
-      - ${DATA_FOLDER}:/app/data
+      - "${DATA_FOLDER}:/app/data"
     environment:
       - API_KEY=${API_KEY}
+      - DATA_FOLDER=/app/data
       - TZ=Europe/Budapest
   watchtower:
     image: containrrr/watchtower
