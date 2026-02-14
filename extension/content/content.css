@@ -99,6 +99,40 @@
   background: var(--tpt-card-bg);
   border-radius: 8px;
   border: 1px solid var(--tpt-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tpt-chart-wrapper.tpt-loading canvas {
+  display: none;
+}
+
+.tpt-loading-spinner {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: var(--tpt-muted);
+  font-size: 14px;
+}
+
+.tpt-chart-wrapper.tpt-loading .tpt-loading-spinner {
+  display: flex;
+}
+
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 4px solid var(--tpt-border);
+  border-top: 4px solid #00539f;
+  border-radius: 50%;
+  animation: tpt-spin 1s linear infinite;
+}
+
+@keyframes tpt-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .tpt-chart-wrapper canvas {

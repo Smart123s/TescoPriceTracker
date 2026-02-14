@@ -32,6 +32,7 @@ const TRANSLATIONS = {
     max: "Max",
     clubcardPrice: "Clubcard Price",
     noData: "No price history available",
+    loading: "Loading price history...",
   },
   hu: {
     title: "Árelőzmények (Utolsó 30 nap)",
@@ -47,6 +48,7 @@ const TRANSLATIONS = {
     max: "Max",
     clubcardPrice: "Clubcard ár",
     noData: "Nincs elérhető árelőzmény",
+    loading: "Áradatok betöltése...",
   },
 };
 
@@ -522,25 +524,121 @@ async function injectPriceTracker() {
 
     const t = getStrings();
     const insertion = findInsertionPoint();
+    let finalInsertion = insertion;
 
-    if (!insertion) {
-      // If we cannot find the ideal injection point, try a safer site container
-      // (prefer <main> / role=main / #content / SPA root). Only as a last resort
-      // prepend to <body> instead of appending so the card doesn't travel to the page bottom.
+    if (!finalInsertion) {
       console.warn("[TescoPriceTracker] Could not find injection point — using fallback insertion.");
-
       const fallback = document.querySelector(
         'main, [role="main"], #content, .page-content, #root, #app, [data-auto="page-content"]'
       );
-
       if (fallback) {
-        insertion = { element: fallback, mode: "prepend" };
+        finalInsertion = { element: fallback, mode: "prepend" };
       } else {
-        insertion = { element: document.body, mode: "prepend" };
+        finalInsertion = { element: document.body, mode: "prepend" };
       }
     }
 
-    // Fetch Real Data Only
+    // ── Build Container (Placeholder) ──
+    const container = document.createElement("div");
+    container.id = CONTAINER_ID;
+
+    // Title
+    const title = document.createElement("div");
+    title.className = "tpt-title";
+    
+    const titleLeft = document.createElement("div");
+    titleLeft.style.cssText = "display:flex; align-items:center; gap:8px;";
+    titleLeft.innerHTML = `
+      <svg class="tpt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+      </svg>
+      ${t.title}
+    `;
+    title.appendChild(titleLeft);
+
+    const toggleBtn = document.createElement("button");
+    toggleBtn.className = "tpt-theme-toggle";
+    toggleBtn.type = "button";
+    toggleBtn.innerHTML = g_currentTheme === 'dark' ? getSunIcon() : getMoonIcon();
+    toggleBtn.title = g_currentTheme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode';
+    toggleBtn.onclick = (e) => {
+      e.stopPropagation();
+      toggleTheme();
+    };
+    title.appendChild(toggleBtn);
+    container.appendChild(title);
+
+    // Chart Canvas Wrapper with Loading State
+    const chartWrapper = document.createElement("div");
+    chartWrapper.className = "tpt-chart-wrapper tpt-loading";
+    
+    const loadingEl = document.createElement("div");
+    loadingEl.className = "tpt-loading-spinner";
+    loadingEl.innerHTML = `<div class="spinner"></div><span>${t.loading}</span>`;
+    chartWrapper.appendChild(loadingEl);
+
+    const canvas = document.createElement("canvas");
+    canvas.id = "tpt-price-chart";
+    canvas.height = 280;
+    chartWrapper.appendChild(canvas);
+    container.appendChild(chartWrapper);
+
+    // Stats Grid (Initial State)
+    const statsGrid = document.createElement("div");
+    statsGrid.className = "tpt-stats-grid";
+    
+    const locale = getLocale();
+    const pagePrice = readPagePrice();
+    const displayCurrent = pagePrice ? `${pagePrice.toLocaleString(locale)} Ft` : "—";
+
+    statsGrid.innerHTML = `
+      <div class="tpt-stat-card">
+        <div class="tpt-stat-label">${t.currentPrice}</div>
+        <div class="tpt-stat-value">${displayCurrent}</div>
+      </div>
+      <div class="tpt-stat-card">
+        <div class="tpt-stat-label">${t.lowestPrice}</div>
+        <div class="tpt-stat-value">...</div>
+      </div>
+      <div class="tpt-stat-card">
+        <div class="tpt-stat-label">${t.highestPrice}</div>
+        <div class="tpt-stat-value">...</div>
+      </div>
+      <div class="tpt-stat-card">
+        <div class="tpt-stat-label">${t.averagePrice}</div>
+        <div class="tpt-stat-value">...</div>
+      </div>
+      <div class="tpt-stat-card">
+        <div class="tpt-stat-label">${t.trend}</div>
+        <div class="tpt-stat-value">...</div>
+      </div>
+      <div class="tpt-stat-card">
+        <div class="tpt-stat-label">${t.priceRange}</div>
+        <div class="tpt-stat-value">...</div>
+      </div>
+    `;
+    container.appendChild(statsGrid);
+
+    // Footer
+    const footer = document.createElement("div");
+    footer.className = "tpt-footer";
+    footer.textContent = `${t.footer}`;
+    container.appendChild(footer);
+
+    // Insert into DOM immediately
+    if (finalInsertion.mode === "before") {
+      finalInsertion.element.parentNode.insertBefore(container, finalInsertion.element);
+    } else if (finalInsertion.mode === "after") {
+      finalInsertion.element.parentNode.insertBefore(container, finalInsertion.element.nextSibling);
+    } else if (finalInsertion.mode === "prepend") {
+      finalInsertion.element.insertBefore(container, finalInsertion.element.firstChild);
+    } else {
+      finalInsertion.element.appendChild(container);
+    }
+
+    applyTheme(g_currentTheme);
+
+    // ── Fetch Real Data ──
     const realHistory = await getRealData();
     
     let labels = [];
@@ -550,7 +648,6 @@ async function injectPriceTracker() {
 
     if (realHistory && realHistory.length > 0) {
       const processed = processRealData(realHistory);
-      // Double check we have labels
       if (processed.labels && processed.labels.length > 0) {
         labels = processed.labels;
         prices = processed.prices;
@@ -559,133 +656,38 @@ async function injectPriceTracker() {
       }
     }
 
-    const stats = calculateStats(prices);
-
-    // If we have access to the page's current price, update "current" stat to match it exactly
-    const pagePrice = readPagePrice();
-    if (pagePrice) {
-      stats.current = pagePrice;
-    }
-
-    // ── Build Container ──
-    const container = document.createElement("div");
-    container.id = CONTAINER_ID;
-
-  // Title
-  const title = document.createElement("div");
-  title.className = "tpt-title";
-  
-  // Title Text/Icon Wrapper
-  const titleLeft = document.createElement("div");
-  titleLeft.style.cssText = "display:flex; align-items:center; gap:8px;";
-  titleLeft.innerHTML = `
-    <svg class="tpt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-    </svg>
-    ${t.title}
-  `;
-  title.appendChild(titleLeft);
-
-  // Theme Toggle Button
-  const toggleBtn = document.createElement("button");
-  toggleBtn.className = "tpt-theme-toggle";
-  toggleBtn.type = "button";
-  toggleBtn.innerHTML = g_currentTheme === 'dark' ? getSunIcon() : getMoonIcon();
-  toggleBtn.title = g_currentTheme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode';
-  toggleBtn.onclick = (e) => {
-    e.stopPropagation();
-    toggleTheme();
-  };
-  title.appendChild(toggleBtn);
-
-  container.appendChild(title);
-
-  // Chart Canvas
-  const chartWrapper = document.createElement("div");
-  chartWrapper.className = "tpt-chart-wrapper";
-  const canvas = document.createElement("canvas");
-  canvas.id = "tpt-price-chart";
-  canvas.height = 280;
-  chartWrapper.appendChild(canvas);
-  container.appendChild(chartWrapper);
-
-  // Stats Grid
-  const statsGrid = document.createElement("div");
-  statsGrid.className = "tpt-stats-grid";
-
-  const locale = getLocale();
-  const trendColor = stats.trend <= 0 ? "#16a34a" : "#dc2626";
-  const trendArrow = stats.trend <= 0 ? "↓" : "↑";
-  const trendSign = stats.trend > 0 ? "+" : "";
-
-  // Helper to format values safely
-  const fmtPrice = (val) => (hasHistory && val > 0) ? `${val.toLocaleString(locale)} Ft` : "—";
-  
-  // Helper for trend
-  const fmtTrend = (val, pct) => {
-      if (!hasHistory || val === 0) return "—";
-      // Need to handle styling in parent, just return text here
-      return `${trendArrow} ${trendSign}${Math.abs(val).toLocaleString(locale)} Ft (${trendSign}${pct}%)`;
-  };
-
-  // Current price is special - might come from page even if no history
-  const displayCurrent = stats.current > 0 ? `${stats.current.toLocaleString(locale)} Ft` : "—";
-
-  statsGrid.innerHTML = `
-    <div class="tpt-stat-card">
-      <div class="tpt-stat-label">${t.currentPrice}</div>
-      <div class="tpt-stat-value">${displayCurrent}</div>
-    </div>
-    <div class="tpt-stat-card">
-      <div class="tpt-stat-label">${t.lowestPrice}</div>
-      <div class="tpt-stat-value tpt-stat-low">${fmtPrice(stats.min)}</div>
-    </div>
-    <div class="tpt-stat-card">
-      <div class="tpt-stat-label">${t.highestPrice}</div>
-      <div class="tpt-stat-value tpt-stat-high">${fmtPrice(stats.max)}</div>
-    </div>
-    <div class="tpt-stat-card">
-      <div class="tpt-stat-label">${t.averagePrice}</div>
-      <div class="tpt-stat-value">${fmtPrice(stats.avg)}</div>
-    </div>
-    <div class="tpt-stat-card">
-      <div class="tpt-stat-label">${t.trend}</div>
-      <div class="tpt-stat-value" style="color: ${hasHistory && stats.trend !== 0 ? trendColor : 'inherit'}">
-        ${fmtTrend(stats.trend, stats.trendPercent)}
-      </div>
-    </div>
-    <div class="tpt-stat-card">
-      <div class="tpt-stat-label">${t.priceRange}</div>
-      <div class="tpt-stat-value">${fmtPrice(stats.max - stats.min)}</div>
-    </div>
-  `;
-
-  container.appendChild(statsGrid);
-
-  // Footer
-  const footer = document.createElement("div");
-  footer.className = "tpt-footer";
-  
-  // Custom footer text
-  footer.textContent = `${t.footer}`;
-    container.appendChild(footer);
-
-    // Insert chart: BEFORE "About this product", AFTER the hero section, PREPEND, or append as fallback
-    if (insertion.mode === "before") {
-      insertion.element.parentNode.insertBefore(container, insertion.element);
-    } else if (insertion.mode === "after") {
-      insertion.element.parentNode.insertBefore(container, insertion.element.nextSibling);
-    } else if (insertion.mode === "prepend") {
-      insertion.element.insertBefore(container, insertion.element.firstChild);
-    } else { // append / fallback
-      insertion.element.appendChild(container);
-    }
-
-    // ── Render Chart ──
-    renderChart(canvas, labels, prices, clubcardPrices, stats, t);
+    // ── Update UI with Data ──
+    chartWrapper.classList.remove('tpt-loading');
     
-    // Apply current theme (sets class and button icon)
-    applyTheme(g_currentTheme);
+    const stats = calculateStats(prices);
+    if (pagePrice) stats.current = pagePrice;
+
+    const trendColor = stats.trend <= 0 ? "#16a34a" : "#dc2626";
+    const trendArrow = stats.trend <= 0 ? "↓" : "↑";
+    const trendSign = stats.trend > 0 ? "+" : "";
+    const fmtPrice = (val) => (hasHistory && val > 0) ? `${val.toLocaleString(locale)} Ft` : "—";
+    const fmtTrend = (val, pct) => {
+        if (!hasHistory || val === 0) return "—";
+        return `${trendArrow} ${trendSign}${Math.abs(val).toLocaleString(locale)} Ft (${trendSign}${pct}%)`;
+    };
+
+    // Update stats cards
+    const statValues = statsGrid.querySelectorAll('.tpt-stat-value');
+    if (statValues.length === 6) {
+      statValues[0].textContent = pagePrice ? `${pagePrice.toLocaleString(locale)} Ft` : "—";
+      statValues[1].textContent = fmtPrice(stats.min);
+      statValues[1].className = "tpt-stat-value tpt-stat-low";
+      statValues[2].textContent = fmtPrice(stats.max);
+      statValues[2].className = "tpt-stat-value tpt-stat-high";
+      statValues[3].textContent = fmtPrice(stats.avg);
+      statValues[4].innerHTML = fmtTrend(stats.trend, stats.trendPercent);
+      if (hasHistory && stats.trend !== 0) {
+        statValues[4].style.color = trendColor;
+      }
+      statValues[5].textContent = fmtPrice(stats.max - stats.min);
+    }
+
+    renderChart(canvas, labels, prices, clubcardPrices, stats, t);
 
   } finally {
     g_isInjecting = false;
@@ -953,6 +955,7 @@ function startObserver() {
 
     // If container is missing → try to inject
     if (!container) {
+      if (g_isInjecting) return; // Already working on it
       if (g_debounceTimer) clearTimeout(g_debounceTimer);
       g_debounceTimer = setTimeout(() => {
         injectPriceTracker();
@@ -960,14 +963,26 @@ function startObserver() {
       return;
     }
 
+    // If we are currently injecting (loading data), don't treat the partial container as stale
+    if (g_isInjecting) return;
+
     // If container exists but the chart instance is missing or canvas collapsed, re-render
     const canvas = container.querySelector('canvas');
+    const chartWrapper = container.querySelector('.tpt-chart-wrapper');
+    const isLoading = chartWrapper && chartWrapper.classList.contains('tpt-loading');
+
+    if (isLoading) return; // Still waiting for data, not an error
+
     const canvasMissingChart = !canvas || !(canvas._tptChart || g_chartInstance);
+    // Be careful with clientWidth/Height - sometimes it's 0 briefly during render
     const canvasCollapsed = canvas && (canvas.clientWidth === 0 || canvas.clientHeight === 0);
+    
     if (canvasMissingChart || canvasCollapsed) {
       if (g_debounceTimer) clearTimeout(g_debounceTimer);
       g_debounceTimer = setTimeout(() => {
-        // remove stale container and re-inject
+        // Double check injection state before removing
+        if (g_isInjecting) return;
+        
         container.remove();
         injectPriceTracker();
       }, 200);
