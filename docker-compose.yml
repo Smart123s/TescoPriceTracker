@@ -20,6 +20,7 @@ services:
     command: python scheduler.py
     volumes:
       - ${DATA_FOLDER}:/app/data
+      - ${API_KEY}:API_KEY
     environment:
       - TZ=Europe/Budapest
   watchtower:
