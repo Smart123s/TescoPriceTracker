@@ -20,7 +20,7 @@ def job():
     logger.info("Starting scheduled scrape job...")
     try:
         # Run scraper logic
-        run_scraper(threads=5) 
+        run_scraper(threads=1) #1 for now
         logger.info("Scrape job finished.")
     except Exception as e:
         logger.error(f"Error during scrape job: {e}")

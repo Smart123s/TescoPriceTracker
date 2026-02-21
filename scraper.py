@@ -51,20 +51,23 @@ def product_has_price_today(tpnc):
     prod = db.get_product(tpnc)
     if not prod:
         return False
-    history = prod.get('price_history', [])
+    history = prod.get('price_history', {})
     if not history:
         return False
     today = datetime.now().date()
-    for entry in reversed(history):
-        ts = entry.get('timestamp')
-        if not ts:
-            continue
-        try:
-            entry_dt = datetime.fromisoformat(ts)
-        except Exception:
-            continue
-        if entry_dt.date() == today:
-            return True
+    # Check all price sections
+    for section in ['normal', 'discount', 'clubcard']:
+        entries = history.get(section, [])
+        for entry in reversed(entries):
+            ts = entry.get('start_date')
+            if not ts:
+                continue
+            try:
+                entry_dt = datetime.fromisoformat(ts)
+            except Exception:
+                continue
+            if entry_dt.date() == today:
+                return True
     return False
 
 
@@ -159,109 +162,71 @@ def process_product(tpnc, force=False, progress_prefix=""):
     and False if skipped or failed. This helps run-state resume logic.
     """
     exists = db.product_exists(tpnc)
-
     # If we already have today's price, skip unless forced
     if exists and not force and product_has_price_today(tpnc):
         logger.debug(f"{progress_prefix}Skipping {tpnc}: already has today's price.")
         return False
-
     if exists and not force:
-        # Check if we need to update based on time
         prod = db.get_product(tpnc)
         if prod and prod.get('last_scraped_price'):
             try:
                 from dateutil import parser
                 last_scraped = parser.parse(prod['last_scraped_price'])
-                # Only re-scrape if older than 12 hours
                 if (datetime.now() - last_scraped) < timedelta(hours=12):
                     return False
             except Exception as e:
                 logger.warning(f"{progress_prefix}Error parsing date for {tpnc}: {e}")
-
-    # If exists, we might want to check if we need to update static info. 
-    # For now, if exists, we treat it as price update.
-    # The user said: "If product was in database... simpler query"
-    
     query_type = "price" if exists else "full"
-
     data = get_product_api(tpnc, query_type)
-
     if not data or 'data' not in data or not data['data']['product']:
         logger.warning(f"{progress_prefix}No data returned for {tpnc}. Response: {data}")
         return False
-
     product_data = data['data']['product']
-    
-    # Extract Price Info
     price_info = product_data.get('price')
     if not price_info:
         logger.info(f"{progress_prefix}No price info for {tpnc}, possibly unavailable.")
-        # Even if unavailable, we might want to record that?
         return False
-
     price_actual = price_info.get('actual')
     unit_price = price_info.get('unitPrice')
     unit_measure = price_info.get('unitOfMeasure')
-    
-    # Extract Promotion Info
     promotions = product_data.get('promotions') or []
-    is_promotion = False
-    promo_id = None
-    promo_desc = None
-    promo_start = None
-    promo_end = None
-    clubcard_price = None
-
+    # Track all types
+    normal_saved = False
+    discount_saved = False
+    clubcard_saved = False
+    # Save normal price (always present)
+    normal_saved = db.insert_price(tpnc, price_actual, unit_price, unit_measure, False, None, None, None, None, None)
+    # Check for discount and clubcard prices
     for promo in promotions:
-        # We look for the most relevant one, or just the first valid one
-        # Specifically Clubcard
-        if promo.get('attributes') and "CLUBCARD_PRICING" in promo.get('attributes'):
-            is_promotion = True
-            promo_id = promo.get('id')
-            promo_desc = promo.get('description')
-            promo_start = promo.get('startDate')
-            promo_end = promo.get('endDate')
-            
-            if promo.get('price'):
-                clubcard_price = promo.get('price').get('afterDiscount')
-            
-            # Attempt to parse price from description if needed
-            # Description format: "449 Ft Clubcarddal" or "1 299 Ft Clubcarddal"
+        promo_id = promo.get('id')
+        promo_desc = promo.get('description')
+        promo_start = promo.get('startDate')
+        promo_end = promo.get('endDate')
+        attributes = promo.get('attributes') or []
+        promo_price = None
+        if promo.get('price'):
+            promo_price = promo.get('price').get('afterDiscount')
+        # Clubcard
+        if "CLUBCARD_PRICING" in attributes:
+            cc_price = promo_price
             if promo_desc:
-                # Remove non-breaking spaces or simple spaces in numbers
                 clean_desc = promo_desc.replace('\xa0', '').replace(' ', '')
-                # Look for number followed by Ft
                 match = re.search(r'(\d+)Ft', clean_desc, re.IGNORECASE)
                 if match:
                     parsed_price = float(match.group(1))
-                    # If parsed price differs significantly from clubcard_price (or if clubcard_price matches actual), trust description
-                    if clubcard_price is None or clubcard_price == price_actual:
-                         clubcard_price = parsed_price
-            break # Assuming one main clubcard promo
-        
-        # If no clubcard, maybe a normal promo?
-        if not is_promotion:
-             # Take the first one if we haven't found a clubcard one yet
-             # But usually price cuts are reflected in 'actual' price. 
-             # Let's track metadata for any promo if we find one.
-             is_promotion = True
-             promo_id = promo.get('id')
-             promo_desc = promo.get('description')
-             promo_start = promo.get('startDate')
-             promo_end = promo.get('endDate')
-             if promo.get('price'):
-                 # It might be a simple sale
-                 pass
-
-    # Static Data Update (if full scan)
+                    if cc_price is None or cc_price == price_actual:
+                        cc_price = parsed_price
+            clubcard_saved = db.insert_price(tpnc, price_actual, unit_price, unit_measure, True, promo_id, promo_desc, promo_start, promo_end, cc_price)
+        else:
+            # Discount (no clubcard)
+            if promo_price and promo_price != price_actual:
+                discount_saved = db.insert_price(tpnc, promo_price, unit_price, unit_measure, True, promo_id, promo_desc, promo_start, promo_end, None)
     if query_type == "full":
         name = product_data.get('title')
         default_image_url = product_data.get('defaultImageUrl')
-        
         details = product_data.get('details')
         pack_size_val = None
         pack_size_unit = None
-        
         if details:
             pack_size = details.get('packSize')
             if isinstance(pack_size, list) and len(pack_size) > 0:
@@ -270,19 +235,39 @@ def process_product(tpnc, force=False, progress_prefix=""):
             elif isinstance(pack_size, dict):
                 pack_size_val = pack_size.get('value')
                 pack_size_unit = pack_size.get('units')
-        
-        # Unit of measure from top level price object is often 'kg' or 'piece'
-        # The schema uses unit_of_measure as a column.
-        
         db.upsert_product(tpnc, name, unit_measure, default_image_url, pack_size_val, pack_size_unit)
-
-    # Insert Price History
-    inserted = db.insert_price(tpnc, price_actual, unit_price, unit_measure, is_promotion, promo_id, promo_desc, promo_start, promo_end, clubcard_price)
-    
-    change_status = "Changed" if inserted else "Unchanged"
-    promo_text = f" | Promo: {promo_desc} (CC: {clubcard_price})" if is_promotion else ""
-    logger.info(f"{progress_prefix}Processed {tpnc} ({change_status}). Price: {price_actual}{promo_text}")
-
+    change_status = "Changed" if (normal_saved or discount_saved or clubcard_saved) else "Unchanged"
+    # Prepare log details
+    log_prices = []
+    log_prices.append(f"Normal: {price_actual}")
+    # Find latest discount and clubcard prices
+    latest_discount = None
+    latest_clubcard = None
+    for promo in promotions:
+        attributes = promo.get('attributes') or []
+        promo_price = None
+        if promo.get('price'):
+            promo_price = promo.get('price').get('afterDiscount')
+        if "CLUBCARD_PRICING" in attributes:
+            cc_price = promo_price
+            promo_desc = promo.get('description')
+            if promo_desc:
+                clean_desc = promo_desc.replace('\xa0', '').replace(' ', '')
+                match = re.search(r'(\d+)Ft', clean_desc, re.IGNORECASE)
+                if match:
+                    parsed_price = float(match.group(1))
+                    if cc_price is None or cc_price == price_actual:
+                        cc_price = parsed_price
+            latest_clubcard = cc_price
+        else:
+            if promo_price and promo_price != price_actual:
+                latest_discount = promo_price
+    if latest_discount is not None:
+        log_prices.append(f"Discount: {latest_discount}")
+    if latest_clubcard is not None:
+        log_prices.append(f"Clubcard: {latest_clubcard}")
+    log_price_str = ", ".join(log_prices)
+    logger.info(f"{progress_prefix}Processed {tpnc} ({change_status}). {log_price_str}")
     return True
     # If exists, we might want to check if we need to update static info. 
     # For now, if exists, we treat it as price update.

@@ -2,7 +2,7 @@ import json
 import os
 import glob
 import sys
-from datetime import datetime
+from datetime import datetime, timedelta
 from dotenv import load_dotenv
 
 # Load .env into environment (does NOT override existing environment vars by default)
@@ -56,9 +56,12 @@ def upsert_product(tpnc, name, unit_of_measure, default_image_url, pack_size_val
     if not data:
         data = {
             "tpnc": str(tpnc),
-            "price_history": []
+            "price_history": {
+                "normal": [],
+                "discount": [],
+                "clubcard": []
+            }
         }
-    
     data.update({
         "name": name,
         "unit_of_measure": unit_of_measure,
@@ -66,66 +69,81 @@ def upsert_product(tpnc, name, unit_of_measure, default_image_url, pack_size_val
         "pack_size_value": pack_size_value,
         "pack_size_unit": pack_size_unit,
         "last_scraped_static": datetime.now().isoformat(),
-        # Init last_scraped_price if missing
-        "last_scraped_price": data.get("last_scraped_price") 
+        "last_scraped_price": data.get("last_scraped_price")
     })
-    
     if not data["last_scraped_price"]:
         data["last_scraped_price"] = datetime.now().isoformat()
-
     save_product_data(tpnc, data)
 
 def insert_price(tpnc, price_actual, unit_price, unit_measure, is_promotion, promotion_id, promotion_desc, promo_start, promo_end, clubcard_price):
     data = load_product_data(tpnc)
     if not data:
-        data = { "tpnc": str(tpnc), "price_history": [] }
+        data = {
+            "tpnc": str(tpnc),
+            "price_history": {
+                "normal": [],
+                "discount": [],
+                "clubcard": []
+            }
+        }
+    history = data.get("price_history", {
+        "normal": [],
+        "discount": [],
+        "clubcard": []
+    })
+    now = datetime.now()
+    now_str = now.isoformat()
+    yesterday = (now - timedelta(days=1)).date()
 
-    history = data.get("price_history", [])
-    
-    should_insert = True
-    if history:
-        last_entry = history[-1]
-        
-        old_actual = last_entry.get('price_actual')
-        old_cc = last_entry.get('clubcard_price')
-        old_promo = last_entry.get('is_promotion')
-        old_desc = last_entry.get('promotion_description')
-        
-        # Simple comparison
-        if (old_actual == price_actual and 
-            old_cc == clubcard_price and 
-            old_promo == is_promotion and 
-            old_desc == promotion_desc):
-            should_insert = False
+    def update_period(section, price, extra):
+        periods = history[section]
+        if periods:
+            last = periods[-1]
+            last_price = last["price"]
+            last_end = last["end_date"]
+            # If price unchanged and last_end is yesterday or today, extend period
+            if last_price == price:
+                last_end_dt = datetime.fromisoformat(last_end) if last_end else None
+                if last_end_dt and last_end_dt.date() >= yesterday:
+                    last["end_date"] = now_str
+                    return False
+        # New period
+        period = {"price": price, "start_date": now_str, "end_date": None}
+        period.update(extra)
+        periods.append(period)
+        return True
 
-    if should_insert:
-        # Handle promo dates which might be strings or datetime objects
-        p_start = promo_start
-        if hasattr(promo_start, 'isoformat'):
-            p_start = promo_start.isoformat()
-            
-        p_end = promo_end
-        if hasattr(promo_end, 'isoformat'):
-            p_end = promo_end.isoformat()
-
-        new_entry = {
-            "timestamp": datetime.now().isoformat(),
-            "price_actual": price_actual,
+    changed = False
+    # Normal price
+    if not is_promotion and not clubcard_price:
+        changed = update_period("normal", price_actual, {
+            "unit_price": unit_price,
+            "unit_measure": unit_measure
+        }) or changed
+    # Discount price (no clubcard)
+    if is_promotion and not clubcard_price:
+        changed = update_period("discount", price_actual, {
             "unit_price": unit_price,
             "unit_measure": unit_measure,
-            "is_promotion": is_promotion,
-            "promotion_id": promotion_id,
-            "promotion_description": promotion_desc,
-            "promotion_start": p_start,
-            "promotion_end": p_end,
-            "clubcard_price": clubcard_price
-        }
-        history.append(new_entry)
-        data['price_history'] = history
-    
-    data['last_scraped_price'] = datetime.now().isoformat()
+            "promo_id": promotion_id,
+            "promo_desc": promotion_desc,
+            "promo_start": promo_start,
+            "promo_end": promo_end
+        }) or changed
+    # Clubcard price
+    if clubcard_price:
+        changed = update_period("clubcard", clubcard_price, {
+            "unit_price": unit_price,
+            "unit_measure": unit_measure,
+            "promo_id": promotion_id,
+            "promo_desc": promotion_desc,
+            "promo_start": promo_start,
+            "promo_end": promo_end
+        }) or changed
+    data["price_history"] = history
+    data["last_scraped_price"] = now_str
     save_product_data(tpnc, data)
-    return should_insert
+    return changed
 
 def update_last_scraped_price(tpnc):
     data = load_product_data(tpnc)
