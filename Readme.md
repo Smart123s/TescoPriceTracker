@@ -1,0 +1,23725 @@
+Querry to ask every field
+
+[
+  {
+    "operationName": "IntrospectAll",
+    "variables": {},
+    "extensions": { "mfeName": "mfe-pdp" },
+    "query": "query IntrospectAll { __schema { types { name fields { name description } } } }"
+  }
+]
+
+
+[
+    {
+        "data": {
+            "__schema": {
+                "types": [
+                    {
+                        "name": "AccountType",
+                        "fields": [
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "clubcard",
+                                "description": null
+                            },
+                            {
+                                "name": "contactNumbers",
+                                "description": null
+                            },
+                            {
+                                "name": "mobile",
+                                "description": null
+                            },
+                            {
+                                "name": "attributions",
+                                "description": null
+                            },
+                            {
+                                "name": "subscription",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "StatusType",
+                        "fields": [
+                            {
+                                "name": "success",
+                                "description": null
+                            },
+                            {
+                                "name": "message",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Boolean",
+                        "fields": null
+                    },
+                    {
+                        "name": "String",
+                        "fields": null
+                    },
+                    {
+                        "name": "ClubcardAccountType",
+                        "fields": [
+                            {
+                                "name": "hasOptedIn",
+                                "description": null
+                            },
+                            {
+                                "name": "preferences",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ClubcardPreferencesType",
+                        "fields": [
+                            {
+                                "name": "statement",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ContactNumbersType",
+                        "fields": [
+                            {
+                                "name": "mobilePhone",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "AccountsType",
+                        "fields": [
+                            {
+                                "name": "contract",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "MobileContractType",
+                        "fields": [
+                            {
+                                "name": "eligibility",
+                                "description": null
+                            },
+                            {
+                                "name": "nextBillDate",
+                                "description": null
+                            },
+                            {
+                                "name": "plans",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "MobileContractEligibilityType",
+                        "fields": [
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "clubcardMatches",
+                                "description": null
+                            },
+                            {
+                                "name": "ineligibilityReason",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "MobileContractPlansType",
+                        "fields": [
+                            {
+                                "name": "number",
+                                "description": null
+                            },
+                            {
+                                "name": "description",
+                                "description": null
+                            },
+                            {
+                                "name": "primary",
+                                "description": null
+                            },
+                            {
+                                "name": "entitlement",
+                                "description": null
+                            },
+                            {
+                                "name": "bonusEntitlement",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "MobileContractEntitlementType",
+                        "fields": [
+                            {
+                                "name": "data",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "MobileContractCoreDataType",
+                        "fields": [
+                            {
+                                "name": "amount",
+                                "description": null
+                            },
+                            {
+                                "name": "unit",
+                                "description": null
+                            },
+                            {
+                                "name": "unlimited",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Float",
+                        "fields": null
+                    },
+                    {
+                        "name": "MobileContractBonusEntitlementType",
+                        "fields": [
+                            {
+                                "name": "data",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "MobileContractBonusDataType",
+                        "fields": [
+                            {
+                                "name": "amount",
+                                "description": null
+                            },
+                            {
+                                "name": "unit",
+                                "description": null
+                            },
+                            {
+                                "name": "applied",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "MobileContractBonusEntitlementAppliedType",
+                        "fields": [
+                            {
+                                "name": "active",
+                                "description": null
+                            },
+                            {
+                                "name": "activeUntil",
+                                "description": null
+                            },
+                            {
+                                "name": "selfAwarded",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "MobileContractActiveType",
+                        "fields": [
+                            {
+                                "name": "from",
+                                "description": null
+                            },
+                            {
+                                "name": "until",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "AttributionType",
+                        "fields": [
+                            {
+                                "name": "attributes",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "AttributesType",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "description",
+                                "description": null
+                            },
+                            {
+                                "name": "path",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "AttributionEnumType",
+                        "fields": null
+                    },
+                    {
+                        "name": "AttributesArgType",
+                        "fields": null
+                    },
+                    {
+                        "name": "AccountSubscriptionInfoType",
+                        "fields": [
+                            {
+                                "name": "history",
+                                "description": null
+                            },
+                            {
+                                "name": "payment",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "HistoryType",
+                        "fields": [
+                            {
+                                "name": "records",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "HistoryRecordType",
+                        "fields": null
+                    },
+                    {
+                        "name": "PaymentHistoryType",
+                        "fields": [
+                            {
+                                "name": "customerSubscriptionId",
+                                "description": null
+                            },
+                            {
+                                "name": "reference",
+                                "description": null
+                            },
+                            {
+                                "name": "mode",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "date",
+                                "description": null
+                            },
+                            {
+                                "name": "recurringPaymentId",
+                                "description": null
+                            },
+                            {
+                                "name": "subscriptionType",
+                                "description": null
+                            },
+                            {
+                                "name": "channel",
+                                "description": null
+                            },
+                            {
+                                "name": "message",
+                                "description": null
+                            },
+                            {
+                                "name": "amount",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ID",
+                        "fields": null
+                    },
+                    {
+                        "name": "SubscriptionTypeEnum",
+                        "fields": null
+                    },
+                    {
+                        "name": "subscriptionHistoryArgs",
+                        "fields": null
+                    },
+                    {
+                        "name": "RecurrencePaymentDetailsUnionType",
+                        "fields": null
+                    },
+                    {
+                        "name": "CardRecurrencePaymentDetailsType",
+                        "fields": [
+                            {
+                                "name": "card",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "CardDetails",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "number",
+                                "description": null
+                            },
+                            {
+                                "name": "expiry",
+                                "description": null
+                            },
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "nameOnCard",
+                                "description": null
+                            },
+                            {
+                                "name": "preferred",
+                                "description": null
+                            },
+                            {
+                                "name": "authenticationId",
+                                "description": "Authentication Id"
+                            },
+                            {
+                                "name": "authentication",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "CardNumber",
+                        "fields": [
+                            {
+                                "name": "lastFourDigits",
+                                "description": null
+                            },
+                            {
+                                "name": "maskedAccountNumber",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "CardExpiry",
+                        "fields": [
+                            {
+                                "name": "month",
+                                "description": null
+                            },
+                            {
+                                "name": "year",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Int",
+                        "fields": null
+                    },
+                    {
+                        "name": "CardAuthenticationEnums",
+                        "fields": null
+                    },
+                    {
+                        "name": "accountSubscriptionAttributesInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "AddressInterface",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "storeId",
+                                "description": null
+                            },
+                            {
+                                "name": "locationUuid",
+                                "description": null
+                            },
+                            {
+                                "name": "addressLine1",
+                                "description": null
+                            },
+                            {
+                                "name": "addressLine2",
+                                "description": null
+                            },
+                            {
+                                "name": "addressLine3",
+                                "description": null
+                            },
+                            {
+                                "name": "addressLine4",
+                                "description": null
+                            },
+                            {
+                                "name": "addressLine5",
+                                "description": null
+                            },
+                            {
+                                "name": "addressLine6",
+                                "description": null
+                            },
+                            {
+                                "name": "addressLine7",
+                                "description": null
+                            },
+                            {
+                                "name": "addressLine8",
+                                "description": null
+                            },
+                            {
+                                "name": "addressLine9",
+                                "description": null
+                            },
+                            {
+                                "name": "addressLine10",
+                                "description": null
+                            },
+                            {
+                                "name": "addressLine11",
+                                "description": null
+                            },
+                            {
+                                "name": "addressLine12",
+                                "description": null
+                            },
+                            {
+                                "name": "addressLine13",
+                                "description": null
+                            },
+                            {
+                                "name": "addressLine14",
+                                "description": null
+                            },
+                            {
+                                "name": "addressLine15",
+                                "description": null
+                            },
+                            {
+                                "name": "addressLine16",
+                                "description": null
+                            },
+                            {
+                                "name": "addressLine17",
+                                "description": null
+                            },
+                            {
+                                "name": "addressLine18",
+                                "description": null
+                            },
+                            {
+                                "name": "addressLine19",
+                                "description": null
+                            },
+                            {
+                                "name": "addressLine20",
+                                "description": null
+                            },
+                            {
+                                "name": "postcode",
+                                "description": null
+                            },
+                            {
+                                "name": "eirCode",
+                                "description": "To be used only by Apps for Instore. For IE, DED code is returned in case of postcode. In future eirCode will be mapped to postcode in case DED code is not used"
+                            },
+                            {
+                                "name": "county",
+                                "description": null
+                            },
+                            {
+                                "name": "city",
+                                "description": null
+                            },
+                            {
+                                "name": "primaryPhone",
+                                "description": null
+                            },
+                            {
+                                "name": "secondaryPhone",
+                                "description": null
+                            },
+                            {
+                                "name": "mobilePhone",
+                                "description": null
+                            },
+                            {
+                                "name": "baglessOrders",
+                                "description": null
+                            },
+                            {
+                                "name": "deliveryInstruction",
+                                "description": null
+                            },
+                            {
+                                "name": "isBusinessAddress",
+                                "description": null
+                            },
+                            {
+                                "name": "isBlockedAddress",
+                                "description": null
+                            },
+                            {
+                                "name": "isHomeAddress",
+                                "description": null
+                            },
+                            {
+                                "name": "isBillingAddress",
+                                "description": null
+                            },
+                            {
+                                "name": "uuid",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "AddressNodeType",
+                        "fields": [
+                            {
+                                "name": "search",
+                                "description": null
+                            },
+                            {
+                                "name": "serviceability",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "SearchAddressType",
+                        "fields": [
+                            {
+                                "name": "addresses",
+                                "description": null
+                            },
+                            {
+                                "name": "info",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "GenericAddressType",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "geoCoordinates",
+                                "description": null
+                            },
+                            {
+                                "name": "addressLines",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "GeoCoordinatesType",
+                        "fields": [
+                            {
+                                "name": "latitude",
+                                "description": null
+                            },
+                            {
+                                "name": "longitude",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "SearchAddressInfoType",
+                        "fields": [
+                            {
+                                "name": "query",
+                                "description": null
+                            },
+                            {
+                                "name": "count",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "GeoCoordinatesInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "AddressType",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "storeId",
+                                "description": null
+                            },
+                            {
+                                "name": "locationUuid",
+                                "description": null
+                            },
+                            {
+                                "name": "addressLine1",
+                                "description": null
+                            },
+                            {
+                                "name": "addressLine2",
+                                "description": null
+                            },
+                            {
+                                "name": "addressLine3",
+                                "description": null
+                            },
+                            {
+                                "name": "addressLine4",
+                                "description": null
+                            },
+                            {
+                                "name": "addressLine5",
+                                "description": null
+                            },
+                            {
+                                "name": "addressLine6",
+                                "description": null
+                            },
+                            {
+                                "name": "addressLine7",
+                                "description": null
+                            },
+                            {
+                                "name": "addressLine8",
+                                "description": null
+                            },
+                            {
+                                "name": "addressLine9",
+                                "description": null
+                            },
+                            {
+                                "name": "addressLine10",
+                                "description": null
+                            },
+                            {
+                                "name": "addressLine11",
+                                "description": null
+                            },
+                            {
+                                "name": "addressLine12",
+                                "description": null
+                            },
+                            {
+                                "name": "addressLine13",
+                                "description": null
+                            },
+                            {
+                                "name": "addressLine14",
+                                "description": null
+                            },
+                            {
+                                "name": "addressLine15",
+                                "description": null
+                            },
+                            {
+                                "name": "addressLine16",
+                                "description": null
+                            },
+                            {
+                                "name": "addressLine17",
+                                "description": null
+                            },
+                            {
+                                "name": "addressLine18",
+                                "description": null
+                            },
+                            {
+                                "name": "addressLine19",
+                                "description": null
+                            },
+                            {
+                                "name": "addressLine20",
+                                "description": null
+                            },
+                            {
+                                "name": "city",
+                                "description": null
+                            },
+                            {
+                                "name": "postcode",
+                                "description": null
+                            },
+                            {
+                                "name": "eirCode",
+                                "description": "To be used only by Apps for Instore. For IE, DED code is returned in case of postcode. In future eirCode will be mapped to postcode in case DED code is not used"
+                            },
+                            {
+                                "name": "county",
+                                "description": null
+                            },
+                            {
+                                "name": "primaryPhone",
+                                "description": null
+                            },
+                            {
+                                "name": "secondaryPhone",
+                                "description": null
+                            },
+                            {
+                                "name": "mobilePhone",
+                                "description": null
+                            },
+                            {
+                                "name": "baglessOrders",
+                                "description": null
+                            },
+                            {
+                                "name": "deliveryInstruction",
+                                "description": null
+                            },
+                            {
+                                "name": "isBusinessAddress",
+                                "description": null
+                            },
+                            {
+                                "name": "isBlockedAddress",
+                                "description": null
+                            },
+                            {
+                                "name": "isHomeAddress",
+                                "description": null
+                            },
+                            {
+                                "name": "isBillingAddress",
+                                "description": null
+                            },
+                            {
+                                "name": "uuid",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "AgeRestriction",
+                        "fields": [
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "message",
+                                "description": null
+                            },
+                            {
+                                "name": "minimumAge",
+                                "description": null
+                            },
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "type",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Restriction",
+                        "fields": [
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "message",
+                                "description": null
+                            },
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "type",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "RestrictionStatus",
+                        "fields": null
+                    },
+                    {
+                        "name": "AlcoholInfoItemInterface",
+                        "fields": [
+                            {
+                                "name": "grapeVariety",
+                                "description": null
+                            },
+                            {
+                                "name": "storageType",
+                                "description": null
+                            },
+                            {
+                                "name": "vinificationDetails",
+                                "description": null
+                            },
+                            {
+                                "name": "history",
+                                "description": null
+                            },
+                            {
+                                "name": "regionalInformation",
+                                "description": null
+                            },
+                            {
+                                "name": "tastingNotes",
+                                "description": null
+                            },
+                            {
+                                "name": "storageInstructions",
+                                "description": null
+                            },
+                            {
+                                "name": "alcoholUnitsOtherText",
+                                "description": null
+                            },
+                            {
+                                "name": "regionOfOrigin",
+                                "description": null
+                            },
+                            {
+                                "name": "alcoholType",
+                                "description": null
+                            },
+                            {
+                                "name": "wineColour",
+                                "description": null
+                            },
+                            {
+                                "name": "alcoholUnits",
+                                "description": null
+                            },
+                            {
+                                "name": "percentageAlcohol",
+                                "description": null
+                            },
+                            {
+                                "name": "currentVintage",
+                                "description": null
+                            },
+                            {
+                                "name": "producer",
+                                "description": null
+                            },
+                            {
+                                "name": "typeOfClosure",
+                                "description": null
+                            },
+                            {
+                                "name": "wineMaker",
+                                "description": null
+                            },
+                            {
+                                "name": "packQty",
+                                "description": null
+                            },
+                            {
+                                "name": "packMeasure",
+                                "description": null
+                            },
+                            {
+                                "name": "country",
+                                "description": null
+                            },
+                            {
+                                "name": "tasteCategory",
+                                "description": null
+                            },
+                            {
+                                "name": "alcoholByVolumeOtherText",
+                                "description": null
+                            },
+                            {
+                                "name": "wineEffervescence",
+                                "description": null
+                            },
+                            {
+                                "name": "legalNotice",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "AlcoholLegalNotice",
+                        "fields": [
+                            {
+                                "name": "message",
+                                "description": null
+                            },
+                            {
+                                "name": "link",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "AllBasketCancellation",
+                        "fields": [
+                            {
+                                "name": "success",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "AllergenInfoItemInterface",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "values",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "AllergenInfoItemType",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "values",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "AssuranceType",
+                        "fields": [
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            },
+                            {
+                                "name": "customerToken",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "AssuranceStatusType",
+                        "fields": [
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "success",
+                                "description": null
+                            },
+                            {
+                                "name": "message",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "CustomerTokenType",
+                        "fields": [
+                            {
+                                "name": "accessToken",
+                                "description": null
+                            },
+                            {
+                                "name": "refreshToken",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "AuthenticateType",
+                        "fields": [
+                            {
+                                "name": "authentication",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "AuthenticationType",
+                        "fields": null
+                    },
+                    {
+                        "name": "ResendOTPType",
+                        "fields": [
+                            {
+                                "name": "sessionId",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "VerifyOTPType",
+                        "fields": [
+                            {
+                                "name": "oauthToken",
+                                "description": null
+                            },
+                            {
+                                "name": "expiry",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "LoginType",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "result",
+                                "description": null
+                            },
+                            {
+                                "name": "email",
+                                "description": null
+                            },
+                            {
+                                "name": "phonenumber",
+                                "description": null
+                            },
+                            {
+                                "name": "sessionToken",
+                                "description": null
+                            },
+                            {
+                                "name": "refreshToken",
+                                "description": null
+                            },
+                            {
+                                "name": "auidToken",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BaseOrderInterface",
+                        "fields": [
+                            {
+                                "name": "orderNo",
+                                "description": null
+                            },
+                            {
+                                "name": "orderId",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BasketChargesInterface",
+                        "fields": [
+                            {
+                                "name": "surcharge",
+                                "description": null
+                            },
+                            {
+                                "name": "minimum",
+                                "description": null
+                            },
+                            {
+                                "name": "bagCharge",
+                                "description": null
+                            },
+                            {
+                                "name": "packaging",
+                                "description": null
+                            },
+                            {
+                                "name": "surchargePrice",
+                                "description": null
+                            },
+                            {
+                                "name": "depositCharge",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PackagingType",
+                        "fields": [
+                            {
+                                "name": "charge",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Price",
+                        "fields": [
+                            {
+                                "name": "beforeDiscount",
+                                "description": null
+                            },
+                            {
+                                "name": "afterDiscount",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BasketChargesType",
+                        "fields": [
+                            {
+                                "name": "surcharge",
+                                "description": null
+                            },
+                            {
+                                "name": "minimum",
+                                "description": null
+                            },
+                            {
+                                "name": "bagCharge",
+                                "description": null
+                            },
+                            {
+                                "name": "packaging",
+                                "description": null
+                            },
+                            {
+                                "name": "surchargePrice",
+                                "description": null
+                            },
+                            {
+                                "name": "depositCharge",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BasketConstraintsType",
+                        "fields": [
+                            {
+                                "name": "maxItemCount",
+                                "description": null
+                            },
+                            {
+                                "name": "maxWeight",
+                                "description": null
+                            },
+                            {
+                                "name": "deliveryRangeLimits",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "deliveryRangeConstraintType",
+                        "fields": null
+                    },
+                    {
+                        "name": "BasketInterface",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "orderId",
+                                "description": null
+                            },
+                            {
+                                "name": "orderNo",
+                                "description": null
+                            },
+                            {
+                                "name": "storeId",
+                                "description": null
+                            },
+                            {
+                                "name": "locationUuid",
+                                "description": null
+                            },
+                            {
+                                "name": "guidePrice",
+                                "description": "Guide price of an order is the total cost of all the items including coupon discount and colleague discount.\n        But it does not include surcharge, bag charge & slot charge"
+                            },
+                            {
+                                "name": "grossPrice",
+                                "description": "Gross price of an order is the total cost of all the items without any discounts"
+                            },
+                            {
+                                "name": "status",
+                                "description": "Used in TSAYS"
+                            },
+                            {
+                                "name": "discounts",
+                                "description": null
+                            },
+                            {
+                                "name": "savings",
+                                "description": "This field only represents the multibuy savings for GHS"
+                            },
+                            {
+                                "name": "staffDiscount",
+                                "description": null
+                            },
+                            {
+                                "name": "eCouponsTotal",
+                                "description": null
+                            },
+                            {
+                                "name": "expiry",
+                                "description": null
+                            },
+                            {
+                                "name": "isInAmend",
+                                "description": null
+                            },
+                            {
+                                "name": "isAmended",
+                                "description": null
+                            },
+                            {
+                                "name": "splitView",
+                                "description": null
+                            },
+                            {
+                                "name": "amendOrderId",
+                                "description": null
+                            },
+                            {
+                                "name": "amendOrderNo",
+                                "description": null
+                            },
+                            {
+                                "name": "amendExpiry",
+                                "description": null
+                            },
+                            {
+                                "name": "canExtendSlot",
+                                "description": null
+                            },
+                            {
+                                "name": "previousSlot",
+                                "description": null
+                            },
+                            {
+                                "name": "isBagless",
+                                "description": null
+                            },
+                            {
+                                "name": "withBags",
+                                "description": null
+                            },
+                            {
+                                "name": "deliveryPreferences",
+                                "description": null
+                            },
+                            {
+                                "name": "customerPreferences",
+                                "description": null
+                            },
+                            {
+                                "name": "deliveryAddress",
+                                "description": null
+                            },
+                            {
+                                "name": "collectionLocation",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            },
+                            {
+                                "name": "promotions",
+                                "description": null
+                            },
+                            {
+                                "name": "paymentItems",
+                                "description": null
+                            },
+                            {
+                                "name": "shoppingMethod",
+                                "description": null
+                            },
+                            {
+                                "name": "slot",
+                                "description": null
+                            },
+                            {
+                                "name": "charges",
+                                "description": null
+                            },
+                            {
+                                "name": "subscription",
+                                "description": null
+                            },
+                            {
+                                "name": "totalPrice",
+                                "description": null
+                            },
+                            {
+                                "name": "clubcardPoints",
+                                "description": null
+                            },
+                            {
+                                "name": "issues",
+                                "description": null
+                            },
+                            {
+                                "name": "updates",
+                                "description": null
+                            },
+                            {
+                                "name": "paymentReferences",
+                                "description": null
+                            },
+                            {
+                                "name": "itemUpdates",
+                                "description": null
+                            },
+                            {
+                                "name": "acceptedAgeAgreement",
+                                "description": null
+                            },
+                            {
+                                "name": "confirmation",
+                                "description": null
+                            },
+                            {
+                                "name": "loyalty",
+                                "description": null
+                            },
+                            {
+                                "name": "vat",
+                                "description": null
+                            },
+                            {
+                                "name": "constraints",
+                                "description": null
+                            },
+                            {
+                                "name": "totalItems",
+                                "description": null
+                            },
+                            {
+                                "name": "authorizationAmount",
+                                "description": null
+                            },
+                            {
+                                "name": "localisation",
+                                "description": null
+                            },
+                            {
+                                "name": "currencyCode",
+                                "description": null
+                            },
+                            {
+                                "name": "actions",
+                                "description": null
+                            },
+                            {
+                                "name": "filledPercentage",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BasketStatus",
+                        "fields": null
+                    },
+                    {
+                        "name": "DiscountsInterface",
+                        "fields": [
+                            {
+                                "name": "total",
+                                "description": "Total amount does not necessarily reflect the sum of all categories, but is a true reflection on the total saving on the basket/order"
+                            },
+                            {
+                                "name": "categories",
+                                "description": "Array of category wise split of discounts that were applied"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "DiscountCategoriesType",
+                        "fields": [
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "value",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "DiscountCategory",
+                        "fields": null
+                    },
+                    {
+                        "name": "BasketSummaryInterface",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "guidePrice",
+                                "description": null
+                            },
+                            {
+                                "name": "totalPrice",
+                                "description": null
+                            },
+                            {
+                                "name": "totalItems",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            },
+                            {
+                                "name": "charges",
+                                "description": null
+                            },
+                            {
+                                "name": "discounts",
+                                "description": null
+                            },
+                            {
+                                "name": "clubcardPoints",
+                                "description": null
+                            },
+                            {
+                                "name": "propositionalInfo",
+                                "description": null
+                            },
+                            {
+                                "name": "deliveryAddress",
+                                "description": null
+                            },
+                            {
+                                "name": "locationUuid",
+                                "description": null
+                            },
+                            {
+                                "name": "constraints",
+                                "description": null
+                            },
+                            {
+                                "name": "paymentItems",
+                                "description": null
+                            },
+                            {
+                                "name": "issues",
+                                "description": null
+                            },
+                            {
+                                "name": "updates",
+                                "description": null
+                            },
+                            {
+                                "name": "splitView",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BaseOrderSummaryInterface",
+                        "fields": [
+                            {
+                                "name": "guidePrice",
+                                "description": null
+                            },
+                            {
+                                "name": "totalPrice",
+                                "description": null
+                            },
+                            {
+                                "name": "totalItems",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            },
+                            {
+                                "name": "charges",
+                                "description": null
+                            },
+                            {
+                                "name": "discounts",
+                                "description": null
+                            },
+                            {
+                                "name": "clubcardPoints",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ItemInterface",
+                        "fields": [
+                            {
+                                "name": "product",
+                                "description": null
+                            },
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "unit",
+                                "description": null
+                            },
+                            {
+                                "name": "quantity",
+                                "description": null
+                            },
+                            {
+                                "name": "count",
+                                "description": null
+                            },
+                            {
+                                "name": "originalQuantity",
+                                "description": null
+                            },
+                            {
+                                "name": "weight",
+                                "description": null
+                            },
+                            {
+                                "name": "originalWeight",
+                                "description": null
+                            },
+                            {
+                                "name": "cost",
+                                "description": null
+                            },
+                            {
+                                "name": "seller",
+                                "description": "Seller information about this product. This assumes that products/sellers have a 1-to-1 mapping (which makes sense in conjunction with the existing schema)"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "OrderChargesInterface",
+                        "fields": [
+                            {
+                                "name": "fulfilment",
+                                "description": "Fulfilment charge is total delivery charge"
+                            },
+                            {
+                                "name": "minimumValue",
+                                "description": "minimumValue is minimum basket surcharge value"
+                            },
+                            {
+                                "name": "bags",
+                                "description": null
+                            },
+                            {
+                                "name": "packaging",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PropositionalInfo",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": "Proposition Id"
+                            },
+                            {
+                                "name": "proposition",
+                                "description": "Describes all the criterias and conditions. Each seach or array denotes all the criterias in OR conditions. List of Criterias in Each arrays marks then as AND"
+                            },
+                            {
+                                "name": "status",
+                                "description": "Decribes if the proposition was satisfied in whole"
+                            },
+                            {
+                                "name": "criteria",
+                                "description": "Describes if individual criteria met or not"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BasketProposition",
+                        "fields": [
+                            {
+                                "name": "criteria",
+                                "description": "List of all the static criterias in a proposition"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PropositionCriteriaUnion",
+                        "fields": null
+                    },
+                    {
+                        "name": "PropositionCriteriaBoolean",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "value",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PropositionCriteriaBooleanValues",
+                        "fields": null
+                    },
+                    {
+                        "name": "PropositionCriteriaThreshold",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "threshold",
+                                "description": "Threshold value"
+                            },
+                            {
+                                "name": "thresholdCriteria",
+                                "description": "Threshold value above or below"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "CriteriaThresholdNameValues",
+                        "fields": null
+                    },
+                    {
+                        "name": "PropositionCriteriaThresholdValues",
+                        "fields": null
+                    },
+                    {
+                        "name": "PropositionStatus",
+                        "fields": null
+                    },
+                    {
+                        "name": "Criteria",
+                        "fields": [
+                            {
+                                "name": "criterion",
+                                "description": "Given driteria under the proposition"
+                            },
+                            {
+                                "name": "met",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "OrderByFulfilmentInterface",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "guidePrice",
+                                "description": null
+                            },
+                            {
+                                "name": "totalPrice",
+                                "description": null
+                            },
+                            {
+                                "name": "totalItems",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            },
+                            {
+                                "name": "charges",
+                                "description": null
+                            },
+                            {
+                                "name": "discounts",
+                                "description": null
+                            },
+                            {
+                                "name": "clubcardPoints",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfilment",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "OrderDeliveryGroupFulfilmentInterface",
+                        "fields": [
+                            {
+                                "name": "selectedOption",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FulfilmentOptionInterface",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "description",
+                                "description": null
+                            },
+                            {
+                                "name": "charge",
+                                "description": null
+                            },
+                            {
+                                "name": "start",
+                                "description": null
+                            },
+                            {
+                                "name": "end",
+                                "description": null
+                            },
+                            {
+                                "name": "label",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfilmentMethod",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "DateTime",
+                        "fields": null
+                    },
+                    {
+                        "name": "SubSplitStrategy",
+                        "fields": null
+                    },
+                    {
+                        "name": "SplitStrategy",
+                        "fields": null
+                    },
+                    {
+                        "name": "LocalisationType",
+                        "fields": [
+                            {
+                                "name": "currency",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "LocalisationInterface",
+                        "fields": [
+                            {
+                                "name": "currency",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "CurrencyType",
+                        "fields": [
+                            {
+                                "name": "iso",
+                                "description": null
+                            },
+                            {
+                                "name": "symbol",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ISOCurrencyType",
+                        "fields": null
+                    },
+                    {
+                        "name": "OrderActionUpdatesUnionType",
+                        "fields": null
+                    },
+                    {
+                        "name": "RetryPaymentUpdatesType",
+                        "fields": [
+                            {
+                                "name": "errors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "RetryPaymentErrorType",
+                        "fields": [
+                            {
+                                "name": "message",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "RefundOrderItemsUpdatesType",
+                        "fields": [
+                            {
+                                "name": "errors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "RefundOrderItemsErrorType",
+                        "fields": [
+                            {
+                                "name": "message",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ServiceCheckAction",
+                        "fields": [
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "verificationLevel",
+                                "description": null
+                            },
+                            {
+                                "name": "reason",
+                                "description": null
+                            },
+                            {
+                                "name": "checksRemaining",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Action",
+                        "fields": null
+                    },
+                    {
+                        "name": "ServiceCheckActionEnum",
+                        "fields": null
+                    },
+                    {
+                        "name": "BasketIssuesInterface",
+                        "fields": [
+                            {
+                                "name": "exceptions",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            },
+                            {
+                                "name": "paymentItems",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BasketExceptionType",
+                        "fields": [
+                            {
+                                "name": "level",
+                                "description": null
+                            },
+                            {
+                                "name": "reason",
+                                "description": null
+                            },
+                            {
+                                "name": "message",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BasketExceptionEnum",
+                        "fields": null
+                    },
+                    {
+                        "name": "BasketIssuesType",
+                        "fields": [
+                            {
+                                "name": "exceptions",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            },
+                            {
+                                "name": "paymentItems",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BasketItemInterface",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "barcode",
+                                "description": null
+                            },
+                            {
+                                "name": "product",
+                                "description": null
+                            },
+                            {
+                                "name": "quantity",
+                                "description": null
+                            },
+                            {
+                                "name": "availableQuantity",
+                                "description": null
+                            },
+                            {
+                                "name": "count",
+                                "description": null
+                            },
+                            {
+                                "name": "weight",
+                                "description": null
+                            },
+                            {
+                                "name": "cost",
+                                "description": null
+                            },
+                            {
+                                "name": "unit",
+                                "description": null
+                            },
+                            {
+                                "name": "bulkBuyLimitReached",
+                                "description": null
+                            },
+                            {
+                                "name": "groupBulkBuyLimitReached",
+                                "description": null
+                            },
+                            {
+                                "name": "groupBulkBuyQuantity",
+                                "description": null
+                            },
+                            {
+                                "name": "originalQuantity",
+                                "description": null
+                            },
+                            {
+                                "name": "originalWeight",
+                                "description": null
+                            },
+                            {
+                                "name": "isNewlyAdded",
+                                "description": null
+                            },
+                            {
+                                "name": "substitutionOption",
+                                "description": null
+                            },
+                            {
+                                "name": "substitutionOptions",
+                                "description": null
+                            },
+                            {
+                                "name": "pickerNote",
+                                "description": null
+                            },
+                            {
+                                "name": "promotions",
+                                "description": null
+                            },
+                            {
+                                "name": "issues",
+                                "description": null
+                            },
+                            {
+                                "name": "charges",
+                                "description": null
+                            },
+                            {
+                                "name": "restrictions",
+                                "description": null
+                            },
+                            {
+                                "name": "seller",
+                                "description": "Seller information about this product. This assumes that products/sellers have a 1-to-1 mapping (which makes sense in conjunction with the existing schema)"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BasketItemCharges",
+                        "fields": [
+                            {
+                                "name": "total",
+                                "description": null
+                            },
+                            {
+                                "name": "charges",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ItemCharge",
+                        "fields": [
+                            {
+                                "name": "amount",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BasketItemIssues",
+                        "fields": null
+                    },
+                    {
+                        "name": "BasketItemAvailabilityIssue",
+                        "fields": [
+                            {
+                                "name": "willBeRemoved",
+                                "description": null
+                            },
+                            {
+                                "name": "reason",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BasketItemAvailabilityIssueReason",
+                        "fields": null
+                    },
+                    {
+                        "name": "BasketItemType",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "barcode",
+                                "description": null
+                            },
+                            {
+                                "name": "product",
+                                "description": null
+                            },
+                            {
+                                "name": "quantity",
+                                "description": null
+                            },
+                            {
+                                "name": "availableQuantity",
+                                "description": null
+                            },
+                            {
+                                "name": "count",
+                                "description": null
+                            },
+                            {
+                                "name": "weight",
+                                "description": null
+                            },
+                            {
+                                "name": "cost",
+                                "description": null
+                            },
+                            {
+                                "name": "unit",
+                                "description": null
+                            },
+                            {
+                                "name": "bulkBuyLimitReached",
+                                "description": null
+                            },
+                            {
+                                "name": "groupBulkBuyLimitReached",
+                                "description": null
+                            },
+                            {
+                                "name": "groupBulkBuyQuantity",
+                                "description": null
+                            },
+                            {
+                                "name": "originalQuantity",
+                                "description": null
+                            },
+                            {
+                                "name": "originalWeight",
+                                "description": null
+                            },
+                            {
+                                "name": "isNewlyAdded",
+                                "description": null
+                            },
+                            {
+                                "name": "substitutionOption",
+                                "description": null
+                            },
+                            {
+                                "name": "substitutionOptions",
+                                "description": null
+                            },
+                            {
+                                "name": "pickerNote",
+                                "description": null
+                            },
+                            {
+                                "name": "promotions",
+                                "description": null
+                            },
+                            {
+                                "name": "issues",
+                                "description": null
+                            },
+                            {
+                                "name": "charges",
+                                "description": null
+                            },
+                            {
+                                "name": "restrictions",
+                                "description": "Used for TSAYS"
+                            },
+                            {
+                                "name": "seller",
+                                "description": "Seller information about this product. This assumes that products/sellers have a 1-to-1 mapping (which makes sense in conjunction with the existing schema)"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BasketItemUpdateIssueType",
+                        "fields": [
+                            {
+                                "name": "level",
+                                "description": null
+                            },
+                            {
+                                "name": "reason",
+                                "description": null
+                            },
+                            {
+                                "name": "message",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "UpdateItemIssueType",
+                        "fields": null
+                    },
+                    {
+                        "name": "BasketItemUpdatesInterface",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "tpnc",
+                                "description": null
+                            },
+                            {
+                                "name": "tpnb",
+                                "description": null
+                            },
+                            {
+                                "name": "uuid",
+                                "description": null
+                            },
+                            {
+                                "name": "gtin",
+                                "description": null
+                            },
+                            {
+                                "name": "barcode",
+                                "description": null
+                            },
+                            {
+                                "name": "successful",
+                                "description": null
+                            },
+                            {
+                                "name": "issues",
+                                "description": null
+                            },
+                            {
+                                "name": "item",
+                                "description": null
+                            },
+                            {
+                                "name": "isAlcoholic",
+                                "description": null
+                            },
+                            {
+                                "name": "units",
+                                "description": "Used for TSAYS"
+                            },
+                            {
+                                "name": "product",
+                                "description": "Used for TSAYS"
+                            },
+                            {
+                                "name": "failureReason",
+                                "description": "Used for TSAYS"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BasketItemsUpdateUnits",
+                        "fields": [
+                            {
+                                "name": "beforeQuantity",
+                                "description": null
+                            },
+                            {
+                                "name": "afterQuantity",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FailureReason",
+                        "fields": null
+                    },
+                    {
+                        "name": "BasketItemUpdatesType",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "tpnc",
+                                "description": null
+                            },
+                            {
+                                "name": "tpnb",
+                                "description": null
+                            },
+                            {
+                                "name": "uuid",
+                                "description": null
+                            },
+                            {
+                                "name": "gtin",
+                                "description": null
+                            },
+                            {
+                                "name": "barcode",
+                                "description": null
+                            },
+                            {
+                                "name": "successful",
+                                "description": null
+                            },
+                            {
+                                "name": "issues",
+                                "description": null
+                            },
+                            {
+                                "name": "isAlcoholic",
+                                "description": null
+                            },
+                            {
+                                "name": "units",
+                                "description": "Used for TSAYS"
+                            },
+                            {
+                                "name": "item",
+                                "description": "Used for TSAYS"
+                            },
+                            {
+                                "name": "failureReason",
+                                "description": "Used for TSAYS"
+                            },
+                            {
+                                "name": "product",
+                                "description": "Used for TSAYS"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BasketLoyaltyType",
+                        "fields": [
+                            {
+                                "name": "points",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BasketLoyalTyPointType",
+                        "fields": [
+                            {
+                                "name": "conversionRate",
+                                "description": null
+                            },
+                            {
+                                "name": "totalAvailable",
+                                "description": null
+                            },
+                            {
+                                "name": "remainingAvailable",
+                                "description": null
+                            },
+                            {
+                                "name": "applied",
+                                "description": null
+                            },
+                            {
+                                "name": "total",
+                                "description": null
+                            },
+                            {
+                                "name": "issues",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "LoyaltyPointInfoType",
+                        "fields": [
+                            {
+                                "name": "count",
+                                "description": null
+                            },
+                            {
+                                "name": "value",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "LoyaltyIssueType",
+                        "fields": [
+                            {
+                                "name": "items",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "LoyaltyIssueInfoType",
+                        "fields": [
+                            {
+                                "name": "excluded",
+                                "description": null
+                            },
+                            {
+                                "name": "product",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BasketPromotionType",
+                        "fields": [
+                            {
+                                "name": "description",
+                                "description": null
+                            },
+                            {
+                                "name": "headline",
+                                "description": "Used for TSAYS, TSAYS can use description field . this can be deprecated"
+                            },
+                            {
+                                "name": "unitSellingInfo",
+                                "description": "Used for TSAYS, TSAYS can use description field . this can be deprecated"
+                            },
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "promotionType",
+                                "description": null
+                            },
+                            {
+                                "name": "startDate",
+                                "description": null
+                            },
+                            {
+                                "name": "endDate",
+                                "description": null
+                            },
+                            {
+                                "name": "timesTriggered",
+                                "description": null
+                            },
+                            {
+                                "name": "missed",
+                                "description": null
+                            },
+                            {
+                                "name": "warnings",
+                                "description": null
+                            },
+                            {
+                                "name": "savings",
+                                "description": null
+                            },
+                            {
+                                "name": "statuses",
+                                "description": null
+                            },
+                            {
+                                "name": "attributes",
+                                "description": null
+                            },
+                            {
+                                "name": "price",
+                                "description": null
+                            },
+                            {
+                                "name": "qualities",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PromotionAttributes",
+                        "fields": null
+                    },
+                    {
+                        "name": "PromotionPriceType",
+                        "fields": [
+                            {
+                                "name": "beforeDiscount",
+                                "description": null
+                            },
+                            {
+                                "name": "intermediate",
+                                "description": null
+                            },
+                            {
+                                "name": "afterDiscount",
+                                "description": null
+                            },
+                            {
+                                "name": "unitPriceAfterDiscount",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PromotionPriceInterface",
+                        "fields": [
+                            {
+                                "name": "beforeDiscount",
+                                "description": null
+                            },
+                            {
+                                "name": "intermediate",
+                                "description": null
+                            },
+                            {
+                                "name": "afterDiscount",
+                                "description": null
+                            },
+                            {
+                                "name": "unitPriceAfterDiscount",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BasketSplitFulfilment",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "guidePrice",
+                                "description": null
+                            },
+                            {
+                                "name": "totalPrice",
+                                "description": null
+                            },
+                            {
+                                "name": "totalItems",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            },
+                            {
+                                "name": "charges",
+                                "description": null
+                            },
+                            {
+                                "name": "discounts",
+                                "description": null
+                            },
+                            {
+                                "name": "clubcardPoints",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfilment",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BasketDeliveryGroupFulfilment",
+                        "fields": [
+                            {
+                                "name": "selectedOption",
+                                "description": null
+                            },
+                            {
+                                "name": "availableOptions",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BasketSubstituteOptions",
+                        "fields": [
+                            {
+                                "name": "preference",
+                                "description": "Specifies customer selection on substitutes"
+                            },
+                            {
+                                "name": "isBlocked",
+                                "description": "specifies can customer opt substitutes"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BasketSummary",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "guidePrice",
+                                "description": null
+                            },
+                            {
+                                "name": "totalPrice",
+                                "description": null
+                            },
+                            {
+                                "name": "totalItems",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            },
+                            {
+                                "name": "charges",
+                                "description": null
+                            },
+                            {
+                                "name": "discounts",
+                                "description": null
+                            },
+                            {
+                                "name": "clubcardPoints",
+                                "description": null
+                            },
+                            {
+                                "name": "propositionalInfo",
+                                "description": "List of unique Propositions for basket"
+                            },
+                            {
+                                "name": "deliveryAddress",
+                                "description": null
+                            },
+                            {
+                                "name": "locationUuid",
+                                "description": null
+                            },
+                            {
+                                "name": "constraints",
+                                "description": null
+                            },
+                            {
+                                "name": "paymentItems",
+                                "description": null
+                            },
+                            {
+                                "name": "issues",
+                                "description": null
+                            },
+                            {
+                                "name": "updates",
+                                "description": null
+                            },
+                            {
+                                "name": "splitView",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "DiscountsType",
+                        "fields": [
+                            {
+                                "name": "total",
+                                "description": null
+                            },
+                            {
+                                "name": "categories",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BasketType",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "orderId",
+                                "description": null
+                            },
+                            {
+                                "name": "orderNo",
+                                "description": null
+                            },
+                            {
+                                "name": "storeId",
+                                "description": null
+                            },
+                            {
+                                "name": "locationUuid",
+                                "description": null
+                            },
+                            {
+                                "name": "expiry",
+                                "description": null
+                            },
+                            {
+                                "name": "currencyCode",
+                                "description": "currencyCode only used in TSAYS application. Later TSAYS application can use localisation field. This can be deprecated"
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "guidePrice",
+                                "description": null
+                            },
+                            {
+                                "name": "grossPrice",
+                                "description": null
+                            },
+                            {
+                                "name": "discounts",
+                                "description": null
+                            },
+                            {
+                                "name": "savings",
+                                "description": null
+                            },
+                            {
+                                "name": "eCouponsTotal",
+                                "description": null
+                            },
+                            {
+                                "name": "staffDiscount",
+                                "description": null
+                            },
+                            {
+                                "name": "isInAmend",
+                                "description": null
+                            },
+                            {
+                                "name": "isAmended",
+                                "description": null
+                            },
+                            {
+                                "name": "amendOrderId",
+                                "description": null
+                            },
+                            {
+                                "name": "amendOrderNo",
+                                "description": null
+                            },
+                            {
+                                "name": "amendExpiry",
+                                "description": null
+                            },
+                            {
+                                "name": "canExtendSlot",
+                                "description": null
+                            },
+                            {
+                                "name": "splitView",
+                                "description": null
+                            },
+                            {
+                                "name": "previousSlot",
+                                "description": null
+                            },
+                            {
+                                "name": "isBagless",
+                                "description": null
+                            },
+                            {
+                                "name": "withBags",
+                                "description": null
+                            },
+                            {
+                                "name": "deliveryAddress",
+                                "description": null
+                            },
+                            {
+                                "name": "collectionLocation",
+                                "description": null
+                            },
+                            {
+                                "name": "deliveryPreferences",
+                                "description": null
+                            },
+                            {
+                                "name": "customerPreferences",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            },
+                            {
+                                "name": "promotions",
+                                "description": null
+                            },
+                            {
+                                "name": "paymentItems",
+                                "description": null
+                            },
+                            {
+                                "name": "shoppingMethod",
+                                "description": null
+                            },
+                            {
+                                "name": "slot",
+                                "description": null
+                            },
+                            {
+                                "name": "charges",
+                                "description": null
+                            },
+                            {
+                                "name": "subscription",
+                                "description": null
+                            },
+                            {
+                                "name": "totalPrice",
+                                "description": null
+                            },
+                            {
+                                "name": "clubcardPoints",
+                                "description": null
+                            },
+                            {
+                                "name": "issues",
+                                "description": null
+                            },
+                            {
+                                "name": "updates",
+                                "description": null
+                            },
+                            {
+                                "name": "paymentReferences",
+                                "description": null
+                            },
+                            {
+                                "name": "itemUpdates",
+                                "description": null
+                            },
+                            {
+                                "name": "acceptedAgeAgreement",
+                                "description": null
+                            },
+                            {
+                                "name": "confirmation",
+                                "description": null
+                            },
+                            {
+                                "name": "loyalty",
+                                "description": null
+                            },
+                            {
+                                "name": "vat",
+                                "description": null
+                            },
+                            {
+                                "name": "constraints",
+                                "description": null
+                            },
+                            {
+                                "name": "totalItems",
+                                "description": null
+                            },
+                            {
+                                "name": "authorizationAmount",
+                                "description": null
+                            },
+                            {
+                                "name": "localisation",
+                                "description": null
+                            },
+                            {
+                                "name": "actions",
+                                "description": null
+                            },
+                            {
+                                "name": "filledPercentage",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "SlotType",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "start",
+                                "description": null
+                            },
+                            {
+                                "name": "end",
+                                "description": null
+                            },
+                            {
+                                "name": "expiry",
+                                "description": null
+                            },
+                            {
+                                "name": "reservationExpiry",
+                                "description": null
+                            },
+                            {
+                                "name": "charge",
+                                "description": null
+                            },
+                            {
+                                "name": "price",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "group",
+                                "description": null
+                            },
+                            {
+                                "name": "locationUuid",
+                                "description": null
+                            },
+                            {
+                                "name": "freeDelivery",
+                                "description": null
+                            },
+                            {
+                                "name": "countdown",
+                                "description": null
+                            },
+                            {
+                                "name": "dispatchDate",
+                                "description": null
+                            },
+                            {
+                                "name": "dayOfWeek",
+                                "description": null
+                            },
+                            {
+                                "name": "dayOfMonth",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfilmentSpeed",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FreeDeliveryType",
+                        "fields": [
+                            {
+                                "name": "deliveryMessageThreshold",
+                                "description": null
+                            },
+                            {
+                                "name": "deliveryThreshold",
+                                "description": null
+                            },
+                            {
+                                "name": "qualifiesForFreeDelivery",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "CountdownType",
+                        "fields": [
+                            {
+                                "name": "workingDays",
+                                "description": null
+                            },
+                            {
+                                "name": "deliveryDate",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FulfilmentSpeedEnum",
+                        "fields": null
+                    },
+                    {
+                        "name": "BasketUpdatesInterface",
+                        "fields": [
+                            {
+                                "name": "items",
+                                "description": null
+                            },
+                            {
+                                "name": "paymentItems",
+                                "description": null
+                            },
+                            {
+                                "name": "transfer",
+                                "description": "Used for TSAYS usecase only"
+                            },
+                            {
+                                "name": "cancellation",
+                                "description": "Used for TSAYS usecase only"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BasketTransferResult",
+                        "fields": [
+                            {
+                                "name": "successful",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            },
+                            {
+                                "name": "transferredOrderId",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ActionResult",
+                        "fields": [
+                            {
+                                "name": "successful",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BasketCancellation",
+                        "fields": [
+                            {
+                                "name": "successful",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BasketUpdatesType",
+                        "fields": [
+                            {
+                                "name": "items",
+                                "description": null
+                            },
+                            {
+                                "name": "paymentItems",
+                                "description": null
+                            },
+                            {
+                                "name": "transfer",
+                                "description": null
+                            },
+                            {
+                                "name": "cancellation",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BulkOrdersInterface",
+                        "fields": [
+                            {
+                                "name": "orderNo",
+                                "description": null
+                            },
+                            {
+                                "name": "orderId",
+                                "description": null
+                            },
+                            {
+                                "name": "slotDate",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "customerId",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BulkOrdersType",
+                        "fields": [
+                            {
+                                "name": "orderNo",
+                                "description": null
+                            },
+                            {
+                                "name": "orderId",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "slotDate",
+                                "description": null
+                            },
+                            {
+                                "name": "customerId",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BulkReviewStatsType",
+                        "fields": [
+                            {
+                                "name": "hasNextBatch",
+                                "description": "Whether there are additional batches to fetch in the given period"
+                            },
+                            {
+                                "name": "nextBatchAfter",
+                                "description": "Next batch cursor point value from which results will be fetched"
+                            },
+                            {
+                                "name": "products",
+                                "description": "Products updated within given request parameters period"
+                            },
+                            {
+                                "name": "totalProductsUpdated",
+                                "description": "Number of products updated within given request parameters period"
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BulkReviewStatsItemType",
+                        "fields": [
+                            {
+                                "name": "itemId",
+                                "description": null
+                            },
+                            {
+                                "name": "stats",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ReviewAggregationType",
+                        "fields": [
+                            {
+                                "name": "average",
+                                "description": null
+                            },
+                            {
+                                "name": "bestRating",
+                                "description": null
+                            },
+                            {
+                                "name": "lastUpdatedTime",
+                                "description": null
+                            },
+                            {
+                                "name": "ratingDistribution",
+                                "description": null
+                            },
+                            {
+                                "name": "secondaryRatingStatistics",
+                                "description": null
+                            },
+                            {
+                                "name": "totalCount",
+                                "description": null
+                            },
+                            {
+                                "name": "worstRating",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "RatingDistributionType",
+                        "fields": [
+                            {
+                                "name": "one",
+                                "description": null
+                            },
+                            {
+                                "name": "two",
+                                "description": null
+                            },
+                            {
+                                "name": "three",
+                                "description": null
+                            },
+                            {
+                                "name": "four",
+                                "description": null
+                            },
+                            {
+                                "name": "five",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "SecondaryRatingStatsType",
+                        "fields": [
+                            {
+                                "name": "average",
+                                "description": null
+                            },
+                            {
+                                "name": "bestRating",
+                                "description": null
+                            },
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "worstRating",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BuylistCategoryInterface",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "label",
+                                "description": null
+                            },
+                            {
+                                "name": "meta",
+                                "description": null
+                            },
+                            {
+                                "name": "binCount",
+                                "description": null
+                            },
+                            {
+                                "name": "hiddenFromFilter",
+                                "description": null
+                            },
+                            {
+                                "name": "isSelected",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BuylistSEOMetaDataType",
+                        "fields": [
+                            {
+                                "name": "description",
+                                "description": null
+                            },
+                            {
+                                "name": "pageTitleOverride",
+                                "description": null
+                            },
+                            {
+                                "name": "canonicalUrl",
+                                "description": null
+                            },
+                            {
+                                "name": "noIndex",
+                                "description": null
+                            },
+                            {
+                                "name": "modelMetadata",
+                                "description": "Metadata for personalized tracking"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BuylistCategoryType",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "label",
+                                "description": null
+                            },
+                            {
+                                "name": "meta",
+                                "description": null
+                            },
+                            {
+                                "name": "binCount",
+                                "description": null
+                            },
+                            {
+                                "name": "hiddenFromFilter",
+                                "description": null
+                            },
+                            {
+                                "name": "isSelected",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BuylistGroupInterface",
+                        "fields": [
+                            {
+                                "name": "title",
+                                "description": null
+                            },
+                            {
+                                "name": "contentId",
+                                "description": null
+                            },
+                            {
+                                "name": "description",
+                                "description": null
+                            },
+                            {
+                                "name": "meta",
+                                "description": null
+                            },
+                            {
+                                "name": "canonicalUrl",
+                                "description": null
+                            },
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "buylists",
+                                "description": null
+                            },
+                            {
+                                "name": "categories",
+                                "description": null
+                            },
+                            {
+                                "name": "pageInformation",
+                                "description": null
+                            },
+                            {
+                                "name": "products",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            },
+                            {
+                                "name": "recipe",
+                                "description": null
+                            },
+                            {
+                                "name": "props",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BuylistInterface",
+                        "fields": [
+                            {
+                                "name": "title",
+                                "description": null
+                            },
+                            {
+                                "name": "contentId",
+                                "description": null
+                            },
+                            {
+                                "name": "description",
+                                "description": null
+                            },
+                            {
+                                "name": "meta",
+                                "description": null
+                            },
+                            {
+                                "name": "canonicalUrl",
+                                "description": null
+                            },
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "buylists",
+                                "description": null
+                            },
+                            {
+                                "name": "categories",
+                                "description": null
+                            },
+                            {
+                                "name": "pageInformation",
+                                "description": null
+                            },
+                            {
+                                "name": "products",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            },
+                            {
+                                "name": "recipe",
+                                "description": null
+                            },
+                            {
+                                "name": "props",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BuylistRecipeType",
+                        "fields": [
+                            {
+                                "name": "title",
+                                "description": null
+                            },
+                            {
+                                "name": "contentId",
+                                "description": null
+                            },
+                            {
+                                "name": "meta",
+                                "description": null
+                            },
+                            {
+                                "name": "expandedByDefault",
+                                "description": null
+                            },
+                            {
+                                "name": "steps",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BuylistProps",
+                        "fields": [
+                            {
+                                "name": "theme",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BuyListThemeType",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BuylistGroupType",
+                        "fields": [
+                            {
+                                "name": "title",
+                                "description": null
+                            },
+                            {
+                                "name": "contentId",
+                                "description": null
+                            },
+                            {
+                                "name": "description",
+                                "description": null
+                            },
+                            {
+                                "name": "meta",
+                                "description": null
+                            },
+                            {
+                                "name": "canonicalUrl",
+                                "description": null
+                            },
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "buylists",
+                                "description": null
+                            },
+                            {
+                                "name": "categories",
+                                "description": null
+                            },
+                            {
+                                "name": "pageInformation",
+                                "description": null
+                            },
+                            {
+                                "name": "products",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            },
+                            {
+                                "name": "recipe",
+                                "description": null
+                            },
+                            {
+                                "name": "props",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BuylistMetadataInterface",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "description",
+                                "description": null
+                            },
+                            {
+                                "name": "meta",
+                                "description": null
+                            },
+                            {
+                                "name": "label",
+                                "description": null
+                            },
+                            {
+                                "name": "bannerTitle",
+                                "description": null
+                            },
+                            {
+                                "name": "bannerLinkUrl",
+                                "description": null
+                            },
+                            {
+                                "name": "imageUrl",
+                                "description": null
+                            },
+                            {
+                                "name": "thumbnailUrl",
+                                "description": null
+                            },
+                            {
+                                "name": "isSelected",
+                                "description": null
+                            },
+                            {
+                                "name": "contentId",
+                                "description": null
+                            },
+                            {
+                                "name": "tracking",
+                                "description": null
+                            },
+                            {
+                                "name": "banner",
+                                "description": null
+                            },
+                            {
+                                "name": "banners",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "TrackingType",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "recommendedListId",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BuylistBannerType",
+                        "fields": [
+                            {
+                                "name": "heading",
+                                "description": null
+                            },
+                            {
+                                "name": "bannerAttributes",
+                                "description": "Mapping all non-complex data type as keyValue pair"
+                            },
+                            {
+                                "name": "subHeading",
+                                "description": null
+                            },
+                            {
+                                "name": "packshotImage",
+                                "description": null
+                            },
+                            {
+                                "name": "brandImage",
+                                "description": null
+                            },
+                            {
+                                "name": "cta",
+                                "description": null
+                            },
+                            {
+                                "name": "completionText",
+                                "description": null
+                            },
+                            {
+                                "name": "terms",
+                                "description": null
+                            },
+                            {
+                                "name": "backgrounds",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BannerTextType",
+                        "fields": [
+                            {
+                                "name": "text",
+                                "description": null
+                            },
+                            {
+                                "name": "color",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BannerImagesType",
+                        "fields": [
+                            {
+                                "name": "src",
+                                "description": null
+                            },
+                            {
+                                "name": "alt",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BannerCtaType",
+                        "fields": [
+                            {
+                                "name": "text",
+                                "description": null
+                            },
+                            {
+                                "name": "textColor",
+                                "description": null
+                            },
+                            {
+                                "name": "color",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BannerTermsType",
+                        "fields": [
+                            {
+                                "name": "href",
+                                "description": null
+                            },
+                            {
+                                "name": "text",
+                                "description": null
+                            },
+                            {
+                                "name": "color",
+                                "description": null
+                            },
+                            {
+                                "name": "linkText",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BannerBackgroundsType",
+                        "fields": [
+                            {
+                                "name": "mainSrc",
+                                "description": null
+                            },
+                            {
+                                "name": "mainColor",
+                                "description": null
+                            },
+                            {
+                                "name": "textPanelColor",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "EnhancedBuylistBannerType",
+                        "fields": [
+                            {
+                                "name": "heading",
+                                "description": null
+                            },
+                            {
+                                "name": "bannerAttributes",
+                                "description": "Mapping all non-complex data type as keyValue pair"
+                            },
+                            {
+                                "name": "subHeading",
+                                "description": null
+                            },
+                            {
+                                "name": "packshotImage",
+                                "description": null
+                            },
+                            {
+                                "name": "brandImage",
+                                "description": null
+                            },
+                            {
+                                "name": "cta",
+                                "description": null
+                            },
+                            {
+                                "name": "completionText",
+                                "description": null
+                            },
+                            {
+                                "name": "terms",
+                                "description": null
+                            },
+                            {
+                                "name": "backgrounds",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BuylistType",
+                        "fields": [
+                            {
+                                "name": "title",
+                                "description": null
+                            },
+                            {
+                                "name": "contentId",
+                                "description": null
+                            },
+                            {
+                                "name": "description",
+                                "description": null
+                            },
+                            {
+                                "name": "meta",
+                                "description": null
+                            },
+                            {
+                                "name": "canonicalUrl",
+                                "description": null
+                            },
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "buylists",
+                                "description": null
+                            },
+                            {
+                                "name": "categories",
+                                "description": null
+                            },
+                            {
+                                "name": "pageInformation",
+                                "description": null
+                            },
+                            {
+                                "name": "products",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            },
+                            {
+                                "name": "recipe",
+                                "description": null
+                            },
+                            {
+                                "name": "props",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "CancellationInfo",
+                        "fields": [
+                            {
+                                "name": "reason",
+                                "description": "Primary reason like TILL_TRANSFER, CUSTOMER_INITIATED, TESCO_INITIATED"
+                            },
+                            {
+                                "name": "subReason",
+                                "description": null
+                            },
+                            {
+                                "name": "isCancellable",
+                                "description": null
+                            },
+                            {
+                                "name": "expiryTime",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "CancelledOrderType",
+                        "fields": [
+                            {
+                                "name": "orderNo",
+                                "description": null
+                            },
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "orderId",
+                                "description": null
+                            },
+                            {
+                                "name": "locationUuid",
+                                "description": null
+                            },
+                            {
+                                "name": "storeId",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "statusInfo",
+                                "description": null
+                            },
+                            {
+                                "name": "guidePrice",
+                                "description": null
+                            },
+                            {
+                                "name": "grossPrice",
+                                "description": null
+                            },
+                            {
+                                "name": "totalPrice",
+                                "description": null
+                            },
+                            {
+                                "name": "splitView",
+                                "description": null
+                            },
+                            {
+                                "name": "shoppingMethod",
+                                "description": null
+                            },
+                            {
+                                "name": "address",
+                                "description": null
+                            },
+                            {
+                                "name": "slot",
+                                "description": null
+                            },
+                            {
+                                "name": "amendExpiryTime",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            },
+                            {
+                                "name": "removedItems",
+                                "description": null
+                            },
+                            {
+                                "name": "totalItems",
+                                "description": null
+                            },
+                            {
+                                "name": "hasUnavailableItems",
+                                "description": null
+                            },
+                            {
+                                "name": "paymentMode",
+                                "description": null
+                            },
+                            {
+                                "name": "deliveryPreferences",
+                                "description": null
+                            },
+                            {
+                                "name": "customerPreferences",
+                                "description": null
+                            },
+                            {
+                                "name": "deliveryTracking",
+                                "description": null
+                            },
+                            {
+                                "name": "staffDiscount",
+                                "description": null
+                            },
+                            {
+                                "name": "discounts",
+                                "description": null
+                            },
+                            {
+                                "name": "clubcard",
+                                "description": null
+                            },
+                            {
+                                "name": "charges",
+                                "description": null
+                            },
+                            {
+                                "name": "subscription",
+                                "description": null
+                            },
+                            {
+                                "name": "emailAddress",
+                                "description": null
+                            },
+                            {
+                                "name": "isInAmend",
+                                "description": null
+                            },
+                            {
+                                "name": "amendExpiry",
+                                "description": null
+                            },
+                            {
+                                "name": "promotionSavings",
+                                "description": null
+                            },
+                            {
+                                "name": "eCouponsTotal",
+                                "description": null
+                            },
+                            {
+                                "name": "confirmationDateTime",
+                                "description": null
+                            },
+                            {
+                                "name": "createdDateTime",
+                                "description": null
+                            },
+                            {
+                                "name": "cancelledDateTime",
+                                "description": null
+                            },
+                            {
+                                "name": "channel",
+                                "description": null
+                            },
+                            {
+                                "name": "localisation",
+                                "description": null
+                            },
+                            {
+                                "name": "metadata",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfilment",
+                                "description": null
+                            },
+                            {
+                                "name": "constraints",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            },
+                            {
+                                "name": "returnsInfo",
+                                "description": null
+                            },
+                            {
+                                "name": "rewards",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "OrderSummaryInterface",
+                        "fields": [
+                            {
+                                "name": "guidePrice",
+                                "description": null
+                            },
+                            {
+                                "name": "totalPrice",
+                                "description": null
+                            },
+                            {
+                                "name": "totalItems",
+                                "description": null
+                            },
+                            {
+                                "name": "orderId",
+                                "description": null
+                            },
+                            {
+                                "name": "orderNo",
+                                "description": null
+                            },
+                            {
+                                "name": "invoiceId",
+                                "description": null
+                            },
+                            {
+                                "name": "quoteId",
+                                "description": null
+                            },
+                            {
+                                "name": "cancelledDateTime",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "statusInfo",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            },
+                            {
+                                "name": "charges",
+                                "description": null
+                            },
+                            {
+                                "name": "discounts",
+                                "description": null
+                            },
+                            {
+                                "name": "clubcardPoints",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfilmentSummary",
+                                "description": null
+                            },
+                            {
+                                "name": "payments",
+                                "description": null
+                            },
+                            {
+                                "name": "hasReturns",
+                                "description": "Surface only online returns"
+                            },
+                            {
+                                "name": "returnMethod",
+                                "description": null
+                            },
+                            {
+                                "name": "splitView",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FulfilmentSummaryInterface",
+                        "fields": [
+                            {
+                                "name": "start",
+                                "description": null
+                            },
+                            {
+                                "name": "end",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PaymentDetailsUnionType",
+                        "fields": null
+                    },
+                    {
+                        "name": "CardPaymentDetailsType",
+                        "fields": [
+                            {
+                                "name": "card",
+                                "description": null
+                            },
+                            {
+                                "name": "paymentId",
+                                "description": null
+                            },
+                            {
+                                "name": "amount",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "paymentStatus",
+                                "description": null
+                            },
+                            {
+                                "name": "retryOption",
+                                "description": "Is enabled if the payment fails"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "CardDetailsType",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "number",
+                                "description": null
+                            },
+                            {
+                                "name": "expiry",
+                                "description": null
+                            },
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "nameOnCard",
+                                "description": null
+                            },
+                            {
+                                "name": "preferred",
+                                "description": null
+                            },
+                            {
+                                "name": "transactionReference",
+                                "description": null
+                            },
+                            {
+                                "name": "tokenId",
+                                "description": null
+                            },
+                            {
+                                "name": "authenticationId",
+                                "description": "Authentication Id"
+                            },
+                            {
+                                "name": "authentication",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "CardNumberType",
+                        "fields": [
+                            {
+                                "name": "lastFourDigits",
+                                "description": null
+                            },
+                            {
+                                "name": "maskedAccountNumber",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "CardExpiryType",
+                        "fields": [
+                            {
+                                "name": "month",
+                                "description": null
+                            },
+                            {
+                                "name": "year",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "OrderPaymentStatus",
+                        "fields": null
+                    },
+                    {
+                        "name": "CardPaymentStatus",
+                        "fields": null
+                    },
+                    {
+                        "name": "RetryOption",
+                        "fields": null
+                    },
+                    {
+                        "name": "OrderDeliveryPreference",
+                        "fields": [
+                            {
+                                "name": "deliveryInstruction",
+                                "description": null
+                            },
+                            {
+                                "name": "forcedBagOption",
+                                "description": null
+                            },
+                            {
+                                "name": "withBags",
+                                "description": null
+                            },
+                            {
+                                "name": "isBagless",
+                                "description": null
+                            },
+                            {
+                                "name": "mobilePhone",
+                                "description": null
+                            },
+                            {
+                                "name": "dayPhone",
+                                "description": null
+                            },
+                            {
+                                "name": "eveningPhone",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "OrderStaffDiscountType",
+                        "fields": [
+                            {
+                                "name": "percentage",
+                                "description": null
+                            },
+                            {
+                                "name": "discount",
+                                "description": null
+                            },
+                            {
+                                "name": "balance",
+                                "description": null
+                            },
+                            {
+                                "name": "headline",
+                                "description": "Short description about staff promotion"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "OrderClubcardType",
+                        "fields": [
+                            {
+                                "name": "standard",
+                                "description": null
+                            },
+                            {
+                                "name": "promotional",
+                                "description": null
+                            },
+                            {
+                                "name": "green",
+                                "description": null
+                            },
+                            {
+                                "name": "total",
+                                "description": null
+                            },
+                            {
+                                "name": "details",
+                                "description": null
+                            },
+                            {
+                                "name": "pointsBalance",
+                                "description": null
+                            },
+                            {
+                                "name": "missedPoints",
+                                "description": null
+                            },
+                            {
+                                "name": "claimablePoints",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ServiceCallType",
+                        "fields": null
+                    },
+                    {
+                        "name": "ServiceConsumeType",
+                        "fields": [
+                            {
+                                "name": "pointsBalance",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "OrderChargesType",
+                        "fields": [
+                            {
+                                "name": "surcharge",
+                                "description": null
+                            },
+                            {
+                                "name": "minimum",
+                                "description": null
+                            },
+                            {
+                                "name": "bagCharge",
+                                "description": null
+                            },
+                            {
+                                "name": "packaging",
+                                "description": null
+                            },
+                            {
+                                "name": "surchargePrice",
+                                "description": null
+                            },
+                            {
+                                "name": "depositCharge",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "OrderSubscriptionType",
+                        "fields": [
+                            {
+                                "name": "planName",
+                                "description": null
+                            },
+                            {
+                                "name": "planId",
+                                "description": null
+                            },
+                            {
+                                "name": "planType",
+                                "description": null
+                            },
+                            {
+                                "name": "applicableDays",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "valid",
+                                "description": null
+                            },
+                            {
+                                "name": "basketvalue",
+                                "description": null
+                            },
+                            {
+                                "name": "freeSameDayDelivery",
+                                "description": null
+                            },
+                            {
+                                "name": "isTrialPlan",
+                                "description": null
+                            },
+                            {
+                                "name": "planDurationInMonths",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfilments",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FulfilmentsType",
+                        "fields": null
+                    },
+                    {
+                        "name": "CollectionType",
+                        "fields": [
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "applicableDays",
+                                "description": null
+                            },
+                            {
+                                "name": "applicableWeeklySlots",
+                                "description": null
+                            },
+                            {
+                                "name": "isSlotRestricted",
+                                "description": null
+                            },
+                            {
+                                "name": "minBasketValue",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfilmentMethod",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ApplicableWeeklySlots",
+                        "fields": [
+                            {
+                                "name": "dayOfWeek",
+                                "description": null
+                            },
+                            {
+                                "name": "slotTimings",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "TimingsType",
+                        "fields": [
+                            {
+                                "name": "startTime",
+                                "description": null
+                            },
+                            {
+                                "name": "endTime",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "DeliveryType",
+                        "fields": [
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "applicableDays",
+                                "description": null
+                            },
+                            {
+                                "name": "applicableWeeklySlots",
+                                "description": null
+                            },
+                            {
+                                "name": "isSlotRestricted",
+                                "description": null
+                            },
+                            {
+                                "name": "minBasketValue",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfilmentMethod",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ChannelType",
+                        "fields": null
+                    },
+                    {
+                        "name": "OrderMetaType",
+                        "fields": [
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ShoppingTypeType",
+                        "fields": null
+                    },
+                    {
+                        "name": "ReturnInfoType",
+                        "fields": [
+                            {
+                                "name": "reasons",
+                                "description": "Return reasons for products"
+                            },
+                            {
+                                "name": "item",
+                                "description": "Return product details"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ReturnReasonsType",
+                        "fields": [
+                            {
+                                "name": "code",
+                                "description": null
+                            },
+                            {
+                                "name": "message",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ReturnProductsType",
+                        "fields": null
+                    },
+                    {
+                        "name": "RewardsDetailsType",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "description",
+                                "description": null
+                            },
+                            {
+                                "name": "amount",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "CatchWeightInterface",
+                        "fields": [
+                            {
+                                "name": "price",
+                                "description": null
+                            },
+                            {
+                                "name": "weight",
+                                "description": null
+                            },
+                            {
+                                "name": "default",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "CategoryInfoType",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "layout",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "CategoryLayoutType",
+                        "fields": [
+                            {
+                                "name": "type",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "CategoryLayoutTypes",
+                        "fields": null
+                    },
+                    {
+                        "name": "CategoryItemInterface",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "parent",
+                                "description": null
+                            },
+                            {
+                                "name": "id",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ClickAndCollectInterface",
+                        "fields": [
+                            {
+                                "name": "metadata",
+                                "description": null
+                            },
+                            {
+                                "name": "collectionPoints",
+                                "description": "IGHS will ignore locationId or postcode as arguments. Collection points are retrieved using the customer's address."
+                            },
+                            {
+                                "name": "slots",
+                                "description": "IGHS will ignore locationId or postcode as arguments. Slots are retrieved for the selected collection point"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ClickAndCollectMetadataInterface",
+                        "fields": [
+                            {
+                                "name": "postcode",
+                                "description": "Order of precedence: (1) Postcode from argument if provided. (2) Postcode of locationId if provided. (3) Billing info Postcode of the customer order if locationId / Postcode not provided (4) Customer home address postcode if billing info postcode not available. IGHS returns null"
+                            },
+                            {
+                                "name": "locationUuid",
+                                "description": "locationUuid of the selected collection point"
+                            },
+                            {
+                                "name": "addressId",
+                                "description": "addressId of the selected address"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ClickAndCollectMetadataType",
+                        "fields": [
+                            {
+                                "name": "postcode",
+                                "description": null
+                            },
+                            {
+                                "name": "locationUuid",
+                                "description": null
+                            },
+                            {
+                                "name": "addressId",
+                                "description": null
+                            },
+                            {
+                                "name": "availableGroups",
+                                "description": null
+                            },
+                            {
+                                "name": "availableWeeks",
+                                "description": null
+                            },
+                            {
+                                "name": "weekNo",
+                                "description": null
+                            },
+                            {
+                                "name": "preBookedOrderDays",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "GroupInfo",
+                        "fields": [
+                            {
+                                "name": "duration",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "WeekInfo",
+                        "fields": [
+                            {
+                                "name": "weekNo",
+                                "description": null
+                            },
+                            {
+                                "name": "startDate",
+                                "description": null
+                            },
+                            {
+                                "name": "endDate",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ClickAndCollectType",
+                        "fields": [
+                            {
+                                "name": "metadata",
+                                "description": null
+                            },
+                            {
+                                "name": "collectionPoints",
+                                "description": null
+                            },
+                            {
+                                "name": "slots",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ClientConfigType",
+                        "fields": [
+                            {
+                                "name": "properties",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "AnyObject",
+                        "fields": null
+                    },
+                    {
+                        "name": "ClubcardPointsInterface",
+                        "fields": [
+                            {
+                                "name": "green",
+                                "description": null
+                            },
+                            {
+                                "name": "promotional",
+                                "description": null
+                            },
+                            {
+                                "name": "standard",
+                                "description": null
+                            },
+                            {
+                                "name": "total",
+                                "description": null
+                            },
+                            {
+                                "name": "details",
+                                "description": null
+                            },
+                            {
+                                "name": "pointsBalance",
+                                "description": null
+                            },
+                            {
+                                "name": "missedPoints",
+                                "description": null
+                            },
+                            {
+                                "name": "claimablePoints",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ClubcardPointsType",
+                        "fields": [
+                            {
+                                "name": "green",
+                                "description": null
+                            },
+                            {
+                                "name": "promotional",
+                                "description": null
+                            },
+                            {
+                                "name": "standard",
+                                "description": null
+                            },
+                            {
+                                "name": "total",
+                                "description": null
+                            },
+                            {
+                                "name": "details",
+                                "description": null
+                            },
+                            {
+                                "name": "pointsBalance",
+                                "description": null
+                            },
+                            {
+                                "name": "missedPoints",
+                                "description": null
+                            },
+                            {
+                                "name": "claimablePoints",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ComponentInterface",
+                        "fields": [
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "props",
+                                "description": null
+                            },
+                            {
+                                "name": "children",
+                                "description": null
+                            },
+                            {
+                                "name": "childrenType",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ConfirmBasketType",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "authRequired",
+                                "description": null
+                            },
+                            {
+                                "name": "transactionReference",
+                                "description": null
+                            },
+                            {
+                                "name": "tokenId",
+                                "description": null
+                            },
+                            {
+                                "name": "paymentId",
+                                "description": null
+                            },
+                            {
+                                "name": "authenticationAmount",
+                                "description": null
+                            },
+                            {
+                                "name": "basket",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ConfirmOrder",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ConfirmOrderInterface",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ConfirmOrderErrorType",
+                        "fields": [
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "code",
+                                "description": null
+                            },
+                            {
+                                "name": "message",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ConfirmOrderType",
+                        "fields": [
+                            {
+                                "name": "orders",
+                                "description": null
+                            },
+                            {
+                                "name": "error",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ConfirmedReturnsType",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ConsentType",
+                        "fields": [
+                            {
+                                "name": "stores",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "CookingInstructionsInterface",
+                        "fields": [
+                            {
+                                "name": "oven",
+                                "description": null
+                            },
+                            {
+                                "name": "microwave",
+                                "description": null
+                            },
+                            {
+                                "name": "otherInstructions",
+                                "description": null
+                            },
+                            {
+                                "name": "cookingGuidelines",
+                                "description": null
+                            },
+                            {
+                                "name": "cookingPrecautions",
+                                "description": null
+                            },
+                            {
+                                "name": "cookingMethods",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "CookingMethodInterface",
+                        "fields": [
+                            {
+                                "name": "instructions",
+                                "description": null
+                            },
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "time",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "CustomerPreferencesInterface",
+                        "fields": [
+                            {
+                                "name": "substituteAllItems",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "CustomerPreferencesType",
+                        "fields": [
+                            {
+                                "name": "substituteAllItems",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "DateRestrictionInterface",
+                        "fields": [
+                            {
+                                "name": "endDate",
+                                "description": null
+                            },
+                            {
+                                "name": "startDate",
+                                "description": null
+                            },
+                            {
+                                "name": "leadTimeValue",
+                                "description": null
+                            },
+                            {
+                                "name": "message",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "DeliveryFulfilmentType",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "description",
+                                "description": null
+                            },
+                            {
+                                "name": "deliveryGroupId",
+                                "description": null
+                            },
+                            {
+                                "name": "charge",
+                                "description": null
+                            },
+                            {
+                                "name": "label",
+                                "description": null
+                            },
+                            {
+                                "name": "start",
+                                "description": null
+                            },
+                            {
+                                "name": "end",
+                                "description": null
+                            },
+                            {
+                                "name": "address",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfilmentMethod",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "DeliveryPreferenceInterface",
+                        "fields": [
+                            {
+                                "name": "deliveryInstruction",
+                                "description": null
+                            },
+                            {
+                                "name": "isBagless",
+                                "description": null
+                            },
+                            {
+                                "name": "forcedBagOption",
+                                "description": null
+                            },
+                            {
+                                "name": "withBags",
+                                "description": null
+                            },
+                            {
+                                "name": "mobilePhone",
+                                "description": null
+                            },
+                            {
+                                "name": "dayPhone",
+                                "description": null
+                            },
+                            {
+                                "name": "eveningPhone",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BasketDeliveryPreference",
+                        "fields": [
+                            {
+                                "name": "deliveryInstruction",
+                                "description": null
+                            },
+                            {
+                                "name": "forcedBagOption",
+                                "description": null
+                            },
+                            {
+                                "name": "withBags",
+                                "description": null
+                            },
+                            {
+                                "name": "isBagless",
+                                "description": null
+                            },
+                            {
+                                "name": "mobilePhone",
+                                "description": null
+                            },
+                            {
+                                "name": "dayPhone",
+                                "description": null
+                            },
+                            {
+                                "name": "eveningPhone",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "DeliveryTrackingInterface",
+                        "fields": [
+                            {
+                                "name": "tripTrackingId",
+                                "description": "Trip Tracking Id for the Vehicle"
+                            },
+                            {
+                                "name": "deliveryWindow",
+                                "description": null
+                            },
+                            {
+                                "name": "currentTrackingStatus",
+                                "description": null
+                            },
+                            {
+                                "name": "origin",
+                                "description": null
+                            },
+                            {
+                                "name": "destination",
+                                "description": null
+                            },
+                            {
+                                "name": "driver",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "DeliveryWindowInterface",
+                        "fields": [
+                            {
+                                "name": "start",
+                                "description": null
+                            },
+                            {
+                                "name": "end",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "CurrentTrackingStatusInterface",
+                        "fields": [
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "punctuality",
+                                "description": "The on-time status is determined by the eta being before (EARLY), within (ON_TIME) or after (DELAYED) the slot time"
+                            },
+                            {
+                                "name": "stopsUntilDelivery",
+                                "description": "Number of stops the driver has to make before this order is delivered. Derived from vehicle trips data"
+                            },
+                            {
+                                "name": "geoLocation",
+                                "description": "GeoLocation of the Vehicle. NOTE: Currently returns null"
+                            },
+                            {
+                                "name": "isOrderNearby",
+                                "description": "This flag is set to true, if the order is out for delivery or is 10 minutes/35 meters away from the customer's location. By default, this will be null."
+                            }
+                        ]
+                    },
+                    {
+                        "name": "DeliveryTrackingStatus",
+                        "fields": null
+                    },
+                    {
+                        "name": "punctuality",
+                        "fields": null
+                    },
+                    {
+                        "name": "GeoLocationInterface",
+                        "fields": [
+                            {
+                                "name": "latitude",
+                                "description": null
+                            },
+                            {
+                                "name": "longitude",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "OriginInterface",
+                        "fields": [
+                            {
+                                "name": "geoLocation",
+                                "description": "GeoLocation of the Customer Location."
+                            }
+                        ]
+                    },
+                    {
+                        "name": "DestinationInterface",
+                        "fields": [
+                            {
+                                "name": "geoLocation",
+                                "description": "GeoLocation of the Customer Location."
+                            }
+                        ]
+                    },
+                    {
+                        "name": "DriverInformationType",
+                        "fields": [
+                            {
+                                "name": "firstName",
+                                "description": null
+                            },
+                            {
+                                "name": "lastName",
+                                "description": null
+                            },
+                            {
+                                "name": "preferredName",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "DeviceType",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "deviceToken",
+                                "description": null
+                            },
+                            {
+                                "name": "domain",
+                                "description": null
+                            },
+                            {
+                                "name": "platform",
+                                "description": null
+                            },
+                            {
+                                "name": "deviceId",
+                                "description": "Device Id returned from instore payments"
+                            },
+                            {
+                                "name": "pmat",
+                                "description": "Pmat token"
+                            },
+                            {
+                                "name": "registrationId",
+                                "description": null
+                            },
+                            {
+                                "name": "notifications",
+                                "description": null
+                            },
+                            {
+                                "name": "actions",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PlatformType",
+                        "fields": null
+                    },
+                    {
+                        "name": "DeviceNotificationType",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "message",
+                                "description": null
+                            },
+                            {
+                                "name": "tile",
+                                "description": null
+                            },
+                            {
+                                "name": "icon",
+                                "description": null
+                            },
+                            {
+                                "name": "topic",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "statusType",
+                        "fields": null
+                    },
+                    {
+                        "name": "DeviceActionUpdatesUnionType",
+                        "fields": null
+                    },
+                    {
+                        "name": "InvalidateBarcodeUpdatesType",
+                        "fields": [
+                            {
+                                "name": "errors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BindDeviceUpdatesType",
+                        "fields": [
+                            {
+                                "name": "errors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "DietaryInfoType",
+                        "fields": [
+                            {
+                                "name": "includes",
+                                "description": null
+                            },
+                            {
+                                "name": "excludes",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "EcdnType",
+                        "fields": [
+                            {
+                                "name": "personalDetails",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "EmptyProductListType",
+                        "fields": [
+                            {
+                                "name": "errors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ErrorInterface",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "message",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "code",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ErrorType",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "message",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "code",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FNFBasketSummary",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "guidePrice",
+                                "description": null
+                            },
+                            {
+                                "name": "totalPrice",
+                                "description": null
+                            },
+                            {
+                                "name": "totalItems",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            },
+                            {
+                                "name": "charges",
+                                "description": null
+                            },
+                            {
+                                "name": "discounts",
+                                "description": null
+                            },
+                            {
+                                "name": "clubcardPoints",
+                                "description": null
+                            },
+                            {
+                                "name": "propositionalInfo",
+                                "description": "List of unique Propositions for basket"
+                            },
+                            {
+                                "name": "deliveryAddress",
+                                "description": null
+                            },
+                            {
+                                "name": "locationUuid",
+                                "description": null
+                            },
+                            {
+                                "name": "constraints",
+                                "description": null
+                            },
+                            {
+                                "name": "paymentItems",
+                                "description": null
+                            },
+                            {
+                                "name": "issues",
+                                "description": null
+                            },
+                            {
+                                "name": "updates",
+                                "description": null
+                            },
+                            {
+                                "name": "splitView",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FNFConfirmOrder",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FNFOrderSummary",
+                        "fields": [
+                            {
+                                "name": "guidePrice",
+                                "description": null
+                            },
+                            {
+                                "name": "totalPrice",
+                                "description": null
+                            },
+                            {
+                                "name": "totalItems",
+                                "description": null
+                            },
+                            {
+                                "name": "orderId",
+                                "description": null
+                            },
+                            {
+                                "name": "orderNo",
+                                "description": null
+                            },
+                            {
+                                "name": "invoiceId",
+                                "description": null
+                            },
+                            {
+                                "name": "quoteId",
+                                "description": null
+                            },
+                            {
+                                "name": "cancelledDateTime",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "statusInfo",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            },
+                            {
+                                "name": "charges",
+                                "description": null
+                            },
+                            {
+                                "name": "discounts",
+                                "description": null
+                            },
+                            {
+                                "name": "clubcardPoints",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfilmentSummary",
+                                "description": null
+                            },
+                            {
+                                "name": "payments",
+                                "description": null
+                            },
+                            {
+                                "name": "hasReturns",
+                                "description": null
+                            },
+                            {
+                                "name": "returnMethod",
+                                "description": null
+                            },
+                            {
+                                "name": "splitView",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FNFProduct",
+                        "fields": [
+                            {
+                                "name": "averageWeight",
+                                "description": null
+                            },
+                            {
+                                "name": "baseProductId",
+                                "description": null
+                            },
+                            {
+                                "name": "isRestrictedOrderAmendment",
+                                "description": null
+                            },
+                            {
+                                "name": "defaultImageUrl",
+                                "description": null
+                            },
+                            {
+                                "name": "alternateImageUrl",
+                                "description": null
+                            },
+                            {
+                                "name": "description",
+                                "description": null
+                            },
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "seller",
+                                "description": "Seller information about this product. This assumes that products/sellers have a 1-to-1 mapping (which makes sense in conjunction with the existing schema)"
+                            },
+                            {
+                                "name": "adId",
+                                "description": null
+                            },
+                            {
+                                "name": "tpnc",
+                                "description": null
+                            },
+                            {
+                                "name": "tpnb",
+                                "description": null
+                            },
+                            {
+                                "name": "gtin",
+                                "description": null
+                            },
+                            {
+                                "name": "barcode",
+                                "description": null
+                            },
+                            {
+                                "name": "uuid",
+                                "description": null
+                            },
+                            {
+                                "name": "skuId",
+                                "description": null
+                            },
+                            {
+                                "name": "skuCode",
+                                "description": null
+                            },
+                            {
+                                "name": "isVariant",
+                                "description": null
+                            },
+                            {
+                                "name": "isNew",
+                                "description": null
+                            },
+                            {
+                                "name": "isForSale",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "productLocation",
+                                "description": null
+                            },
+                            {
+                                "name": "availability",
+                                "description": null
+                            },
+                            {
+                                "name": "unavailabilityReasons",
+                                "description": null
+                            },
+                            {
+                                "name": "promotions",
+                                "description": null
+                            },
+                            {
+                                "name": "price",
+                                "description": null
+                            },
+                            {
+                                "name": "title",
+                                "description": null
+                            },
+                            {
+                                "name": "brandName",
+                                "description": null
+                            },
+                            {
+                                "name": "subBrand",
+                                "description": null
+                            },
+                            {
+                                "name": "bulkBuyLimit",
+                                "description": null
+                            },
+                            {
+                                "name": "bulkBuyLimitMessage",
+                                "description": null
+                            },
+                            {
+                                "name": "groupBulkBuyLimit",
+                                "description": null
+                            },
+                            {
+                                "name": "bulkBuyLimitGroupId",
+                                "description": null
+                            },
+                            {
+                                "name": "superDepartmentName",
+                                "description": null
+                            },
+                            {
+                                "name": "superDepartmentId",
+                                "description": null
+                            },
+                            {
+                                "name": "departmentName",
+                                "description": null
+                            },
+                            {
+                                "name": "departmentId",
+                                "description": null
+                            },
+                            {
+                                "name": "aisleName",
+                                "description": null
+                            },
+                            {
+                                "name": "aisleId",
+                                "description": null
+                            },
+                            {
+                                "name": "shelfName",
+                                "description": null
+                            },
+                            {
+                                "name": "shelfId",
+                                "description": null
+                            },
+                            {
+                                "name": "restrictedDelivery",
+                                "description": null
+                            },
+                            {
+                                "name": "timeRestrictedDelivery",
+                                "description": null
+                            },
+                            {
+                                "name": "restrictedDeliveryDate",
+                                "description": null
+                            },
+                            {
+                                "name": "restrictedDeliveryTime",
+                                "description": null
+                            },
+                            {
+                                "name": "displayType",
+                                "description": null
+                            },
+                            {
+                                "name": "productType",
+                                "description": null
+                            },
+                            {
+                                "name": "maxWeight",
+                                "description": null
+                            },
+                            {
+                                "name": "minWeight",
+                                "description": null
+                            },
+                            {
+                                "name": "increment",
+                                "description": null
+                            },
+                            {
+                                "name": "depositAmount",
+                                "description": null
+                            },
+                            {
+                                "name": "details",
+                                "description": null
+                            },
+                            {
+                                "name": "multiPackDetails",
+                                "description": null
+                            },
+                            {
+                                "name": "isInFavourites",
+                                "description": null
+                            },
+                            {
+                                "name": "isInAnyList",
+                                "description": null
+                            },
+                            {
+                                "name": "maxQuantityAllowed",
+                                "description": null
+                            },
+                            {
+                                "name": "maxOrderLimit",
+                                "description": null
+                            },
+                            {
+                                "name": "minOrderLimit",
+                                "description": null
+                            },
+                            {
+                                "name": "primaryTaxonomyNode",
+                                "description": null
+                            },
+                            {
+                                "name": "quantityInBasket",
+                                "description": null
+                            },
+                            {
+                                "name": "sellType",
+                                "description": null
+                            },
+                            {
+                                "name": "shortDescription",
+                                "description": null
+                            },
+                            {
+                                "name": "displayImages",
+                                "description": null
+                            },
+                            {
+                                "name": "media",
+                                "description": null
+                            },
+                            {
+                                "name": "distributorAddress",
+                                "description": null
+                            },
+                            {
+                                "name": "manufacturerAddress",
+                                "description": null
+                            },
+                            {
+                                "name": "manufacturer",
+                                "description": null
+                            },
+                            {
+                                "name": "importerAddress",
+                                "description": null
+                            },
+                            {
+                                "name": "returnTo",
+                                "description": null
+                            },
+                            {
+                                "name": "recipes",
+                                "description": null
+                            },
+                            {
+                                "name": "recommended",
+                                "description": null
+                            },
+                            {
+                                "name": "substitutions",
+                                "description": null
+                            },
+                            {
+                                "name": "catchWeightList",
+                                "description": null
+                            },
+                            {
+                                "name": "icons",
+                                "description": null
+                            },
+                            {
+                                "name": "shelfLife",
+                                "description": null
+                            },
+                            {
+                                "name": "restrictions",
+                                "description": null
+                            },
+                            {
+                                "name": "context",
+                                "description": null
+                            },
+                            {
+                                "name": "alternativeCategories",
+                                "description": null
+                            },
+                            {
+                                "name": "reviews",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfillment",
+                                "description": null
+                            },
+                            {
+                                "name": "value",
+                                "description": null
+                            },
+                            {
+                                "name": "alternatives",
+                                "description": null
+                            },
+                            {
+                                "name": "storageClassification",
+                                "description": null
+                            },
+                            {
+                                "name": "overlays",
+                                "description": null
+                            },
+                            {
+                                "name": "charges",
+                                "description": null
+                            },
+                            {
+                                "name": "variations",
+                                "description": null
+                            },
+                            {
+                                "name": "variationAttributes",
+                                "description": null
+                            },
+                            {
+                                "name": "modelMetadata",
+                                "description": "Metadata for personalized tracking"
+                            },
+                            {
+                                "name": "substitutionOptions",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfilment",
+                                "description": null
+                            },
+                            {
+                                "name": "additionalProductInfo",
+                                "description": null
+                            },
+                            {
+                                "name": "returnDetails",
+                                "description": null
+                            },
+                            {
+                                "name": "badgeDetails",
+                                "description": null
+                            },
+                            {
+                                "name": "sellers",
+                                "description": null
+                            },
+                            {
+                                "name": "matchingProducts",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductLocationType",
+                        "fields": null
+                    },
+                    {
+                        "name": "StoreProductLocationType",
+                        "fields": [
+                            {
+                                "name": "aisle",
+                                "description": null
+                            },
+                            {
+                                "name": "aisleOrientation",
+                                "description": null
+                            },
+                            {
+                                "name": "moduleNumber",
+                                "description": null
+                            },
+                            {
+                                "name": "shelfNumber",
+                                "description": null
+                            },
+                            {
+                                "name": "productPosition",
+                                "description": null
+                            },
+                            {
+                                "name": "aisleDescription",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductAvailabilityType",
+                        "fields": null
+                    },
+                    {
+                        "name": "SelectedStoreProductAvailabilityType",
+                        "fields": [
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "quantity",
+                                "description": null
+                            },
+                            {
+                                "name": "location",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "StoreProductStatusType",
+                        "fields": null
+                    },
+                    {
+                        "name": "StoreLocationStockType",
+                        "fields": [
+                            {
+                                "name": "stores",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductStoreAvailabilityType",
+                        "fields": [
+                            {
+                                "name": "storeInformation",
+                                "description": null
+                            },
+                            {
+                                "name": "productLocation",
+                                "description": null
+                            },
+                            {
+                                "name": "availability",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "StoreProductAvailabilityType",
+                        "fields": [
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "quantity",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "storeProductStockArgType",
+                        "fields": null
+                    },
+                    {
+                        "name": "StoreProductConditionType",
+                        "fields": null
+                    },
+                    {
+                        "name": "RewardsProductAvailabilityType",
+                        "fields": [
+                            {
+                                "name": "status",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductUnavailabilityReasonsType",
+                        "fields": [
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "subReason",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductUnavailabilityReasonsEnumType",
+                        "fields": null
+                    },
+                    {
+                        "name": "DateRestrictedDeliveryType",
+                        "fields": [
+                            {
+                                "name": "startDate",
+                                "description": null
+                            },
+                            {
+                                "name": "endDate",
+                                "description": null
+                            },
+                            {
+                                "name": "leadTimeValue",
+                                "description": null
+                            },
+                            {
+                                "name": "message",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "TimeRestrictedDeliveryType",
+                        "fields": [
+                            {
+                                "name": "day",
+                                "description": null
+                            },
+                            {
+                                "name": "startDateTime",
+                                "description": null
+                            },
+                            {
+                                "name": "endDateTime",
+                                "description": null
+                            },
+                            {
+                                "name": "message",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductImageTsays",
+                        "fields": [
+                            {
+                                "name": "url",
+                                "description": null
+                            },
+                            {
+                                "name": "default",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "CatchWeightInfoType",
+                        "fields": [
+                            {
+                                "name": "price",
+                                "description": null
+                            },
+                            {
+                                "name": "weight",
+                                "description": null
+                            },
+                            {
+                                "name": "default",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "UnavailableDeliveryDateRangeType",
+                        "fields": [
+                            {
+                                "name": "startDate",
+                                "description": null
+                            },
+                            {
+                                "name": "endDate",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ConfigArgType",
+                        "fields": null
+                    },
+                    {
+                        "name": "ConfigArgParamType",
+                        "fields": null
+                    },
+                    {
+                        "name": "AlternativesType",
+                        "fields": [
+                            {
+                                "name": "products",
+                                "description": null
+                            },
+                            {
+                                "name": "info",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "AlternativesTypeInterface",
+                        "fields": [
+                            {
+                                "name": "products",
+                                "description": null
+                            },
+                            {
+                                "name": "info",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "AlternativesStrategiesType",
+                        "fields": null
+                    },
+                    {
+                        "name": "FilterResultsType",
+                        "fields": null
+                    },
+                    {
+                        "name": "FilterResultsByName",
+                        "fields": null
+                    },
+                    {
+                        "name": "VariationsType",
+                        "fields": [
+                            {
+                                "name": "products",
+                                "description": null
+                            },
+                            {
+                                "name": "issues",
+                                "description": null
+                            },
+                            {
+                                "name": "priceRange",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "VariationsIssuesType",
+                        "fields": [
+                            {
+                                "name": "reason",
+                                "description": null
+                            },
+                            {
+                                "name": "message",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PriceRange",
+                        "fields": [
+                            {
+                                "name": "minPrice",
+                                "description": null
+                            },
+                            {
+                                "name": "maxPrice",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "VariationAttributesType",
+                        "fields": [
+                            {
+                                "name": "attributeGroup",
+                                "description": null
+                            },
+                            {
+                                "name": "attributeGroupData",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "AttributeGroupDataType",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "value",
+                                "description": null
+                            },
+                            {
+                                "name": "attributes",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductFulfilment",
+                        "fields": null
+                    },
+                    {
+                        "name": "ProductReturnType",
+                        "fields": [
+                            {
+                                "name": "daysToReturn",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "DeliveryOptionsAttribute",
+                        "fields": null
+                    },
+                    {
+                        "name": "AdditionalProductInfoType",
+                        "fields": [
+                            {
+                                "name": "lastPurchaseDate",
+                                "description": null
+                            },
+                            {
+                                "name": "onlineAndInStorePurchasesIn24Weeks",
+                                "description": null
+                            },
+                            {
+                                "name": "onlinePurchasesIn24Weeks",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Date",
+                        "fields": null
+                    },
+                    {
+                        "name": "ReturnDetailsType",
+                        "fields": [
+                            {
+                                "name": "displayName",
+                                "description": null
+                            },
+                            {
+                                "name": "start",
+                                "description": null
+                            },
+                            {
+                                "name": "end",
+                                "description": null
+                            },
+                            {
+                                "name": "minDeliveryDays",
+                                "description": null
+                            },
+                            {
+                                "name": "maxDeliveryDays",
+                                "description": null
+                            },
+                            {
+                                "name": "returnMethod",
+                                "description": null
+                            },
+                            {
+                                "name": "returnType",
+                                "description": null
+                            },
+                            {
+                                "name": "daysToReturn",
+                                "description": null
+                            },
+                            {
+                                "name": "cutoff",
+                                "description": null
+                            },
+                            {
+                                "name": "charges",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductReturnChargeType",
+                        "fields": [
+                            {
+                                "name": "value",
+                                "description": null
+                            },
+                            {
+                                "name": "currency",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BadgeDetailsType",
+                        "fields": [
+                            {
+                                "name": "badges",
+                                "description": null
+                            },
+                            {
+                                "name": "subText",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductSellers",
+                        "fields": [
+                            {
+                                "name": "results",
+                                "description": null
+                            },
+                            {
+                                "name": "totalCount",
+                                "description": null
+                            },
+                            {
+                                "name": "priceRange",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "SellersPriceRange",
+                        "fields": [
+                            {
+                                "name": "minPrice",
+                                "description": null
+                            },
+                            {
+                                "name": "maxPrice",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "SellersAttribute",
+                        "fields": null
+                    },
+                    {
+                        "name": "MatchingProductsType",
+                        "fields": [
+                            {
+                                "name": "products",
+                                "description": null
+                            },
+                            {
+                                "name": "hasMatchingProducts",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FNFReturnsType",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "originalOrderId",
+                                "description": null
+                            },
+                            {
+                                "name": "originalOrderNumber",
+                                "description": null
+                            },
+                            {
+                                "name": "channel",
+                                "description": null
+                            },
+                            {
+                                "name": "startDateTime",
+                                "description": null
+                            },
+                            {
+                                "name": "endDateTime",
+                                "description": null
+                            },
+                            {
+                                "name": "customerId",
+                                "description": null
+                            },
+                            {
+                                "name": "locationUuid",
+                                "description": null
+                            },
+                            {
+                                "name": "localisation",
+                                "description": null
+                            },
+                            {
+                                "name": "storeId",
+                                "description": null
+                            },
+                            {
+                                "name": "payments",
+                                "description": "Shows payment details related to the return, including the refund amount, payment method and refund status"
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "totalPrice",
+                                "description": null
+                            },
+                            {
+                                "name": "itemsCount",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            },
+                            {
+                                "name": "refund",
+                                "description": null
+                            },
+                            {
+                                "name": "charges",
+                                "description": null
+                            },
+                            {
+                                "name": "tracking",
+                                "description": null
+                            },
+                            {
+                                "name": "emailAddress",
+                                "description": null
+                            },
+                            {
+                                "name": "splitView",
+                                "description": null
+                            },
+                            {
+                                "name": "packageCount",
+                                "description": null
+                            },
+                            {
+                                "name": "orderNumber",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ReturnChannelTypeEnum",
+                        "fields": null
+                    },
+                    {
+                        "name": "ReturnItemType",
+                        "fields": [
+                            {
+                                "name": "product",
+                                "description": null
+                            },
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "unit",
+                                "description": null
+                            },
+                            {
+                                "name": "quantity",
+                                "description": null
+                            },
+                            {
+                                "name": "count",
+                                "description": null
+                            },
+                            {
+                                "name": "originalQuantity",
+                                "description": null
+                            },
+                            {
+                                "name": "weight",
+                                "description": null
+                            },
+                            {
+                                "name": "originalWeight",
+                                "description": null
+                            },
+                            {
+                                "name": "cost",
+                                "description": null
+                            },
+                            {
+                                "name": "reasons",
+                                "description": null
+                            },
+                            {
+                                "name": "diagnostics",
+                                "description": null
+                            },
+                            {
+                                "name": "lines",
+                                "description": null
+                            },
+                            {
+                                "name": "seller",
+                                "description": "Seller information about this product. This assumes that products/sellers have a 1-to-1 mapping (which makes sense in conjunction with the existing schema)"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ReturnItemInterface",
+                        "fields": [
+                            {
+                                "name": "product",
+                                "description": null
+                            },
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "unit",
+                                "description": null
+                            },
+                            {
+                                "name": "quantity",
+                                "description": null
+                            },
+                            {
+                                "name": "count",
+                                "description": null
+                            },
+                            {
+                                "name": "originalQuantity",
+                                "description": null
+                            },
+                            {
+                                "name": "weight",
+                                "description": null
+                            },
+                            {
+                                "name": "originalWeight",
+                                "description": null
+                            },
+                            {
+                                "name": "cost",
+                                "description": null
+                            },
+                            {
+                                "name": "reasons",
+                                "description": null
+                            },
+                            {
+                                "name": "seller",
+                                "description": "Seller information about this product. This assumes that products/sellers have a 1-to-1 mapping (which makes sense in conjunction with the existing schema)"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ReturnReasonType",
+                        "fields": [
+                            {
+                                "name": "code",
+                                "description": null
+                            },
+                            {
+                                "name": "message",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ReturnItemDiagnosticsType",
+                        "fields": [
+                            {
+                                "name": "quantity",
+                                "description": null
+                            },
+                            {
+                                "name": "price",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ReturnItemQuantityType",
+                        "fields": [
+                            {
+                                "name": "refundedUnits",
+                                "description": null
+                            },
+                            {
+                                "name": "returnedUnits",
+                                "description": null
+                            },
+                            {
+                                "name": "returnRejectedUnits",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ReturnItemPriceType",
+                        "fields": [
+                            {
+                                "name": "totalPrice",
+                                "description": null
+                            },
+                            {
+                                "name": "refundsPrice",
+                                "description": null
+                            },
+                            {
+                                "name": "afterDiscount",
+                                "description": null
+                            },
+                            {
+                                "name": "beforeDiscount",
+                                "description": null
+                            },
+                            {
+                                "name": "unitPriceAfterDiscount",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "LineItemsType",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "saleType",
+                                "description": null
+                            },
+                            {
+                                "name": "return",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "OrderReturnType",
+                        "fields": [
+                            {
+                                "name": "originalLineItemId",
+                                "description": null
+                            },
+                            {
+                                "name": "originalOrderId",
+                                "description": null
+                            },
+                            {
+                                "name": "returnedAt",
+                                "description": null
+                            },
+                            {
+                                "name": "reason",
+                                "description": null
+                            },
+                            {
+                                "name": "reasonCode",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "refund",
+                                "description": null
+                            },
+                            {
+                                "name": "returnInitiator",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "LineRefundType",
+                        "fields": [
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "amount",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "RefundCharges",
+                        "fields": [
+                            {
+                                "name": "total",
+                                "description": null
+                            },
+                            {
+                                "name": "itemsRefund",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfilment",
+                                "description": null
+                            },
+                            {
+                                "name": "discounts",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ReturnDiscountsType",
+                        "fields": [
+                            {
+                                "name": "total",
+                                "description": null
+                            },
+                            {
+                                "name": "totalPoints",
+                                "description": null
+                            },
+                            {
+                                "name": "categories",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ReturnDiscountCategoriesType",
+                        "fields": [
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "value",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ReturnDiscountCategory",
+                        "fields": null
+                    },
+                    {
+                        "name": "ReturnCharges",
+                        "fields": [
+                            {
+                                "name": "fulfilment",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ReturnTrackingType",
+                        "fields": [
+                            {
+                                "name": "url",
+                                "description": null
+                            },
+                            {
+                                "name": "number",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "timings",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            },
+                            {
+                                "name": "logisticsProvider",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ReturnsTimingsType",
+                        "fields": [
+                            {
+                                "name": "dispatched",
+                                "description": null
+                            },
+                            {
+                                "name": "received",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ReturnParcelItemType",
+                        "fields": [
+                            {
+                                "name": "quantity",
+                                "description": null
+                            },
+                            {
+                                "name": "cost",
+                                "description": null
+                            },
+                            {
+                                "name": "price",
+                                "description": "price of product before and after discount"
+                            },
+                            {
+                                "name": "product",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ReturnOrderItemPriceType",
+                        "fields": [
+                            {
+                                "name": "beforeDiscount",
+                                "description": "price before any discount applied"
+                            },
+                            {
+                                "name": "afterDiscount",
+                                "description": "price after any discount applied"
+                            },
+                            {
+                                "name": "unitPrice",
+                                "description": "price per unit of product"
+                            },
+                            {
+                                "name": "unitPriceAfterDiscount",
+                                "description": "price after discount per unit of product"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "LogisticsProviderType",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ReturnSummaryInterface",
+                        "fields": [
+                            {
+                                "name": "splitView",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ReturnByFulfilmentInterface",
+                        "fields": [
+                            {
+                                "name": "items",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfilment",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "tracking",
+                                "description": null
+                            },
+                            {
+                                "name": "diagnostics",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ReturnParcelTrackingType",
+                        "fields": [
+                            {
+                                "name": "url",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "number",
+                                "description": null
+                            },
+                            {
+                                "name": "logisticsProvider",
+                                "description": null
+                            },
+                            {
+                                "name": "timings",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ReturnLogisticsProviderType",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FulfilmentDiagnostics",
+                        "fields": [
+                            {
+                                "name": "quantity",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "DiagnosticsQuantityType",
+                        "fields": [
+                            {
+                                "name": "refundedUnits",
+                                "description": null
+                            },
+                            {
+                                "name": "returnedUnits",
+                                "description": null
+                            },
+                            {
+                                "name": "returnRejectedUnits",
+                                "description": null
+                            },
+                            {
+                                "name": "returnCancelledUnits",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Facet",
+                        "fields": [
+                            {
+                                "name": "facets",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FacetBooleanType",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "values",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "SearchFacetType",
+                        "fields": null
+                    },
+                    {
+                        "name": "DynamicFilterValues",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "value",
+                                "description": null
+                            },
+                            {
+                                "name": "count",
+                                "description": null
+                            },
+                            {
+                                "name": "isSelected",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FacetFilterType",
+                        "fields": null
+                    },
+                    {
+                        "name": "FacetDynamicType",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "type",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductListFacetsType",
+                        "fields": [
+                            {
+                                "name": "categoryId",
+                                "description": null
+                            },
+                            {
+                                "name": "category",
+                                "description": null
+                            },
+                            {
+                                "name": "facets",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FacetType",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "count",
+                                "description": null
+                            },
+                            {
+                                "name": "selected",
+                                "description": null
+                            },
+                            {
+                                "name": "children",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FacetInterface",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "type",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FacetListType",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "multiplicity",
+                                "description": null
+                            },
+                            {
+                                "name": "values",
+                                "description": null
+                            },
+                            {
+                                "name": "metadata",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Multiplicity",
+                        "fields": null
+                    },
+                    {
+                        "name": "Metadata",
+                        "fields": [
+                            {
+                                "name": "description",
+                                "description": null
+                            },
+                            {
+                                "name": "footerText",
+                                "description": null
+                            },
+                            {
+                                "name": "linkText",
+                                "description": null
+                            },
+                            {
+                                "name": "linkUrl",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FacetMultiLevelType",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "multiplicity",
+                                "description": null
+                            },
+                            {
+                                "name": "values",
+                                "description": null
+                            },
+                            {
+                                "name": "metadata",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "MultilevelFacetValues",
+                        "fields": [
+                            {
+                                "name": "children",
+                                "description": null
+                            },
+                            {
+                                "name": "appliedValues",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "NameValueSelected",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "value",
+                                "description": null
+                            },
+                            {
+                                "name": "isSelected",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FacetRangeType",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "multiplicity",
+                                "description": null
+                            },
+                            {
+                                "name": "metadata",
+                                "description": null
+                            },
+                            {
+                                "name": "values",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FacilityType",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "description",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FacilityInterface",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "description",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FavProductListType",
+                        "fields": [
+                            {
+                                "name": "info",
+                                "description": null
+                            },
+                            {
+                                "name": "products",
+                                "description": null
+                            },
+                            {
+                                "name": "facetGroups",
+                                "description": null
+                            },
+                            {
+                                "name": "options",
+                                "description": null
+                            },
+                            {
+                                "name": "taxonomy",
+                                "description": null
+                            },
+                            {
+                                "name": "filters",
+                                "description": null
+                            },
+                            {
+                                "name": "banners",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BannerType",
+                        "fields": [
+                            {
+                                "name": "background",
+                                "description": null
+                            },
+                            {
+                                "name": "bannerColor",
+                                "description": null
+                            },
+                            {
+                                "name": "brandLogo",
+                                "description": null
+                            },
+                            {
+                                "name": "bannerType",
+                                "description": null
+                            },
+                            {
+                                "name": "callToAction",
+                                "description": null
+                            },
+                            {
+                                "name": "eventPing",
+                                "description": null
+                            },
+                            {
+                                "name": "headline",
+                                "description": null
+                            },
+                            {
+                                "name": "identifier",
+                                "description": null
+                            },
+                            {
+                                "name": "link",
+                                "description": null
+                            },
+                            {
+                                "name": "panelColor",
+                                "description": null
+                            },
+                            {
+                                "name": "priority",
+                                "description": null
+                            },
+                            {
+                                "name": "product1",
+                                "description": null
+                            },
+                            {
+                                "name": "product2",
+                                "description": null
+                            },
+                            {
+                                "name": "subHeadline",
+                                "description": null
+                            },
+                            {
+                                "name": "termsText",
+                                "description": null
+                            },
+                            {
+                                "name": "textColor",
+                                "description": null
+                            },
+                            {
+                                "name": "valueTile",
+                                "description": null
+                            },
+                            {
+                                "name": "associatedTaxonomyNode",
+                                "description": null
+                            },
+                            {
+                                "name": "tracking",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BannerBackgroundImageType",
+                        "fields": [
+                            {
+                                "name": "src",
+                                "description": null
+                            },
+                            {
+                                "name": "texturedImageUrl",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BannerComponentColorType",
+                        "fields": [
+                            {
+                                "name": "backgroundColor",
+                                "description": null
+                            },
+                            {
+                                "name": "textColor",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BannerImageType",
+                        "fields": [
+                            {
+                                "name": "alt",
+                                "description": null
+                            },
+                            {
+                                "name": "src",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BannerCallToActionType",
+                        "fields": [
+                            {
+                                "name": "desktop",
+                                "description": null
+                            },
+                            {
+                                "name": "mobile",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BannerLinkType",
+                        "fields": [
+                            {
+                                "name": "href",
+                                "description": null
+                            },
+                            {
+                                "name": "openInNewWindow",
+                                "description": null
+                            },
+                            {
+                                "name": "bannerImageLinkURL",
+                                "description": null
+                            },
+                            {
+                                "name": "bannerImageAltText",
+                                "description": null
+                            },
+                            {
+                                "name": "bannerImageBrandName",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BannerColorType",
+                        "fields": [
+                            {
+                                "name": "color",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BannerValueTileType",
+                        "fields": [
+                            {
+                                "name": "template_type",
+                                "description": null
+                            },
+                            {
+                                "name": "is_asterisk",
+                                "description": null
+                            },
+                            {
+                                "name": "is_flat_tile",
+                                "description": null
+                            },
+                            {
+                                "name": "value1",
+                                "description": null
+                            },
+                            {
+                                "name": "value2",
+                                "description": null
+                            },
+                            {
+                                "name": "valueTileType",
+                                "description": null
+                            },
+                            {
+                                "name": "regularPrice",
+                                "description": null
+                            },
+                            {
+                                "name": "is_similar_price",
+                                "description": null
+                            },
+                            {
+                                "name": "valueTileColor",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FeaturesType",
+                        "fields": [
+                            {
+                                "name": "features",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FeatureType",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "value",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FreezingInstructionsInterface",
+                        "fields": [
+                            {
+                                "name": "standardGuidelines",
+                                "description": null
+                            },
+                            {
+                                "name": "freezingGuidelines",
+                                "description": null
+                            },
+                            {
+                                "name": "defrosting",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FuelConfirmOrder",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "order",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FulfillmentInfoType",
+                        "fields": [
+                            {
+                                "name": "code",
+                                "description": null
+                            },
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "message",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FulfilmentEstimatedArrivalType",
+                        "fields": [
+                            {
+                                "name": "time",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "EstimatedTimeType",
+                        "fields": [
+                            {
+                                "name": "value",
+                                "description": null
+                            },
+                            {
+                                "name": "unit",
+                                "description": null
+                            },
+                            {
+                                "name": "range",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "EstimatedArrivalRangeType",
+                        "fields": [
+                            {
+                                "name": "min",
+                                "description": null
+                            },
+                            {
+                                "name": "max",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FulfilmentEventType",
+                        "fields": [
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FulfilmentEventStatus",
+                        "fields": null
+                    },
+                    {
+                        "name": "FulfilmentOptionsType",
+                        "fields": [
+                            {
+                                "name": "localisation",
+                                "description": null
+                            },
+                            {
+                                "name": "availableOptions",
+                                "description": null
+                            },
+                            {
+                                "name": "options",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfilmentMethods",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "AvailableOptionsType",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "description",
+                                "description": null
+                            },
+                            {
+                                "name": "slots",
+                                "description": null
+                            },
+                            {
+                                "name": "mostFrequentlyUsed",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FulfilmentOptionType",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "end",
+                                "description": null
+                            },
+                            {
+                                "name": "dispatchDate",
+                                "description": null
+                            },
+                            {
+                                "name": "charge",
+                                "description": null
+                            },
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "locationId",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FulfilmentOptionItemType",
+                        "fields": [
+                            {
+                                "name": "fulfillerId",
+                                "description": null
+                            },
+                            {
+                                "name": "quantity",
+                                "description": null
+                            },
+                            {
+                                "name": "product",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "KnexProductType",
+                        "fields": [
+                            {
+                                "name": "defaultImageUrl",
+                                "description": null
+                            },
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "baseProductId",
+                                "description": null
+                            },
+                            {
+                                "name": "tpnc",
+                                "description": null
+                            },
+                            {
+                                "name": "tpnb",
+                                "description": null
+                            },
+                            {
+                                "name": "gtin",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "isForSale",
+                                "description": null
+                            },
+                            {
+                                "name": "brandName",
+                                "description": null
+                            },
+                            {
+                                "name": "barcode",
+                                "description": null
+                            },
+                            {
+                                "name": "unavailabilityReasons",
+                                "description": null
+                            },
+                            {
+                                "name": "price",
+                                "description": null
+                            },
+                            {
+                                "name": "title",
+                                "description": null
+                            },
+                            {
+                                "name": "shortDescription",
+                                "description": null
+                            },
+                            {
+                                "name": "images",
+                                "description": null
+                            },
+                            {
+                                "name": "storageClassification",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "KnexProductUnavailabilityReasonsType",
+                        "fields": [
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "subReason",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "KnexProductUnavailabilityReasonsEnumType",
+                        "fields": null
+                    },
+                    {
+                        "name": "KnexPriceType",
+                        "fields": [
+                            {
+                                "name": "actual",
+                                "description": null
+                            },
+                            {
+                                "name": "unitOfMeasure",
+                                "description": null
+                            },
+                            {
+                                "name": "unitPrice",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "KnexProductImagesType",
+                        "fields": [
+                            {
+                                "name": "thumbnail",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "KnexProductImageType",
+                        "fields": [
+                            {
+                                "name": "url",
+                                "description": null
+                            },
+                            {
+                                "name": "originalUrl",
+                                "description": null
+                            },
+                            {
+                                "name": "width",
+                                "description": null
+                            },
+                            {
+                                "name": "height",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FulfilmentMethod",
+                        "fields": [
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "description",
+                                "description": null
+                            },
+                            {
+                                "name": "variants",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FulfilmentMethodTypeEnum",
+                        "fields": null
+                    },
+                    {
+                        "name": "FulfilmentMethodType",
+                        "fields": null
+                    },
+                    {
+                        "name": "RegularDeliveryMethod",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "end",
+                                "description": null
+                            },
+                            {
+                                "name": "dispatchDate",
+                                "description": null
+                            },
+                            {
+                                "name": "charge",
+                                "description": null
+                            },
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "locationId",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FulfilmentVariant",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "DeliveryMethod",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "end",
+                                "description": null
+                            },
+                            {
+                                "name": "dispatchDate",
+                                "description": null
+                            },
+                            {
+                                "name": "charge",
+                                "description": null
+                            },
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "locationId",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ImmediateDeliveryMethod",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "end",
+                                "description": null
+                            },
+                            {
+                                "name": "dispatchDate",
+                                "description": null
+                            },
+                            {
+                                "name": "charge",
+                                "description": null
+                            },
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "locationId",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            },
+                            {
+                                "name": "availability",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfilmentEstimatedArrival",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ImmediateDeliveryAvailability",
+                        "fields": [
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "reason",
+                                "description": null
+                            },
+                            {
+                                "name": "range",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ImmediateDeliveryAvailabilityStatus",
+                        "fields": null
+                    },
+                    {
+                        "name": "ImmediateDeliveryUnavailabilityReason",
+                        "fields": null
+                    },
+                    {
+                        "name": "ImmediateDeliveryRange",
+                        "fields": [
+                            {
+                                "name": "startDateTime",
+                                "description": null
+                            },
+                            {
+                                "name": "endDateTime",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "RegularCollectionMethod",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "end",
+                                "description": null
+                            },
+                            {
+                                "name": "charge",
+                                "description": null
+                            },
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "locationId",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "CollectionMethod",
+                        "fields": [
+                            {
+                                "name": "end",
+                                "description": null
+                            },
+                            {
+                                "name": "charge",
+                                "description": null
+                            },
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "locationId",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "RegularDownloadMethod",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "DownloadMethod",
+                        "fields": [
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FulfilmentOptionsStatus",
+                        "fields": null
+                    },
+                    {
+                        "name": "AvailableFulfilments",
+                        "fields": [
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "mostFrequentlyUsed",
+                                "description": null
+                            },
+                            {
+                                "name": "availability",
+                                "description": null
+                            },
+                            {
+                                "name": "variants",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FulfilmensTypeEnum",
+                        "fields": null
+                    },
+                    {
+                        "name": "FulfilmentAvailability",
+                        "fields": [
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "reason",
+                                "description": null
+                            },
+                            {
+                                "name": "operatingHours",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FulfilmentAvailabilityStatus",
+                        "fields": null
+                    },
+                    {
+                        "name": "FulfilmentUnavailabilityReason",
+                        "fields": null
+                    },
+                    {
+                        "name": "WhooshDeliveryRange",
+                        "fields": [
+                            {
+                                "name": "startDateTime",
+                                "description": null
+                            },
+                            {
+                                "name": "endDateTime",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ImmediateFulfilmentType",
+                        "fields": null
+                    },
+                    {
+                        "name": "ImmediateDeliveryType",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "charge",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfilmentEstimatedArrival",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FulfilmentSummary",
+                        "fields": [
+                            {
+                                "name": "start",
+                                "description": null
+                            },
+                            {
+                                "name": "end",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FulfilmentType",
+                        "fields": [
+                            {
+                                "name": "slots",
+                                "description": null
+                            },
+                            {
+                                "name": "metadata",
+                                "description": null
+                            },
+                            {
+                                "name": "collectionPoints",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfilmentLocation",
+                                "description": null
+                            },
+                            {
+                                "name": "groups",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfilmentEstimatedArrival",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfilmentRecommendation",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FulfilmentGroupType",
+                        "fields": [
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "duration",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FulfilmentRecommendationsType",
+                        "fields": null
+                    },
+                    {
+                        "name": "MostRecent",
+                        "fields": [
+                            {
+                                "name": "address",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "MostFrequent",
+                        "fields": [
+                            {
+                                "name": "address",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Fulfilments",
+                        "fields": [
+                            {
+                                "name": "updateActions",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FulfilmentUpdateAction",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "deliveryGroupId",
+                                "description": null
+                            },
+                            {
+                                "name": "action",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "SlotActions",
+                        "fields": null
+                    },
+                    {
+                        "name": "FulfilmentNodeStatus",
+                        "fields": null
+                    },
+                    {
+                        "name": "GHSBasketSummary",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "guidePrice",
+                                "description": null
+                            },
+                            {
+                                "name": "totalPrice",
+                                "description": null
+                            },
+                            {
+                                "name": "totalItems",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            },
+                            {
+                                "name": "charges",
+                                "description": null
+                            },
+                            {
+                                "name": "discounts",
+                                "description": null
+                            },
+                            {
+                                "name": "clubcardPoints",
+                                "description": null
+                            },
+                            {
+                                "name": "propositionalInfo",
+                                "description": null
+                            },
+                            {
+                                "name": "preferences",
+                                "description": null
+                            },
+                            {
+                                "name": "slot",
+                                "description": null
+                            },
+                            {
+                                "name": "deliveryAddress",
+                                "description": null
+                            },
+                            {
+                                "name": "locationUuid",
+                                "description": null
+                            },
+                            {
+                                "name": "constraints",
+                                "description": null
+                            },
+                            {
+                                "name": "paymentItems",
+                                "description": null
+                            },
+                            {
+                                "name": "issues",
+                                "description": null
+                            },
+                            {
+                                "name": "updates",
+                                "description": null
+                            },
+                            {
+                                "name": "splitView",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "GHSConfirmOrder",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "amended",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "GHSOrderSummary",
+                        "fields": [
+                            {
+                                "name": "guidePrice",
+                                "description": null
+                            },
+                            {
+                                "name": "totalPrice",
+                                "description": null
+                            },
+                            {
+                                "name": "totalItems",
+                                "description": null
+                            },
+                            {
+                                "name": "orderId",
+                                "description": null
+                            },
+                            {
+                                "name": "orderNo",
+                                "description": null
+                            },
+                            {
+                                "name": "invoiceId",
+                                "description": null
+                            },
+                            {
+                                "name": "quoteId",
+                                "description": null
+                            },
+                            {
+                                "name": "cancelledDateTime",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "statusInfo",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            },
+                            {
+                                "name": "charges",
+                                "description": null
+                            },
+                            {
+                                "name": "discounts",
+                                "description": null
+                            },
+                            {
+                                "name": "clubcardPoints",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfilmentSummary",
+                                "description": null
+                            },
+                            {
+                                "name": "payments",
+                                "description": null
+                            },
+                            {
+                                "name": "hasReturns",
+                                "description": null
+                            },
+                            {
+                                "name": "returnMethod",
+                                "description": null
+                            },
+                            {
+                                "name": "splitView",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "GenericListType",
+                        "fields": [
+                            {
+                                "name": "items",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "GenericProductListType",
+                        "fields": [
+                            {
+                                "name": "items",
+                                "description": null
+                            },
+                            {
+                                "name": "updates",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "GenericProductListInterface",
+                        "fields": [
+                            {
+                                "name": "items",
+                                "description": null
+                            },
+                            {
+                                "name": "updates",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "GenericProductListItemsInterface",
+                        "fields": [
+                            {
+                                "name": "product",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductListUpdatesInterface",
+                        "fields": [
+                            {
+                                "name": "items",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductListItemsUpdatesInterface",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "successful",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "GenericProductListItemsType",
+                        "fields": [
+                            {
+                                "name": "product",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductListUpdatesType",
+                        "fields": [
+                            {
+                                "name": "items",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductListItemsUpdatesType",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "successful",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "SubscriptionType",
+                        "fields": [
+                            {
+                                "name": "customerSubscriptionId",
+                                "description": null
+                            },
+                            {
+                                "name": "recurringPaymentId",
+                                "description": null
+                            },
+                            {
+                                "name": "amount",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "SubscriptionStatusType",
+                        "fields": [
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "success",
+                                "description": null
+                            },
+                            {
+                                "name": "message",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "GuidelineDailyAmountInterface",
+                        "fields": [
+                            {
+                                "name": "title",
+                                "description": null
+                            },
+                            {
+                                "name": "dailyAmounts",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "GuidelineDailyAmountItemInterface",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "value",
+                                "description": null
+                            },
+                            {
+                                "name": "percent",
+                                "description": null
+                            },
+                            {
+                                "name": "rating",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "GuidelineDailyAmountItemType",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "value",
+                                "description": null
+                            },
+                            {
+                                "name": "percent",
+                                "description": null
+                            },
+                            {
+                                "name": "rating",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "GuidelineDailyAmountType",
+                        "fields": [
+                            {
+                                "name": "title",
+                                "description": null
+                            },
+                            {
+                                "name": "dailyAmounts",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "HazardInfoInterface",
+                        "fields": [
+                            {
+                                "name": "chemicalName",
+                                "description": null
+                            },
+                            {
+                                "name": "productName",
+                                "description": null
+                            },
+                            {
+                                "name": "signalWord",
+                                "description": null
+                            },
+                            {
+                                "name": "statements",
+                                "description": null
+                            },
+                            {
+                                "name": "symbolCodes",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "HfssType",
+                        "fields": [
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "score",
+                                "description": null
+                            },
+                            {
+                                "name": "category",
+                                "description": null
+                            },
+                            {
+                                "name": "indicator",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "HoursForDayInterface",
+                        "fields": [
+                            {
+                                "name": "isOpen",
+                                "description": null
+                            },
+                            {
+                                "name": "open",
+                                "description": null
+                            },
+                            {
+                                "name": "close",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "HoursForDayType",
+                        "fields": [
+                            {
+                                "name": "isOpen",
+                                "description": null
+                            },
+                            {
+                                "name": "open",
+                                "description": null
+                            },
+                            {
+                                "name": "close",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "IconsInfoType",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "caption",
+                                "description": null
+                            },
+                            {
+                                "name": "url",
+                                "description": null
+                            },
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "customerFacing",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ImageInterface",
+                        "fields": [
+                            {
+                                "name": "url",
+                                "description": null
+                            },
+                            {
+                                "name": "width",
+                                "description": null
+                            },
+                            {
+                                "name": "height",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "IntoleranceInfoType",
+                        "fields": [
+                            {
+                                "name": "includes",
+                                "description": null
+                            },
+                            {
+                                "name": "excludes",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "IntoleranceCategoryType",
+                        "fields": [
+                            {
+                                "name": "category",
+                                "description": null
+                            },
+                            {
+                                "name": "subCategory",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ItemFulfilmentDetails",
+                        "fields": [
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "dateTime",
+                                "description": null
+                            },
+                            {
+                                "name": "quantity",
+                                "description": null
+                            },
+                            {
+                                "name": "trackId",
+                                "description": null
+                            },
+                            {
+                                "name": "reason",
+                                "description": null
+                            },
+                            {
+                                "name": "voucherInfo",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "VoucherDetails",
+                        "fields": [
+                            {
+                                "name": "reason",
+                                "description": null
+                            },
+                            {
+                                "name": "code",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "format",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfilmentType",
+                                "description": null
+                            },
+                            {
+                                "name": "link",
+                                "description": null
+                            },
+                            {
+                                "name": "value",
+                                "description": null
+                            },
+                            {
+                                "name": "expiry",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "RewardFulfilmentType",
+                        "fields": null
+                    },
+                    {
+                        "name": "ItemPromotion",
+                        "fields": [
+                            {
+                                "name": "description",
+                                "description": null
+                            },
+                            {
+                                "name": "headline",
+                                "description": "Used for TSAYS, TSAYS can use description field . this can be deprecated"
+                            },
+                            {
+                                "name": "unitSellingInfo",
+                                "description": "Used for TSAYS, TSAYS can use description field . this can be deprecated"
+                            },
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "promotionType",
+                                "description": null
+                            },
+                            {
+                                "name": "startDate",
+                                "description": null
+                            },
+                            {
+                                "name": "endDate",
+                                "description": null
+                            },
+                            {
+                                "name": "timesTriggered",
+                                "description": null
+                            },
+                            {
+                                "name": "missed",
+                                "description": null
+                            },
+                            {
+                                "name": "warnings",
+                                "description": null
+                            },
+                            {
+                                "name": "info",
+                                "description": null
+                            },
+                            {
+                                "name": "facetGroups",
+                                "description": null
+                            },
+                            {
+                                "name": "products",
+                                "description": null
+                            },
+                            {
+                                "name": "savings",
+                                "description": null
+                            },
+                            {
+                                "name": "taxonomy",
+                                "description": null
+                            },
+                            {
+                                "name": "filters",
+                                "description": null
+                            },
+                            {
+                                "name": "statuses",
+                                "description": null
+                            },
+                            {
+                                "name": "attributes",
+                                "description": null
+                            },
+                            {
+                                "name": "price",
+                                "description": null
+                            },
+                            {
+                                "name": "multiplier",
+                                "description": null
+                            },
+                            {
+                                "name": "qualities",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "QueryInterface",
+                        "fields": [
+                            {
+                                "name": "searchTerm",
+                                "description": null
+                            },
+                            {
+                                "name": "actualTerm",
+                                "description": null
+                            },
+                            {
+                                "name": "queryPhase",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ListInfoType",
+                        "fields": [
+                            {
+                                "name": "matchType",
+                                "description": null
+                            },
+                            {
+                                "name": "offset",
+                                "description": null
+                            },
+                            {
+                                "name": "total",
+                                "description": null
+                            },
+                            {
+                                "name": "page",
+                                "description": null
+                            },
+                            {
+                                "name": "count",
+                                "description": null
+                            },
+                            {
+                                "name": "pageSize",
+                                "description": null
+                            },
+                            {
+                                "name": "title",
+                                "description": null
+                            },
+                            {
+                                "name": "pageId",
+                                "description": null
+                            },
+                            {
+                                "name": "query",
+                                "description": null
+                            },
+                            {
+                                "name": "sortBy",
+                                "description": null
+                            },
+                            {
+                                "name": "subTitle",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ListOptionsInterface",
+                        "fields": [
+                            {
+                                "name": "sortBy",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ListOptionsType",
+                        "fields": [
+                            {
+                                "name": "sortBy",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "LoyaltyEnrolmentUnionType",
+                        "fields": null
+                    },
+                    {
+                        "name": "LoyaltyEnrolmentSuccess",
+                        "fields": [
+                            {
+                                "name": "status",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "LoyaltyEnrolmentStatusEnumType",
+                        "fields": null
+                    },
+                    {
+                        "name": "LoyaltyEnrolmentFailure",
+                        "fields": [
+                            {
+                                "name": "error",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "LoyaltyExchangeUnionType",
+                        "fields": null
+                    },
+                    {
+                        "name": "LoyaltyExchangeSuccess",
+                        "fields": [
+                            {
+                                "name": "status",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "LoyaltyExchangeStatusEnumType",
+                        "fields": null
+                    },
+                    {
+                        "name": "LoyaltyExchangeFailure",
+                        "fields": [
+                            {
+                                "name": "error",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "LoyaltyStatusEligibilityType",
+                        "fields": [
+                            {
+                                "name": "eligibility",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "LoyaltyExchangeEligibilityType",
+                        "fields": [
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "message",
+                                "description": "eligibility status"
+                            },
+                            {
+                                "name": "reasonCode",
+                                "description": "reasonType given in case of ineligibility"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "LoyaltyExchangeEligibilityStatusEnumType",
+                        "fields": null
+                    },
+                    {
+                        "name": "LoyaltyExchangeStatusType",
+                        "fields": [
+                            {
+                                "name": "status",
+                                "description": "status of exchange"
+                            },
+                            {
+                                "name": "requestDate",
+                                "description": "date of exchange request"
+                            },
+                            {
+                                "name": "pointsRedeemed",
+                                "description": "point redeem in exchange"
+                            },
+                            {
+                                "name": "value",
+                                "description": "remuneration of exchange"
+                            },
+                            {
+                                "name": "exchangeId",
+                                "description": "id of exchange"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "LoyaltyType",
+                        "fields": [
+                            {
+                                "name": "cards",
+                                "description": null
+                            },
+                            {
+                                "name": "schemes",
+                                "description": null
+                            },
+                            {
+                                "name": "points",
+                                "description": null
+                            },
+                            {
+                                "name": "secureBarcode",
+                                "description": null
+                            },
+                            {
+                                "name": "vouchersTotalValue",
+                                "description": null
+                            },
+                            {
+                                "name": "statement",
+                                "description": null
+                            },
+                            {
+                                "name": "fastVoucherStatus",
+                                "description": null
+                            },
+                            {
+                                "name": "coupons",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "LoyaltyCardType",
+                        "fields": [
+                            {
+                                "name": "number",
+                                "description": null
+                            },
+                            {
+                                "name": "cardType",
+                                "description": null
+                            },
+                            {
+                                "name": "cardDescription",
+                                "description": null
+                            },
+                            {
+                                "name": "dateCreated",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ClubcardType",
+                        "fields": null
+                    },
+                    {
+                        "name": "LoyaltySchemeType",
+                        "fields": [
+                            {
+                                "name": "schemeId",
+                                "description": null
+                            },
+                            {
+                                "name": "isDebitable",
+                                "description": null
+                            },
+                            {
+                                "name": "accountStatus",
+                                "description": null
+                            },
+                            {
+                                "name": "points",
+                                "description": null
+                            },
+                            {
+                                "name": "coupons",
+                                "description": null
+                            },
+                            {
+                                "name": "vouchers",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "LoyaltySchemeNameEnumType",
+                        "fields": null
+                    },
+                    {
+                        "name": "LoyaltySchemeAccountStatusEnumType",
+                        "fields": null
+                    },
+                    {
+                        "name": "LoyalTyPointType",
+                        "fields": [
+                            {
+                                "name": "total",
+                                "description": null
+                            },
+                            {
+                                "name": "debitableTotal",
+                                "description": null
+                            },
+                            {
+                                "name": "nextMileStone",
+                                "description": null
+                            },
+                            {
+                                "name": "conversionPreference",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "LoyaltyTotalPointInfoType",
+                        "fields": [
+                            {
+                                "name": "count",
+                                "description": null
+                            },
+                            {
+                                "name": "value",
+                                "description": null
+                            },
+                            {
+                                "name": "rewardedWith",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "LoyaltyNextEstimateType",
+                        "fields": [
+                            {
+                                "name": "pointToBeCollected",
+                                "description": null
+                            },
+                            {
+                                "name": "rewardedWith",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ConversionPreferenceEnumType",
+                        "fields": null
+                    },
+                    {
+                        "name": "LoyaltyCouponType",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": "Id is the scannable code of the coupon, and it will come as null for ONLINE only coupons"
+                            },
+                            {
+                                "name": "uuid",
+                                "description": "UUID is the unique identifier for the coupons"
+                            },
+                            {
+                                "name": "alphaNumericId",
+                                "description": null
+                            },
+                            {
+                                "name": "description",
+                                "description": null
+                            },
+                            {
+                                "name": "expiry",
+                                "description": null
+                            },
+                            {
+                                "name": "canBeActivated",
+                                "description": null
+                            },
+                            {
+                                "name": "validFrom",
+                                "description": null
+                            },
+                            {
+                                "name": "maxRedemptionsAllowed",
+                                "description": null
+                            },
+                            {
+                                "name": "redemptionsLeft",
+                                "description": null
+                            },
+                            {
+                                "name": "redemptionDetails",
+                                "description": null
+                            },
+                            {
+                                "name": "promotionId",
+                                "description": null
+                            },
+                            {
+                                "name": "value",
+                                "description": null
+                            },
+                            {
+                                "name": "classification",
+                                "description": null
+                            },
+                            {
+                                "name": "state",
+                                "description": null
+                            },
+                            {
+                                "name": "promotionDetails",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "LoyaltyRedemptionDetail",
+                        "fields": [
+                            {
+                                "name": "redeemedOn",
+                                "description": null
+                            },
+                            {
+                                "name": "locationUuid",
+                                "description": null
+                            },
+                            {
+                                "name": "storeId",
+                                "description": null
+                            },
+                            {
+                                "name": "reference",
+                                "description": null
+                            },
+                            {
+                                "name": "description",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "loyaltyFilterEnumType",
+                        "fields": null
+                    },
+                    {
+                        "name": "CouponRedemptionStateEnumType",
+                        "fields": null
+                    },
+                    {
+                        "name": "PromotionDetailsType",
+                        "fields": [
+                            {
+                                "name": "type",
+                                "description": "voucher's or coupon's type"
+                            },
+                            {
+                                "name": "subType",
+                                "description": "voucher's or coupon's subtype"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BarcodeType",
+                        "fields": [
+                            {
+                                "name": "expiryTime",
+                                "description": null
+                            },
+                            {
+                                "name": "keyableBarcode",
+                                "description": null
+                            },
+                            {
+                                "name": "wallet",
+                                "description": "Wallet Barcode for tracking clubcard scans on different medium"
+                            },
+                            {
+                                "name": "oneDimensionalBarcode",
+                                "description": null
+                            },
+                            {
+                                "name": "twoDimensionalBarcode",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "LoyaltyStatementType",
+                        "fields": [
+                            {
+                                "name": "lineItems",
+                                "description": null
+                            },
+                            {
+                                "name": "dateGroups",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "LoyaltyStatementLineItemType",
+                        "fields": [
+                            {
+                                "name": "description",
+                                "description": null
+                            },
+                            {
+                                "name": "points",
+                                "description": null
+                            },
+                            {
+                                "name": "transactionDate",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "StatementDateGroupType",
+                        "fields": [
+                            {
+                                "name": "categoryType",
+                                "description": null
+                            },
+                            {
+                                "name": "intervals",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "StatementIntervalType",
+                        "fields": [
+                            {
+                                "name": "start",
+                                "description": null
+                            },
+                            {
+                                "name": "end",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ItemListPageInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "FastVouchersType",
+                        "fields": [
+                            {
+                                "name": "message",
+                                "description": null
+                            },
+                            {
+                                "name": "reasonCode",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FastVoucherStatusType",
+                        "fields": [
+                            {
+                                "name": "voucherStatus",
+                                "description": null
+                            },
+                            {
+                                "name": "pointsRedeemed",
+                                "description": null
+                            },
+                            {
+                                "name": "voucherValue",
+                                "description": null
+                            },
+                            {
+                                "name": "requestDate",
+                                "description": null
+                            },
+                            {
+                                "name": "message",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "MPBasketSummary",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "guidePrice",
+                                "description": null
+                            },
+                            {
+                                "name": "totalPrice",
+                                "description": null
+                            },
+                            {
+                                "name": "totalItems",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            },
+                            {
+                                "name": "charges",
+                                "description": null
+                            },
+                            {
+                                "name": "discounts",
+                                "description": null
+                            },
+                            {
+                                "name": "clubcardPoints",
+                                "description": null
+                            },
+                            {
+                                "name": "propositionalInfo",
+                                "description": "List of unique Propositions for basket"
+                            },
+                            {
+                                "name": "deliveryAddress",
+                                "description": null
+                            },
+                            {
+                                "name": "locationUuid",
+                                "description": null
+                            },
+                            {
+                                "name": "constraints",
+                                "description": null
+                            },
+                            {
+                                "name": "paymentItems",
+                                "description": null
+                            },
+                            {
+                                "name": "issues",
+                                "description": null
+                            },
+                            {
+                                "name": "updates",
+                                "description": null
+                            },
+                            {
+                                "name": "splitView",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "MPConfirmOrder",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "MPOrderSummary",
+                        "fields": [
+                            {
+                                "name": "guidePrice",
+                                "description": null
+                            },
+                            {
+                                "name": "totalPrice",
+                                "description": null
+                            },
+                            {
+                                "name": "totalItems",
+                                "description": null
+                            },
+                            {
+                                "name": "orderId",
+                                "description": null
+                            },
+                            {
+                                "name": "orderNo",
+                                "description": null
+                            },
+                            {
+                                "name": "invoiceId",
+                                "description": null
+                            },
+                            {
+                                "name": "quoteId",
+                                "description": null
+                            },
+                            {
+                                "name": "cancelledDateTime",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "statusInfo",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            },
+                            {
+                                "name": "charges",
+                                "description": null
+                            },
+                            {
+                                "name": "discounts",
+                                "description": null
+                            },
+                            {
+                                "name": "clubcardPoints",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfilmentSummary",
+                                "description": null
+                            },
+                            {
+                                "name": "payments",
+                                "description": null
+                            },
+                            {
+                                "name": "hasReturns",
+                                "description": null
+                            },
+                            {
+                                "name": "returnMethod",
+                                "description": null
+                            },
+                            {
+                                "name": "splitView",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "MPProduct",
+                        "fields": [
+                            {
+                                "name": "averageWeight",
+                                "description": null
+                            },
+                            {
+                                "name": "baseProductId",
+                                "description": null
+                            },
+                            {
+                                "name": "isRestrictedOrderAmendment",
+                                "description": null
+                            },
+                            {
+                                "name": "defaultImageUrl",
+                                "description": null
+                            },
+                            {
+                                "name": "alternateImageUrl",
+                                "description": null
+                            },
+                            {
+                                "name": "description",
+                                "description": null
+                            },
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "seller",
+                                "description": "Seller information about this product. This assumes that products/sellers have a 1-to-1 mapping (which makes sense in conjunction with the existing schema)"
+                            },
+                            {
+                                "name": "adId",
+                                "description": null
+                            },
+                            {
+                                "name": "tpnc",
+                                "description": null
+                            },
+                            {
+                                "name": "tpnb",
+                                "description": null
+                            },
+                            {
+                                "name": "gtin",
+                                "description": null
+                            },
+                            {
+                                "name": "barcode",
+                                "description": null
+                            },
+                            {
+                                "name": "uuid",
+                                "description": null
+                            },
+                            {
+                                "name": "skuId",
+                                "description": null
+                            },
+                            {
+                                "name": "skuCode",
+                                "description": null
+                            },
+                            {
+                                "name": "isVariant",
+                                "description": null
+                            },
+                            {
+                                "name": "isNew",
+                                "description": null
+                            },
+                            {
+                                "name": "isForSale",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "productLocation",
+                                "description": null
+                            },
+                            {
+                                "name": "availability",
+                                "description": null
+                            },
+                            {
+                                "name": "unavailabilityReasons",
+                                "description": null
+                            },
+                            {
+                                "name": "promotions",
+                                "description": null
+                            },
+                            {
+                                "name": "price",
+                                "description": null
+                            },
+                            {
+                                "name": "title",
+                                "description": null
+                            },
+                            {
+                                "name": "brandName",
+                                "description": null
+                            },
+                            {
+                                "name": "subBrand",
+                                "description": null
+                            },
+                            {
+                                "name": "bulkBuyLimit",
+                                "description": null
+                            },
+                            {
+                                "name": "bulkBuyLimitMessage",
+                                "description": null
+                            },
+                            {
+                                "name": "groupBulkBuyLimit",
+                                "description": null
+                            },
+                            {
+                                "name": "bulkBuyLimitGroupId",
+                                "description": null
+                            },
+                            {
+                                "name": "superDepartmentName",
+                                "description": null
+                            },
+                            {
+                                "name": "superDepartmentId",
+                                "description": null
+                            },
+                            {
+                                "name": "departmentName",
+                                "description": null
+                            },
+                            {
+                                "name": "departmentId",
+                                "description": null
+                            },
+                            {
+                                "name": "aisleName",
+                                "description": null
+                            },
+                            {
+                                "name": "aisleId",
+                                "description": null
+                            },
+                            {
+                                "name": "shelfName",
+                                "description": null
+                            },
+                            {
+                                "name": "shelfId",
+                                "description": null
+                            },
+                            {
+                                "name": "restrictedDelivery",
+                                "description": null
+                            },
+                            {
+                                "name": "timeRestrictedDelivery",
+                                "description": null
+                            },
+                            {
+                                "name": "restrictedDeliveryDate",
+                                "description": null
+                            },
+                            {
+                                "name": "restrictedDeliveryTime",
+                                "description": null
+                            },
+                            {
+                                "name": "displayType",
+                                "description": null
+                            },
+                            {
+                                "name": "productType",
+                                "description": null
+                            },
+                            {
+                                "name": "maxWeight",
+                                "description": null
+                            },
+                            {
+                                "name": "minWeight",
+                                "description": null
+                            },
+                            {
+                                "name": "increment",
+                                "description": null
+                            },
+                            {
+                                "name": "depositAmount",
+                                "description": null
+                            },
+                            {
+                                "name": "details",
+                                "description": null
+                            },
+                            {
+                                "name": "multiPackDetails",
+                                "description": null
+                            },
+                            {
+                                "name": "isInFavourites",
+                                "description": null
+                            },
+                            {
+                                "name": "isInAnyList",
+                                "description": null
+                            },
+                            {
+                                "name": "maxQuantityAllowed",
+                                "description": null
+                            },
+                            {
+                                "name": "maxOrderLimit",
+                                "description": null
+                            },
+                            {
+                                "name": "minOrderLimit",
+                                "description": null
+                            },
+                            {
+                                "name": "primaryTaxonomyNode",
+                                "description": null
+                            },
+                            {
+                                "name": "quantityInBasket",
+                                "description": null
+                            },
+                            {
+                                "name": "sellType",
+                                "description": null
+                            },
+                            {
+                                "name": "shortDescription",
+                                "description": null
+                            },
+                            {
+                                "name": "displayImages",
+                                "description": null
+                            },
+                            {
+                                "name": "media",
+                                "description": null
+                            },
+                            {
+                                "name": "distributorAddress",
+                                "description": null
+                            },
+                            {
+                                "name": "manufacturerAddress",
+                                "description": null
+                            },
+                            {
+                                "name": "manufacturer",
+                                "description": null
+                            },
+                            {
+                                "name": "importerAddress",
+                                "description": null
+                            },
+                            {
+                                "name": "returnTo",
+                                "description": null
+                            },
+                            {
+                                "name": "recipes",
+                                "description": null
+                            },
+                            {
+                                "name": "recommended",
+                                "description": null
+                            },
+                            {
+                                "name": "substitutions",
+                                "description": null
+                            },
+                            {
+                                "name": "catchWeightList",
+                                "description": null
+                            },
+                            {
+                                "name": "icons",
+                                "description": null
+                            },
+                            {
+                                "name": "shelfLife",
+                                "description": null
+                            },
+                            {
+                                "name": "restrictions",
+                                "description": null
+                            },
+                            {
+                                "name": "context",
+                                "description": null
+                            },
+                            {
+                                "name": "alternativeCategories",
+                                "description": null
+                            },
+                            {
+                                "name": "reviews",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfillment",
+                                "description": null
+                            },
+                            {
+                                "name": "value",
+                                "description": null
+                            },
+                            {
+                                "name": "alternatives",
+                                "description": null
+                            },
+                            {
+                                "name": "storageClassification",
+                                "description": null
+                            },
+                            {
+                                "name": "overlays",
+                                "description": null
+                            },
+                            {
+                                "name": "charges",
+                                "description": null
+                            },
+                            {
+                                "name": "variations",
+                                "description": null
+                            },
+                            {
+                                "name": "variationAttributes",
+                                "description": null
+                            },
+                            {
+                                "name": "modelMetadata",
+                                "description": "Metadata for personalized tracking"
+                            },
+                            {
+                                "name": "substitutionOptions",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfilment",
+                                "description": null
+                            },
+                            {
+                                "name": "additionalProductInfo",
+                                "description": null
+                            },
+                            {
+                                "name": "returnDetails",
+                                "description": null
+                            },
+                            {
+                                "name": "badgeDetails",
+                                "description": null
+                            },
+                            {
+                                "name": "sellers",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "MPReturnsType",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "originalOrderId",
+                                "description": null
+                            },
+                            {
+                                "name": "originalOrderNumber",
+                                "description": null
+                            },
+                            {
+                                "name": "channel",
+                                "description": null
+                            },
+                            {
+                                "name": "startDateTime",
+                                "description": null
+                            },
+                            {
+                                "name": "endDateTime",
+                                "description": null
+                            },
+                            {
+                                "name": "customerId",
+                                "description": null
+                            },
+                            {
+                                "name": "locationUuid",
+                                "description": null
+                            },
+                            {
+                                "name": "localisation",
+                                "description": null
+                            },
+                            {
+                                "name": "storeId",
+                                "description": null
+                            },
+                            {
+                                "name": "payments",
+                                "description": "Shows payment details related to the return, including the refund amount, payment method and refund status"
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "totalPrice",
+                                "description": null
+                            },
+                            {
+                                "name": "itemsCount",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            },
+                            {
+                                "name": "refund",
+                                "description": null
+                            },
+                            {
+                                "name": "charges",
+                                "description": null
+                            },
+                            {
+                                "name": "tracking",
+                                "description": null
+                            },
+                            {
+                                "name": "emailAddress",
+                                "description": null
+                            },
+                            {
+                                "name": "splitView",
+                                "description": null
+                            },
+                            {
+                                "name": "packageCount",
+                                "description": null
+                            },
+                            {
+                                "name": "orderNumber",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ManufacturerAddressType",
+                        "fields": [
+                            {
+                                "name": "addresses",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "MarketplaceFulfilmentItemInterface",
+                        "fields": [
+                            {
+                                "name": "expectedItems",
+                                "description": "array of items ordered by customer"
+                            },
+                            {
+                                "name": "actualItems",
+                                "description": "Array of items that were actually delivered/collected after substitution/unavailability"
+                            },
+                            {
+                                "name": "diagnostics",
+                                "description": "price and quantity information of each item ordered by customer"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FulfilmentExpectedItemType",
+                        "fields": [
+                            {
+                                "name": "product",
+                                "description": "product fulfilment expected by customer"
+                            },
+                            {
+                                "name": "quantity",
+                                "description": "quantity fulfilment expected by customer"
+                            },
+                            {
+                                "name": "substitutionPreference",
+                                "description": "whether substitution is allowed for ordered product"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FulfilmentProductType",
+                        "fields": [
+                            {
+                                "name": "tpnb",
+                                "description": "tpnb of product"
+                            },
+                            {
+                                "name": "tpnc",
+                                "description": "tpnc of product"
+                            },
+                            {
+                                "name": "gtin",
+                                "description": "gtin of product"
+                            },
+                            {
+                                "name": "barcode",
+                                "description": "barcode of product"
+                            },
+                            {
+                                "name": "title",
+                                "description": "title of product"
+                            },
+                            {
+                                "name": "storageClassification",
+                                "description": "storageClassification of product"
+                            },
+                            {
+                                "name": "price",
+                                "description": "price of product before and after discount"
+                            },
+                            {
+                                "name": "image",
+                                "description": "url of product representative image"
+                            },
+                            {
+                                "name": "superDepartmentId",
+                                "description": "department id of product"
+                            },
+                            {
+                                "name": "superDepartmentName",
+                                "description": "department name of product"
+                            },
+                            {
+                                "name": "departmentId",
+                                "description": "department id of product"
+                            },
+                            {
+                                "name": "departmentName",
+                                "description": "department name of product"
+                            },
+                            {
+                                "name": "aisleId",
+                                "description": "aisledId where product is kept"
+                            },
+                            {
+                                "name": "aisleName",
+                                "description": "aisle name where product is kept"
+                            },
+                            {
+                                "name": "shelfId",
+                                "description": "shelfId where product is kept"
+                            },
+                            {
+                                "name": "shelfName",
+                                "description": "shelf name where product is kept"
+                            },
+                            {
+                                "name": "isAcceptableDate",
+                                "description": "self life of product"
+                            },
+                            {
+                                "name": "useByDate",
+                                "description": "self life of product"
+                            },
+                            {
+                                "name": "promotions",
+                                "description": "array of promotion applied on product"
+                            },
+                            {
+                                "name": "seller",
+                                "description": "information about seller of product"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "OrderItemPriceType",
+                        "fields": [
+                            {
+                                "name": "beforeDiscount",
+                                "description": "price before any discount applied"
+                            },
+                            {
+                                "name": "afterDiscount",
+                                "description": "price after any discount applied"
+                            },
+                            {
+                                "name": "unitPrice",
+                                "description": "price per unit of product"
+                            },
+                            {
+                                "name": "unitPriceAfterDiscount",
+                                "description": "price after discount per unit of product"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FulfilmentItemQuantityType",
+                        "fields": [
+                            {
+                                "name": "numberOfUnits",
+                                "description": "number of unit per product"
+                            },
+                            {
+                                "name": "weight",
+                                "description": "weight of product"
+                            },
+                            {
+                                "name": "unitOfMeasure",
+                                "description": "measurement of unit for product"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "SubstitutionPreferenceStatus",
+                        "fields": null
+                    },
+                    {
+                        "name": "FulfilmentActualType",
+                        "fields": [
+                            {
+                                "name": "items",
+                                "description": "Array of items that were actually delivered/collected after substitution/unavailability"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FulfilledWithType",
+                        "fields": [
+                            {
+                                "name": "charges",
+                                "description": "Applicable changes on product delivered/collected"
+                            },
+                            {
+                                "name": "product",
+                                "description": "Information about product delivered/collected"
+                            },
+                            {
+                                "name": "fulfilmentStatus",
+                                "description": "Fulfillment status of product delivered/collected"
+                            },
+                            {
+                                "name": "quantity",
+                                "description": "Quantity of product delivered/collected"
+                            },
+                            {
+                                "name": "issue",
+                                "description": "Fulfilling Issue while delivering/collecting product"
+                            },
+                            {
+                                "name": "salesTax",
+                                "description": "Applicable tax on product delivered/collected"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ItemFulfilmentStatuses",
+                        "fields": null
+                    },
+                    {
+                        "name": "FulfilmentIssueType",
+                        "fields": [
+                            {
+                                "name": "level",
+                                "description": "Level of fulfillment"
+                            },
+                            {
+                                "name": "reason",
+                                "description": "Reason of fulfillment"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FulfilmentItemIssueType",
+                        "fields": null
+                    },
+                    {
+                        "name": "SalesTaxType",
+                        "fields": [
+                            {
+                                "name": "taxAuthority",
+                                "description": "Jurisdiction of tax authority"
+                            },
+                            {
+                                "name": "taxCode",
+                                "description": "Applicable Tax code"
+                            },
+                            {
+                                "name": "gtin",
+                                "description": "Gtin of product"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FulfilmentDiagnosticsType",
+                        "fields": [
+                            {
+                                "name": "quantity",
+                                "description": "quantity break down of product"
+                            },
+                            {
+                                "name": "price",
+                                "description": "price break down of product"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FulfilmentDiagnosticsQuantityType",
+                        "fields": [
+                            {
+                                "name": "fulfilledUnits",
+                                "description": "quantity which could be fulfilled"
+                            },
+                            {
+                                "name": "substitutedUnits",
+                                "description": "quantity which had to be substituted for"
+                            },
+                            {
+                                "name": "unfulfilledUnits",
+                                "description": "quantity which could not be fulfilled"
+                            },
+                            {
+                                "name": "refundedUnits",
+                                "description": "quantity which had to be refunded"
+                            },
+                            {
+                                "name": "returnedUnits",
+                                "description": "quantity which had to be returned"
+                            },
+                            {
+                                "name": "returnCancelledUnits",
+                                "description": "quantity which had to be cancelled return"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FulfilmentDiagnosticsPriceType",
+                        "fields": [
+                            {
+                                "name": "totalPrice",
+                                "description": "amount of product that was delivered/collected"
+                            },
+                            {
+                                "name": "substitutionsPrice",
+                                "description": "amount of substituted product that was delivered/collected"
+                            },
+                            {
+                                "name": "refundsPrice",
+                                "description": "refunded amount of product"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "MarketplaceFulfilmentItemType",
+                        "fields": [
+                            {
+                                "name": "expectedItems",
+                                "description": null
+                            },
+                            {
+                                "name": "actualItems",
+                                "description": null
+                            },
+                            {
+                                "name": "diagnostics",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "MicrowaveCookingInstructionDetailInterface",
+                        "fields": [
+                            {
+                                "name": "detail",
+                                "description": null
+                            },
+                            {
+                                "name": "instructions",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "MicrowaveCookingInstructionInterface",
+                        "fields": [
+                            {
+                                "name": "chilled",
+                                "description": null
+                            },
+                            {
+                                "name": "frozen",
+                                "description": null
+                            },
+                            {
+                                "name": "ambient",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "MicrowaveCookingStepInterface",
+                        "fields": [
+                            {
+                                "name": "step",
+                                "description": null
+                            },
+                            {
+                                "name": "T650",
+                                "description": null
+                            },
+                            {
+                                "name": "T750",
+                                "description": null
+                            },
+                            {
+                                "name": "T850",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "MiscellaneousActionType",
+                        "fields": [
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "MiscellaneousActionStatusType",
+                        "fields": [
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "success",
+                                "description": null
+                            },
+                            {
+                                "name": "message",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ModelImage",
+                        "fields": [
+                            {
+                                "name": "url",
+                                "description": null
+                            },
+                            {
+                                "name": "aspectRatio",
+                                "description": null
+                            },
+                            {
+                                "name": "modelWearingSize",
+                                "description": null
+                            },
+                            {
+                                "name": "modelHeight",
+                                "description": null
+                            },
+                            {
+                                "name": "mimeType",
+                                "description": null
+                            },
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "type",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductMediaImageInterface",
+                        "fields": [
+                            {
+                                "name": "url",
+                                "description": null
+                            },
+                            {
+                                "name": "aspectRatio",
+                                "description": null
+                            },
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "mimeType",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "MoveToFromProductListType",
+                        "fields": [
+                            {
+                                "name": "items",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "MoveToFromProductListInterface",
+                        "fields": [
+                            {
+                                "name": "items",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "MoveToFromProductListItemsInterface",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "MoveToFromProductListItemsType",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "MultiPurposeShoppingListType",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "MultiPurposeShoppingListTypeInterface",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "MultiPurposeShoppingListItemTypeInterface",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "itemValue",
+                                "description": null
+                            },
+                            {
+                                "name": "quantity",
+                                "description": null
+                            },
+                            {
+                                "name": "metadata",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "listItemValueType",
+                        "fields": [
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "value",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "listItemTypeType",
+                        "fields": null
+                    },
+                    {
+                        "name": "ListItemValueTypes",
+                        "fields": null
+                    },
+                    {
+                        "name": "StringWrapper",
+                        "fields": [
+                            {
+                                "name": "value",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "listItemMetadataType",
+                        "fields": [
+                            {
+                                "name": "checked",
+                                "description": null
+                            },
+                            {
+                                "name": "createdAt",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "MultiPurposeShoppingListItemType",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "itemValue",
+                                "description": null
+                            },
+                            {
+                                "name": "quantity",
+                                "description": null
+                            },
+                            {
+                                "name": "metadata",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "MultiPurposeShoppingListsType",
+                        "fields": [
+                            {
+                                "name": "lists",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "MultiPurposeShoppingListsTypeInterface",
+                        "fields": [
+                            {
+                                "name": "lists",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "MultipackDetailInterface",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "description",
+                                "description": null
+                            },
+                            {
+                                "name": "sequence",
+                                "description": null
+                            },
+                            {
+                                "name": "allergens",
+                                "description": null
+                            },
+                            {
+                                "name": "gda",
+                                "description": null
+                            },
+                            {
+                                "name": "guidelineDailyAmount",
+                                "description": null
+                            },
+                            {
+                                "name": "ingredients",
+                                "description": null
+                            },
+                            {
+                                "name": "nutritionInfo",
+                                "description": null
+                            },
+                            {
+                                "name": "otherInformation",
+                                "description": null
+                            },
+                            {
+                                "name": "storage",
+                                "description": null
+                            },
+                            {
+                                "name": "numberOfUses",
+                                "description": null
+                            },
+                            {
+                                "name": "features",
+                                "description": null
+                            },
+                            {
+                                "name": "nutritionIconInfo",
+                                "description": null
+                            },
+                            {
+                                "name": "boxContents",
+                                "description": null
+                            },
+                            {
+                                "name": "originInformation",
+                                "description": null
+                            },
+                            {
+                                "name": "nutritionalClaims",
+                                "description": null
+                            },
+                            {
+                                "name": "healthClaims",
+                                "description": null
+                            },
+                            {
+                                "name": "preparationAndUsage",
+                                "description": null
+                            },
+                            {
+                                "name": "cookingInstructions",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "MultipackDetailType",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "description",
+                                "description": null
+                            },
+                            {
+                                "name": "sequence",
+                                "description": null
+                            },
+                            {
+                                "name": "allergens",
+                                "description": null
+                            },
+                            {
+                                "name": "gda",
+                                "description": null
+                            },
+                            {
+                                "name": "guidelineDailyAmount",
+                                "description": null
+                            },
+                            {
+                                "name": "ingredients",
+                                "description": null
+                            },
+                            {
+                                "name": "nutritionInfo",
+                                "description": null
+                            },
+                            {
+                                "name": "otherInformation",
+                                "description": null
+                            },
+                            {
+                                "name": "storage",
+                                "description": null
+                            },
+                            {
+                                "name": "numberOfUses",
+                                "description": null
+                            },
+                            {
+                                "name": "features",
+                                "description": null
+                            },
+                            {
+                                "name": "nutritionIconInfo",
+                                "description": null
+                            },
+                            {
+                                "name": "boxContents",
+                                "description": null
+                            },
+                            {
+                                "name": "originInformation",
+                                "description": null
+                            },
+                            {
+                                "name": "nutritionalClaims",
+                                "description": null
+                            },
+                            {
+                                "name": "healthClaims",
+                                "description": null
+                            },
+                            {
+                                "name": "preparationAndUsage",
+                                "description": null
+                            },
+                            {
+                                "name": "cookingInstructions",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "NameValuePairType",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "value",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "NappyInfoInterface",
+                        "fields": [
+                            {
+                                "name": "quantity",
+                                "description": null
+                            },
+                            {
+                                "name": "nappySize",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "NutritionalInfoItemInterface",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "value1",
+                                "description": null
+                            },
+                            {
+                                "name": "value2",
+                                "description": null
+                            },
+                            {
+                                "name": "value3",
+                                "description": null
+                            },
+                            {
+                                "name": "value4",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "NutritionalInfoItemType",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "value1",
+                                "description": null
+                            },
+                            {
+                                "name": "value2",
+                                "description": null
+                            },
+                            {
+                                "name": "value3",
+                                "description": null
+                            },
+                            {
+                                "name": "value4",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "OpeningHoursInterface",
+                        "fields": [
+                            {
+                                "name": "mo",
+                                "description": null
+                            },
+                            {
+                                "name": "tu",
+                                "description": null
+                            },
+                            {
+                                "name": "we",
+                                "description": null
+                            },
+                            {
+                                "name": "th",
+                                "description": null
+                            },
+                            {
+                                "name": "fr",
+                                "description": null
+                            },
+                            {
+                                "name": "sa",
+                                "description": null
+                            },
+                            {
+                                "name": "su",
+                                "description": null
+                            },
+                            {
+                                "name": "exceptionalHours",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ExceptionalHoursInterface",
+                        "fields": [
+                            {
+                                "name": "date",
+                                "description": null
+                            },
+                            {
+                                "name": "intervals",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "OpeningHoursType",
+                        "fields": [
+                            {
+                                "name": "mo",
+                                "description": null
+                            },
+                            {
+                                "name": "tu",
+                                "description": null
+                            },
+                            {
+                                "name": "we",
+                                "description": null
+                            },
+                            {
+                                "name": "th",
+                                "description": null
+                            },
+                            {
+                                "name": "fr",
+                                "description": null
+                            },
+                            {
+                                "name": "sa",
+                                "description": null
+                            },
+                            {
+                                "name": "su",
+                                "description": null
+                            },
+                            {
+                                "name": "exceptionalHours",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ExceptionalHoursType",
+                        "fields": [
+                            {
+                                "name": "date",
+                                "description": null
+                            },
+                            {
+                                "name": "intervals",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "OrderByFulfilment",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "guidePrice",
+                                "description": null
+                            },
+                            {
+                                "name": "totalPrice",
+                                "description": null
+                            },
+                            {
+                                "name": "totalItems",
+                                "description": null
+                            },
+                            {
+                                "name": "cancelledDateTime",
+                                "description": null
+                            },
+                            {
+                                "name": "statusInfo",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            },
+                            {
+                                "name": "charges",
+                                "description": null
+                            },
+                            {
+                                "name": "discounts",
+                                "description": null
+                            },
+                            {
+                                "name": "clubcardPoints",
+                                "description": null
+                            },
+                            {
+                                "name": "returnsCount",
+                                "description": "Surface only online returns"
+                            },
+                            {
+                                "name": "fgReturns",
+                                "description": "Surface only online returns"
+                            },
+                            {
+                                "name": "tracking",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfilment",
+                                "description": null
+                            },
+                            {
+                                "name": "receipt",
+                                "description": "digital receipt of order"
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "isEligibleForReturn",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FGReturnsType",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ParcelTrackingType",
+                        "fields": [
+                            {
+                                "name": "url",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "number",
+                                "description": null
+                            },
+                            {
+                                "name": "logisticsProvider",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ParcelItemType",
+                        "fields": [
+                            {
+                                "name": "quantity",
+                                "description": null
+                            },
+                            {
+                                "name": "cost",
+                                "description": null
+                            },
+                            {
+                                "name": "price",
+                                "description": "price of product before and after discount"
+                            },
+                            {
+                                "name": "product",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "OrderDeliveryGroupFulfilment",
+                        "fields": [
+                            {
+                                "name": "selectedOption",
+                                "description": null
+                            },
+                            {
+                                "name": "returnAvailableOptions",
+                                "description": null
+                            },
+                            {
+                                "name": "returnPeriod",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "refund",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FulfilmentStatuses",
+                        "fields": null
+                    },
+                    {
+                        "name": "OrderCharges",
+                        "fields": [
+                            {
+                                "name": "fulfilment",
+                                "description": "Fulfilment charge is total delivery charge"
+                            },
+                            {
+                                "name": "minimumValue",
+                                "description": "minimumValue is minimum basket surcharge value"
+                            },
+                            {
+                                "name": "bags",
+                                "description": null
+                            },
+                            {
+                                "name": "packaging",
+                                "description": null
+                            },
+                            {
+                                "name": "depositCharge",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "OrderDeliveryTrackingType",
+                        "fields": [
+                            {
+                                "name": "tripTrackingId",
+                                "description": "Trip Tracking Id for the Vehicle. This is an encoded value of tripId, logisticId and shoppingMethod"
+                            },
+                            {
+                                "name": "deliveryWindow",
+                                "description": null
+                            },
+                            {
+                                "name": "currentTrackingStatus",
+                                "description": null
+                            },
+                            {
+                                "name": "origin",
+                                "description": null
+                            },
+                            {
+                                "name": "destination",
+                                "description": null
+                            },
+                            {
+                                "name": "driver",
+                                "description": "from ColleagueFacts API and only for HD orders ( driver object will be null for whoosh orders)"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "OrderDeliveryTrackingWindowType",
+                        "fields": [
+                            {
+                                "name": "start",
+                                "description": null
+                            },
+                            {
+                                "name": "end",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "OrderCurrentTrackingStatusType",
+                        "fields": [
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "isDelayed",
+                                "description": "True if punctuality is DELAYED"
+                            },
+                            {
+                                "name": "punctuality",
+                                "description": " If the estimated delivery window starts before the planned delivery window, it sets punctuality EARLY, If estimated delivery window starts after the planned delivery window then DELAYED, otherwise ON_TIME"
+                            },
+                            {
+                                "name": "geoLocation",
+                                "description": null
+                            },
+                            {
+                                "name": "stopsUntilDelivery",
+                                "description": "counts stops with a scheduled tracking status before a specific order is delivered"
+                            },
+                            {
+                                "name": "isOrderNearby",
+                                "description": "This flag is set to true, if the order is out for delivery or is 10 minutes/35 meters away from the customer location. By default, this will be null"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "OrderGeoLocationType",
+                        "fields": [
+                            {
+                                "name": "latitude",
+                                "description": null
+                            },
+                            {
+                                "name": "longitude",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "OrderOriginType",
+                        "fields": [
+                            {
+                                "name": "geoLocation",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "OrderDestinationType",
+                        "fields": [
+                            {
+                                "name": "geoLocation",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "OrderInquiryReasonsType",
+                        "fields": [
+                            {
+                                "name": "reasons",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "OrderInquiryType",
+                        "fields": [
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "OrderInterface",
+                        "fields": [
+                            {
+                                "name": "orderNo",
+                                "description": null
+                            },
+                            {
+                                "name": "orderId",
+                                "description": null
+                            },
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "locationUuid",
+                                "description": null
+                            },
+                            {
+                                "name": "storeId",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": "if business input is 'grocery' one of: 'Cancelled', 'Collected', 'Delivered' or 'Pending' for UK;\n Or Created, Cancelled, ReadyForCollection, Collected, ReadyForDelivery, Delivered, Processed, Received, or None for IGHS."
+                            },
+                            {
+                                "name": "statusInfo",
+                                "description": null
+                            },
+                            {
+                                "name": "guidePrice",
+                                "description": "gross price of an order is sum total of cost of all the items after the promotional discount and colleague discount"
+                            },
+                            {
+                                "name": "grossPrice",
+                                "description": "gross price of an order is sum total of cost of all the items without any discounts"
+                            },
+                            {
+                                "name": "totalPrice",
+                                "description": "gross price of an order is sum total of cost of all the items after the promotional discount plus delivery charges, bag charges, minimum basket charges"
+                            },
+                            {
+                                "name": "shoppingMethod",
+                                "description": "'delivery' or 'collection'"
+                            },
+                            {
+                                "name": "splitView",
+                                "description": null
+                            },
+                            {
+                                "name": "emailAddress",
+                                "description": null
+                            },
+                            {
+                                "name": "isInAmend",
+                                "description": null
+                            },
+                            {
+                                "name": "amendExpiry",
+                                "description": null
+                            },
+                            {
+                                "name": "paymentMode",
+                                "description": null
+                            },
+                            {
+                                "name": "eCouponsTotal",
+                                "description": null
+                            },
+                            {
+                                "name": "address",
+                                "description": null
+                            },
+                            {
+                                "name": "amendExpiryTime",
+                                "description": null
+                            },
+                            {
+                                "name": "slot",
+                                "description": null
+                            },
+                            {
+                                "name": "clubcard",
+                                "description": null
+                            },
+                            {
+                                "name": "staffDiscount",
+                                "description": null
+                            },
+                            {
+                                "name": "discounts",
+                                "description": null
+                            },
+                            {
+                                "name": "charges",
+                                "description": null
+                            },
+                            {
+                                "name": "subscription",
+                                "description": null
+                            },
+                            {
+                                "name": "deliveryPreferences",
+                                "description": null
+                            },
+                            {
+                                "name": "customerPreferences",
+                                "description": null
+                            },
+                            {
+                                "name": "deliveryTracking",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            },
+                            {
+                                "name": "removedItems",
+                                "description": null
+                            },
+                            {
+                                "name": "totalItems",
+                                "description": null
+                            },
+                            {
+                                "name": "hasUnavailableItems",
+                                "description": null
+                            },
+                            {
+                                "name": "confirmationDateTime",
+                                "description": null
+                            },
+                            {
+                                "name": "createdDateTime",
+                                "description": null
+                            },
+                            {
+                                "name": "cancelledDateTime",
+                                "description": null
+                            },
+                            {
+                                "name": "channel",
+                                "description": null
+                            },
+                            {
+                                "name": "localisation",
+                                "description": null
+                            },
+                            {
+                                "name": "metadata",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfilment",
+                                "description": null
+                            },
+                            {
+                                "name": "constraints",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            },
+                            {
+                                "name": "returnsInfo",
+                                "description": null
+                            },
+                            {
+                                "name": "rewards",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "OrderItemInterface",
+                        "fields": [
+                            {
+                                "name": "product",
+                                "description": null
+                            },
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "unit",
+                                "description": null
+                            },
+                            {
+                                "name": "quantity",
+                                "description": null
+                            },
+                            {
+                                "name": "count",
+                                "description": null
+                            },
+                            {
+                                "name": "originalQuantity",
+                                "description": null
+                            },
+                            {
+                                "name": "weight",
+                                "description": null
+                            },
+                            {
+                                "name": "originalWeight",
+                                "description": null
+                            },
+                            {
+                                "name": "sellerId",
+                                "description": null
+                            },
+                            {
+                                "name": "associatedFulfilmentOption",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfilment",
+                                "description": null
+                            },
+                            {
+                                "name": "price",
+                                "description": null
+                            },
+                            {
+                                "name": "cost",
+                                "description": null
+                            },
+                            {
+                                "name": "returns",
+                                "description": null
+                            },
+                            {
+                                "name": "charges",
+                                "description": null
+                            },
+                            {
+                                "name": "seller",
+                                "description": "Seller information about this product. This assumes that products/sellers have a 1-to-1 mapping (which makes sense in conjunction with the existing schema)"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ReturnProductInfoType",
+                        "fields": [
+                            {
+                                "name": "quantity",
+                                "description": null
+                            },
+                            {
+                                "name": "date",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "OrderItemCharges",
+                        "fields": [
+                            {
+                                "name": "total",
+                                "description": null
+                            },
+                            {
+                                "name": "charges",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "OrderItemChargesType",
+                        "fields": null
+                    },
+                    {
+                        "name": "DepositReturnCharge",
+                        "fields": [
+                            {
+                                "name": "amount",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "OrderItemType",
+                        "fields": [
+                            {
+                                "name": "product",
+                                "description": null
+                            },
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "unit",
+                                "description": null
+                            },
+                            {
+                                "name": "quantity",
+                                "description": null
+                            },
+                            {
+                                "name": "count",
+                                "description": null
+                            },
+                            {
+                                "name": "originalQuantity",
+                                "description": null
+                            },
+                            {
+                                "name": "weight",
+                                "description": null
+                            },
+                            {
+                                "name": "originalWeight",
+                                "description": null
+                            },
+                            {
+                                "name": "sellerId",
+                                "description": null
+                            },
+                            {
+                                "name": "associatedFulfilmentOption",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfilment",
+                                "description": null
+                            },
+                            {
+                                "name": "price",
+                                "description": null
+                            },
+                            {
+                                "name": "cost",
+                                "description": null
+                            },
+                            {
+                                "name": "returns",
+                                "description": null
+                            },
+                            {
+                                "name": "charges",
+                                "description": null
+                            },
+                            {
+                                "name": "seller",
+                                "description": "Seller information about this product. This assumes that products/sellers have a 1-to-1 mapping (which makes sense in conjunction with the existing schema)"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "OrderSearchInterface",
+                        "fields": [
+                            {
+                                "name": "orders",
+                                "description": "List of orders per page based on the page limit, page number or provided offest"
+                            },
+                            {
+                                "name": "info",
+                                "description": "Page Metadata"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "OrderSummary",
+                        "fields": [
+                            {
+                                "name": "guidePrice",
+                                "description": null
+                            },
+                            {
+                                "name": "totalPrice",
+                                "description": null
+                            },
+                            {
+                                "name": "totalItems",
+                                "description": null
+                            },
+                            {
+                                "name": "orderId",
+                                "description": null
+                            },
+                            {
+                                "name": "orderNo",
+                                "description": null
+                            },
+                            {
+                                "name": "invoiceId",
+                                "description": null
+                            },
+                            {
+                                "name": "quoteId",
+                                "description": null
+                            },
+                            {
+                                "name": "cancelledDateTime",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "statusInfo",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            },
+                            {
+                                "name": "charges",
+                                "description": null
+                            },
+                            {
+                                "name": "discounts",
+                                "description": null
+                            },
+                            {
+                                "name": "clubcardPoints",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfilmentSummary",
+                                "description": null
+                            },
+                            {
+                                "name": "payments",
+                                "description": null
+                            },
+                            {
+                                "name": "hasReturns",
+                                "description": null
+                            },
+                            {
+                                "name": "returnMethod",
+                                "description": null
+                            },
+                            {
+                                "name": "splitView",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "OrderType",
+                        "fields": [
+                            {
+                                "name": "orderNo",
+                                "description": null
+                            },
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "orderId",
+                                "description": null
+                            },
+                            {
+                                "name": "locationUuid",
+                                "description": null
+                            },
+                            {
+                                "name": "storeId",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "statusInfo",
+                                "description": null
+                            },
+                            {
+                                "name": "guidePrice",
+                                "description": null
+                            },
+                            {
+                                "name": "grossPrice",
+                                "description": null
+                            },
+                            {
+                                "name": "totalPrice",
+                                "description": null
+                            },
+                            {
+                                "name": "splitView",
+                                "description": null
+                            },
+                            {
+                                "name": "shoppingMethod",
+                                "description": null
+                            },
+                            {
+                                "name": "address",
+                                "description": null
+                            },
+                            {
+                                "name": "slot",
+                                "description": null
+                            },
+                            {
+                                "name": "amendExpiryTime",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            },
+                            {
+                                "name": "removedItems",
+                                "description": null
+                            },
+                            {
+                                "name": "totalItems",
+                                "description": null
+                            },
+                            {
+                                "name": "hasUnavailableItems",
+                                "description": null
+                            },
+                            {
+                                "name": "paymentMode",
+                                "description": null
+                            },
+                            {
+                                "name": "deliveryPreferences",
+                                "description": null
+                            },
+                            {
+                                "name": "customerPreferences",
+                                "description": null
+                            },
+                            {
+                                "name": "deliveryTracking",
+                                "description": null
+                            },
+                            {
+                                "name": "staffDiscount",
+                                "description": null
+                            },
+                            {
+                                "name": "discounts",
+                                "description": null
+                            },
+                            {
+                                "name": "clubcard",
+                                "description": null
+                            },
+                            {
+                                "name": "charges",
+                                "description": null
+                            },
+                            {
+                                "name": "subscription",
+                                "description": null
+                            },
+                            {
+                                "name": "emailAddress",
+                                "description": null
+                            },
+                            {
+                                "name": "isInAmend",
+                                "description": null
+                            },
+                            {
+                                "name": "amendExpiry",
+                                "description": null
+                            },
+                            {
+                                "name": "promotionSavings",
+                                "description": null
+                            },
+                            {
+                                "name": "eCouponsTotal",
+                                "description": null
+                            },
+                            {
+                                "name": "confirmationDateTime",
+                                "description": null
+                            },
+                            {
+                                "name": "createdDateTime",
+                                "description": null
+                            },
+                            {
+                                "name": "cancelledDateTime",
+                                "description": null
+                            },
+                            {
+                                "name": "channel",
+                                "description": null
+                            },
+                            {
+                                "name": "localisation",
+                                "description": null
+                            },
+                            {
+                                "name": "metadata",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfilment",
+                                "description": null
+                            },
+                            {
+                                "name": "constraints",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            },
+                            {
+                                "name": "returnsInfo",
+                                "description": null
+                            },
+                            {
+                                "name": "rewards",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "OriginInformationInterface",
+                        "fields": [
+                            {
+                                "name": "title",
+                                "description": null
+                            },
+                            {
+                                "name": "value",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "OvenCookingInstructionDetailInterface",
+                        "fields": [
+                            {
+                                "name": "time",
+                                "description": null
+                            },
+                            {
+                                "name": "temperature",
+                                "description": null
+                            },
+                            {
+                                "name": "instructions",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "OvenCookingInstructionInterface",
+                        "fields": [
+                            {
+                                "name": "chilled",
+                                "description": null
+                            },
+                            {
+                                "name": "frozen",
+                                "description": null
+                            },
+                            {
+                                "name": "ambient",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "OvenTemperatureInterface",
+                        "fields": [
+                            {
+                                "name": "value",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "OverlayInfo",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "value",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PackSizeInterface",
+                        "fields": [
+                            {
+                                "name": "value",
+                                "description": null
+                            },
+                            {
+                                "name": "units",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PageInformationInterface",
+                        "fields": [
+                            {
+                                "name": "total",
+                                "description": "Total number of orders"
+                            },
+                            {
+                                "name": "page",
+                                "description": "Page Number"
+                            },
+                            {
+                                "name": "count",
+                                "description": "Number of orders in current page"
+                            },
+                            {
+                                "name": "pageSize",
+                                "description": "Requested number of recerods per page"
+                            },
+                            {
+                                "name": "offset",
+                                "description": "Requested record offest from the point where to paginate the records"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PageInterface",
+                        "fields": [
+                            {
+                                "name": "pageName",
+                                "description": null
+                            },
+                            {
+                                "name": "contentId",
+                                "description": null
+                            },
+                            {
+                                "name": "canonicalUrl",
+                                "description": null
+                            },
+                            {
+                                "name": "pageTitle",
+                                "description": null
+                            },
+                            {
+                                "name": "keyword",
+                                "description": null
+                            },
+                            {
+                                "name": "description",
+                                "description": null
+                            },
+                            {
+                                "name": "content",
+                                "description": null
+                            },
+                            {
+                                "name": "children",
+                                "description": null
+                            },
+                            {
+                                "name": "theme",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PayOrderType",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "amended",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PaymentDetailsInterface",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "expiry",
+                                "description": null
+                            },
+                            {
+                                "name": "last4Digits",
+                                "description": null
+                            },
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "paymentMode",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PaymentDetailsType",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "expiry",
+                                "description": null
+                            },
+                            {
+                                "name": "last4Digits",
+                                "description": null
+                            },
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "paymentMode",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PaymentItemInterface",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "code",
+                                "description": null
+                            },
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "description",
+                                "description": null
+                            },
+                            {
+                                "name": "endDate",
+                                "description": null
+                            },
+                            {
+                                "name": "qualified",
+                                "description": null
+                            },
+                            {
+                                "name": "selected",
+                                "description": null
+                            },
+                            {
+                                "name": "valid",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "errorCode",
+                                "description": null
+                            },
+                            {
+                                "name": "errorMessage",
+                                "description": null
+                            },
+                            {
+                                "name": "value",
+                                "description": null
+                            },
+                            {
+                                "name": "rewardType",
+                                "description": null
+                            },
+                            {
+                                "name": "clubcardPoints",
+                                "description": null
+                            },
+                            {
+                                "name": "classification",
+                                "description": null
+                            },
+                            {
+                                "name": "redemptionsLeft",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PaymentItem",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "code",
+                                "description": null
+                            },
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "description",
+                                "description": null
+                            },
+                            {
+                                "name": "endDate",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "errorCode",
+                                "description": null
+                            },
+                            {
+                                "name": "errorMessage",
+                                "description": null
+                            },
+                            {
+                                "name": "valid",
+                                "description": null
+                            },
+                            {
+                                "name": "qualified",
+                                "description": null
+                            },
+                            {
+                                "name": "selected",
+                                "description": null
+                            },
+                            {
+                                "name": "customerSelected",
+                                "description": null
+                            },
+                            {
+                                "name": "value",
+                                "description": null
+                            },
+                            {
+                                "name": "rewardType",
+                                "description": null
+                            },
+                            {
+                                "name": "clubcardPoints",
+                                "description": null
+                            },
+                            {
+                                "name": "classification",
+                                "description": null
+                            },
+                            {
+                                "name": "redemptionsLeft",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PaymentOptionsType",
+                        "fields": [
+                            {
+                                "name": "options",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PaymentOptionEnumType",
+                        "fields": null
+                    },
+                    {
+                        "name": "PaymentVerificationUnionType",
+                        "fields": null
+                    },
+                    {
+                        "name": "PaymentVerificationCreatePMVType",
+                        "fields": [
+                            {
+                                "name": "paymentMethodVerificationId",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PaymentVerificationCreatePMVErrorType",
+                        "fields": [
+                            {
+                                "name": "message",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PaymentVerificationConfirmPMVType",
+                        "fields": [
+                            {
+                                "name": "accountCheckStatus",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PaymentVerificationConfirmPMVErrorType",
+                        "fields": [
+                            {
+                                "name": "message",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PaymentVerificationStepUpPMVType",
+                        "fields": [
+                            {
+                                "name": "result",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "StepUpPMVStatus",
+                        "fields": null
+                    },
+                    {
+                        "name": "PendingOrderType",
+                        "fields": [
+                            {
+                                "name": "orderNo",
+                                "description": null
+                            },
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "orderId",
+                                "description": null
+                            },
+                            {
+                                "name": "locationUuid",
+                                "description": null
+                            },
+                            {
+                                "name": "storeId",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "statusInfo",
+                                "description": null
+                            },
+                            {
+                                "name": "guidePrice",
+                                "description": null
+                            },
+                            {
+                                "name": "grossPrice",
+                                "description": null
+                            },
+                            {
+                                "name": "totalPrice",
+                                "description": null
+                            },
+                            {
+                                "name": "splitView",
+                                "description": null
+                            },
+                            {
+                                "name": "shoppingMethod",
+                                "description": null
+                            },
+                            {
+                                "name": "address",
+                                "description": null
+                            },
+                            {
+                                "name": "slot",
+                                "description": null
+                            },
+                            {
+                                "name": "amendExpiryTime",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            },
+                            {
+                                "name": "removedItems",
+                                "description": null
+                            },
+                            {
+                                "name": "totalItems",
+                                "description": null
+                            },
+                            {
+                                "name": "hasUnavailableItems",
+                                "description": null
+                            },
+                            {
+                                "name": "paymentMode",
+                                "description": null
+                            },
+                            {
+                                "name": "deliveryPreferences",
+                                "description": null
+                            },
+                            {
+                                "name": "customerPreferences",
+                                "description": null
+                            },
+                            {
+                                "name": "deliveryTracking",
+                                "description": null
+                            },
+                            {
+                                "name": "staffDiscount",
+                                "description": null
+                            },
+                            {
+                                "name": "discounts",
+                                "description": null
+                            },
+                            {
+                                "name": "clubcard",
+                                "description": null
+                            },
+                            {
+                                "name": "charges",
+                                "description": null
+                            },
+                            {
+                                "name": "subscription",
+                                "description": null
+                            },
+                            {
+                                "name": "emailAddress",
+                                "description": null
+                            },
+                            {
+                                "name": "isInAmend",
+                                "description": null
+                            },
+                            {
+                                "name": "amendExpiry",
+                                "description": null
+                            },
+                            {
+                                "name": "promotionSavings",
+                                "description": null
+                            },
+                            {
+                                "name": "eCouponsTotal",
+                                "description": null
+                            },
+                            {
+                                "name": "confirmationDateTime",
+                                "description": null
+                            },
+                            {
+                                "name": "createdDateTime",
+                                "description": null
+                            },
+                            {
+                                "name": "cancelledDateTime",
+                                "description": null
+                            },
+                            {
+                                "name": "channel",
+                                "description": null
+                            },
+                            {
+                                "name": "localisation",
+                                "description": null
+                            },
+                            {
+                                "name": "metadata",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfilment",
+                                "description": null
+                            },
+                            {
+                                "name": "constraints",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            },
+                            {
+                                "name": "returnsInfo",
+                                "description": null
+                            },
+                            {
+                                "name": "rewards",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PersonalDetailsInterface",
+                        "fields": [
+                            {
+                                "name": "customerUuid",
+                                "description": null
+                            },
+                            {
+                                "name": "firstName",
+                                "description": null
+                            },
+                            {
+                                "name": "lastName",
+                                "description": null
+                            },
+                            {
+                                "name": "title",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PersonalDetailsType",
+                        "fields": [
+                            {
+                                "name": "customerUuid",
+                                "description": null
+                            },
+                            {
+                                "name": "firstName",
+                                "description": null
+                            },
+                            {
+                                "name": "lastName",
+                                "description": null
+                            },
+                            {
+                                "name": "title",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PersonalisedPromotionType",
+                        "fields": [
+                            {
+                                "name": "isActivated",
+                                "description": "Shows whether this promotion is currently active for the user based on their activation status"
+                            },
+                            {
+                                "name": "promotionAllocationId",
+                                "description": "This is an unique identifier to represent the allocation of personalised promotion to the user"
+                            },
+                            {
+                                "name": "expiry",
+                                "description": "Promotion Allocation Expiry"
+                            },
+                            {
+                                "name": "product",
+                                "description": null
+                            },
+                            {
+                                "name": "promotion",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PickAndGoCancelShopType",
+                        "fields": [
+                            {
+                                "name": "success",
+                                "description": "Boolean indicating result of cancellation"
+                            },
+                            {
+                                "name": "errors",
+                                "description": "A list of errors incase of a failed cancel request\n\n- error.code=order-not-found - There was no pending order found. \nThis means that the current shop can no longer be cancelled or no shop is active\n\n- error.code=cancel-shop-failed - An unexpected error occurred.\n\n- Handle any other/missing error.code gracefully\n"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PlansType",
+                        "fields": [
+                            {
+                                "name": "options",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PlanType",
+                        "fields": [
+                            {
+                                "name": "planId",
+                                "description": null
+                            },
+                            {
+                                "name": "customerSubscriptionId",
+                                "description": null
+                            },
+                            {
+                                "name": "recurringPaymentId",
+                                "description": null
+                            },
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "schemeId",
+                                "description": null
+                            },
+                            {
+                                "name": "description",
+                                "description": null
+                            },
+                            {
+                                "name": "amount",
+                                "description": null
+                            },
+                            {
+                                "name": "subscriptionType",
+                                "description": null
+                            },
+                            {
+                                "name": "subscriptionStatus",
+                                "description": null
+                            },
+                            {
+                                "name": "offerType",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "startDate",
+                                "description": null
+                            },
+                            {
+                                "name": "endDate",
+                                "description": null
+                            },
+                            {
+                                "name": "countryCurrency",
+                                "description": null
+                            },
+                            {
+                                "name": "nextRenewalDate",
+                                "description": null
+                            },
+                            {
+                                "name": "nextPaymentDate",
+                                "description": null
+                            },
+                            {
+                                "name": "previousRenewalDate",
+                                "description": null
+                            },
+                            {
+                                "name": "entitlements",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfilments",
+                                "description": null
+                            },
+                            {
+                                "name": "planChanges",
+                                "description": null
+                            },
+                            {
+                                "name": "appliedCoupons",
+                                "description": null
+                            },
+                            {
+                                "name": "isSwitchable",
+                                "description": null
+                            },
+                            {
+                                "name": "enrollment",
+                                "description": null
+                            },
+                            {
+                                "name": "delivery",
+                                "description": null
+                            },
+                            {
+                                "name": "localisation",
+                                "description": null
+                            },
+                            {
+                                "name": "segment",
+                                "description": null
+                            },
+                            {
+                                "name": "saving",
+                                "description": null
+                            },
+                            {
+                                "name": "autoRenewable",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "SubscriptionStatusTypeEnum",
+                        "fields": null
+                    },
+                    {
+                        "name": "PlanOfferTypeEnum",
+                        "fields": null
+                    },
+                    {
+                        "name": "PlanStatusEnum",
+                        "fields": null
+                    },
+                    {
+                        "name": "EntitlementsType",
+                        "fields": null
+                    },
+                    {
+                        "name": "EntitlementType",
+                        "fields": [
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "EntitlementStatusEnumType",
+                        "fields": null
+                    },
+                    {
+                        "name": "MobileEntitlementType",
+                        "fields": [
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "plans",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "MobileEntitlementPlansType",
+                        "fields": [
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "phoneNumber",
+                                "description": null
+                            },
+                            {
+                                "name": "active",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "MobileEntitlementStatus",
+                        "fields": null
+                    },
+                    {
+                        "name": "MobileEntitlementActiveType",
+                        "fields": [
+                            {
+                                "name": "from",
+                                "description": null
+                            },
+                            {
+                                "name": "until",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BankEntitlementType",
+                        "fields": [
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "offers",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BankEntitlementOffersType",
+                        "fields": [
+                            {
+                                "name": "title",
+                                "description": null
+                            },
+                            {
+                                "name": "description",
+                                "description": null
+                            },
+                            {
+                                "name": "code",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "callToAction",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BankEntitlementOfferStatusType",
+                        "fields": null
+                    },
+                    {
+                        "name": "BankEntitlementCallToActionType",
+                        "fields": [
+                            {
+                                "name": "actionLink",
+                                "description": null
+                            },
+                            {
+                                "name": "actionLinkText",
+                                "description": null
+                            },
+                            {
+                                "name": "formData",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PlanChanges",
+                        "fields": [
+                            {
+                                "name": "planId",
+                                "description": null
+                            },
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "amount",
+                                "description": null
+                            },
+                            {
+                                "name": "offerType",
+                                "description": null
+                            },
+                            {
+                                "name": "tenure",
+                                "description": null
+                            },
+                            {
+                                "name": "installmentAmount",
+                                "description": null
+                            },
+                            {
+                                "name": "payment",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "TenureType",
+                        "fields": [
+                            {
+                                "name": "period",
+                                "description": null
+                            },
+                            {
+                                "name": "type",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "TenureEnumType",
+                        "fields": null
+                    },
+                    {
+                        "name": "PlanPaymentType",
+                        "fields": [
+                            {
+                                "name": "type",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "AppliedCouponsType",
+                        "fields": [
+                            {
+                                "name": "code",
+                                "description": null
+                            },
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "description",
+                                "description": null
+                            },
+                            {
+                                "name": "value",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "EnrollmentType",
+                        "fields": [
+                            {
+                                "name": "planAmount",
+                                "description": null
+                            },
+                            {
+                                "name": "subscriptionAmount",
+                                "description": null
+                            },
+                            {
+                                "name": "installmentAmount",
+                                "description": null
+                            },
+                            {
+                                "name": "remainingInstallments",
+                                "description": null
+                            },
+                            {
+                                "name": "payment",
+                                "description": null
+                            },
+                            {
+                                "name": "tenure",
+                                "description": null
+                            },
+                            {
+                                "name": "presentExpense",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PresentExpenseType",
+                        "fields": [
+                            {
+                                "name": "paidAmount",
+                                "description": null
+                            },
+                            {
+                                "name": "beforeDiscount",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "SegmentType",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "description",
+                                "description": null
+                            },
+                            {
+                                "name": "attributes",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "SegmentAttributesType",
+                        "fields": [
+                            {
+                                "name": "payment",
+                                "description": null
+                            },
+                            {
+                                "name": "segmentationRequired",
+                                "description": null
+                            },
+                            {
+                                "name": "identifiersToMatch",
+                                "description": null
+                            },
+                            {
+                                "name": "visibility",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "SegmentPaymentType",
+                        "fields": [
+                            {
+                                "name": "detailsRequired",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "VisibilityType",
+                        "fields": [
+                            {
+                                "name": "toAnonymous",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "SavingType",
+                        "fields": [
+                            {
+                                "name": "totalAmount",
+                                "description": null
+                            },
+                            {
+                                "name": "totalOrders",
+                                "description": null
+                            },
+                            {
+                                "name": "startDate",
+                                "description": null
+                            },
+                            {
+                                "name": "details",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "SavingsDetailsType",
+                        "fields": [
+                            {
+                                "name": "businessProposition",
+                                "description": null
+                            },
+                            {
+                                "name": "numberOfOrders",
+                                "description": null
+                            },
+                            {
+                                "name": "total",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PreferencesType",
+                        "fields": [
+                            {
+                                "name": "nodes",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PreferenceNodeType",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "availableChoices",
+                                "description": null
+                            },
+                            {
+                                "name": "savedPreference",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PreferenceChoiceUnionType",
+                        "fields": null
+                    },
+                    {
+                        "name": "StringType",
+                        "fields": [
+                            {
+                                "name": "value",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PreviousOrderType",
+                        "fields": [
+                            {
+                                "name": "orderNo",
+                                "description": null
+                            },
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "orderId",
+                                "description": null
+                            },
+                            {
+                                "name": "locationUuid",
+                                "description": null
+                            },
+                            {
+                                "name": "storeId",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "statusInfo",
+                                "description": null
+                            },
+                            {
+                                "name": "guidePrice",
+                                "description": null
+                            },
+                            {
+                                "name": "grossPrice",
+                                "description": null
+                            },
+                            {
+                                "name": "totalPrice",
+                                "description": null
+                            },
+                            {
+                                "name": "splitView",
+                                "description": null
+                            },
+                            {
+                                "name": "shoppingMethod",
+                                "description": null
+                            },
+                            {
+                                "name": "address",
+                                "description": null
+                            },
+                            {
+                                "name": "slot",
+                                "description": null
+                            },
+                            {
+                                "name": "amendExpiryTime",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            },
+                            {
+                                "name": "removedItems",
+                                "description": null
+                            },
+                            {
+                                "name": "totalItems",
+                                "description": null
+                            },
+                            {
+                                "name": "hasUnavailableItems",
+                                "description": null
+                            },
+                            {
+                                "name": "paymentMode",
+                                "description": null
+                            },
+                            {
+                                "name": "deliveryPreferences",
+                                "description": null
+                            },
+                            {
+                                "name": "customerPreferences",
+                                "description": null
+                            },
+                            {
+                                "name": "deliveryTracking",
+                                "description": null
+                            },
+                            {
+                                "name": "staffDiscount",
+                                "description": null
+                            },
+                            {
+                                "name": "discounts",
+                                "description": null
+                            },
+                            {
+                                "name": "clubcard",
+                                "description": null
+                            },
+                            {
+                                "name": "charges",
+                                "description": null
+                            },
+                            {
+                                "name": "subscription",
+                                "description": null
+                            },
+                            {
+                                "name": "emailAddress",
+                                "description": null
+                            },
+                            {
+                                "name": "isInAmend",
+                                "description": null
+                            },
+                            {
+                                "name": "amendExpiry",
+                                "description": null
+                            },
+                            {
+                                "name": "promotionSavings",
+                                "description": null
+                            },
+                            {
+                                "name": "eCouponsTotal",
+                                "description": null
+                            },
+                            {
+                                "name": "confirmationDateTime",
+                                "description": null
+                            },
+                            {
+                                "name": "createdDateTime",
+                                "description": null
+                            },
+                            {
+                                "name": "cancelledDateTime",
+                                "description": null
+                            },
+                            {
+                                "name": "channel",
+                                "description": null
+                            },
+                            {
+                                "name": "localisation",
+                                "description": null
+                            },
+                            {
+                                "name": "metadata",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfilment",
+                                "description": null
+                            },
+                            {
+                                "name": "constraints",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            },
+                            {
+                                "name": "returnsInfo",
+                                "description": null
+                            },
+                            {
+                                "name": "rewards",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PriceInterface",
+                        "fields": [
+                            {
+                                "name": "actual",
+                                "description": null
+                            },
+                            {
+                                "name": "unitOfMeasure",
+                                "description": null
+                            },
+                            {
+                                "name": "unitPrice",
+                                "description": null
+                            },
+                            {
+                                "name": "product",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PriceType",
+                        "fields": [
+                            {
+                                "name": "product",
+                                "description": null
+                            },
+                            {
+                                "name": "actual",
+                                "description": null
+                            },
+                            {
+                                "name": "unitOfMeasure",
+                                "description": null
+                            },
+                            {
+                                "name": "unitPrice",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PrimaryTaxonomyNode",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": "Product Taxonomy Id"
+                            },
+                            {
+                                "name": "name",
+                                "description": "Product Taxonomy name"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductAlternativeImageInterface",
+                        "fields": [
+                            {
+                                "name": "default",
+                                "description": null
+                            },
+                            {
+                                "name": "zoom",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductAlternativeImageType",
+                        "fields": [
+                            {
+                                "name": "default",
+                                "description": null
+                            },
+                            {
+                                "name": "zoom",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductCategoryInterface",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "id",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductChargesType",
+                        "fields": null
+                    },
+                    {
+                        "name": "ProductDepositReturnCharge",
+                        "fields": [
+                            {
+                                "name": "amount",
+                                "description": null
+                            },
+                            {
+                                "name": "breakdown",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductChargeInterface",
+                        "fields": [
+                            {
+                                "name": "amount",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductDepositReturnChargeBreakDown",
+                        "fields": [
+                            {
+                                "name": "chargeId",
+                                "description": null
+                            },
+                            {
+                                "name": "unitCharge",
+                                "description": null
+                            },
+                            {
+                                "name": "numberOfUnits",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductContextInterface",
+                        "fields": [
+                            {
+                                "name": "type",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductDeliveryBasketValueCriteria",
+                        "fields": [
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "value",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PropositionalBasketValueCriteriaInterface",
+                        "fields": [
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "value",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BasketValueType",
+                        "fields": null
+                    },
+                    {
+                        "name": "ProductDeliveryCharge",
+                        "fields": [
+                            {
+                                "name": "value",
+                                "description": null
+                            },
+                            {
+                                "name": "criteria",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductDeliveryChargeInterface",
+                        "fields": [
+                            {
+                                "name": "value",
+                                "description": null
+                            },
+                            {
+                                "name": "criteria",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductDeliveryCriterias",
+                        "fields": null
+                    },
+                    {
+                        "name": "ProductDeliveryCriteria",
+                        "fields": [
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "value",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PropositionalChargeDeliveryCriteriaInterface",
+                        "fields": [
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "value",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "DeliveryCriteria",
+                        "fields": null
+                    },
+                    {
+                        "name": "ProductDeliveryType",
+                        "fields": [
+                            {
+                                "name": "start",
+                                "description": null
+                            },
+                            {
+                                "name": "minDeliveryDays",
+                                "description": null
+                            },
+                            {
+                                "name": "maxDeliveryDays",
+                                "description": null
+                            },
+                            {
+                                "name": "deliveryType",
+                                "description": null
+                            },
+                            {
+                                "name": "end",
+                                "description": null
+                            },
+                            {
+                                "name": "cutoff",
+                                "description": null
+                            },
+                            {
+                                "name": "displayName",
+                                "description": null
+                            },
+                            {
+                                "name": "charges",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "deliveryTypeType",
+                        "fields": null
+                    },
+                    {
+                        "name": "ProductDetailsInterface",
+                        "fields": [
+                            {
+                                "name": "clothingInfo",
+                                "description": null
+                            },
+                            {
+                                "name": "ingredients",
+                                "description": null
+                            },
+                            {
+                                "name": "legalLabelling",
+                                "description": null
+                            },
+                            {
+                                "name": "allergens",
+                                "description": null
+                            },
+                            {
+                                "name": "energyEfficiency",
+                                "description": null
+                            },
+                            {
+                                "name": "marketing",
+                                "description": null
+                            },
+                            {
+                                "name": "storage",
+                                "description": null
+                            },
+                            {
+                                "name": "packSize",
+                                "description": null
+                            },
+                            {
+                                "name": "nutrition",
+                                "description": null
+                            },
+                            {
+                                "name": "otherNutritionInformation",
+                                "description": null
+                            },
+                            {
+                                "name": "hazardInfo",
+                                "description": null
+                            },
+                            {
+                                "name": "gda",
+                                "description": null
+                            },
+                            {
+                                "name": "guidelineDailyAmount",
+                                "description": null
+                            },
+                            {
+                                "name": "productMarketing",
+                                "description": null
+                            },
+                            {
+                                "name": "brandMarketing",
+                                "description": null
+                            },
+                            {
+                                "name": "manufacturerMarketing",
+                                "description": null
+                            },
+                            {
+                                "name": "additives",
+                                "description": null
+                            },
+                            {
+                                "name": "warnings",
+                                "description": null
+                            },
+                            {
+                                "name": "otherInformation",
+                                "description": null
+                            },
+                            {
+                                "name": "netContents",
+                                "description": null
+                            },
+                            {
+                                "name": "drainedWeight",
+                                "description": null
+                            },
+                            {
+                                "name": "safetyWarning",
+                                "description": null
+                            },
+                            {
+                                "name": "lowerAgeLimit",
+                                "description": null
+                            },
+                            {
+                                "name": "upperAgeLimit",
+                                "description": null
+                            },
+                            {
+                                "name": "healthmark",
+                                "description": null
+                            },
+                            {
+                                "name": "recyclingInfo",
+                                "description": null
+                            },
+                            {
+                                "name": "numberOfUses",
+                                "description": null
+                            },
+                            {
+                                "name": "preparationAndUsage",
+                                "description": null
+                            },
+                            {
+                                "name": "cookingInstructions",
+                                "description": null
+                            },
+                            {
+                                "name": "freezingInstructions",
+                                "description": null
+                            },
+                            {
+                                "name": "nappies",
+                                "description": null
+                            },
+                            {
+                                "name": "alcohol",
+                                "description": null
+                            },
+                            {
+                                "name": "dosage",
+                                "description": null
+                            },
+                            {
+                                "name": "preparationGuidelines",
+                                "description": null
+                            },
+                            {
+                                "name": "originInformation",
+                                "description": null
+                            },
+                            {
+                                "name": "directions",
+                                "description": null
+                            },
+                            {
+                                "name": "features",
+                                "description": null
+                            },
+                            {
+                                "name": "healthClaims",
+                                "description": null
+                            },
+                            {
+                                "name": "boxContents",
+                                "description": null
+                            },
+                            {
+                                "name": "nutritionalClaims",
+                                "description": null
+                            },
+                            {
+                                "name": "legalNotice",
+                                "description": null
+                            },
+                            {
+                                "name": "shelfLifeInfo",
+                                "description": null
+                            },
+                            {
+                                "name": "specifications",
+                                "description": null
+                            },
+                            {
+                                "name": "components",
+                                "description": null
+                            },
+                            {
+                                "name": "dietaryInfo",
+                                "description": null
+                            },
+                            {
+                                "name": "intoleranceInfo",
+                                "description": null
+                            },
+                            {
+                                "name": "hfss",
+                                "description": null
+                            },
+                            {
+                                "name": "productDimensions",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ClothingInfoInterface",
+                        "fields": [
+                            {
+                                "name": "pattern",
+                                "description": null
+                            },
+                            {
+                                "name": "clothingStyle",
+                                "description": null
+                            },
+                            {
+                                "name": "clothingProductLength",
+                                "description": null
+                            },
+                            {
+                                "name": "sleeveLength",
+                                "description": null
+                            },
+                            {
+                                "name": "targetAudience",
+                                "description": null
+                            },
+                            {
+                                "name": "fibreComposition",
+                                "description": null
+                            },
+                            {
+                                "name": "specialFeature",
+                                "description": null
+                            },
+                            {
+                                "name": "careInstructions",
+                                "description": null
+                            },
+                            {
+                                "name": "sizeChart",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "SizeChartType",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "url",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "EnergyEfficiencyType",
+                        "fields": [
+                            {
+                                "name": "class",
+                                "description": null
+                            },
+                            {
+                                "name": "energyClassUrl",
+                                "description": null
+                            },
+                            {
+                                "name": "productInfoDoc",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductInfoType",
+                        "fields": null
+                    },
+                    {
+                        "name": "AllergenInfoType",
+                        "fields": [
+                            {
+                                "name": "text",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "CompetitorsInfo",
+                        "fields": [
+                            {
+                                "name": "competitors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Competitor",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "priceMatch",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PriceMatch",
+                        "fields": [
+                            {
+                                "name": "isMatching",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "AdditionalInfo",
+                        "fields": [
+                            {
+                                "name": "isLowPricePromise",
+                                "description": null
+                            },
+                            {
+                                "name": "isLowEverydayPricing",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductTextInfo",
+                        "fields": [
+                            {
+                                "name": "productText",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductText",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "displayName",
+                                "description": null
+                            },
+                            {
+                                "name": "value",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductDimension",
+                        "fields": [
+                            {
+                                "name": "no",
+                                "description": null
+                            },
+                            {
+                                "name": "depth",
+                                "description": null
+                            },
+                            {
+                                "name": "width",
+                                "description": null
+                            },
+                            {
+                                "name": "height",
+                                "description": null
+                            },
+                            {
+                                "name": "volume",
+                                "description": null
+                            },
+                            {
+                                "name": "weight",
+                                "description": null
+                            },
+                            {
+                                "name": "volumeUom",
+                                "description": null
+                            },
+                            {
+                                "name": "weightUom",
+                                "description": null
+                            },
+                            {
+                                "name": "dimensionUom",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductDetailsType",
+                        "fields": [
+                            {
+                                "name": "clothingInfo",
+                                "description": null
+                            },
+                            {
+                                "name": "ingredients",
+                                "description": null
+                            },
+                            {
+                                "name": "legalLabelling",
+                                "description": null
+                            },
+                            {
+                                "name": "allergens",
+                                "description": null
+                            },
+                            {
+                                "name": "energyEfficiency",
+                                "description": null
+                            },
+                            {
+                                "name": "marketing",
+                                "description": null
+                            },
+                            {
+                                "name": "storage",
+                                "description": null
+                            },
+                            {
+                                "name": "packSize",
+                                "description": null
+                            },
+                            {
+                                "name": "nutrition",
+                                "description": null
+                            },
+                            {
+                                "name": "otherNutritionInformation",
+                                "description": null
+                            },
+                            {
+                                "name": "hazardInfo",
+                                "description": null
+                            },
+                            {
+                                "name": "gda",
+                                "description": null
+                            },
+                            {
+                                "name": "guidelineDailyAmount",
+                                "description": null
+                            },
+                            {
+                                "name": "productMarketing",
+                                "description": null
+                            },
+                            {
+                                "name": "brandMarketing",
+                                "description": null
+                            },
+                            {
+                                "name": "manufacturerMarketing",
+                                "description": null
+                            },
+                            {
+                                "name": "additives",
+                                "description": null
+                            },
+                            {
+                                "name": "warnings",
+                                "description": null
+                            },
+                            {
+                                "name": "otherInformation",
+                                "description": null
+                            },
+                            {
+                                "name": "netContents",
+                                "description": null
+                            },
+                            {
+                                "name": "drainedWeight",
+                                "description": null
+                            },
+                            {
+                                "name": "safetyWarning",
+                                "description": null
+                            },
+                            {
+                                "name": "lowerAgeLimit",
+                                "description": null
+                            },
+                            {
+                                "name": "upperAgeLimit",
+                                "description": null
+                            },
+                            {
+                                "name": "healthmark",
+                                "description": null
+                            },
+                            {
+                                "name": "recyclingInfo",
+                                "description": null
+                            },
+                            {
+                                "name": "numberOfUses",
+                                "description": null
+                            },
+                            {
+                                "name": "preparationAndUsage",
+                                "description": null
+                            },
+                            {
+                                "name": "cookingInstructions",
+                                "description": null
+                            },
+                            {
+                                "name": "freezingInstructions",
+                                "description": null
+                            },
+                            {
+                                "name": "nappies",
+                                "description": null
+                            },
+                            {
+                                "name": "alcohol",
+                                "description": null
+                            },
+                            {
+                                "name": "dosage",
+                                "description": null
+                            },
+                            {
+                                "name": "preparationGuidelines",
+                                "description": null
+                            },
+                            {
+                                "name": "originInformation",
+                                "description": null
+                            },
+                            {
+                                "name": "directions",
+                                "description": null
+                            },
+                            {
+                                "name": "features",
+                                "description": null
+                            },
+                            {
+                                "name": "healthClaims",
+                                "description": null
+                            },
+                            {
+                                "name": "boxContents",
+                                "description": null
+                            },
+                            {
+                                "name": "nutritionalClaims",
+                                "description": null
+                            },
+                            {
+                                "name": "legalNotice",
+                                "description": null
+                            },
+                            {
+                                "name": "shelfLifeInfo",
+                                "description": null
+                            },
+                            {
+                                "name": "specifications",
+                                "description": null
+                            },
+                            {
+                                "name": "components",
+                                "description": null
+                            },
+                            {
+                                "name": "dietaryInfo",
+                                "description": null
+                            },
+                            {
+                                "name": "intoleranceInfo",
+                                "description": null
+                            },
+                            {
+                                "name": "hfss",
+                                "description": null
+                            },
+                            {
+                                "name": "productDimensions",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ClothingInfoType",
+                        "fields": [
+                            {
+                                "name": "pattern",
+                                "description": null
+                            },
+                            {
+                                "name": "clothingStyle",
+                                "description": null
+                            },
+                            {
+                                "name": "clothingProductLength",
+                                "description": null
+                            },
+                            {
+                                "name": "sleeveLength",
+                                "description": null
+                            },
+                            {
+                                "name": "targetAudience",
+                                "description": null
+                            },
+                            {
+                                "name": "fibreComposition",
+                                "description": null
+                            },
+                            {
+                                "name": "specialFeature",
+                                "description": null
+                            },
+                            {
+                                "name": "careInstructions",
+                                "description": null
+                            },
+                            {
+                                "name": "sizeChart",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PackSizeType",
+                        "fields": [
+                            {
+                                "name": "value",
+                                "description": null
+                            },
+                            {
+                                "name": "units",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "HazardInfoType",
+                        "fields": [
+                            {
+                                "name": "chemicalName",
+                                "description": null
+                            },
+                            {
+                                "name": "productName",
+                                "description": null
+                            },
+                            {
+                                "name": "signalWord",
+                                "description": null
+                            },
+                            {
+                                "name": "statements",
+                                "description": null
+                            },
+                            {
+                                "name": "symbolCodes",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "CookingInstructionsType",
+                        "fields": [
+                            {
+                                "name": "oven",
+                                "description": null
+                            },
+                            {
+                                "name": "microwave",
+                                "description": null
+                            },
+                            {
+                                "name": "otherInstructions",
+                                "description": null
+                            },
+                            {
+                                "name": "cookingGuidelines",
+                                "description": null
+                            },
+                            {
+                                "name": "cookingPrecautions",
+                                "description": null
+                            },
+                            {
+                                "name": "cookingMethods",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "OvenCookingInstructionType",
+                        "fields": [
+                            {
+                                "name": "chilled",
+                                "description": null
+                            },
+                            {
+                                "name": "frozen",
+                                "description": null
+                            },
+                            {
+                                "name": "ambient",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "OvenCookingInstructionDetailType",
+                        "fields": [
+                            {
+                                "name": "time",
+                                "description": null
+                            },
+                            {
+                                "name": "temperature",
+                                "description": null
+                            },
+                            {
+                                "name": "instructions",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "OvenTemperatureType",
+                        "fields": [
+                            {
+                                "name": "value",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "MicrowaveCookingInstructionType",
+                        "fields": [
+                            {
+                                "name": "chilled",
+                                "description": null
+                            },
+                            {
+                                "name": "frozen",
+                                "description": null
+                            },
+                            {
+                                "name": "ambient",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "MicrowaveCookingInstructionDetailType",
+                        "fields": [
+                            {
+                                "name": "detail",
+                                "description": null
+                            },
+                            {
+                                "name": "instructions",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "MicrowaveCookingStepType",
+                        "fields": [
+                            {
+                                "name": "step",
+                                "description": null
+                            },
+                            {
+                                "name": "T650",
+                                "description": null
+                            },
+                            {
+                                "name": "T750",
+                                "description": null
+                            },
+                            {
+                                "name": "T850",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "CookingMethodType",
+                        "fields": [
+                            {
+                                "name": "instructions",
+                                "description": null
+                            },
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "time",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "NappyInfoType",
+                        "fields": [
+                            {
+                                "name": "quantity",
+                                "description": null
+                            },
+                            {
+                                "name": "nappySize",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "AlcoholInfoItemType",
+                        "fields": [
+                            {
+                                "name": "grapeVariety",
+                                "description": null
+                            },
+                            {
+                                "name": "storageType",
+                                "description": null
+                            },
+                            {
+                                "name": "vinificationDetails",
+                                "description": null
+                            },
+                            {
+                                "name": "history",
+                                "description": null
+                            },
+                            {
+                                "name": "regionalInformation",
+                                "description": null
+                            },
+                            {
+                                "name": "tastingNotes",
+                                "description": null
+                            },
+                            {
+                                "name": "storageInstructions",
+                                "description": null
+                            },
+                            {
+                                "name": "alcoholUnitsOtherText",
+                                "description": null
+                            },
+                            {
+                                "name": "regionOfOrigin",
+                                "description": null
+                            },
+                            {
+                                "name": "alcoholType",
+                                "description": null
+                            },
+                            {
+                                "name": "wineColour",
+                                "description": null
+                            },
+                            {
+                                "name": "alcoholUnits",
+                                "description": null
+                            },
+                            {
+                                "name": "percentageAlcohol",
+                                "description": null
+                            },
+                            {
+                                "name": "currentVintage",
+                                "description": null
+                            },
+                            {
+                                "name": "producer",
+                                "description": null
+                            },
+                            {
+                                "name": "typeOfClosure",
+                                "description": null
+                            },
+                            {
+                                "name": "wineMaker",
+                                "description": null
+                            },
+                            {
+                                "name": "packQty",
+                                "description": null
+                            },
+                            {
+                                "name": "packMeasure",
+                                "description": null
+                            },
+                            {
+                                "name": "country",
+                                "description": null
+                            },
+                            {
+                                "name": "tasteCategory",
+                                "description": null
+                            },
+                            {
+                                "name": "alcoholByVolumeOtherText",
+                                "description": null
+                            },
+                            {
+                                "name": "wineEffervescence",
+                                "description": null
+                            },
+                            {
+                                "name": "legalNotice",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "OriginInformationType",
+                        "fields": [
+                            {
+                                "name": "title",
+                                "description": null
+                            },
+                            {
+                                "name": "value",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ShelfLifeInfoType",
+                        "fields": [
+                            {
+                                "name": "hasShelfLife",
+                                "description": null
+                            },
+                            {
+                                "name": "inStoreShelfLife",
+                                "description": null
+                            },
+                            {
+                                "name": "depotShelLife",
+                                "description": null
+                            },
+                            {
+                                "name": "customerShelfLife",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductImageInterface",
+                        "fields": [
+                            {
+                                "name": "url",
+                                "description": null
+                            },
+                            {
+                                "name": "originalUrl",
+                                "description": null
+                            },
+                            {
+                                "name": "width",
+                                "description": null
+                            },
+                            {
+                                "name": "height",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductImageType",
+                        "fields": [
+                            {
+                                "name": "url",
+                                "description": null
+                            },
+                            {
+                                "name": "originalUrl",
+                                "description": null
+                            },
+                            {
+                                "name": "width",
+                                "description": null
+                            },
+                            {
+                                "name": "height",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductImagesInterface",
+                        "fields": [
+                            {
+                                "name": "thumbnail",
+                                "description": null
+                            },
+                            {
+                                "name": "default",
+                                "description": null
+                            },
+                            {
+                                "name": "zoom",
+                                "description": null
+                            },
+                            {
+                                "name": "alternatives",
+                                "description": null
+                            },
+                            {
+                                "name": "display",
+                                "description": null
+                            },
+                            {
+                                "name": "all",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductImagesType",
+                        "fields": [
+                            {
+                                "name": "thumbnail",
+                                "description": null
+                            },
+                            {
+                                "name": "default",
+                                "description": null
+                            },
+                            {
+                                "name": "zoom",
+                                "description": null
+                            },
+                            {
+                                "name": "alternatives",
+                                "description": null
+                            },
+                            {
+                                "name": "display",
+                                "description": null
+                            },
+                            {
+                                "name": "all",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductInterface",
+                        "fields": [
+                            {
+                                "name": "averageWeight",
+                                "description": null
+                            },
+                            {
+                                "name": "increment",
+                                "description": null
+                            },
+                            {
+                                "name": "minWeight",
+                                "description": null
+                            },
+                            {
+                                "name": "maxWeight",
+                                "description": null
+                            },
+                            {
+                                "name": "baseProductId",
+                                "description": null
+                            },
+                            {
+                                "name": "bulkBuyLimit",
+                                "description": null
+                            },
+                            {
+                                "name": "bulkBuyLimitMessage",
+                                "description": null
+                            },
+                            {
+                                "name": "bulkBuyLimitGroupId",
+                                "description": null
+                            },
+                            {
+                                "name": "groupBulkBuyLimit",
+                                "description": null
+                            },
+                            {
+                                "name": "timeRestrictedDelivery",
+                                "description": null
+                            },
+                            {
+                                "name": "restrictedDelivery",
+                                "description": null
+                            },
+                            {
+                                "name": "seller",
+                                "description": "Seller information about this product. This assumes that products/sellers have a 1-to-1 mapping (which makes sense in conjunction with the existing schema)"
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "productLocation",
+                                "description": null
+                            },
+                            {
+                                "name": "availability",
+                                "description": null
+                            },
+                            {
+                                "name": "unavailabilityReasons",
+                                "description": null
+                            },
+                            {
+                                "name": "isRestrictedOrderAmendment",
+                                "description": null
+                            },
+                            {
+                                "name": "defaultImageUrl",
+                                "description": null
+                            },
+                            {
+                                "name": "alternateImageUrl",
+                                "description": null
+                            },
+                            {
+                                "name": "displayImages",
+                                "description": null
+                            },
+                            {
+                                "name": "media",
+                                "description": null
+                            },
+                            {
+                                "name": "distributorAddress",
+                                "description": null
+                            },
+                            {
+                                "name": "manufacturerAddress",
+                                "description": null
+                            },
+                            {
+                                "name": "manufacturer",
+                                "description": null
+                            },
+                            {
+                                "name": "importerAddress",
+                                "description": null
+                            },
+                            {
+                                "name": "returnTo",
+                                "description": null
+                            },
+                            {
+                                "name": "superDepartmentId",
+                                "description": null
+                            },
+                            {
+                                "name": "superDepartmentName",
+                                "description": null
+                            },
+                            {
+                                "name": "departmentId",
+                                "description": null
+                            },
+                            {
+                                "name": "departmentName",
+                                "description": null
+                            },
+                            {
+                                "name": "aisleId",
+                                "description": null
+                            },
+                            {
+                                "name": "aisleName",
+                                "description": null
+                            },
+                            {
+                                "name": "shelfId",
+                                "description": null
+                            },
+                            {
+                                "name": "shelfName",
+                                "description": null
+                            },
+                            {
+                                "name": "depositAmount",
+                                "description": null
+                            },
+                            {
+                                "name": "description",
+                                "description": null
+                            },
+                            {
+                                "name": "details",
+                                "description": null
+                            },
+                            {
+                                "name": "multiPackDetails",
+                                "description": null
+                            },
+                            {
+                                "name": "displayType",
+                                "description": "UK returns one of: \"QuantityOrWeight\", \"Quantity\". IGHS returns one of: \"QuantityOrWeight\", \"Quantity\", \"Weight\""
+                            },
+                            {
+                                "name": "productType",
+                                "description": "UK returns one of: \"LooseProduce\", \"SingleProduct\", \"VariableWeightProducts\", \"CatchWeightProducts\". IGHS returns one of: \"LooseProduce\", \"SingleProduct\""
+                            },
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "adId",
+                                "description": "Sponsored Products returned by Search will have adId field"
+                            },
+                            {
+                                "name": "tpnc",
+                                "description": null
+                            },
+                            {
+                                "name": "tpnb",
+                                "description": null
+                            },
+                            {
+                                "name": "gtin",
+                                "description": null
+                            },
+                            {
+                                "name": "barcode",
+                                "description": null
+                            },
+                            {
+                                "name": "uuid",
+                                "description": null
+                            },
+                            {
+                                "name": "skuId",
+                                "description": null
+                            },
+                            {
+                                "name": "isForSale",
+                                "description": null
+                            },
+                            {
+                                "name": "isInFavourites",
+                                "description": null
+                            },
+                            {
+                                "name": "isInAnyList",
+                                "description": null
+                            },
+                            {
+                                "name": "isNew",
+                                "description": null
+                            },
+                            {
+                                "name": "icons",
+                                "description": null
+                            },
+                            {
+                                "name": "price",
+                                "description": null
+                            },
+                            {
+                                "name": "primaryTaxonomyNode",
+                                "description": null
+                            },
+                            {
+                                "name": "quantityInBasket",
+                                "description": null
+                            },
+                            {
+                                "name": "sellType",
+                                "description": null
+                            },
+                            {
+                                "name": "shortDescription",
+                                "description": null
+                            },
+                            {
+                                "name": "title",
+                                "description": null
+                            },
+                            {
+                                "name": "brandName",
+                                "description": null
+                            },
+                            {
+                                "name": "subBrand",
+                                "description": null
+                            },
+                            {
+                                "name": "promotions",
+                                "description": null
+                            },
+                            {
+                                "name": "unavailableDeliveryDateRange",
+                                "description": null
+                            },
+                            {
+                                "name": "reviews",
+                                "description": null
+                            },
+                            {
+                                "name": "restrictedDeliveryTime",
+                                "description": null
+                            },
+                            {
+                                "name": "restrictedDeliveryDate",
+                                "description": null
+                            },
+                            {
+                                "name": "recipes",
+                                "description": null
+                            },
+                            {
+                                "name": "recommended",
+                                "description": null
+                            },
+                            {
+                                "name": "substitutions",
+                                "description": null
+                            },
+                            {
+                                "name": "catchWeightList",
+                                "description": null
+                            },
+                            {
+                                "name": "shelfLife",
+                                "description": null
+                            },
+                            {
+                                "name": "restrictions",
+                                "description": null
+                            },
+                            {
+                                "name": "alternativeCategories",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfillment",
+                                "description": null
+                            },
+                            {
+                                "name": "alternatives",
+                                "description": null
+                            },
+                            {
+                                "name": "storageClassification",
+                                "description": null
+                            },
+                            {
+                                "name": "overlays",
+                                "description": null
+                            },
+                            {
+                                "name": "charges",
+                                "description": null
+                            },
+                            {
+                                "name": "variations",
+                                "description": null
+                            },
+                            {
+                                "name": "variationAttributes",
+                                "description": null
+                            },
+                            {
+                                "name": "modelMetadata",
+                                "description": "Metadata for personalized tracking"
+                            },
+                            {
+                                "name": "substitutionOptions",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfilment",
+                                "description": null
+                            },
+                            {
+                                "name": "returnDetails",
+                                "description": null
+                            },
+                            {
+                                "name": "badgeDetails",
+                                "description": null
+                            },
+                            {
+                                "name": "sellers",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductKeys",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "gtin",
+                                "description": null
+                            },
+                            {
+                                "name": "tpnc",
+                                "description": null
+                            },
+                            {
+                                "name": "tpnb",
+                                "description": null
+                            },
+                            {
+                                "name": "uuid",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductListFacetGroupInterface",
+                        "fields": [
+                            {
+                                "name": "categoryId",
+                                "description": null
+                            },
+                            {
+                                "name": "category",
+                                "description": null
+                            },
+                            {
+                                "name": "facets",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductListFacetInterface",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "count",
+                                "description": null
+                            },
+                            {
+                                "name": "selected",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FilterType",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "count",
+                                "description": null
+                            },
+                            {
+                                "name": "selected",
+                                "description": null
+                            },
+                            {
+                                "name": "children",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ListInfoInterface",
+                        "fields": [
+                            {
+                                "name": "matchType",
+                                "description": null
+                            },
+                            {
+                                "name": "offset",
+                                "description": null
+                            },
+                            {
+                                "name": "total",
+                                "description": null
+                            },
+                            {
+                                "name": "page",
+                                "description": null
+                            },
+                            {
+                                "name": "count",
+                                "description": null
+                            },
+                            {
+                                "name": "pageSize",
+                                "description": null
+                            },
+                            {
+                                "name": "title",
+                                "description": null
+                            },
+                            {
+                                "name": "pageId",
+                                "description": null
+                            },
+                            {
+                                "name": "query",
+                                "description": null
+                            },
+                            {
+                                "name": "sortBy",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductListInterface",
+                        "fields": [
+                            {
+                                "name": "info",
+                                "description": null
+                            },
+                            {
+                                "name": "products",
+                                "description": null
+                            },
+                            {
+                                "name": "facetGroups",
+                                "description": null
+                            },
+                            {
+                                "name": "options",
+                                "description": null
+                            },
+                            {
+                                "name": "taxonomy",
+                                "description": null
+                            },
+                            {
+                                "name": "filters",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductListType",
+                        "fields": [
+                            {
+                                "name": "info",
+                                "description": null
+                            },
+                            {
+                                "name": "results",
+                                "description": null
+                            },
+                            {
+                                "name": "expandedResults",
+                                "description": null
+                            },
+                            {
+                                "name": "products",
+                                "description": null
+                            },
+                            {
+                                "name": "suggestions",
+                                "description": null
+                            },
+                            {
+                                "name": "facetGroups",
+                                "description": null
+                            },
+                            {
+                                "name": "options",
+                                "description": null
+                            },
+                            {
+                                "name": "taxonomy",
+                                "description": null
+                            },
+                            {
+                                "name": "filters",
+                                "description": null
+                            },
+                            {
+                                "name": "popFilters",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            },
+                            {
+                                "name": "facets",
+                                "description": null
+                            },
+                            {
+                                "name": "additionalInfo",
+                                "description": null
+                            },
+                            {
+                                "name": "features",
+                                "description": "List of features from Search"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "CompositeResultType",
+                        "fields": [
+                            {
+                                "name": "node",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "CompositeResultNodeType",
+                        "fields": null
+                    },
+                    {
+                        "name": "ContentType",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "typeId",
+                                "description": null
+                            },
+                            {
+                                "name": "tracking",
+                                "description": null
+                            },
+                            {
+                                "name": "language",
+                                "description": null
+                            },
+                            {
+                                "name": "tenant",
+                                "description": null
+                            },
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "attributes",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ContentAttributesType",
+                        "fields": [
+                            {
+                                "name": "title",
+                                "description": null
+                            },
+                            {
+                                "name": "description",
+                                "description": null
+                            },
+                            {
+                                "name": "subHeading",
+                                "description": null
+                            },
+                            {
+                                "name": "keywords",
+                                "description": null
+                            },
+                            {
+                                "name": "altText",
+                                "description": null
+                            },
+                            {
+                                "name": "buttonText",
+                                "description": null
+                            },
+                            {
+                                "name": "mediaUrl",
+                                "description": null
+                            },
+                            {
+                                "name": "pageUrl",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "SuggestionsType",
+                        "fields": [
+                            {
+                                "name": "info",
+                                "description": null
+                            },
+                            {
+                                "name": "searchTerms",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "SuggestionInfoType",
+                        "fields": [
+                            {
+                                "name": "count",
+                                "description": null
+                            },
+                            {
+                                "name": "query",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "SearchTermsSuggestionsType",
+                        "fields": [
+                            {
+                                "name": "suggestionQuery",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FavouritesStatusType",
+                        "fields": [
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "success",
+                                "description": null
+                            },
+                            {
+                                "name": "message",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ListAdditonalInfo",
+                        "fields": [
+                            {
+                                "name": "propositions",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ListProposition",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "count",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "SearchFeature",
+                        "fields": null
+                    },
+                    {
+                        "name": "SearchQueryCategoriesFeature",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": "Feature ID"
+                            },
+                            {
+                                "name": "queryCategories",
+                                "description": "Matching categories for Search term"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductMediaImageType",
+                        "fields": [
+                            {
+                                "name": "url",
+                                "description": null
+                            },
+                            {
+                                "name": "aspectRatio",
+                                "description": null
+                            },
+                            {
+                                "name": "mimeType",
+                                "description": null
+                            },
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "type",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductMediaType",
+                        "fields": [
+                            {
+                                "name": "defaultImage",
+                                "description": null
+                            },
+                            {
+                                "name": "images",
+                                "description": null
+                            },
+                            {
+                                "name": "videos",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductMediaInterface",
+                        "fields": [
+                            {
+                                "name": "defaultImage",
+                                "description": null
+                            },
+                            {
+                                "name": "images",
+                                "description": null
+                            },
+                            {
+                                "name": "videos",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductMediaDefaultImageType",
+                        "fields": [
+                            {
+                                "name": "url",
+                                "description": null
+                            },
+                            {
+                                "name": "aspectRatio",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductMediaDefaultImageInterface",
+                        "fields": [
+                            {
+                                "name": "url",
+                                "description": null
+                            },
+                            {
+                                "name": "aspectRatio",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductMediaVideoType",
+                        "fields": [
+                            {
+                                "name": "url",
+                                "description": null
+                            },
+                            {
+                                "name": "aspectRatio",
+                                "description": null
+                            },
+                            {
+                                "name": "mimeType",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductMediaVideoInterface",
+                        "fields": [
+                            {
+                                "name": "url",
+                                "description": null
+                            },
+                            {
+                                "name": "aspectRatio",
+                                "description": null
+                            },
+                            {
+                                "name": "mimeType",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductModelMetadataType",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "version",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductRestrictionType",
+                        "fields": [
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "isViolated",
+                                "description": null
+                            },
+                            {
+                                "name": "message",
+                                "description": null
+                            },
+                            {
+                                "name": "shortMessage",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "RestrictionTypeOption",
+                        "fields": null
+                    },
+                    {
+                        "name": "ProductSpecificationType",
+                        "fields": [
+                            {
+                                "name": "specificationName",
+                                "description": null
+                            },
+                            {
+                                "name": "specificationAttributes",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductType",
+                        "fields": [
+                            {
+                                "name": "averageWeight",
+                                "description": null
+                            },
+                            {
+                                "name": "baseProductId",
+                                "description": null
+                            },
+                            {
+                                "name": "isRestrictedOrderAmendment",
+                                "description": null
+                            },
+                            {
+                                "name": "defaultImageUrl",
+                                "description": null
+                            },
+                            {
+                                "name": "alternateImageUrl",
+                                "description": null
+                            },
+                            {
+                                "name": "description",
+                                "description": null
+                            },
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "seller",
+                                "description": "Seller information about this product. This assumes that products/sellers have a 1-to-1 mapping (which makes sense in conjunction with the existing schema)"
+                            },
+                            {
+                                "name": "adId",
+                                "description": null
+                            },
+                            {
+                                "name": "tpnc",
+                                "description": null
+                            },
+                            {
+                                "name": "tpnb",
+                                "description": null
+                            },
+                            {
+                                "name": "gtin",
+                                "description": null
+                            },
+                            {
+                                "name": "barcode",
+                                "description": null
+                            },
+                            {
+                                "name": "uuid",
+                                "description": null
+                            },
+                            {
+                                "name": "skuId",
+                                "description": null
+                            },
+                            {
+                                "name": "skuCode",
+                                "description": null
+                            },
+                            {
+                                "name": "isVariant",
+                                "description": null
+                            },
+                            {
+                                "name": "isNew",
+                                "description": null
+                            },
+                            {
+                                "name": "isForSale",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "productLocation",
+                                "description": null
+                            },
+                            {
+                                "name": "availability",
+                                "description": null
+                            },
+                            {
+                                "name": "unavailabilityReasons",
+                                "description": null
+                            },
+                            {
+                                "name": "promotions",
+                                "description": null
+                            },
+                            {
+                                "name": "price",
+                                "description": null
+                            },
+                            {
+                                "name": "title",
+                                "description": null
+                            },
+                            {
+                                "name": "brandName",
+                                "description": null
+                            },
+                            {
+                                "name": "subBrand",
+                                "description": null
+                            },
+                            {
+                                "name": "bulkBuyLimit",
+                                "description": null
+                            },
+                            {
+                                "name": "bulkBuyLimitMessage",
+                                "description": null
+                            },
+                            {
+                                "name": "groupBulkBuyLimit",
+                                "description": null
+                            },
+                            {
+                                "name": "bulkBuyLimitGroupId",
+                                "description": null
+                            },
+                            {
+                                "name": "superDepartmentName",
+                                "description": null
+                            },
+                            {
+                                "name": "superDepartmentId",
+                                "description": null
+                            },
+                            {
+                                "name": "departmentName",
+                                "description": null
+                            },
+                            {
+                                "name": "departmentId",
+                                "description": null
+                            },
+                            {
+                                "name": "aisleName",
+                                "description": null
+                            },
+                            {
+                                "name": "aisleId",
+                                "description": null
+                            },
+                            {
+                                "name": "shelfName",
+                                "description": null
+                            },
+                            {
+                                "name": "shelfId",
+                                "description": null
+                            },
+                            {
+                                "name": "restrictedDelivery",
+                                "description": null
+                            },
+                            {
+                                "name": "timeRestrictedDelivery",
+                                "description": null
+                            },
+                            {
+                                "name": "restrictedDeliveryDate",
+                                "description": null
+                            },
+                            {
+                                "name": "restrictedDeliveryTime",
+                                "description": null
+                            },
+                            {
+                                "name": "displayType",
+                                "description": null
+                            },
+                            {
+                                "name": "productType",
+                                "description": null
+                            },
+                            {
+                                "name": "maxWeight",
+                                "description": null
+                            },
+                            {
+                                "name": "minWeight",
+                                "description": null
+                            },
+                            {
+                                "name": "increment",
+                                "description": null
+                            },
+                            {
+                                "name": "depositAmount",
+                                "description": null
+                            },
+                            {
+                                "name": "details",
+                                "description": null
+                            },
+                            {
+                                "name": "multiPackDetails",
+                                "description": null
+                            },
+                            {
+                                "name": "isInFavourites",
+                                "description": null
+                            },
+                            {
+                                "name": "isInAnyList",
+                                "description": null
+                            },
+                            {
+                                "name": "maxQuantityAllowed",
+                                "description": null
+                            },
+                            {
+                                "name": "maxOrderLimit",
+                                "description": null
+                            },
+                            {
+                                "name": "minOrderLimit",
+                                "description": null
+                            },
+                            {
+                                "name": "primaryTaxonomyNode",
+                                "description": null
+                            },
+                            {
+                                "name": "quantityInBasket",
+                                "description": null
+                            },
+                            {
+                                "name": "sellType",
+                                "description": null
+                            },
+                            {
+                                "name": "shortDescription",
+                                "description": null
+                            },
+                            {
+                                "name": "displayImages",
+                                "description": null
+                            },
+                            {
+                                "name": "media",
+                                "description": null
+                            },
+                            {
+                                "name": "distributorAddress",
+                                "description": null
+                            },
+                            {
+                                "name": "manufacturerAddress",
+                                "description": null
+                            },
+                            {
+                                "name": "manufacturer",
+                                "description": null
+                            },
+                            {
+                                "name": "importerAddress",
+                                "description": null
+                            },
+                            {
+                                "name": "returnTo",
+                                "description": null
+                            },
+                            {
+                                "name": "recipes",
+                                "description": null
+                            },
+                            {
+                                "name": "recommended",
+                                "description": null
+                            },
+                            {
+                                "name": "substitutions",
+                                "description": null
+                            },
+                            {
+                                "name": "catchWeightList",
+                                "description": null
+                            },
+                            {
+                                "name": "icons",
+                                "description": null
+                            },
+                            {
+                                "name": "shelfLife",
+                                "description": null
+                            },
+                            {
+                                "name": "restrictions",
+                                "description": null
+                            },
+                            {
+                                "name": "context",
+                                "description": null
+                            },
+                            {
+                                "name": "alternativeCategories",
+                                "description": null
+                            },
+                            {
+                                "name": "reviews",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfillment",
+                                "description": null
+                            },
+                            {
+                                "name": "value",
+                                "description": null
+                            },
+                            {
+                                "name": "alternatives",
+                                "description": null
+                            },
+                            {
+                                "name": "storageClassification",
+                                "description": null
+                            },
+                            {
+                                "name": "overlays",
+                                "description": null
+                            },
+                            {
+                                "name": "charges",
+                                "description": null
+                            },
+                            {
+                                "name": "variations",
+                                "description": null
+                            },
+                            {
+                                "name": "variationAttributes",
+                                "description": null
+                            },
+                            {
+                                "name": "modelMetadata",
+                                "description": "Metadata for personalized tracking"
+                            },
+                            {
+                                "name": "substitutionOptions",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfilment",
+                                "description": null
+                            },
+                            {
+                                "name": "additionalProductInfo",
+                                "description": null
+                            },
+                            {
+                                "name": "returnDetails",
+                                "description": null
+                            },
+                            {
+                                "name": "badgeDetails",
+                                "description": null
+                            },
+                            {
+                                "name": "sellers",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductVideoType",
+                        "fields": [
+                            {
+                                "name": "url",
+                                "description": null
+                            },
+                            {
+                                "name": "mimeType",
+                                "description": null
+                            },
+                            {
+                                "name": "default",
+                                "description": null
+                            },
+                            {
+                                "name": "type",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProfileInterface",
+                        "fields": [
+                            {
+                                "name": "storeId",
+                                "description": null
+                            },
+                            {
+                                "name": "locationUuid",
+                                "description": null
+                            },
+                            {
+                                "name": "firstName",
+                                "description": null
+                            },
+                            {
+                                "name": "lastName",
+                                "description": null
+                            },
+                            {
+                                "name": "title",
+                                "description": null
+                            },
+                            {
+                                "name": "email",
+                                "description": null
+                            },
+                            {
+                                "name": "customerNumber",
+                                "description": null
+                            },
+                            {
+                                "name": "isStaff",
+                                "description": null
+                            },
+                            {
+                                "name": "address",
+                                "description": null
+                            },
+                            {
+                                "name": "allAddresses",
+                                "description": null
+                            },
+                            {
+                                "name": "isFirstTimeShopper",
+                                "description": null
+                            },
+                            {
+                                "name": "onboarding",
+                                "description": null
+                            },
+                            {
+                                "name": "isLoyalCustomer",
+                                "description": null
+                            },
+                            {
+                                "name": "segments",
+                                "description": null
+                            },
+                            {
+                                "name": "customerSegments",
+                                "description": null
+                            },
+                            {
+                                "name": "marketingConsent",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            },
+                            {
+                                "name": "subscriptions",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Onboarding",
+                        "fields": [
+                            {
+                                "name": "weightCheck",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "CustomerSegmentType",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProfileType",
+                        "fields": [
+                            {
+                                "name": "storeId",
+                                "description": null
+                            },
+                            {
+                                "name": "locationUuid",
+                                "description": null
+                            },
+                            {
+                                "name": "firstName",
+                                "description": null
+                            },
+                            {
+                                "name": "lastName",
+                                "description": null
+                            },
+                            {
+                                "name": "title",
+                                "description": null
+                            },
+                            {
+                                "name": "email",
+                                "description": null
+                            },
+                            {
+                                "name": "customerNumber",
+                                "description": null
+                            },
+                            {
+                                "name": "isStaff",
+                                "description": null
+                            },
+                            {
+                                "name": "address",
+                                "description": null
+                            },
+                            {
+                                "name": "allAddresses",
+                                "description": null
+                            },
+                            {
+                                "name": "isFirstTimeShopper",
+                                "description": null
+                            },
+                            {
+                                "name": "onboarding",
+                                "description": null
+                            },
+                            {
+                                "name": "segments",
+                                "description": null
+                            },
+                            {
+                                "name": "customerSegments",
+                                "description": null
+                            },
+                            {
+                                "name": "marketingConsent",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            },
+                            {
+                                "name": "subscriptions",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PromotionInterface",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "startDate",
+                                "description": null
+                            },
+                            {
+                                "name": "endDate",
+                                "description": null
+                            },
+                            {
+                                "name": "description",
+                                "description": null
+                            },
+                            {
+                                "name": "headline",
+                                "description": null
+                            },
+                            {
+                                "name": "headlineMarkedUp",
+                                "description": null
+                            },
+                            {
+                                "name": "sellerId",
+                                "description": null
+                            },
+                            {
+                                "name": "unitSellingInfo",
+                                "description": null
+                            },
+                            {
+                                "name": "timesTriggered",
+                                "description": null
+                            },
+                            {
+                                "name": "promotionType",
+                                "description": null
+                            },
+                            {
+                                "name": "missed",
+                                "description": null
+                            },
+                            {
+                                "name": "warnings",
+                                "description": null
+                            },
+                            {
+                                "name": "info",
+                                "description": null
+                            },
+                            {
+                                "name": "products",
+                                "description": null
+                            },
+                            {
+                                "name": "facetGroups",
+                                "description": null
+                            },
+                            {
+                                "name": "savings",
+                                "description": null
+                            },
+                            {
+                                "name": "taxonomy",
+                                "description": null
+                            },
+                            {
+                                "name": "filters",
+                                "description": null
+                            },
+                            {
+                                "name": "statuses",
+                                "description": null
+                            },
+                            {
+                                "name": "attributes",
+                                "description": null
+                            },
+                            {
+                                "name": "price",
+                                "description": null
+                            },
+                            {
+                                "name": "multiplier",
+                                "description": null
+                            },
+                            {
+                                "name": "qualities",
+                                "description": null
+                            },
+                            {
+                                "name": "metaData",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PromotionMetaDataInterface",
+                        "fields": [
+                            {
+                                "name": "seo",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PromotionMetaDataType",
+                        "fields": [
+                            {
+                                "name": "seo",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PromotionRewardInterface",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "timesTriggered",
+                                "description": null
+                            },
+                            {
+                                "name": "savings",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PromotionRewardType",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "timesTriggered",
+                                "description": null
+                            },
+                            {
+                                "name": "savings",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PromotionStatusInterface",
+                        "fields": [
+                            {
+                                "name": "rewards",
+                                "description": null
+                            },
+                            {
+                                "name": "warnings",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PromotionStatusType",
+                        "fields": [
+                            {
+                                "name": "rewards",
+                                "description": null
+                            },
+                            {
+                                "name": "warnings",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PromotionType",
+                        "fields": [
+                            {
+                                "name": "description",
+                                "description": null
+                            },
+                            {
+                                "name": "headline",
+                                "description": null
+                            },
+                            {
+                                "name": "headlineMarkedUp",
+                                "description": null
+                            },
+                            {
+                                "name": "sellerId",
+                                "description": null
+                            },
+                            {
+                                "name": "unitSellingInfo",
+                                "description": null
+                            },
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "promotionType",
+                                "description": null
+                            },
+                            {
+                                "name": "startDate",
+                                "description": null
+                            },
+                            {
+                                "name": "endDate",
+                                "description": null
+                            },
+                            {
+                                "name": "timesTriggered",
+                                "description": null
+                            },
+                            {
+                                "name": "missed",
+                                "description": null
+                            },
+                            {
+                                "name": "warnings",
+                                "description": null
+                            },
+                            {
+                                "name": "info",
+                                "description": null
+                            },
+                            {
+                                "name": "facetGroups",
+                                "description": null
+                            },
+                            {
+                                "name": "products",
+                                "description": null
+                            },
+                            {
+                                "name": "savings",
+                                "description": null
+                            },
+                            {
+                                "name": "taxonomy",
+                                "description": null
+                            },
+                            {
+                                "name": "filters",
+                                "description": null
+                            },
+                            {
+                                "name": "statuses",
+                                "description": null
+                            },
+                            {
+                                "name": "attributes",
+                                "description": null
+                            },
+                            {
+                                "name": "price",
+                                "description": null
+                            },
+                            {
+                                "name": "multiplier",
+                                "description": null
+                            },
+                            {
+                                "name": "qualities",
+                                "description": null
+                            },
+                            {
+                                "name": "metaData",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PromotionTypeInfoType",
+                        "fields": [
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "provider",
+                                "description": null
+                            },
+                            {
+                                "name": "display",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PromotionTypeInterface",
+                        "fields": [
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "info",
+                                "description": null
+                            },
+                            {
+                                "name": "products",
+                                "description": null
+                            },
+                            {
+                                "name": "facetGroups",
+                                "description": null
+                            },
+                            {
+                                "name": "taxonomy",
+                                "description": null
+                            },
+                            {
+                                "name": "filters",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PromotionTypeType",
+                        "fields": [
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "info",
+                                "description": null
+                            },
+                            {
+                                "name": "products",
+                                "description": null
+                            },
+                            {
+                                "name": "facetGroups",
+                                "description": null
+                            },
+                            {
+                                "name": "taxonomy",
+                                "description": null
+                            },
+                            {
+                                "name": "filters",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PromotionWarningInterface",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "threshold",
+                                "description": null
+                            },
+                            {
+                                "name": "type",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PromotionWarningType",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "threshold",
+                                "description": null
+                            },
+                            {
+                                "name": "type",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "QuantityRestriction",
+                        "fields": [
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "message",
+                                "description": null
+                            },
+                            {
+                                "name": "maxAllowedQuantity",
+                                "description": null
+                            },
+                            {
+                                "name": "isGroupRestriction",
+                                "description": null
+                            },
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "type",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "QueryType",
+                        "fields": [
+                            {
+                                "name": "searchTerm",
+                                "description": null
+                            },
+                            {
+                                "name": "actualTerm",
+                                "description": null
+                            },
+                            {
+                                "name": "queryPhase",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "RangeFacetValues",
+                        "fields": [
+                            {
+                                "name": "buckets",
+                                "description": null
+                            },
+                            {
+                                "name": "customInput",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "RangeBucketType",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "value",
+                                "description": null
+                            },
+                            {
+                                "name": "count",
+                                "description": null
+                            },
+                            {
+                                "name": "isSelected",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "RangeCustomInputType",
+                        "fields": [
+                            {
+                                "name": "unit",
+                                "description": null
+                            },
+                            {
+                                "name": "delimiter",
+                                "description": null
+                            },
+                            {
+                                "name": "min",
+                                "description": null
+                            },
+                            {
+                                "name": "max",
+                                "description": null
+                            },
+                            {
+                                "name": "appliedMin",
+                                "description": null
+                            },
+                            {
+                                "name": "appliedMax",
+                                "description": null
+                            },
+                            {
+                                "name": "step",
+                                "description": null
+                            },
+                            {
+                                "name": "unitPosition",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "RawComponentInterface",
+                        "fields": [
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "props",
+                                "description": null
+                            },
+                            {
+                                "name": "children",
+                                "description": null
+                            },
+                            {
+                                "name": "childrenType",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "RecipeDetailsType",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": "Recipe title"
+                            },
+                            {
+                                "name": "description",
+                                "description": "Recipe description"
+                            },
+                            {
+                                "name": "servings",
+                                "description": "Recipe servings count"
+                            },
+                            {
+                                "name": "media",
+                                "description": "Recipe media details containing images and videos"
+                            },
+                            {
+                                "name": "urlFriendlyTitle",
+                                "description": "Recipe url"
+                            },
+                            {
+                                "name": "cookingTime",
+                                "description": "Recipe preparation/cooking time"
+                            },
+                            {
+                                "name": "rightPanelTip",
+                                "description": "Recipe right panel tip text"
+                            },
+                            {
+                                "name": "ingredientGroups",
+                                "description": "Recipe list of ingredients groups"
+                            },
+                            {
+                                "name": "preparationGroups",
+                                "description": "Recipe list of preparation groups "
+                            },
+                            {
+                                "name": "author",
+                                "description": "Recipe author details"
+                            },
+                            {
+                                "name": "nutritionalInformation",
+                                "description": null
+                            },
+                            {
+                                "name": "seoInfo",
+                                "description": "Recipe SEO Details"
+                            },
+                            {
+                                "name": "relatedItems",
+                                "description": "Recipe related list"
+                            },
+                            {
+                                "name": "pairing",
+                                "description": "Recipe pairing"
+                            },
+                            {
+                                "name": "campaigns",
+                                "description": "Recipe campaigns information"
+                            },
+                            {
+                                "name": "tips",
+                                "description": "Recipe tips"
+                            },
+                            {
+                                "name": "guides",
+                                "description": "Recipe guides"
+                            },
+                            {
+                                "name": "categories",
+                                "description": "Recipe Categories"
+                            },
+                            {
+                                "name": "ratings",
+                                "description": "Recipe ratings"
+                            },
+                            {
+                                "name": "relatedLinks",
+                                "description": "Recipe related links"
+                            },
+                            {
+                                "name": "timeInMinute",
+                                "description": "Recipe Cooking timings"
+                            },
+                            {
+                                "name": "servesOverrideText",
+                                "description": null
+                            },
+                            {
+                                "name": "additionalInfo",
+                                "description": null
+                            },
+                            {
+                                "name": "trafficLights",
+                                "description": "Recipe traffic light"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "RecipeMediaType",
+                        "fields": [
+                            {
+                                "name": "images",
+                                "description": "List of recipe images"
+                            },
+                            {
+                                "name": "video",
+                                "description": "List of recipe videos"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "RecipeImageType",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": "Image ID"
+                            },
+                            {
+                                "name": "url",
+                                "description": "Image URL location"
+                            },
+                            {
+                                "name": "altText",
+                                "description": "Image alt text for SEO"
+                            },
+                            {
+                                "name": "type",
+                                "description": "Image type which can be 'HERO', 'BANNER', 'THUMBNAIL'"
+                            },
+                            {
+                                "name": "source",
+                                "description": "Image source"
+                            },
+                            {
+                                "name": "sourceType",
+                                "description": "Image source type"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "RecipeVideoType",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": "Video ID"
+                            },
+                            {
+                                "name": "url",
+                                "description": "Video URL location"
+                            },
+                            {
+                                "name": "altText",
+                                "description": "Video alt text for SEO"
+                            },
+                            {
+                                "name": "source",
+                                "description": "Video source"
+                            },
+                            {
+                                "name": "sourceType",
+                                "description": "Video source type"
+                            },
+                            {
+                                "name": "duration",
+                                "description": "Video duration"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "IngredientGroups",
+                        "fields": [
+                            {
+                                "name": "sequenceNumber",
+                                "description": null
+                            },
+                            {
+                                "name": "ingredients",
+                                "description": "List of recipe ingredients"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Ingredients",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": "Ingredient name"
+                            },
+                            {
+                                "name": "sequenceNumber",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PreparationGroups",
+                        "fields": [
+                            {
+                                "name": "sequenceNumber",
+                                "description": null
+                            },
+                            {
+                                "name": "preparationSteps",
+                                "description": "List of recipe ingredients"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PreparationSteps",
+                        "fields": [
+                            {
+                                "name": "sequenceNumber",
+                                "description": null
+                            },
+                            {
+                                "name": "description",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "RecipeAuthor",
+                        "fields": [
+                            {
+                                "name": "blurb",
+                                "description": null
+                            },
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "url",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "NutritionalInformation",
+                        "fields": [
+                            {
+                                "name": "microNutrient",
+                                "description": null
+                            },
+                            {
+                                "name": "macroNutrients",
+                                "description": "Mineral list"
+                            },
+                            {
+                                "name": "calories",
+                                "description": "Calories counts"
+                            },
+                            {
+                                "name": "glycemicIndex",
+                                "description": "Glycemic counts"
+                            },
+                            {
+                                "name": "inflammatoryIndex",
+                                "description": "Inflammatory counts"
+                            },
+                            {
+                                "name": "isDrink",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "MicroNutrient",
+                        "fields": [
+                            {
+                                "name": "vitamins",
+                                "description": "Mineral list for vitamins"
+                            },
+                            {
+                                "name": "minerals",
+                                "description": "Mineral list"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "MineralsInformation",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": "Mineral name"
+                            },
+                            {
+                                "name": "RIPer100",
+                                "description": null
+                            },
+                            {
+                                "name": "RI",
+                                "description": null
+                            },
+                            {
+                                "name": "RIPerServing",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "RecipeSEO",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "h1",
+                                "description": null
+                            },
+                            {
+                                "name": "h1Source",
+                                "description": null
+                            },
+                            {
+                                "name": "title",
+                                "description": null
+                            },
+                            {
+                                "name": "titleSource",
+                                "description": null
+                            },
+                            {
+                                "name": "description",
+                                "description": null
+                            },
+                            {
+                                "name": "descriptionSource",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "RecipeRelatedItems",
+                        "fields": [
+                            {
+                                "name": "image",
+                                "description": null
+                            },
+                            {
+                                "name": "link",
+                                "description": null
+                            },
+                            {
+                                "name": "title",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "RecipePairing",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "imageUrl",
+                                "description": null
+                            },
+                            {
+                                "name": "productUrl",
+                                "description": null
+                            },
+                            {
+                                "name": "productCta",
+                                "description": null
+                            },
+                            {
+                                "name": "altText",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "RecipeCampaigns",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "url",
+                                "description": null
+                            },
+                            {
+                                "name": "label",
+                                "description": null
+                            },
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "imageUrl",
+                                "description": null
+                            },
+                            {
+                                "name": "imageAlt",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "RecipeTips",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "sequenceNumber",
+                                "description": null
+                            },
+                            {
+                                "name": "description",
+                                "description": null
+                            },
+                            {
+                                "name": "title",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "RecipeGuide",
+                        "fields": [
+                            {
+                                "name": "sequenceNumber",
+                                "description": null
+                            },
+                            {
+                                "name": "description",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "RecipeCategory",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "isPrimary",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "RecipeRating",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "totalCount",
+                                "description": null
+                            },
+                            {
+                                "name": "bestRating",
+                                "description": null
+                            },
+                            {
+                                "name": "worstRating",
+                                "description": null
+                            },
+                            {
+                                "name": "average",
+                                "description": null
+                            },
+                            {
+                                "name": "ratingDistribution",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "RecipeRatingDistribution",
+                        "fields": [
+                            {
+                                "name": "key",
+                                "description": null
+                            },
+                            {
+                                "name": "value",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "RecipeRelatedLinks",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "url",
+                                "description": null
+                            },
+                            {
+                                "name": "title",
+                                "description": null
+                            },
+                            {
+                                "name": "sequenceNumber",
+                                "description": null
+                            },
+                            {
+                                "name": "hyperlinkText",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "TimeInMinute",
+                        "fields": [
+                            {
+                                "name": "cooking",
+                                "description": "Cooking time in minutes"
+                            },
+                            {
+                                "name": "cooling",
+                                "description": null
+                            },
+                            {
+                                "name": "preparation",
+                                "description": "Preparation time in minutes"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "TrafficLights",
+                        "fields": [
+                            {
+                                "name": "nutritionalInformation",
+                                "description": null
+                            },
+                            {
+                                "name": "fop",
+                                "description": null
+                            },
+                            {
+                                "name": "others",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "NutritionalInfo",
+                        "fields": [
+                            {
+                                "name": "energy",
+                                "description": null
+                            },
+                            {
+                                "name": "fat",
+                                "description": null
+                            },
+                            {
+                                "name": "saturates",
+                                "description": null
+                            },
+                            {
+                                "name": "sugars",
+                                "description": null
+                            },
+                            {
+                                "name": "salt",
+                                "description": null
+                            },
+                            {
+                                "name": "carbs",
+                                "description": null
+                            },
+                            {
+                                "name": "protein",
+                                "description": null
+                            },
+                            {
+                                "name": "fiber",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Nutrient",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "caloriesKJ",
+                                "description": null
+                            },
+                            {
+                                "name": "caloriesKCal",
+                                "description": null
+                            },
+                            {
+                                "name": "percentageRI",
+                                "description": null
+                            },
+                            {
+                                "name": "quantity",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Fop",
+                        "fields": [
+                            {
+                                "name": "key",
+                                "description": null
+                            },
+                            {
+                                "name": "scale",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "RecipeInterface",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "title",
+                                "description": null
+                            },
+                            {
+                                "name": "url",
+                                "description": null
+                            },
+                            {
+                                "name": "thumbnail",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "RecipeTaxonomyType",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": "Recipe taxonomy title"
+                            },
+                            {
+                                "name": "description",
+                                "description": "Recipe taxonomy description"
+                            },
+                            {
+                                "name": "media",
+                                "description": "Recipe servings count"
+                            },
+                            {
+                                "name": "url",
+                                "description": "Recipe url"
+                            },
+                            {
+                                "name": "children",
+                                "description": "Taxonomy subcategories list"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "RecipeTaxonomyMediaType",
+                        "fields": [
+                            {
+                                "name": "url",
+                                "description": null
+                            },
+                            {
+                                "name": "altText",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "RecipesInterface",
+                        "fields": [
+                            {
+                                "name": "info",
+                                "description": null
+                            },
+                            {
+                                "name": "recipe",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "RecommendationList",
+                        "fields": [
+                            {
+                                "name": "info",
+                                "description": null
+                            },
+                            {
+                                "name": "impressionId",
+                                "description": null
+                            },
+                            {
+                                "name": "products",
+                                "description": null
+                            },
+                            {
+                                "name": "facetGroups",
+                                "description": null
+                            },
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "taxonomy",
+                                "description": null
+                            },
+                            {
+                                "name": "categorised",
+                                "description": null
+                            },
+                            {
+                                "name": "banners",
+                                "description": null
+                            },
+                            {
+                                "name": "filters",
+                                "description": null
+                            },
+                            {
+                                "name": "config",
+                                "description": null
+                            },
+                            {
+                                "name": "tracking",
+                                "description": null
+                            },
+                            {
+                                "name": "cursor",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "CategorisedType",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "parent",
+                                "description": null
+                            },
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "label",
+                                "description": null
+                            },
+                            {
+                                "name": "total",
+                                "description": null
+                            },
+                            {
+                                "name": "children",
+                                "description": null
+                            },
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "products",
+                                "description": null
+                            },
+                            {
+                                "name": "productType",
+                                "description": null
+                            },
+                            {
+                                "name": "linkTo",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "RecommendationConfigType",
+                        "fields": [
+                            {
+                                "name": "position",
+                                "description": null
+                            },
+                            {
+                                "name": "provider",
+                                "description": null
+                            },
+                            {
+                                "name": "strategy",
+                                "description": null
+                            },
+                            {
+                                "name": "variant",
+                                "description": null
+                            },
+                            {
+                                "name": "count",
+                                "description": null
+                            },
+                            {
+                                "name": "fallbackStrategy",
+                                "description": null
+                            },
+                            {
+                                "name": "cursor",
+                                "description": null
+                            },
+                            {
+                                "name": "executionDetail",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "RecommendationsList",
+                        "fields": [
+                            {
+                                "name": "recommendations",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "filterCriteria",
+                        "fields": null
+                    },
+                    {
+                        "name": "BrowseCategories",
+                        "fields": null
+                    },
+                    {
+                        "name": "BrowseSearchConfig",
+                        "fields": null
+                    },
+                    {
+                        "name": "BrowseFilterType",
+                        "fields": null
+                    },
+                    {
+                        "name": "RecommendationProvider",
+                        "fields": null
+                    },
+                    {
+                        "name": "CustomerContextType",
+                        "fields": null
+                    },
+                    {
+                        "name": "Recommendation",
+                        "fields": null
+                    },
+                    {
+                        "name": "RecommendationType",
+                        "fields": null
+                    },
+                    {
+                        "name": "TescoRecommendationStrategy",
+                        "fields": null
+                    },
+                    {
+                        "name": "TescoRecommendationpageName",
+                        "fields": null
+                    },
+                    {
+                        "name": "ExclusionInfoType",
+                        "fields": null
+                    },
+                    {
+                        "name": "RegisterType",
+                        "fields": [
+                            {
+                                "name": "registration",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "RegistrationType",
+                        "fields": [
+                            {
+                                "name": "requiredVerifications",
+                                "description": null
+                            },
+                            {
+                                "name": "customerToken",
+                                "description": null
+                            },
+                            {
+                                "name": "sessionId",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "requiredVerifications",
+                        "fields": [
+                            {
+                                "name": "oneTimePassword",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "MiscRequestStatusInterface",
+                        "fields": [
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "success",
+                                "description": null
+                            },
+                            {
+                                "name": "message",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ReturnByFulfilmentType",
+                        "fields": [
+                            {
+                                "name": "items",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfilment",
+                                "description": null
+                            },
+                            {
+                                "name": "tracking",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "diagnostics",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ReturnDeliveryGroupFulfilment",
+                        "fields": [
+                            {
+                                "name": "selectedOption",
+                                "description": null
+                            },
+                            {
+                                "name": "availableOptions",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ReturnSplitFulfilment",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "guidePrice",
+                                "description": null
+                            },
+                            {
+                                "name": "totalPrice",
+                                "description": null
+                            },
+                            {
+                                "name": "totalItems",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            },
+                            {
+                                "name": "charges",
+                                "description": null
+                            },
+                            {
+                                "name": "discounts",
+                                "description": null
+                            },
+                            {
+                                "name": "clubcardPoints",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfilment",
+                                "description": null
+                            },
+                            {
+                                "name": "tracking",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "diagnostics",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ReturnSummaryType",
+                        "fields": [
+                            {
+                                "name": "splitView",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ReturnsBaseInterface",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "originalOrderId",
+                                "description": null
+                            },
+                            {
+                                "name": "originalOrderNumber",
+                                "description": null
+                            },
+                            {
+                                "name": "channel",
+                                "description": null
+                            },
+                            {
+                                "name": "startDateTime",
+                                "description": null
+                            },
+                            {
+                                "name": "endDateTime",
+                                "description": null
+                            },
+                            {
+                                "name": "customerId",
+                                "description": null
+                            },
+                            {
+                                "name": "locationUuid",
+                                "description": null
+                            },
+                            {
+                                "name": "localisation",
+                                "description": null
+                            },
+                            {
+                                "name": "storeId",
+                                "description": null
+                            },
+                            {
+                                "name": "payments",
+                                "description": "Shows payment details related to the return, including the refund amount, payment method and refund status"
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "totalPrice",
+                                "description": null
+                            },
+                            {
+                                "name": "itemsCount",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            },
+                            {
+                                "name": "refund",
+                                "description": null
+                            },
+                            {
+                                "name": "charges",
+                                "description": null
+                            },
+                            {
+                                "name": "tracking",
+                                "description": null
+                            },
+                            {
+                                "name": "emailAddress",
+                                "description": null
+                            },
+                            {
+                                "name": "splitView",
+                                "description": null
+                            },
+                            {
+                                "name": "packageCount",
+                                "description": null
+                            },
+                            {
+                                "name": "orderNumber",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ReturnsType",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "originalOrderId",
+                                "description": null
+                            },
+                            {
+                                "name": "originalOrderNumber",
+                                "description": null
+                            },
+                            {
+                                "name": "channel",
+                                "description": null
+                            },
+                            {
+                                "name": "startDateTime",
+                                "description": null
+                            },
+                            {
+                                "name": "endDateTime",
+                                "description": null
+                            },
+                            {
+                                "name": "customerId",
+                                "description": null
+                            },
+                            {
+                                "name": "locationUuid",
+                                "description": null
+                            },
+                            {
+                                "name": "localisation",
+                                "description": null
+                            },
+                            {
+                                "name": "storeId",
+                                "description": null
+                            },
+                            {
+                                "name": "payments",
+                                "description": "Shows payment details related to the return, including the refund amount, payment method and refund status"
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "totalPrice",
+                                "description": null
+                            },
+                            {
+                                "name": "itemsCount",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            },
+                            {
+                                "name": "refund",
+                                "description": null
+                            },
+                            {
+                                "name": "charges",
+                                "description": null
+                            },
+                            {
+                                "name": "tracking",
+                                "description": null
+                            },
+                            {
+                                "name": "emailAddress",
+                                "description": null
+                            },
+                            {
+                                "name": "splitView",
+                                "description": null
+                            },
+                            {
+                                "name": "packageCount",
+                                "description": null
+                            },
+                            {
+                                "name": "orderNumber",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ReviewsType",
+                        "fields": [
+                            {
+                                "name": "entries",
+                                "description": null
+                            },
+                            {
+                                "name": "info",
+                                "description": null
+                            },
+                            {
+                                "name": "product",
+                                "description": null
+                            },
+                            {
+                                "name": "stats",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ReviewsTypeInterface",
+                        "fields": [
+                            {
+                                "name": "entries",
+                                "description": null
+                            },
+                            {
+                                "name": "info",
+                                "description": null
+                            },
+                            {
+                                "name": "product",
+                                "description": null
+                            },
+                            {
+                                "name": "stats",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ReviewType",
+                        "fields": [
+                            {
+                                "name": "author",
+                                "description": null
+                            },
+                            {
+                                "name": "client",
+                                "description": null
+                            },
+                            {
+                                "name": "lastModificationDateTime",
+                                "description": null
+                            },
+                            {
+                                "name": "lastModeratedDateTime",
+                                "description": null
+                            },
+                            {
+                                "name": "product",
+                                "description": null
+                            },
+                            {
+                                "name": "rating",
+                                "description": null
+                            },
+                            {
+                                "name": "ratingsOnly",
+                                "description": null
+                            },
+                            {
+                                "name": "reviewId",
+                                "description": null
+                            },
+                            {
+                                "name": "source",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "submissionDateTime",
+                                "description": null
+                            },
+                            {
+                                "name": "summary",
+                                "description": null
+                            },
+                            {
+                                "name": "termsAndConditions",
+                                "description": null
+                            },
+                            {
+                                "name": "text",
+                                "description": null
+                            },
+                            {
+                                "name": "recommended",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            },
+                            {
+                                "name": "syndicated",
+                                "description": null
+                            },
+                            {
+                                "name": "syndicationSource",
+                                "description": null
+                            },
+                            {
+                                "name": "verifiedBuyer",
+                                "description": null
+                            },
+                            {
+                                "name": "promotionalReview",
+                                "description": null
+                            },
+                            {
+                                "name": "helpfulCounts",
+                                "description": null
+                            },
+                            {
+                                "name": "customerServiceResponses",
+                                "description": null
+                            },
+                            {
+                                "name": "sampledReview",
+                                "description": null
+                            },
+                            {
+                                "name": "mediaAssets",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ReviewAuthorType",
+                        "fields": [
+                            {
+                                "name": "nickname",
+                                "description": null
+                            },
+                            {
+                                "name": "authoredByMe",
+                                "description": null
+                            },
+                            {
+                                "name": "authorId",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ReviewProductType",
+                        "fields": [
+                            {
+                                "name": "tpnb",
+                                "description": null
+                            },
+                            {
+                                "name": "tpnc",
+                                "description": null
+                            },
+                            {
+                                "name": "itemId",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "RatingType",
+                        "fields": [
+                            {
+                                "name": "value",
+                                "description": null
+                            },
+                            {
+                                "name": "range",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "SyndicationSourceType",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "logo",
+                                "description": null
+                            },
+                            {
+                                "name": "clientId",
+                                "description": null
+                            },
+                            {
+                                "name": "contentLink",
+                                "description": null
+                            },
+                            {
+                                "name": "clientUrl",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "HelpfulCountsType",
+                        "fields": [
+                            {
+                                "name": "helpfulCount",
+                                "description": null
+                            },
+                            {
+                                "name": "notHelpfulCount",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "CustomerServiceResponseType",
+                        "fields": [
+                            {
+                                "name": "lastModificationDateTime",
+                                "description": null
+                            },
+                            {
+                                "name": "text",
+                                "description": null
+                            },
+                            {
+                                "name": "responseId",
+                                "description": null
+                            },
+                            {
+                                "name": "submissionDateTime",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ReviewStatsType",
+                        "fields": [
+                            {
+                                "name": "ratingsDistribution",
+                                "description": null
+                            },
+                            {
+                                "name": "lastUpdatedTime",
+                                "description": null
+                            },
+                            {
+                                "name": "noOfReviews",
+                                "description": null
+                            },
+                            {
+                                "name": "overallRatingRange",
+                                "description": null
+                            },
+                            {
+                                "name": "overallRating",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ReviewStatsCountPerRatingType",
+                        "fields": [
+                            {
+                                "name": "one",
+                                "description": null
+                            },
+                            {
+                                "name": "two",
+                                "description": null
+                            },
+                            {
+                                "name": "three",
+                                "description": null
+                            },
+                            {
+                                "name": "four",
+                                "description": null
+                            },
+                            {
+                                "name": "five",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "SEOMetadataInterface",
+                        "fields": [
+                            {
+                                "name": "scheme",
+                                "description": null
+                            },
+                            {
+                                "name": "currency",
+                                "description": null
+                            },
+                            {
+                                "name": "afterDiscountPrice",
+                                "description": null
+                            },
+                            {
+                                "name": "discount",
+                                "description": null
+                            },
+                            {
+                                "name": "perUnitOfMeasure",
+                                "description": null
+                            },
+                            {
+                                "name": "percentage",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "SEOMetadataType",
+                        "fields": [
+                            {
+                                "name": "scheme",
+                                "description": null
+                            },
+                            {
+                                "name": "currency",
+                                "description": null
+                            },
+                            {
+                                "name": "afterDiscountPrice",
+                                "description": null
+                            },
+                            {
+                                "name": "discount",
+                                "description": null
+                            },
+                            {
+                                "name": "perUnitOfMeasure",
+                                "description": null
+                            },
+                            {
+                                "name": "percentage",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "SaleProhibitedRestriction",
+                        "fields": [
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "message",
+                                "description": null
+                            },
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "subType",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "RestrictionSubType",
+                        "fields": null
+                    },
+                    {
+                        "name": "SavingsType",
+                        "fields": [
+                            {
+                                "name": "clubcard",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ClubcardSavingsType",
+                        "fields": [
+                            {
+                                "name": "statements",
+                                "description": null
+                            },
+                            {
+                                "name": "currency",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "StatementType",
+                        "fields": [
+                            {
+                                "name": "period",
+                                "description": null
+                            },
+                            {
+                                "name": "lineItems",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "LineItemType",
+                        "fields": [
+                            {
+                                "name": "key",
+                                "description": null
+                            },
+                            {
+                                "name": "value",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "SavingPeriods",
+                        "fields": null
+                    },
+                    {
+                        "name": "Seller",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": "Tesco-defined Seller ID"
+                            },
+                            {
+                                "name": "logo",
+                                "description": "Logo for Seller"
+                            },
+                            {
+                                "name": "partnerName",
+                                "description": "Partner Name of seller"
+                            },
+                            {
+                                "name": "accountName",
+                                "description": "Account Name of seller"
+                            },
+                            {
+                                "name": "businessName",
+                                "description": "Business Name of seller"
+                            },
+                            {
+                                "name": "isContactable",
+                                "description": "Is contactable for seller"
+                            },
+                            {
+                                "name": "badges",
+                                "description": "Badges associated with seller"
+                            },
+                            {
+                                "name": "vatRegNumber",
+                                "description": "VAT Registration Number of seller"
+                            },
+                            {
+                                "name": "registrationNumber",
+                                "description": "Company Registration Number of seller"
+                            },
+                            {
+                                "name": "address",
+                                "description": "Address of seller"
+                            },
+                            {
+                                "name": "retailer",
+                                "description": "Is a retailer"
+                            },
+                            {
+                                "name": "sellerStatus",
+                                "description": "Operational status of seller"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "SellerBadge",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "description",
+                                "description": null
+                            },
+                            {
+                                "name": "url",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "AddressResponse",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "label",
+                                "description": null
+                            },
+                            {
+                                "name": "countryCode",
+                                "description": null
+                            },
+                            {
+                                "name": "languageTag",
+                                "description": null
+                            },
+                            {
+                                "name": "geoCoordinates",
+                                "description": null
+                            },
+                            {
+                                "name": "properties",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "type",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "GeoCoordinates",
+                        "fields": [
+                            {
+                                "name": "latitude",
+                                "description": null
+                            },
+                            {
+                                "name": "longitude",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "properties",
+                        "fields": [
+                            {
+                                "name": "lines",
+                                "description": null
+                            },
+                            {
+                                "name": "postTown",
+                                "description": null
+                            },
+                            {
+                                "name": "postcode",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ServiceCheck",
+                        "fields": [
+                            {
+                                "name": "success",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            },
+                            {
+                                "name": "updates",
+                                "description": null
+                            },
+                            {
+                                "name": "diff",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            },
+                            {
+                                "name": "checksRemaining",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ServiceCheckError",
+                        "fields": [
+                            {
+                                "name": "code",
+                                "description": null
+                            },
+                            {
+                                "name": "message",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ServiceCheckErrorCode",
+                        "fields": null
+                    },
+                    {
+                        "name": "ServiceCheckUpdates",
+                        "fields": [
+                            {
+                                "name": "items",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ServiceCheckItemUpdates",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "item",
+                                "description": null
+                            },
+                            {
+                                "name": "successful",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ServiceCheckItem",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "quantity",
+                                "description": null
+                            },
+                            {
+                                "name": "originalQuantity",
+                                "description": null
+                            },
+                            {
+                                "name": "product",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ServiceCheckItemUpdateErrorResult",
+                        "fields": [
+                            {
+                                "name": "code",
+                                "description": ""
+                            },
+                            {
+                                "name": "message",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ServiceCheckItemUpdateErrorCodes",
+                        "fields": null
+                    },
+                    {
+                        "name": "ServiceCheckDiff",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ServiceCheckItemDiff",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "quantityDifference",
+                                "description": null
+                            },
+                            {
+                                "name": "item",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ServiceType",
+                        "fields": [
+                            {
+                                "name": "clientId",
+                                "description": null
+                            },
+                            {
+                                "name": "actions",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ServiceActionUpdatesUnionType",
+                        "fields": null
+                    },
+                    {
+                        "name": "ExtendSessionUpdatesType",
+                        "fields": [
+                            {
+                                "name": "errors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ExtendSessionErrorType",
+                        "fields": [
+                            {
+                                "name": "message",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ServiceabilityType",
+                        "fields": [
+                            {
+                                "name": "isServiceable",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ShelfLifeInfoInterface",
+                        "fields": [
+                            {
+                                "name": "hasShelfLife",
+                                "description": null
+                            },
+                            {
+                                "name": "inStoreShelfLife",
+                                "description": null
+                            },
+                            {
+                                "name": "depotShelLife",
+                                "description": null
+                            },
+                            {
+                                "name": "customerShelfLife",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ShelfLifeInterface",
+                        "fields": [
+                            {
+                                "name": "url",
+                                "description": null
+                            },
+                            {
+                                "name": "message",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ShopBrandsRecommendationResponse",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "title",
+                                "description": null
+                            },
+                            {
+                                "name": "executionConfig",
+                                "description": "A list of execution configurations provided as flat key-value pairs. These configurations act as dynamic execution contexts or feature flags that influence how recommendations are generated. Examples include platform type, customer segment, campaign ID, or experimental flags. The design ensures forward compatibility—allowing backend systems to introduce new configurations without requiring any changes in the XAPI schema. This approach prevents XAPI from being a bottleneck, enabling rapid evolution and experimentation on the backend with zero schema impact."
+                            },
+                            {
+                                "name": "brands",
+                                "description": null
+                            },
+                            {
+                                "name": "isPersonalised",
+                                "description": null
+                            },
+                            {
+                                "name": "total",
+                                "description": null
+                            },
+                            {
+                                "name": "count",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ExecutionCriteria",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "values",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "JSON",
+                        "fields": null
+                    },
+                    {
+                        "name": "RecommendedBrand",
+                        "fields": [
+                            {
+                                "name": "brand",
+                                "description": null
+                            },
+                            {
+                                "name": "business",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Brand",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "media",
+                                "description": null
+                            },
+                            {
+                                "name": "anchorProduct",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ShopCategoriesRecommendationResponse",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "title",
+                                "description": null
+                            },
+                            {
+                                "name": "executionConfig",
+                                "description": "A list of execution configurations provided as flat key-value pairs. These configurations act as dynamic execution contexts or feature flags that influence how recommendations are generated. Examples include platform type, customer segment, campaign ID, or experimental flags. The design ensures forward compatibility—allowing backend systems to introduce new configurations without requiring any changes in the XAPI schema. This approach prevents XAPI from being a bottleneck, enabling rapid evolution and experimentation on the backend with zero schema impact."
+                            },
+                            {
+                                "name": "categories",
+                                "description": null
+                            },
+                            {
+                                "name": "isPersonalised",
+                                "description": null
+                            },
+                            {
+                                "name": "total",
+                                "description": null
+                            },
+                            {
+                                "name": "count",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "RecommendedTaxonomyCategory",
+                        "fields": [
+                            {
+                                "name": "category",
+                                "description": null
+                            },
+                            {
+                                "name": "media",
+                                "description": null
+                            },
+                            {
+                                "name": "categoryLevel",
+                                "description": null
+                            },
+                            {
+                                "name": "anchorProduct",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ShoppingList",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "locationUuid",
+                                "description": null
+                            },
+                            {
+                                "name": "addressName",
+                                "description": null
+                            },
+                            {
+                                "name": "totalProducts",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            },
+                            {
+                                "name": "sharingInfo",
+                                "description": null
+                            },
+                            {
+                                "name": "paginationInfo",
+                                "description": null
+                            },
+                            {
+                                "name": "listAddress",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ShoppingListItem",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": "Id represents tpnb of the product"
+                            },
+                            {
+                                "name": "item",
+                                "description": null
+                            },
+                            {
+                                "name": "quantity",
+                                "description": null
+                            },
+                            {
+                                "name": "createdAt",
+                                "description": null
+                            },
+                            {
+                                "name": "createdBy",
+                                "description": null
+                            },
+                            {
+                                "name": "updatedAt",
+                                "description": null
+                            },
+                            {
+                                "name": "updatedBy",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ShoppingListItemValueTypes",
+                        "fields": null
+                    },
+                    {
+                        "name": "ItemTypeString",
+                        "fields": [
+                            {
+                                "name": "value",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "UserDetailsType",
+                        "fields": [
+                            {
+                                "name": "customerUuid",
+                                "description": null
+                            },
+                            {
+                                "name": "firstName",
+                                "description": null
+                            },
+                            {
+                                "name": "lastName",
+                                "description": null
+                            },
+                            {
+                                "name": "title",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "UserDetailsInterface",
+                        "fields": [
+                            {
+                                "name": "customerUuid",
+                                "description": null
+                            },
+                            {
+                                "name": "firstName",
+                                "description": null
+                            },
+                            {
+                                "name": "lastName",
+                                "description": null
+                            },
+                            {
+                                "name": "title",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ShoppingListSharingInfo",
+                        "fields": [
+                            {
+                                "name": "listLink",
+                                "description": null
+                            },
+                            {
+                                "name": "isOwner",
+                                "description": null
+                            },
+                            {
+                                "name": "isExpired",
+                                "description": null
+                            },
+                            {
+                                "name": "expiresAt",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ShoppingLists",
+                        "fields": [
+                            {
+                                "name": "shoppingLists",
+                                "description": null
+                            },
+                            {
+                                "name": "paginationInfo",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "SlotGroupInterface",
+                        "fields": [
+                            {
+                                "name": "date",
+                                "description": null
+                            },
+                            {
+                                "name": "startTime",
+                                "description": null
+                            },
+                            {
+                                "name": "slots",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "SlotInterface",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "start",
+                                "description": null
+                            },
+                            {
+                                "name": "end",
+                                "description": null
+                            },
+                            {
+                                "name": "expiry",
+                                "description": null
+                            },
+                            {
+                                "name": "reservationExpiry",
+                                "description": null
+                            },
+                            {
+                                "name": "charge",
+                                "description": null
+                            },
+                            {
+                                "name": "price",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "group",
+                                "description": null
+                            },
+                            {
+                                "name": "locationUuid",
+                                "description": null
+                            },
+                            {
+                                "name": "freeDelivery",
+                                "description": null
+                            },
+                            {
+                                "name": "countdown",
+                                "description": null
+                            },
+                            {
+                                "name": "dispatchDate",
+                                "description": null
+                            },
+                            {
+                                "name": "dayOfWeek",
+                                "description": null
+                            },
+                            {
+                                "name": "dayOfMonth",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfilmentSpeed",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "SlotWrapperType",
+                        "fields": [
+                            {
+                                "name": "slot",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "StaffDiscountInterface",
+                        "fields": [
+                            {
+                                "name": "percentage",
+                                "description": null
+                            },
+                            {
+                                "name": "discount",
+                                "description": null
+                            },
+                            {
+                                "name": "balance",
+                                "description": null
+                            },
+                            {
+                                "name": "headline",
+                                "description": "Short description about staff promotion"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "StaffDiscountType",
+                        "fields": [
+                            {
+                                "name": "percentage",
+                                "description": null
+                            },
+                            {
+                                "name": "discount",
+                                "description": null
+                            },
+                            {
+                                "name": "balance",
+                                "description": null
+                            },
+                            {
+                                "name": "headline",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "StatusInfoType",
+                        "fields": [
+                            {
+                                "name": "reason",
+                                "description": "Primary reason like TILL_TRANSFER, CUSTOMER_INITIATED, TESCO_INITIATED"
+                            },
+                            {
+                                "name": "subReason",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "StoreClassificationInterface",
+                        "fields": [
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "category",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "StoreClassificationType",
+                        "fields": [
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "category",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "StoreLocationInterface",
+                        "fields": [
+                            {
+                                "name": "displayOrder",
+                                "description": null
+                            },
+                            {
+                                "name": "locationUuid",
+                                "description": null
+                            },
+                            {
+                                "name": "storeId",
+                                "description": null
+                            },
+                            {
+                                "name": "address",
+                                "description": null
+                            },
+                            {
+                                "name": "latitude",
+                                "description": null
+                            },
+                            {
+                                "name": "longitude",
+                                "description": null
+                            },
+                            {
+                                "name": "distance",
+                                "description": null
+                            },
+                            {
+                                "name": "distanceUnit",
+                                "description": null
+                            },
+                            {
+                                "name": "referenceId",
+                                "description": null
+                            },
+                            {
+                                "name": "openingHours",
+                                "description": null
+                            },
+                            {
+                                "name": "selected",
+                                "description": null
+                            },
+                            {
+                                "name": "classification",
+                                "description": null
+                            },
+                            {
+                                "name": "facilities",
+                                "description": null
+                            },
+                            {
+                                "name": "locationInfo",
+                                "description": null
+                            },
+                            {
+                                "name": "distanceInfo",
+                                "description": null
+                            },
+                            {
+                                "name": "collectionPointAttributes",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "LocationInfoType",
+                        "fields": [
+                            {
+                                "name": "locationUuid",
+                                "description": null
+                            },
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "latitude",
+                                "description": null
+                            },
+                            {
+                                "name": "longitude",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "DistanceInfoType",
+                        "fields": [
+                            {
+                                "name": "distance",
+                                "description": null
+                            },
+                            {
+                                "name": "distanceUnit",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "StoreLocationType",
+                        "fields": [
+                            {
+                                "name": "displayOrder",
+                                "description": null
+                            },
+                            {
+                                "name": "locationUuid",
+                                "description": null
+                            },
+                            {
+                                "name": "storeId",
+                                "description": null
+                            },
+                            {
+                                "name": "address",
+                                "description": null
+                            },
+                            {
+                                "name": "latitude",
+                                "description": null
+                            },
+                            {
+                                "name": "longitude",
+                                "description": null
+                            },
+                            {
+                                "name": "distance",
+                                "description": null
+                            },
+                            {
+                                "name": "distanceUnit",
+                                "description": null
+                            },
+                            {
+                                "name": "referenceId",
+                                "description": null
+                            },
+                            {
+                                "name": "openingHours",
+                                "description": null
+                            },
+                            {
+                                "name": "selected",
+                                "description": null
+                            },
+                            {
+                                "name": "classification",
+                                "description": null
+                            },
+                            {
+                                "name": "facilities",
+                                "description": null
+                            },
+                            {
+                                "name": "locationInfo",
+                                "description": null
+                            },
+                            {
+                                "name": "distanceInfo",
+                                "description": null
+                            },
+                            {
+                                "name": "collectionPointAttributes",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "SubmitReviewType",
+                        "fields": [
+                            {
+                                "name": "entry",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "SubscriptionInterface",
+                        "fields": [
+                            {
+                                "name": "planName",
+                                "description": null
+                            },
+                            {
+                                "name": "planId",
+                                "description": null
+                            },
+                            {
+                                "name": "planType",
+                                "description": null
+                            },
+                            {
+                                "name": "applicableDays",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "valid",
+                                "description": null
+                            },
+                            {
+                                "name": "basketvalue",
+                                "description": null
+                            },
+                            {
+                                "name": "freeSameDayDelivery",
+                                "description": null
+                            },
+                            {
+                                "name": "isTrialPlan",
+                                "description": null
+                            },
+                            {
+                                "name": "planDurationInMonths",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfilments",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BasketSubscriptionType",
+                        "fields": [
+                            {
+                                "name": "planName",
+                                "description": null
+                            },
+                            {
+                                "name": "planId",
+                                "description": null
+                            },
+                            {
+                                "name": "planType",
+                                "description": null
+                            },
+                            {
+                                "name": "applicableDays",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "valid",
+                                "description": null
+                            },
+                            {
+                                "name": "basketvalue",
+                                "description": null
+                            },
+                            {
+                                "name": "freeSameDayDelivery",
+                                "description": null
+                            },
+                            {
+                                "name": "isTrialPlan",
+                                "description": null
+                            },
+                            {
+                                "name": "planDurationInMonths",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfilments",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "SubscriptionsType",
+                        "fields": [
+                            {
+                                "name": "segments",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "SegmentsType",
+                        "fields": [
+                            {
+                                "name": "options",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "SegmentOptionsType",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "description",
+                                "description": null
+                            },
+                            {
+                                "name": "subscriptionType",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "SuggestedQueriesType",
+                        "fields": [
+                            {
+                                "name": "popular",
+                                "description": null
+                            },
+                            {
+                                "name": "trending",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "SuggestedQueriesTypeInterface",
+                        "fields": [
+                            {
+                                "name": "popular",
+                                "description": null
+                            },
+                            {
+                                "name": "trending",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "SuggestedQueryType",
+                        "fields": [
+                            {
+                                "name": "query",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "SuperSmartValidate",
+                        "fields": [
+                            {
+                                "name": "success",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "SuperSmartValidateError",
+                        "fields": [
+                            {
+                                "name": "code",
+                                "description": null
+                            },
+                            {
+                                "name": "message",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "SuperSmartValidateErrorCode",
+                        "fields": null
+                    },
+                    {
+                        "name": "TaxonomyCategory",
+                        "fields": [
+                            {
+                                "name": "superDepartmentId",
+                                "description": null
+                            },
+                            {
+                                "name": "superDepartmentName",
+                                "description": null
+                            },
+                            {
+                                "name": "departmentId",
+                                "description": null
+                            },
+                            {
+                                "name": "departmentName",
+                                "description": null
+                            },
+                            {
+                                "name": "aisleId",
+                                "description": null
+                            },
+                            {
+                                "name": "aisleName",
+                                "description": null
+                            },
+                            {
+                                "name": "shelfId",
+                                "description": null
+                            },
+                            {
+                                "name": "shelfName",
+                                "description": null
+                            },
+                            {
+                                "name": "subShelfId",
+                                "description": null
+                            },
+                            {
+                                "name": "subShelfName",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "TaxonomyImages",
+                        "fields": [
+                            {
+                                "name": "style",
+                                "description": null
+                            },
+                            {
+                                "name": "images",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "TaxonomyImagesInfoType",
+                        "fields": [
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "url",
+                                "description": null
+                            },
+                            {
+                                "name": "region",
+                                "description": null
+                            },
+                            {
+                                "name": "title",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "TaxonomyItemInterface",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "parent",
+                                "description": null
+                            },
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "label",
+                                "description": null
+                            },
+                            {
+                                "name": "pageType",
+                                "description": null
+                            },
+                            {
+                                "name": "total",
+                                "description": null
+                            },
+                            {
+                                "name": "children",
+                                "description": null
+                            },
+                            {
+                                "name": "images",
+                                "description": null
+                            },
+                            {
+                                "name": "image",
+                                "description": null
+                            },
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "source",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "PageTypeEnum",
+                        "fields": null
+                    },
+                    {
+                        "name": "SingleTaxonomyImage",
+                        "fields": [
+                            {
+                                "name": "url",
+                                "description": null
+                            },
+                            {
+                                "name": "thumbnail",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "TaxonomyItemType",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "parent",
+                                "description": null
+                            },
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "label",
+                                "description": null
+                            },
+                            {
+                                "name": "pageType",
+                                "description": null
+                            },
+                            {
+                                "name": "total",
+                                "description": null
+                            },
+                            {
+                                "name": "children",
+                                "description": null
+                            },
+                            {
+                                "name": "images",
+                                "description": null
+                            },
+                            {
+                                "name": "image",
+                                "description": null
+                            },
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "source",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "TescoLocationType",
+                        "fields": [
+                            {
+                                "name": "details",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ThemeType",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": "DCS pageProps to identify the theme name"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "TimeRestriction",
+                        "fields": [
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "message",
+                                "description": null
+                            },
+                            {
+                                "name": "nextTradingWindow",
+                                "description": null
+                            },
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "type",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "TradingHours",
+                        "fields": [
+                            {
+                                "name": "startDateTime",
+                                "description": null
+                            },
+                            {
+                                "name": "endDateTime",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "TimeRestrictionInterface",
+                        "fields": [
+                            {
+                                "name": "day",
+                                "description": null
+                            },
+                            {
+                                "name": "startDateTime",
+                                "description": null
+                            },
+                            {
+                                "name": "endDateTime",
+                                "description": null
+                            },
+                            {
+                                "name": "message",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "UnavailableDeliveryDateRangeInterface",
+                        "fields": [
+                            {
+                                "name": "startDate",
+                                "description": null
+                            },
+                            {
+                                "name": "endDate",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "UpdateReturnsItemsType",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "storeId",
+                                "description": null
+                            },
+                            {
+                                "name": "locationUuid",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            },
+                            {
+                                "name": "refund",
+                                "description": null
+                            },
+                            {
+                                "name": "charges",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ReturnsInterface",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "storeId",
+                                "description": null
+                            },
+                            {
+                                "name": "locationUuid",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            },
+                            {
+                                "name": "refund",
+                                "description": null
+                            },
+                            {
+                                "name": "charges",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ReturnTransactionInterface",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "storeId",
+                                "description": null
+                            },
+                            {
+                                "name": "locationUuid",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "VATType",
+                        "fields": [
+                            {
+                                "name": "number",
+                                "description": null
+                            },
+                            {
+                                "name": "company",
+                                "description": null
+                            },
+                            {
+                                "name": "address",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "VerifyUserType",
+                        "fields": [
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "value",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "WalletInterface",
+                        "fields": [
+                            {
+                                "name": "cards",
+                                "description": null
+                            },
+                            {
+                                "name": "actions",
+                                "description": null
+                            },
+                            {
+                                "name": "session",
+                                "description": "Wallet Session details"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "WalletActionUpdatesUnionType",
+                        "fields": null
+                    },
+                    {
+                        "name": "AddPaymentCardUpdatesType",
+                        "fields": [
+                            {
+                                "name": "errors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "AddPaymentCardErrorType",
+                        "fields": [
+                            {
+                                "name": "message",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "DeletePaymentCardUpdatesType",
+                        "fields": [
+                            {
+                                "name": "errors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "DeletePaymentCardErrorType",
+                        "fields": [
+                            {
+                                "name": "message",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "WalletSession",
+                        "fields": [
+                            {
+                                "name": "extended",
+                                "description": "Is session extended or not"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "WalletType",
+                        "fields": [
+                            {
+                                "name": "cards",
+                                "description": null
+                            },
+                            {
+                                "name": "actions",
+                                "description": null
+                            },
+                            {
+                                "name": "session",
+                                "description": "Wallet Session details"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "WorldDateTimeType",
+                        "fields": [
+                            {
+                                "name": "utc",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FulfilmentItemInterface",
+                        "fields": [
+                            {
+                                "name": "expected",
+                                "description": "Details of item that were ordered"
+                            },
+                            {
+                                "name": "actual",
+                                "description": "Array of items that were actually delivered/collected after substitution/unavailability"
+                            },
+                            {
+                                "name": "diagnostics",
+                                "description": "Summary of action taken for each item. Ex: fulfilled, unfulfilled, substituted, returned, etc "
+                            }
+                        ]
+                    },
+                    {
+                        "name": "FulfilmentItemType",
+                        "fields": [
+                            {
+                                "name": "expected",
+                                "description": null
+                            },
+                            {
+                                "name": "actual",
+                                "description": null
+                            },
+                            {
+                                "name": "diagnostics",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "OrderFulfilmentInterface",
+                        "fields": [
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "totalItems",
+                                "description": "Gives total Items that were ordered/collected (actual items after substitution/unavailability)"
+                            },
+                            {
+                                "name": "items",
+                                "description": "Gives the action taken item wise"
+                            },
+                            {
+                                "name": "payments",
+                                "description": "Shows payment methods available and payment status for current order"
+                            },
+                            {
+                                "name": "discounts",
+                                "description": "Gives discounts that were applied on the order level"
+                            },
+                            {
+                                "name": "outlet",
+                                "description": "For CnC orders in pending state,to show a 'I am Here' CTA on app, when a customer is near an outlet to collect the order."
+                            }
+                        ]
+                    },
+                    {
+                        "name": "OutletInterface",
+                        "fields": [
+                            {
+                                "name": "isSmartPhoneRequired",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "OrderFulfilmentType",
+                        "fields": [
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "totalItems",
+                                "description": null
+                            },
+                            {
+                                "name": "items",
+                                "description": null
+                            },
+                            {
+                                "name": "payments",
+                                "description": null
+                            },
+                            {
+                                "name": "discounts",
+                                "description": null
+                            },
+                            {
+                                "name": "outlet",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "OutletType",
+                        "fields": [
+                            {
+                                "name": "isSmartPhoneRequired",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "GAPIClickAndCollectType",
+                        "fields": [
+                            {
+                                "name": "metadata",
+                                "description": null
+                            },
+                            {
+                                "name": "collectionPoints",
+                                "description": null
+                            },
+                            {
+                                "name": "slots",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "GAPIClickAndCollectMetadata",
+                        "fields": [
+                            {
+                                "name": "postcode",
+                                "description": null
+                            },
+                            {
+                                "name": "locationId",
+                                "description": null
+                            },
+                            {
+                                "name": "locationUuid",
+                                "description": null
+                            },
+                            {
+                                "name": "addressId",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "MiscRequestStatusType",
+                        "fields": [
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "success",
+                                "description": null
+                            },
+                            {
+                                "name": "message",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "DCSComponent",
+                        "fields": [
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "props",
+                                "description": null
+                            },
+                            {
+                                "name": "children",
+                                "description": null
+                            },
+                            {
+                                "name": "childrenType",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "DCSPage",
+                        "fields": [
+                            {
+                                "name": "pageName",
+                                "description": null
+                            },
+                            {
+                                "name": "contentId",
+                                "description": null
+                            },
+                            {
+                                "name": "canonicalUrl",
+                                "description": null
+                            },
+                            {
+                                "name": "pageTitle",
+                                "description": null
+                            },
+                            {
+                                "name": "keyword",
+                                "description": null
+                            },
+                            {
+                                "name": "description",
+                                "description": null
+                            },
+                            {
+                                "name": "content",
+                                "description": null
+                            },
+                            {
+                                "name": "children",
+                                "description": null
+                            },
+                            {
+                                "name": "theme",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "RawComponent",
+                        "fields": [
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "props",
+                                "description": null
+                            },
+                            {
+                                "name": "children",
+                                "description": null
+                            },
+                            {
+                                "name": "childrenType",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "IGHSPrice",
+                        "fields": [
+                            {
+                                "name": "product",
+                                "description": null
+                            },
+                            {
+                                "name": "actual",
+                                "description": null
+                            },
+                            {
+                                "name": "unitOfMeasure",
+                                "description": null
+                            },
+                            {
+                                "name": "unitPrice",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductContextType",
+                        "fields": [
+                            {
+                                "name": "type",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductContextOfferType",
+                        "fields": [
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "linkTo",
+                                "description": null
+                            },
+                            {
+                                "name": "offerType",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "MiscProductListFacets",
+                        "fields": [
+                            {
+                                "name": "categoryId",
+                                "description": null
+                            },
+                            {
+                                "name": "category",
+                                "description": null
+                            },
+                            {
+                                "name": "facets",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "MiscProductListFacet",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "count",
+                                "description": null
+                            },
+                            {
+                                "name": "selected",
+                                "description": null
+                            },
+                            {
+                                "name": "children",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "MiscListInfo",
+                        "fields": [
+                            {
+                                "name": "title",
+                                "description": null
+                            },
+                            {
+                                "name": "matchType",
+                                "description": null
+                            },
+                            {
+                                "name": "total",
+                                "description": null
+                            },
+                            {
+                                "name": "page",
+                                "description": null
+                            },
+                            {
+                                "name": "count",
+                                "description": null
+                            },
+                            {
+                                "name": "pageSize",
+                                "description": null
+                            },
+                            {
+                                "name": "pageId",
+                                "description": null
+                            },
+                            {
+                                "name": "offset",
+                                "description": null
+                            },
+                            {
+                                "name": "query",
+                                "description": null
+                            },
+                            {
+                                "name": "sortBy",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "MiscListOptions",
+                        "fields": [
+                            {
+                                "name": "sortBy",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "IGHSProduct",
+                        "fields": [
+                            {
+                                "name": "averageWeight",
+                                "description": null
+                            },
+                            {
+                                "name": "increment",
+                                "description": null
+                            },
+                            {
+                                "name": "minWeight",
+                                "description": null
+                            },
+                            {
+                                "name": "maxWeight",
+                                "description": null
+                            },
+                            {
+                                "name": "baseProductId",
+                                "description": null
+                            },
+                            {
+                                "name": "tpnb",
+                                "description": null
+                            },
+                            {
+                                "name": "bulkBuyLimit",
+                                "description": null
+                            },
+                            {
+                                "name": "seller",
+                                "description": "Seller information about this product. This assumes that products/sellers have a 1-to-1 mapping (which makes sense in conjunction with the existing schema)"
+                            },
+                            {
+                                "name": "bulkBuyLimitMessage",
+                                "description": null
+                            },
+                            {
+                                "name": "bulkBuyLimitGroupId",
+                                "description": null
+                            },
+                            {
+                                "name": "groupBulkBuyLimit",
+                                "description": null
+                            },
+                            {
+                                "name": "unavailableDeliveryDateRange",
+                                "description": null
+                            },
+                            {
+                                "name": "restrictedDeliveryTime",
+                                "description": null
+                            },
+                            {
+                                "name": "restrictedDeliveryDate",
+                                "description": null
+                            },
+                            {
+                                "name": "isRestrictedOrderAmendment",
+                                "description": null
+                            },
+                            {
+                                "name": "defaultImageUrl",
+                                "description": null
+                            },
+                            {
+                                "name": "alternateImageUrl",
+                                "description": null
+                            },
+                            {
+                                "name": "displayImages",
+                                "description": null
+                            },
+                            {
+                                "name": "media",
+                                "description": null
+                            },
+                            {
+                                "name": "icons",
+                                "description": null
+                            },
+                            {
+                                "name": "manufacturerAddress",
+                                "description": null
+                            },
+                            {
+                                "name": "manufacturer",
+                                "description": null
+                            },
+                            {
+                                "name": "distributorAddress",
+                                "description": null
+                            },
+                            {
+                                "name": "importerAddress",
+                                "description": null
+                            },
+                            {
+                                "name": "returnTo",
+                                "description": null
+                            },
+                            {
+                                "name": "superDepartmentId",
+                                "description": null
+                            },
+                            {
+                                "name": "superDepartmentName",
+                                "description": null
+                            },
+                            {
+                                "name": "departmentId",
+                                "description": null
+                            },
+                            {
+                                "name": "departmentName",
+                                "description": null
+                            },
+                            {
+                                "name": "aisleId",
+                                "description": null
+                            },
+                            {
+                                "name": "aisleName",
+                                "description": null
+                            },
+                            {
+                                "name": "shelfId",
+                                "description": null
+                            },
+                            {
+                                "name": "shelfName",
+                                "description": null
+                            },
+                            {
+                                "name": "depositAmount",
+                                "description": null
+                            },
+                            {
+                                "name": "description",
+                                "description": null
+                            },
+                            {
+                                "name": "displayType",
+                                "description": null
+                            },
+                            {
+                                "name": "productType",
+                                "description": null
+                            },
+                            {
+                                "name": "details",
+                                "description": null
+                            },
+                            {
+                                "name": "reviews",
+                                "description": null
+                            },
+                            {
+                                "name": "multiPackDetails",
+                                "description": null
+                            },
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "adId",
+                                "description": null
+                            },
+                            {
+                                "name": "tpnc",
+                                "description": null
+                            },
+                            {
+                                "name": "gtin",
+                                "description": null
+                            },
+                            {
+                                "name": "barcode",
+                                "description": null
+                            },
+                            {
+                                "name": "uuid",
+                                "description": null
+                            },
+                            {
+                                "name": "skuId",
+                                "description": null
+                            },
+                            {
+                                "name": "isForSale",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "productLocation",
+                                "description": null
+                            },
+                            {
+                                "name": "availability",
+                                "description": null
+                            },
+                            {
+                                "name": "isInFavourites",
+                                "description": null
+                            },
+                            {
+                                "name": "isInAnyList",
+                                "description": null
+                            },
+                            {
+                                "name": "isNew",
+                                "description": null
+                            },
+                            {
+                                "name": "promotions",
+                                "description": null
+                            },
+                            {
+                                "name": "price",
+                                "description": null
+                            },
+                            {
+                                "name": "primaryTaxonomyNode",
+                                "description": null
+                            },
+                            {
+                                "name": "quantityInBasket",
+                                "description": null
+                            },
+                            {
+                                "name": "sellType",
+                                "description": null
+                            },
+                            {
+                                "name": "shortDescription",
+                                "description": null
+                            },
+                            {
+                                "name": "title",
+                                "description": null
+                            },
+                            {
+                                "name": "brandName",
+                                "description": null
+                            },
+                            {
+                                "name": "subBrand",
+                                "description": null
+                            },
+                            {
+                                "name": "recommended",
+                                "description": null
+                            },
+                            {
+                                "name": "substitutions",
+                                "description": null
+                            },
+                            {
+                                "name": "recipes",
+                                "description": null
+                            },
+                            {
+                                "name": "catchWeightList",
+                                "description": null
+                            },
+                            {
+                                "name": "shelfLife",
+                                "description": null
+                            },
+                            {
+                                "name": "restrictions",
+                                "description": null
+                            },
+                            {
+                                "name": "alternativeCategories",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfillment",
+                                "description": null
+                            },
+                            {
+                                "name": "alternatives",
+                                "description": null
+                            },
+                            {
+                                "name": "storageClassification",
+                                "description": null
+                            },
+                            {
+                                "name": "overlays",
+                                "description": null
+                            },
+                            {
+                                "name": "charges",
+                                "description": null
+                            },
+                            {
+                                "name": "variations",
+                                "description": null
+                            },
+                            {
+                                "name": "variationAttributes",
+                                "description": null
+                            },
+                            {
+                                "name": "modelMetadata",
+                                "description": "Metadata for personalized tracking"
+                            },
+                            {
+                                "name": "substitutionOptions",
+                                "description": null
+                            },
+                            {
+                                "name": "unavailabilityReasons",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfilment",
+                                "description": null
+                            },
+                            {
+                                "name": "returnDetails",
+                                "description": null
+                            },
+                            {
+                                "name": "badgeDetails",
+                                "description": null
+                            },
+                            {
+                                "name": "sellers",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "IGHSTimeRestrictedDeliveryInfo",
+                        "fields": [
+                            {
+                                "name": "day",
+                                "description": null
+                            },
+                            {
+                                "name": "startDateTime",
+                                "description": null
+                            },
+                            {
+                                "name": "endDateTime",
+                                "description": null
+                            },
+                            {
+                                "name": "message",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "IGHSDateRestrictedDeliveryInfo",
+                        "fields": [
+                            {
+                                "name": "startDate",
+                                "description": null
+                            },
+                            {
+                                "name": "endDate",
+                                "description": null
+                            },
+                            {
+                                "name": "leadTimeValue",
+                                "description": null
+                            },
+                            {
+                                "name": "message",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "IGHSPriceType",
+                        "fields": [
+                            {
+                                "name": "actual",
+                                "description": null
+                            },
+                            {
+                                "name": "unitOfMeasure",
+                                "description": null
+                            },
+                            {
+                                "name": "unitPrice",
+                                "description": null
+                            },
+                            {
+                                "name": "product",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "IGHSCatchWeightInfo",
+                        "fields": [
+                            {
+                                "name": "price",
+                                "description": null
+                            },
+                            {
+                                "name": "weight",
+                                "description": null
+                            },
+                            {
+                                "name": "default",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ESSearchCategoryItem",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "parent",
+                                "description": null
+                            },
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "imageURL",
+                                "description": null
+                            },
+                            {
+                                "name": "thumbnailURL",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "GAPICategoryItem",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "parent",
+                                "description": null
+                            },
+                            {
+                                "name": "id",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "GAPIProductCategory",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "id",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "GAPIRangeProductListFacets",
+                        "fields": [
+                            {
+                                "name": "categoryId",
+                                "description": null
+                            },
+                            {
+                                "name": "category",
+                                "description": null
+                            },
+                            {
+                                "name": "facets",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "GAPIRangeProductListFacet",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "count",
+                                "description": null
+                            },
+                            {
+                                "name": "selected",
+                                "description": null
+                            },
+                            {
+                                "name": "children",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "GAPIRangeProductListInfo",
+                        "fields": [
+                            {
+                                "name": "title",
+                                "description": null
+                            },
+                            {
+                                "name": "matchType",
+                                "description": null
+                            },
+                            {
+                                "name": "total",
+                                "description": null
+                            },
+                            {
+                                "name": "page",
+                                "description": null
+                            },
+                            {
+                                "name": "count",
+                                "description": null
+                            },
+                            {
+                                "name": "pageSize",
+                                "description": null
+                            },
+                            {
+                                "name": "pageId",
+                                "description": null
+                            },
+                            {
+                                "name": "offset",
+                                "description": null
+                            },
+                            {
+                                "name": "query",
+                                "description": null
+                            },
+                            {
+                                "name": "sortBy",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "GAPIRangeProductList",
+                        "fields": [
+                            {
+                                "name": "info",
+                                "description": null
+                            },
+                            {
+                                "name": "products",
+                                "description": null
+                            },
+                            {
+                                "name": "facetGroups",
+                                "description": null
+                            },
+                            {
+                                "name": "options",
+                                "description": null
+                            },
+                            {
+                                "name": "taxonomy",
+                                "description": null
+                            },
+                            {
+                                "name": "filters",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "RecipeList",
+                        "fields": [
+                            {
+                                "name": "recipe",
+                                "description": null
+                            },
+                            {
+                                "name": "info",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Recipe",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "title",
+                                "description": null
+                            },
+                            {
+                                "name": "url",
+                                "description": null
+                            },
+                            {
+                                "name": "thumbnail",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "RecipeListInfo",
+                        "fields": [
+                            {
+                                "name": "title",
+                                "description": null
+                            },
+                            {
+                                "name": "matchType",
+                                "description": null
+                            },
+                            {
+                                "name": "total",
+                                "description": null
+                            },
+                            {
+                                "name": "page",
+                                "description": null
+                            },
+                            {
+                                "name": "count",
+                                "description": null
+                            },
+                            {
+                                "name": "pageSize",
+                                "description": null
+                            },
+                            {
+                                "name": "pageId",
+                                "description": null
+                            },
+                            {
+                                "name": "offset",
+                                "description": null
+                            },
+                            {
+                                "name": "query",
+                                "description": null
+                            },
+                            {
+                                "name": "sortBy",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "GAPISlotGroup",
+                        "fields": [
+                            {
+                                "name": "date",
+                                "description": null
+                            },
+                            {
+                                "name": "startTime",
+                                "description": null
+                            },
+                            {
+                                "name": "slots",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "GAPISlotType",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "start",
+                                "description": null
+                            },
+                            {
+                                "name": "end",
+                                "description": null
+                            },
+                            {
+                                "name": "expiry",
+                                "description": null
+                            },
+                            {
+                                "name": "reservationExpiry",
+                                "description": null
+                            },
+                            {
+                                "name": "charge",
+                                "description": null
+                            },
+                            {
+                                "name": "price",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "group",
+                                "description": null
+                            },
+                            {
+                                "name": "locationUuid",
+                                "description": null
+                            },
+                            {
+                                "name": "locationId",
+                                "description": null
+                            },
+                            {
+                                "name": "freeDelivery",
+                                "description": null
+                            },
+                            {
+                                "name": "countdown",
+                                "description": null
+                            },
+                            {
+                                "name": "dispatchDate",
+                                "description": null
+                            },
+                            {
+                                "name": "dayOfWeek",
+                                "description": null
+                            },
+                            {
+                                "name": "dayOfMonth",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfilmentSpeed",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "GAPISlot",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "start",
+                                "description": null
+                            },
+                            {
+                                "name": "end",
+                                "description": null
+                            },
+                            {
+                                "name": "expiry",
+                                "description": null
+                            },
+                            {
+                                "name": "charge",
+                                "description": null
+                            },
+                            {
+                                "name": "price",
+                                "description": null
+                            },
+                            {
+                                "name": "status",
+                                "description": null
+                            },
+                            {
+                                "name": "group",
+                                "description": null
+                            },
+                            {
+                                "name": "count",
+                                "description": null
+                            },
+                            {
+                                "name": "reservationExpiry",
+                                "description": null
+                            },
+                            {
+                                "name": "locationId",
+                                "description": null
+                            },
+                            {
+                                "name": "locationUuid",
+                                "description": null
+                            },
+                            {
+                                "name": "freeDelivery",
+                                "description": null
+                            },
+                            {
+                                "name": "countdown",
+                                "description": null
+                            },
+                            {
+                                "name": "dispatchDate",
+                                "description": null
+                            },
+                            {
+                                "name": "dayOfWeek",
+                                "description": null
+                            },
+                            {
+                                "name": "dayOfMonth",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfilmentSpeed",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Query",
+                        "fields": [
+                            {
+                                "name": "categories",
+                                "description": null
+                            },
+                            {
+                                "name": "taxonomy",
+                                "description": null
+                            },
+                            {
+                                "name": "product",
+                                "description": null
+                            },
+                            {
+                                "name": "price",
+                                "description": null
+                            },
+                            {
+                                "name": "productPromotions",
+                                "description": null
+                            },
+                            {
+                                "name": "promotion",
+                                "description": null
+                            },
+                            {
+                                "name": "promotionType",
+                                "description": null
+                            },
+                            {
+                                "name": "promotions",
+                                "description": null
+                            },
+                            {
+                                "name": "hierarchy",
+                                "description": null
+                            },
+                            {
+                                "name": "compositeList",
+                                "description": null
+                            },
+                            {
+                                "name": "search",
+                                "description": null
+                            },
+                            {
+                                "name": "suggestedQueries",
+                                "description": null
+                            },
+                            {
+                                "name": "favourites",
+                                "description": null
+                            },
+                            {
+                                "name": "groupFavourites",
+                                "description": null
+                            },
+                            {
+                                "name": "recommendations",
+                                "description": null
+                            },
+                            {
+                                "name": "recommendationsList",
+                                "description": null
+                            },
+                            {
+                                "name": "category",
+                                "description": null
+                            },
+                            {
+                                "name": "categoryInfo",
+                                "description": null
+                            },
+                            {
+                                "name": "profile",
+                                "description": null
+                            },
+                            {
+                                "name": "tescoLocations",
+                                "description": null
+                            },
+                            {
+                                "name": "tescoLocation",
+                                "description": null
+                            },
+                            {
+                                "name": "deliveryInDays",
+                                "description": null
+                            },
+                            {
+                                "name": "delivery",
+                                "description": null
+                            },
+                            {
+                                "name": "deliverySlotGroups",
+                                "description": null
+                            },
+                            {
+                                "name": "collection",
+                                "description": null
+                            },
+                            {
+                                "name": "clickAndCollect",
+                                "description": null
+                            },
+                            {
+                                "name": "serviceCheck",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfilment",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfilmentOptions",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfilmentEstimatedArrival",
+                                "description": null
+                            },
+                            {
+                                "name": "basket",
+                                "description": null
+                            },
+                            {
+                                "name": "ecdn",
+                                "description": "Electronic Customer Delivery Note is only consumed by services"
+                            },
+                            {
+                                "name": "order",
+                                "description": null
+                            },
+                            {
+                                "name": "orders",
+                                "description": null
+                            },
+                            {
+                                "name": "orderSearch",
+                                "description": null
+                            },
+                            {
+                                "name": "orderInquiryReasons",
+                                "description": "Returns the list of reasons for order inquiry"
+                            },
+                            {
+                                "name": "returnsSearch",
+                                "description": null
+                            },
+                            {
+                                "name": "bulkOrders",
+                                "description": null
+                            },
+                            {
+                                "name": "wallet",
+                                "description": null
+                            },
+                            {
+                                "name": "recipes",
+                                "description": null
+                            },
+                            {
+                                "name": "recipe",
+                                "description": "Tesco Real Food detail page"
+                            },
+                            {
+                                "name": "recipeTaxonomy",
+                                "description": "Tesco Real Food taxonomy page"
+                            },
+                            {
+                                "name": "paymentDetails",
+                                "description": null
+                            },
+                            {
+                                "name": "paymentOptions",
+                                "description": null
+                            },
+                            {
+                                "name": "customerCards",
+                                "description": null
+                            },
+                            {
+                                "name": "buylistGroup",
+                                "description": null
+                            },
+                            {
+                                "name": "buylist",
+                                "description": null
+                            },
+                            {
+                                "name": "page",
+                                "description": null
+                            },
+                            {
+                                "name": "time",
+                                "description": null
+                            },
+                            {
+                                "name": "list",
+                                "description": null
+                            },
+                            {
+                                "name": "loyalty",
+                                "description": null
+                            },
+                            {
+                                "name": "device",
+                                "description": null
+                            },
+                            {
+                                "name": "reviews",
+                                "description": null
+                            },
+                            {
+                                "name": "reviewStats",
+                                "description": null
+                            },
+                            {
+                                "name": "feature",
+                                "description": null
+                            },
+                            {
+                                "name": "plans",
+                                "description": null
+                            },
+                            {
+                                "name": "account",
+                                "description": null
+                            },
+                            {
+                                "name": "slots",
+                                "description": null
+                            },
+                            {
+                                "name": "address",
+                                "description": null
+                            },
+                            {
+                                "name": "multiPurposeShoppingList",
+                                "description": null
+                            },
+                            {
+                                "name": "multiPurposeShoppingLists",
+                                "description": null
+                            },
+                            {
+                                "name": "service",
+                                "description": null
+                            },
+                            {
+                                "name": "subscription",
+                                "description": null
+                            },
+                            {
+                                "name": "preferences",
+                                "description": null
+                            },
+                            {
+                                "name": "deliveryTracking",
+                                "description": "main node for order tracking"
+                            },
+                            {
+                                "name": "returns",
+                                "description": null
+                            },
+                            {
+                                "name": "clientConfig",
+                                "description": null
+                            },
+                            {
+                                "name": "productList",
+                                "description": null
+                            },
+                            {
+                                "name": "savings",
+                                "description": null
+                            },
+                            {
+                                "name": "personalisedPromotions",
+                                "description": "Products with personalised Promotion"
+                            },
+                            {
+                                "name": "shoppingList",
+                                "description": null
+                            },
+                            {
+                                "name": "getShoppingListById",
+                                "description": "getShoppingListById will support the existing API will deprecate once UI confirm will use only shoppingList"
+                            },
+                            {
+                                "name": "getShoppingLists",
+                                "description": null
+                            },
+                            {
+                                "name": "loyaltyExchange",
+                                "description": null
+                            },
+                            {
+                                "name": "nextOrders",
+                                "description": null
+                            },
+                            {
+                                "name": "recentlyViewedProducts",
+                                "description": null
+                            },
+                            {
+                                "name": "shopRecommendedBrands",
+                                "description": null
+                            },
+                            {
+                                "name": "shopRecommendedCategories",
+                                "description": null
+                            },
+                            {
+                                "name": "shoppingLists",
+                                "description": null
+                            },
+                            {
+                                "name": "seller",
+                                "description": null
+                            },
+                            {
+                                "name": "catalogues",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "TaxonomyContextType",
+                        "fields": null
+                    },
+                    {
+                        "name": "ShoppingRangeType",
+                        "fields": null
+                    },
+                    {
+                        "name": "DeliveryTypeEnum",
+                        "fields": null
+                    },
+                    {
+                        "name": "IncludePropositionsEnum",
+                        "fields": null
+                    },
+                    {
+                        "name": "ExecutionCriteriaArgs",
+                        "fields": null
+                    },
+                    {
+                        "name": "ProductContextArgsType",
+                        "fields": null
+                    },
+                    {
+                        "name": "ShoppingSourceType",
+                        "fields": null
+                    },
+                    {
+                        "name": "IdentifierInput",
+                        "fields": null
+                    },
+                    {
+                        "name": "PromotionContext",
+                        "fields": null
+                    },
+                    {
+                        "name": "CompositeListInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "CompositeListType",
+                        "fields": null
+                    },
+                    {
+                        "name": "SearchContextType",
+                        "fields": null
+                    },
+                    {
+                        "name": "AppliedFacetArgs",
+                        "fields": null
+                    },
+                    {
+                        "name": "FacetValues",
+                        "fields": null
+                    },
+                    {
+                        "name": "FavouriteIncludeOptions",
+                        "fields": null
+                    },
+                    {
+                        "name": "FavouriteTypeOptions",
+                        "fields": null
+                    },
+                    {
+                        "name": "FavouritesFilterType",
+                        "fields": null
+                    },
+                    {
+                        "name": "GroupedFavouritesType",
+                        "fields": [
+                            {
+                                "name": "groupAttributes",
+                                "description": null
+                            },
+                            {
+                                "name": "groups",
+                                "description": null
+                            },
+                            {
+                                "name": "facetGroups",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "GroupedFavouritesInterface",
+                        "fields": [
+                            {
+                                "name": "groupAttributes",
+                                "description": null
+                            },
+                            {
+                                "name": "groups",
+                                "description": null
+                            },
+                            {
+                                "name": "facetGroups",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "GroupAttributesType",
+                        "fields": [
+                            {
+                                "name": "groupedBy",
+                                "description": null
+                            },
+                            {
+                                "name": "orderByOptions",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ProductListGroupsType",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "products",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "RecommendationConfig",
+                        "fields": null
+                    },
+                    {
+                        "name": "CategoryContextType",
+                        "fields": null
+                    },
+                    {
+                        "name": "LocationRegion",
+                        "fields": null
+                    },
+                    {
+                        "name": "LocationCategory",
+                        "fields": null
+                    },
+                    {
+                        "name": "LocationStatus",
+                        "fields": null
+                    },
+                    {
+                        "name": "FilterArgType",
+                        "fields": null
+                    },
+                    {
+                        "name": "LocationFilterType",
+                        "fields": null
+                    },
+                    {
+                        "name": "DeliveryAddressInput",
+                        "fields": null
+                    },
+                    {
+                        "name": "BasketInput",
+                        "fields": null
+                    },
+                    {
+                        "name": "ItemInput",
+                        "fields": null
+                    },
+                    {
+                        "name": "SlotInput",
+                        "fields": null
+                    },
+                    {
+                        "name": "OrderInput",
+                        "fields": null
+                    },
+                    {
+                        "name": "FulfilmentTypeType",
+                        "fields": null
+                    },
+                    {
+                        "name": "FulfilmentRangeType",
+                        "fields": null
+                    },
+                    {
+                        "name": "DestinationType",
+                        "fields": null
+                    },
+                    {
+                        "name": "GroupType",
+                        "fields": null
+                    },
+                    {
+                        "name": "CustomerInfoType",
+                        "fields": null
+                    },
+                    {
+                        "name": "SubstitutionsContextType",
+                        "fields": null
+                    },
+                    {
+                        "name": "BasketContextType",
+                        "fields": null
+                    },
+                    {
+                        "name": "OrderStatusInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "OrderContextType",
+                        "fields": null
+                    },
+                    {
+                        "name": "OrdersStatusInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "DateRangeInput",
+                        "fields": null
+                    },
+                    {
+                        "name": "GetOrdersCriterion",
+                        "fields": null
+                    },
+                    {
+                        "name": "ReturnsSearchType",
+                        "fields": [
+                            {
+                                "name": "returns",
+                                "description": "List of return orders per orginal purchase order"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ReturnsContextType",
+                        "fields": null
+                    },
+                    {
+                        "name": "returnsVariantType",
+                        "fields": null
+                    },
+                    {
+                        "name": "ReturnsOrderContextType",
+                        "fields": null
+                    },
+                    {
+                        "name": "ReturnOrdersStatusInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "WalletContextType",
+                        "fields": null
+                    },
+                    {
+                        "name": "WalletTypeEnums",
+                        "fields": null
+                    },
+                    {
+                        "name": "CustomerContentInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "DcsPagesLanguagesInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "dcsPages",
+                        "fields": null
+                    },
+                    {
+                        "name": "ListType",
+                        "fields": null
+                    },
+                    {
+                        "name": "loyaltySchemeInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "loyaltyCoupons",
+                        "fields": null
+                    },
+                    {
+                        "name": "LoyaltyCouponsPeriodEnumType",
+                        "fields": null
+                    },
+                    {
+                        "name": "CouponFilterArgType",
+                        "fields": null
+                    },
+                    {
+                        "name": "SecureBarcodeDeviceType",
+                        "fields": null
+                    },
+                    {
+                        "name": "DevicePlatformEnumType",
+                        "fields": null
+                    },
+                    {
+                        "name": "LoyaltyContextType",
+                        "fields": null
+                    },
+                    {
+                        "name": "FeatureTypes",
+                        "fields": null
+                    },
+                    {
+                        "name": "ListContextArgs",
+                        "fields": null
+                    },
+                    {
+                        "name": "listTypes",
+                        "fields": null
+                    },
+                    {
+                        "name": "ServiceApplications",
+                        "fields": null
+                    },
+                    {
+                        "name": "ServiceActionType",
+                        "fields": null
+                    },
+                    {
+                        "name": "ExtendSessionType",
+                        "fields": null
+                    },
+                    {
+                        "name": "SubscriptionOptionsEnum",
+                        "fields": null
+                    },
+                    {
+                        "name": "SupportedPreferencesEnum",
+                        "fields": null
+                    },
+                    {
+                        "name": "ChoiceInput",
+                        "fields": null
+                    },
+                    {
+                        "name": "ProductListTypes",
+                        "fields": null
+                    },
+                    {
+                        "name": "PersonalisedPromotionFilterInput",
+                        "fields": null
+                    },
+                    {
+                        "name": "PersonalisedPromotionStatus",
+                        "fields": null
+                    },
+                    {
+                        "name": "PersonalisedPromotionPeriod",
+                        "fields": null
+                    },
+                    {
+                        "name": "ShoppingListTypeEnums",
+                        "fields": null
+                    },
+                    {
+                        "name": "RecsTypeInput",
+                        "fields": null
+                    },
+                    {
+                        "name": "ShoppingListType",
+                        "fields": [
+                            {
+                                "name": "id",
+                                "description": null
+                            },
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "isSaved",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Catalogue",
+                        "fields": [
+                            {
+                                "name": "coverImage",
+                                "description": null
+                            },
+                            {
+                                "name": "downloadableContent",
+                                "description": null
+                            },
+                            {
+                                "name": "endDate",
+                                "description": null
+                            },
+                            {
+                                "name": "isExactMatch",
+                                "description": null
+                            },
+                            {
+                                "name": "listings",
+                                "description": null
+                            },
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "startDate",
+                                "description": null
+                            },
+                            {
+                                "name": "type",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "DownloadableContent",
+                        "fields": [
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "url",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "DownloadableType",
+                        "fields": null
+                    },
+                    {
+                        "name": "Listings",
+                        "fields": [
+                            {
+                                "name": "image",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Mutation",
+                        "fields": [
+                            {
+                                "name": "account",
+                                "description": null
+                            },
+                            {
+                                "name": "basket",
+                                "description": "Tesco Mango basket"
+                            },
+                            {
+                                "name": "serviceCheck",
+                                "description": null
+                            },
+                            {
+                                "name": "superSmartValidate",
+                                "description": null
+                            },
+                            {
+                                "name": "emptyBasket",
+                                "description": null
+                            },
+                            {
+                                "name": "cancelBasket",
+                                "description": "Cancels all active online basket for the current synthetic user session"
+                            },
+                            {
+                                "name": "confirmBasket",
+                                "description": null
+                            },
+                            {
+                                "name": "confirmFuelOrder",
+                                "description": null
+                            },
+                            {
+                                "name": "payOrder",
+                                "description": null
+                            },
+                            {
+                                "name": "retryPayOrder",
+                                "description": null
+                            },
+                            {
+                                "name": "favourites",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfilmentOptions",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfilment",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfilments",
+                                "description": null
+                            },
+                            {
+                                "name": "bookDelivery",
+                                "description": null
+                            },
+                            {
+                                "name": "bookCollection",
+                                "description": null
+                            },
+                            {
+                                "name": "slot",
+                                "description": null
+                            },
+                            {
+                                "name": "order",
+                                "description": null
+                            },
+                            {
+                                "name": "cancelOrder",
+                                "description": null
+                            },
+                            {
+                                "name": "amendOrder",
+                                "description": null
+                            },
+                            {
+                                "name": "wallet",
+                                "description": null
+                            },
+                            {
+                                "name": "createPaymentReference",
+                                "description": null
+                            },
+                            {
+                                "name": "deletePaymentReference",
+                                "description": null
+                            },
+                            {
+                                "name": "refundOrder",
+                                "description": null
+                            },
+                            {
+                                "name": "profile",
+                                "description": null
+                            },
+                            {
+                                "name": "device",
+                                "description": null
+                            },
+                            {
+                                "name": "list",
+                                "description": null
+                            },
+                            {
+                                "name": "loyalty",
+                                "description": null
+                            },
+                            {
+                                "name": "loyaltyExchange",
+                                "description": null
+                            },
+                            {
+                                "name": "loyalties",
+                                "description": null
+                            },
+                            {
+                                "name": "review",
+                                "description": null
+                            },
+                            {
+                                "name": "registerUser",
+                                "description": null
+                            },
+                            {
+                                "name": "register",
+                                "description": null
+                            },
+                            {
+                                "name": "assurance",
+                                "description": null
+                            },
+                            {
+                                "name": "miscellaneousAction",
+                                "description": null
+                            },
+                            {
+                                "name": "verifyUser",
+                                "description": "for verifying a new OTP when resetting your password"
+                            },
+                            {
+                                "name": "resetPassword",
+                                "description": "returns an SID value in the header when using a phone number"
+                            },
+                            {
+                                "name": "subscription",
+                                "description": null
+                            },
+                            {
+                                "name": "authentication",
+                                "description": "login for IGHS"
+                            },
+                            {
+                                "name": "authenticate",
+                                "description": "Authenticate"
+                            },
+                            {
+                                "name": "pickAndGoCancelShop",
+                                "description": "Cancel active shopping trip at a Pick & Go enabled store"
+                            },
+                            {
+                                "name": "multiPurposeShoppingList",
+                                "description": "Customer-curated shopping list of products or string values"
+                            },
+                            {
+                                "name": "paymentVerification",
+                                "description": "PaymentMethodVerification creation and confirmation"
+                            },
+                            {
+                                "name": "service",
+                                "description": null
+                            },
+                            {
+                                "name": "fulfilmentEvent",
+                                "description": "Events for fulfilment related actions"
+                            },
+                            {
+                                "name": "preferences",
+                                "description": "Set customer preferences; only one at a time supported currently"
+                            },
+                            {
+                                "name": "returns",
+                                "description": null
+                            },
+                            {
+                                "name": "confirmReturns",
+                                "description": null
+                            },
+                            {
+                                "name": "submitOrderInquiry",
+                                "description": "Submit an inquiry about an order"
+                            },
+                            {
+                                "name": "createReturns",
+                                "description": null
+                            },
+                            {
+                                "name": "updateReturnsItems",
+                                "description": null
+                            },
+                            {
+                                "name": "returnsFulfilment",
+                                "description": null
+                            },
+                            {
+                                "name": "productList",
+                                "description": null
+                            },
+                            {
+                                "name": "moveToFromProductList",
+                                "description": null
+                            },
+                            {
+                                "name": "emptyProductList",
+                                "description": null
+                            },
+                            {
+                                "name": "updateRecipeRating",
+                                "description": null
+                            },
+                            {
+                                "name": "createShoppingList",
+                                "description": null
+                            },
+                            {
+                                "name": "updateShoppingListItem",
+                                "description": null
+                            },
+                            {
+                                "name": "deleteShoppingList",
+                                "description": null
+                            },
+                            {
+                                "name": "bulkCopyProductList",
+                                "description": null
+                            },
+                            {
+                                "name": "updateShoppingList",
+                                "description": null
+                            },
+                            {
+                                "name": "generateSignedUploadUrl",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ActionsInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "ActionsEnumType",
+                        "fields": null
+                    },
+                    {
+                        "name": "ClubcardStatementPreferencesInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "AccountSegmentInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "AccountSegmentTypeInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "DeliveryPreferenceInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "vatInformationType",
+                        "fields": null
+                    },
+                    {
+                        "name": "BasketLineItemInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "BasketItemUpdateAttribute",
+                        "fields": null
+                    },
+                    {
+                        "name": "SubstitutionOption",
+                        "fields": null
+                    },
+                    {
+                        "name": "PaymentItemInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "BasketRestrictionInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "CustomerOrderType",
+                        "fields": null
+                    },
+                    {
+                        "name": "PaymentInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "PaymentModeInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "BasketAction",
+                        "fields": null
+                    },
+                    {
+                        "name": "MarketPlaceFulfilmentContextInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "BasketTransferArgs",
+                        "fields": null
+                    },
+                    {
+                        "name": "BasketItemUpdateInputArgs",
+                        "fields": null
+                    },
+                    {
+                        "name": "ServiceCheckActions",
+                        "fields": null
+                    },
+                    {
+                        "name": "ServiceCheckItemUpdate",
+                        "fields": null
+                    },
+                    {
+                        "name": "ConfirmBasketArgs",
+                        "fields": null
+                    },
+                    {
+                        "name": "businessType",
+                        "fields": null
+                    },
+                    {
+                        "name": "PaymentsInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "PayOrderArgs",
+                        "fields": null
+                    },
+                    {
+                        "name": "RetryPayOrderArgs",
+                        "fields": null
+                    },
+                    {
+                        "name": "FavouritesDeteleInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "FavsActionType",
+                        "fields": null
+                    },
+                    {
+                        "name": "AddFavsAttributesType",
+                        "fields": null
+                    },
+                    {
+                        "name": "FavProductInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "fulfilmentOptionsInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "FulfillmentItemType",
+                        "fields": null
+                    },
+                    {
+                        "name": "ondemandDeliveryType",
+                        "fields": null
+                    },
+                    {
+                        "name": "FulfilmentInput",
+                        "fields": null
+                    },
+                    {
+                        "name": "DeliveryGroups",
+                        "fields": null
+                    },
+                    {
+                        "name": "FulfilmentBusinessEnum",
+                        "fields": null
+                    },
+                    {
+                        "name": "SlotUpdateAction",
+                        "fields": null
+                    },
+                    {
+                        "name": "OrderAction",
+                        "fields": null
+                    },
+                    {
+                        "name": "RefundOrderItemType",
+                        "fields": null
+                    },
+                    {
+                        "name": "OrderItemQuantityType",
+                        "fields": null
+                    },
+                    {
+                        "name": "WalletActionType",
+                        "fields": null
+                    },
+                    {
+                        "name": "AddPaymentCardType",
+                        "fields": null
+                    },
+                    {
+                        "name": "WalletPreferenceEnum",
+                        "fields": null
+                    },
+                    {
+                        "name": "DeletePaymentCardType",
+                        "fields": null
+                    },
+                    {
+                        "name": "RefundItemInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "ConsentInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "MobileUpdateActions",
+                        "fields": null
+                    },
+                    {
+                        "name": "DeviceNotificationInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "DeviceActionType",
+                        "fields": null
+                    },
+                    {
+                        "name": "BindDeviceType",
+                        "fields": null
+                    },
+                    {
+                        "name": "InstoreDeviceType",
+                        "fields": null
+                    },
+                    {
+                        "name": "OperatingSystemEnumType",
+                        "fields": null
+                    },
+                    {
+                        "name": "InstoreContextType",
+                        "fields": null
+                    },
+                    {
+                        "name": "GeoLocationInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "InstoreConnectionType",
+                        "fields": null
+                    },
+                    {
+                        "name": "InvalidateBarcodeType",
+                        "fields": null
+                    },
+                    {
+                        "name": "ListAction",
+                        "fields": null
+                    },
+                    {
+                        "name": "LoyaltyActionType",
+                        "fields": null
+                    },
+                    {
+                        "name": "LoyaltyActionItemType",
+                        "fields": null
+                    },
+                    {
+                        "name": "NonEmptyString",
+                        "fields": null
+                    },
+                    {
+                        "name": "LoyaltyExchangeToEnum",
+                        "fields": null
+                    },
+                    {
+                        "name": "LoyaltyExchangeFromEnum",
+                        "fields": null
+                    },
+                    {
+                        "name": "LoyaltyObjectType",
+                        "fields": [
+                            {
+                                "name": "uuid",
+                                "description": "UUID is the unique identifier for the coupons"
+                            },
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "error",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "LoyaltyCouponEnumType",
+                        "fields": null
+                    },
+                    {
+                        "name": "LoyaltyOperationInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "enableLoyaltyInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "disableLoyaltyInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "SubmitReviewInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "AuthorInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "RatingInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "PromotionalType",
+                        "fields": null
+                    },
+                    {
+                        "name": "SubmitReviewAction",
+                        "fields": null
+                    },
+                    {
+                        "name": "assuranceTypeEnum",
+                        "fields": null
+                    },
+                    {
+                        "name": "AssuranceAttributesInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "ActionType",
+                        "fields": null
+                    },
+                    {
+                        "name": "NameValuePairInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "SubscriptionAttributesInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "OperationTypeEnum",
+                        "fields": null
+                    },
+                    {
+                        "name": "FeedbackInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "MultipleChoiceInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "FreetextInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "OptionInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "SubscriptionActionTypeEnum",
+                        "fields": null
+                    },
+                    {
+                        "name": "SubscriptionActionsInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "SubscriptionLinkEntitlementAttributesInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "SubscriptionUnlinkEntitlementAttributesInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "ChangePlanAttributesInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "CancelChangePlanAttributesInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "AuthenticateActionTypeEnum",
+                        "fields": null
+                    },
+                    {
+                        "name": "AuthenticateAttributesInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "AuthenticateActionsInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "AuthenticateResendOTPAttributesInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "AuthenticateVerifyOTPAttributesInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "listActionTypes",
+                        "fields": null
+                    },
+                    {
+                        "name": "ListInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "ListItemInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "listItemValueInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "listItemTypeInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "ListItemMetadataInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "PaymentVerificationActionType",
+                        "fields": null
+                    },
+                    {
+                        "name": "CreatePMVType",
+                        "fields": null
+                    },
+                    {
+                        "name": "ConfirmPMVtype",
+                        "fields": null
+                    },
+                    {
+                        "name": "StepUpPMVtype",
+                        "fields": null
+                    },
+                    {
+                        "name": "FulfilmentEventAction",
+                        "fields": null
+                    },
+                    {
+                        "name": "CollectionEvent",
+                        "fields": null
+                    },
+                    {
+                        "name": "CollectionEventAction",
+                        "fields": null
+                    },
+                    {
+                        "name": "ReturnAction",
+                        "fields": null
+                    },
+                    {
+                        "name": "ConfirmReturnsAction",
+                        "fields": null
+                    },
+                    {
+                        "name": "OrderInquiryInput",
+                        "fields": null
+                    },
+                    {
+                        "name": "ProductInquiryInput",
+                        "fields": null
+                    },
+                    {
+                        "name": "ReturnItemInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "ReturnsProductType",
+                        "fields": null
+                    },
+                    {
+                        "name": "ReturnReasonInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "returnsTypeInput",
+                        "fields": null
+                    },
+                    {
+                        "name": "ReturnFulfilmentInput",
+                        "fields": null
+                    },
+                    {
+                        "name": "ReturnDeliveryGroups",
+                        "fields": null
+                    },
+                    {
+                        "name": "ProductListActions",
+                        "fields": null
+                    },
+                    {
+                        "name": "ProductListInput",
+                        "fields": null
+                    },
+                    {
+                        "name": "ProductListItemInput",
+                        "fields": null
+                    },
+                    {
+                        "name": "FromContextInput",
+                        "fields": null
+                    },
+                    {
+                        "name": "moveListTypes",
+                        "fields": null
+                    },
+                    {
+                        "name": "ToContextInput",
+                        "fields": null
+                    },
+                    {
+                        "name": "ShoppingListItems",
+                        "fields": null
+                    },
+                    {
+                        "name": "BulkCopyProductListType",
+                        "fields": [
+                            {
+                                "name": "items",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BulkCopyProductListInterface",
+                        "fields": [
+                            {
+                                "name": "items",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BulkCopyProductListItemInterface",
+                        "fields": [
+                            {
+                                "name": "tpnb",
+                                "description": null
+                            },
+                            {
+                                "name": "quantity",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BulkCopyProductListItemType",
+                        "fields": [
+                            {
+                                "name": "tpnb",
+                                "description": null
+                            },
+                            {
+                                "name": "quantity",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "BulkCopyFromContextInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "BulkCopyListTypes",
+                        "fields": null
+                    },
+                    {
+                        "name": "BulkCopyToContextInputType",
+                        "fields": null
+                    },
+                    {
+                        "name": "BulkCopyListToTypes",
+                        "fields": null
+                    },
+                    {
+                        "name": "GenerateSignedUploadUrlResponse",
+                        "fields": [
+                            {
+                                "name": "reviewsMediaAsset",
+                                "description": null
+                            },
+                            {
+                                "name": "errors",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ReviewsMediaAsset",
+                        "fields": [
+                            {
+                                "name": "signedUrl",
+                                "description": null
+                            },
+                            {
+                                "name": "uploadId",
+                                "description": null
+                            },
+                            {
+                                "name": "name",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "MediaAssetInput",
+                        "fields": null
+                    },
+                    {
+                        "name": "__Schema",
+                        "fields": [
+                            {
+                                "name": "description",
+                                "description": null
+                            },
+                            {
+                                "name": "types",
+                                "description": "A list of all types supported by this server."
+                            },
+                            {
+                                "name": "queryType",
+                                "description": "The type that query operations will be rooted at."
+                            },
+                            {
+                                "name": "mutationType",
+                                "description": "If this server supports mutation, the type that mutation operations will be rooted at."
+                            },
+                            {
+                                "name": "subscriptionType",
+                                "description": "If this server support subscription, the type that subscription operations will be rooted at."
+                            },
+                            {
+                                "name": "directives",
+                                "description": "A list of all directives supported by this server."
+                            }
+                        ]
+                    },
+                    {
+                        "name": "__Type",
+                        "fields": [
+                            {
+                                "name": "kind",
+                                "description": null
+                            },
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "description",
+                                "description": null
+                            },
+                            {
+                                "name": "specifiedByURL",
+                                "description": null
+                            },
+                            {
+                                "name": "fields",
+                                "description": null
+                            },
+                            {
+                                "name": "interfaces",
+                                "description": null
+                            },
+                            {
+                                "name": "possibleTypes",
+                                "description": null
+                            },
+                            {
+                                "name": "enumValues",
+                                "description": null
+                            },
+                            {
+                                "name": "inputFields",
+                                "description": null
+                            },
+                            {
+                                "name": "ofType",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "__TypeKind",
+                        "fields": null
+                    },
+                    {
+                        "name": "__Field",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "description",
+                                "description": null
+                            },
+                            {
+                                "name": "args",
+                                "description": null
+                            },
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "isDeprecated",
+                                "description": null
+                            },
+                            {
+                                "name": "deprecationReason",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "__InputValue",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "description",
+                                "description": null
+                            },
+                            {
+                                "name": "type",
+                                "description": null
+                            },
+                            {
+                                "name": "defaultValue",
+                                "description": "A GraphQL-formatted string representing the default value for this input value."
+                            },
+                            {
+                                "name": "isDeprecated",
+                                "description": null
+                            },
+                            {
+                                "name": "deprecationReason",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "__EnumValue",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "description",
+                                "description": null
+                            },
+                            {
+                                "name": "isDeprecated",
+                                "description": null
+                            },
+                            {
+                                "name": "deprecationReason",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "__Directive",
+                        "fields": [
+                            {
+                                "name": "name",
+                                "description": null
+                            },
+                            {
+                                "name": "description",
+                                "description": null
+                            },
+                            {
+                                "name": "isRepeatable",
+                                "description": null
+                            },
+                            {
+                                "name": "locations",
+                                "description": null
+                            },
+                            {
+                                "name": "args",
+                                "description": null
+                            }
+                        ]
+                    },
+                    {
+                        "name": "__DirectiveLocation",
+                        "fields": null
+                    }
+                ]
+            }
+        },
+        "cache": {
+            "maxAge": 0
+        }
+    }
+]

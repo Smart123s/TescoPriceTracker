@@ -409,6 +409,7 @@ def run_scraper(specific_items=None, force=False, threads=5):
         logger.info(f"Found {len(sitemaps)} sitemaps.")
         all_product_ids = []
         for sitemap_url in sitemaps:
+            time.sleep(0.5)
             logger.info(f"Fetching products from sitemap: {sitemap_url}")
             ids = fetch_product_urls_from_sitemap(sitemap_url)
             logger.info(f"Found {len(ids)} products in {sitemap_url}")

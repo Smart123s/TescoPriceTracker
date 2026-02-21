@@ -47,3 +47,4 @@ venv.bak/
 data/
 
 .vscode/
+*.zip
