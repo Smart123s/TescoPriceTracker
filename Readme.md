@@ -1,5 +1,6 @@
 Querry to ask every field
 
+```json
 [
   {
     "operationName": "IntrospectAll",
@@ -8,8 +9,9 @@ Querry to ask every field
     "query": "query IntrospectAll { __schema { types { name fields { name description } } } }"
   }
 ]
+```
 
-
+```json
 [
     {
         "data": {
@@ -23723,3 +23725,4 @@ Querry to ask every field
         }
     }
 ]
+```

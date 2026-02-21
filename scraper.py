@@ -138,17 +138,29 @@ def get_product_api(tpnc, query_type="full"):
     for attempt in range(max_retries):
         try:
             response = requests.post(API_URL, headers=HEADERS, json=payload, timeout=30)
-            
             if response.status_code == 429:
                 raise requests.exceptions.RequestException("Rate Limited (429)")
-
             response.raise_for_status()
-            # Response is also a list
             response_json = response.json()
             if isinstance(response_json, list) and len(response_json) > 0:
                 return response_json[0]
             return None
         except Exception as e:
+            error_str = str(e)
+            if 'Max retries exceeded' in error_str:
+                # Check if previous run was incomplete
+                run_state = _load_run_state()
+                incomplete = False
+                if run_state:
+                    total_items = run_state.get('total_items', 0)
+                    processed = run_state.get('processed', [])
+                    if len(processed) < total_items:
+                        incomplete = True
+                if incomplete:
+                    logger.warning(f"Max retries exceeded for {tpnc}. Previous run incomplete. Sleeping for 5 minutes before continuing...")
+                    time.sleep(300)
+                else:
+                    logger.warning(f"Max retries exceeded for {tpnc}, but previous run was complete. Not sleeping.")
             if attempt < max_retries - 1:
                 sleep_time = base_delay * (2 ** attempt) + random.uniform(0, 1)
                 logger.warning(f"API request failed for {tpnc} (Attempt {attempt+1}/{max_retries}). Retrying in {sleep_time:.2f}s. Error: {e}")
