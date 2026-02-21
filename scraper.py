@@ -428,14 +428,28 @@ def run_scraper(specific_items=None, force=False, threads=5):
     # Build remaining items to process (don't re-query items that already have today's price)
     processed_set = set(state.get('processed', []))
     items_to_process = []
+    today_str = datetime.now().date().isoformat()
     for tpnc in all_items:
+        # Skip if already processed today
         if tpnc in processed_set:
             continue
+        # Skip if already has today's price
         if not force and product_has_price_today(tpnc):
-            # treat as already done for today's run
             processed_set.add(tpnc)
             state['processed'] = list(processed_set)
             continue
+        # Check run_state for today's run
+        prod = db.get_product(tpnc)
+        if prod and prod.get('last_scraped_price'):
+            try:
+                from dateutil import parser
+                last_scraped = parser.parse(prod['last_scraped_price'])
+                if last_scraped.date().isoformat() == today_str:
+                    processed_set.add(tpnc)
+                    state['processed'] = list(processed_set)
+                    continue
+            except Exception:
+                pass
         items_to_process.append(tpnc)
 
     # Update total_items in state (in case sitemap changed)
