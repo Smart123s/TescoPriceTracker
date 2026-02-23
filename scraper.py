@@ -45,8 +45,18 @@ def _save_run_state(state: dict):
 
 
 def product_has_price_today(tpnc):
-    """Check product JSON price_history for an entry from today.
-    (No separate index — JSON-only approach.)
+    """Check product JSON price_history for an entry that already covers today.
+
+    Previously we only looked for a period whose *start_date* fell on the
+    current day.  That meant an open period that began yesterday (or earlier)
+    would not be recognised as covering today, causing the scraper to fetch the
+    item again and create a duplicate entry with a later start_date.  This is
+    what produced the "skipped day" behaviour.
+
+    The updated logic inspects the most recent record in each section and
+    returns True if today falls between its start and end (or if the entry is
+    still open).  It still keeps the older loop so we can handle malformed
+    data, but the check now considers end_date as well.
     """
     prod = db.get_product(tpnc)
     if not prod:
@@ -58,6 +68,28 @@ def product_has_price_today(tpnc):
     # Check all price sections
     for section in ['normal', 'discount', 'clubcard']:
         entries = history.get(section, [])
+        if not entries:
+            continue
+        # look at the latest period first
+        last = entries[-1]
+        start_ts = last.get('start_date')
+        if start_ts:
+            try:
+                start_dt = datetime.fromisoformat(start_ts)
+            except Exception:
+                start_dt = None
+        else:
+            start_dt = None
+        end_ts = last.get('end_date')
+        end_dt = None
+        if end_ts:
+            try:
+                end_dt = datetime.fromisoformat(end_ts)
+            except Exception:
+                end_dt = None
+        if start_dt and start_dt.date() <= today and (end_dt is None or end_dt.date() >= today):
+            return True
+        # fall back to the original loop in case of malformed history
         for entry in reversed(entries):
             ts = entry.get('start_date')
             if not ts:
