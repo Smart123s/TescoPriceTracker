@@ -2,7 +2,7 @@ import json
 import os
 import glob
 from datetime import datetime, timedelta
-from config import DATA_DIR, SCRAPE_FREQUENCY_MINUTES
+from config import DATA_DIR
 
 # Fields compared per category to detect changes
 _NORMAL_FIELDS = ("price", "unit_price", "unit_measure")
@@ -64,11 +64,15 @@ def _compare_fields(old_entry, new_fields, category):
 
 
 def _is_within_frequency(end_date_str):
-    """Return True if *end_date_str* (YYYY-MM-DD) is recent enough to extend."""
+    """Return True if *end_date_str* (YYYY-MM-DD) is yesterday or today.
+
+    A period written on day N can be extended on day N+1 (yesterday counts).
+    Anything older than that is a gap and starts a new section.
+    """
     try:
-        end_date = datetime.strptime(end_date_str, "%Y-%m-%d")
-        diff_minutes = (datetime.now() - end_date).total_seconds() / 60
-        return diff_minutes <= (SCRAPE_FREQUENCY_MINUTES + 1440)
+        end_date = datetime.strptime(end_date_str, "%Y-%m-%d").date()
+        yesterday = (datetime.now() - timedelta(days=1)).date()
+        return end_date >= yesterday
     except Exception:
         return False
 

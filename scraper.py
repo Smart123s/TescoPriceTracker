@@ -10,8 +10,7 @@ import threading
 import json
 from datetime import datetime, timedelta
 from lxml import etree
-from config import (API_URL, HEADERS, SITEMAP_INDEX_URL, DATA_DIR,
-                    SCRAPE_FREQUENCY_MINUTES, DEFAULT_THREADS)
+from config import API_URL, HEADERS, SITEMAP_INDEX_URL, DATA_DIR, DEFAULT_THREADS
 from queries import FULL_PRODUCT_QUERY, PRICE_ONLY_QUERY
 import database_manager as db
 
@@ -52,12 +51,7 @@ def _save_run_state(state: dict):
 # ---------------------------------------------------------------------------
 
 def needs_scraping(tpnc):
-    """Return True if *tpnc* should be scraped now.
-
-    Checks the product's own JSON file for `last_scraped_price`.
-    If the elapsed time since that timestamp is less than
-    SCRAPE_FREQUENCY_MINUTES, the product is considered up-to-date.
-    """
+    """Return True if *tpnc* has not been scraped today (calendar-day check)."""
     prod = db.get_product(tpnc)
     if not prod:
         return True
@@ -65,9 +59,8 @@ def needs_scraping(tpnc):
     if not last_scraped:
         return True
     try:
-        last_dt = datetime.fromisoformat(last_scraped)
-        elapsed_minutes = (datetime.now() - last_dt).total_seconds() / 60
-        return elapsed_minutes >= SCRAPE_FREQUENCY_MINUTES
+        last_date = datetime.fromisoformat(last_scraped).date()
+        return last_date < datetime.now().date()
     except Exception:
         return True
 
@@ -285,10 +278,9 @@ def process_product(tpnc, force=False, progress_prefix=""):
 def run_scraper(specific_items=None, force=False, threads=DEFAULT_THREADS):
     """Run the scraper.
 
-    - Checks each product's own JSON file (in parallel) to decide whether
-      it needs scraping — never relies on run_state.json for that decision.
-    - Items are sorted by ascending numeric ID before processing.
-    - run_state.json is written for progress logging only.
+    - specific_items provided: always scrapes those items (no skip check).
+    - No specific_items: skips products already scraped today (calendar-day).
+    - force=True: scrapes everything regardless.
     """
     db.init_db()
 
@@ -314,15 +306,16 @@ def run_scraper(specific_items=None, force=False, threads=DEFAULT_THREADS):
     all_items.sort(key=lambda x: int(x))
 
     # ---- Filter: check each product JSON in parallel ----
-    if not force:
+    # specific_items runs always; full runs skip products already done today.
+    if force or specific_items:
+        items_to_process = list(all_items)
+    else:
         logger.info("Checking which products need scraping (parallel JSON reads)...")
         with concurrent.futures.ThreadPoolExecutor(max_workers=threads) as check_pool:
             check_results = list(check_pool.map(
                 lambda tpnc: (tpnc, needs_scraping(tpnc)), all_items
             ))
         items_to_process = [tpnc for tpnc, needed in check_results if needed]
-    else:
-        items_to_process = list(all_items)
 
     logger.info(f"{len(items_to_process)} items to process (out of {len(all_items)} total).")
 
