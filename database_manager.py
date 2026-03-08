@@ -50,22 +50,6 @@ def _empty_history():
     return {"normal": [], "discount": [], "clubcard": []}
 
 
-def upsert_product(tpnc, name, unit_of_measure, default_image_url,
-                   pack_size_value, pack_size_unit):
-    data = load_product_data(tpnc)
-    if not data:
-        data = {"tpnc": str(tpnc), "price_history": _empty_history()}
-    data.update({
-        "name": name,
-        "unit_of_measure": unit_of_measure,
-        "default_image_url": default_image_url,
-        "pack_size_value": pack_size_value,
-        "pack_size_unit": pack_size_unit,
-        "last_scraped_static": datetime.now().isoformat(),
-    })
-    save_product_data(tpnc, data)
-
-
 # ---------------------------------------------------------------------------
 # Core price insertion logic
 # ---------------------------------------------------------------------------
@@ -80,63 +64,24 @@ def _compare_fields(old_entry, new_fields, category):
 
 
 def _is_within_frequency(end_date_str):
-    """Return True if *end_date_str* (YYYY-MM-DD) is recent enough to extend.
-
-    "Recent enough" means the elapsed time between now and the end of that day
-    is <= SCRAPE_FREQUENCY_MINUTES.
-    """
+    """Return True if *end_date_str* (YYYY-MM-DD) is recent enough to extend."""
     try:
         end_date = datetime.strptime(end_date_str, "%Y-%m-%d")
-        # Compare against the start of the end_date day (midnight).
-        # A frequency of 1440 min (1 day) means: if end_date is yesterday
-        # or today, it qualifies.  Older than that → gap.
-        diff = datetime.now() - end_date
-        diff_minutes = diff.total_seconds() / 60
-        # Allow up to 2× the frequency window to be safe across timezone shifts
-        # but at minimum require it's no older than frequency + 1 day.
+        diff_minutes = (datetime.now() - end_date).total_seconds() / 60
         return diff_minutes <= (SCRAPE_FREQUENCY_MINUTES + 1440)
     except Exception:
         return False
 
 
-def insert_price(tpnc, category, fields):
-    """Insert or extend a price period for a product in the given category.
-
-    Parameters
-    ----------
-    tpnc : str
-        Product identifier.
-    category : str
-        One of "normal", "discount", "clubcard".
-    fields : dict
-        Data for the entry.  Expected keys depend on category:
-        - normal:   price, unit_price, unit_measure
-        - discount/clubcard: price, unit_price, unit_measure,
-                             promo_id, promo_desc, promo_start, promo_end
-
-    Returns
-    -------
-    bool : True if a new section was created (change / gap / first entry),
-           False if the existing period was extended.
-    """
-    data = load_product_data(tpnc)
-    if not data:
-        data = {"tpnc": str(tpnc), "price_history": _empty_history()}
-
-    history = data.setdefault("price_history", _empty_history())
-    periods = history.setdefault(category, [])
-
-    today_str = datetime.now().strftime("%Y-%m-%d")
-
+def _apply_period(periods, fields, category, today_str):
+    """Apply period logic in-memory (no I/O). Returns True if a new entry was created."""
     if periods:
         last = periods[-1]
         same_data = _compare_fields(last, fields, category)
 
         if same_data and _is_within_frequency(last.get("end_date", "")):
-            # Same data and end_date is recent → just extend the period
+            # Same data, recent end_date → extend the period
             last["end_date"] = today_str
-            data["last_scraped_price"] = datetime.now().isoformat()
-            save_product_data(tpnc, data)
             return False
 
         if last.get("start_date") == today_str and last.get("end_date") == today_str:
@@ -144,20 +89,50 @@ def insert_price(tpnc, category, fields):
             last.update(fields)
             last["start_date"] = today_str
             last["end_date"] = today_str
-            data["last_scraped_price"] = datetime.now().isoformat()
-            save_product_data(tpnc, data)
             return True
 
-        # Data changed or gap detected → new section
-    # No previous entry, data changed, or gap detected → new entry
+    # No previous entry, data changed, or gap → new entry
     entry = dict(fields)
     entry["start_date"] = today_str
     entry["end_date"] = today_str
     periods.append(entry)
+    return True
+
+
+def insert_all_prices(tpnc, price_updates, metadata=None):
+    """Insert/extend price periods for all categories in a single load/save.
+
+    Parameters
+    ----------
+    tpnc : str
+    price_updates : list of (category, fields) tuples
+        category is "normal", "discount", or "clubcard".
+    metadata : dict or None
+        If provided, updates static product fields (name, unit_of_measure,
+        default_image_url, pack_size_value, pack_size_unit).
+
+    Returns
+    -------
+    dict: {category: bool} — True if a new section was created for that category.
+    """
+    data = load_product_data(tpnc)
+    if not data:
+        data = {"tpnc": str(tpnc), "price_history": _empty_history()}
+
+    history = data.setdefault("price_history", _empty_history())
+    today_str = datetime.now().strftime("%Y-%m-%d")
+
+    results = {}
+    for category, fields in price_updates:
+        periods = history.setdefault(category, [])
+        results[category] = _apply_period(periods, fields, category, today_str)
+
+    if metadata:
+        data.update(metadata)
 
     data["last_scraped_price"] = datetime.now().isoformat()
     save_product_data(tpnc, data)
-    return True
+    return results
 
 
 # ---------------------------------------------------------------------------

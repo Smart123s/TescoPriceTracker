@@ -191,16 +191,12 @@ def process_product(tpnc, force=False, progress_prefix=""):
     unit_measure = price_info.get('unitOfMeasure')
     promotions = product_data.get('promotions') or []
 
-    # ---- Always save normal price ----
-    normal_changed = db.insert_price(tpnc, "normal", {
+    # ---- Build price updates list (normal always included) ----
+    price_updates = [("normal", {
         "price": price_actual,
         "unit_price": unit_price,
         "unit_measure": unit_measure,
-    })
-
-    # ---- Check promotions for discount & clubcard ----
-    discount_changed = False
-    clubcard_changed = False
+    })]
 
     for promo in promotions:
         promo_id = promo.get('id')
@@ -221,7 +217,7 @@ def process_product(tpnc, force=False, progress_prefix=""):
                     parsed_price = float(match.group(1))
                     if cc_price is None or cc_price == price_actual:
                         cc_price = parsed_price
-            clubcard_changed = db.insert_price(tpnc, "clubcard", {
+            price_updates.append(("clubcard", {
                 "price": cc_price,
                 "unit_price": unit_price,
                 "unit_measure": unit_measure,
@@ -229,10 +225,10 @@ def process_product(tpnc, force=False, progress_prefix=""):
                 "promo_desc": promo_desc,
                 "promo_start": promo_start,
                 "promo_end": promo_end,
-            }) or clubcard_changed
+            }))
         else:
             if promo_price and promo_price != price_actual:
-                discount_changed = db.insert_price(tpnc, "discount", {
+                price_updates.append(("discount", {
                     "price": promo_price,
                     "unit_price": unit_price,
                     "unit_measure": unit_measure,
@@ -240,9 +236,10 @@ def process_product(tpnc, force=False, progress_prefix=""):
                     "promo_desc": promo_desc,
                     "promo_start": promo_start,
                     "promo_end": promo_end,
-                }) or discount_changed
+                }))
 
-    # ---- Upsert static product metadata on first fetch ----
+    # ---- Build metadata dict on first fetch ----
+    metadata = None
     if query_type == "full":
         name = product_data.get('title')
         default_image_url = product_data.get('defaultImageUrl')
@@ -257,29 +254,25 @@ def process_product(tpnc, force=False, progress_prefix=""):
             elif isinstance(pack_size, dict):
                 pack_size_val = pack_size.get('value')
                 pack_size_unit = pack_size.get('units')
-        db.upsert_product(tpnc, name, unit_measure, default_image_url,
-                          pack_size_val, pack_size_unit)
+        metadata = {
+            "name": name,
+            "unit_of_measure": unit_measure,
+            "default_image_url": default_image_url,
+            "pack_size_value": pack_size_val,
+            "pack_size_unit": pack_size_unit,
+        }
+
+    # ---- Single load/save for all categories + optional metadata ----
+    results = db.insert_all_prices(tpnc, price_updates, metadata=metadata)
 
     # ---- Logging ----
-    change_status = "Changed" if (normal_changed or discount_changed or clubcard_changed) else "Unchanged"
+    change_status = "Changed" if any(results.values()) else "Unchanged"
     log_prices = [f"Normal: {price_actual}"]
-    for promo in promotions:
-        attributes = promo.get('attributes') or []
-        pp = promo.get('price', {}).get('afterDiscount') if promo.get('price') else None
-        if "CLUBCARD_PRICING" in attributes:
-            cc = pp
-            desc = promo.get('description')
-            if desc:
-                clean = desc.replace('\xa0', '').replace(' ', '')
-                m = re.search(r'(\d+)Ft', clean, re.IGNORECASE)
-                if m:
-                    parsed = float(m.group(1))
-                    if cc is None or cc == price_actual:
-                        cc = parsed
-            log_prices.append(f"Clubcard: {cc}")
-        else:
-            if pp and pp != price_actual:
-                log_prices.append(f"Discount: {pp}")
+    for category, fields in price_updates:
+        if category == "discount":
+            log_prices.append(f"Discount: {fields['price']}")
+        elif category == "clubcard":
+            log_prices.append(f"Clubcard: {fields['price']}")
 
     logger.info(f"{progress_prefix}Processed {tpnc} ({change_status}). {', '.join(log_prices)}")
     return True
