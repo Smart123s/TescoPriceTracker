@@ -3,23 +3,20 @@
   "name": "Tesco Price Tracker",
   "version": "1.1.0",
   "description": "Tracks and displays price history charts on Tesco product pages.",
-  "author": "Your Name",
+  "author": "Gavallér Bogát Bendegúz",
 
   "permissions": [
-    "storage",
-    "activeTab",
-    "scripting"
+    "storage"
   ],
 
   "host_permissions": [
     "https://bevasarlas.tesco.hu/*",
-    "http://localhost:5000/*",
-    "http://127.0.0.1:5000/*",
     "https://tesco-price-tracker.gavaller.com/*"
   ],
 
   "background": {
     "scripts": ["background/background.js"],
+    "service_worker": "background/background.js",
     "type": "module"
   },
 
