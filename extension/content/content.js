@@ -87,28 +87,34 @@ function getLocale() {
  * Returns the price as a number (Ft) or null if not found.
  */
 function readPagePrice() {
+  // Scope to the product buy-box to avoid picking up the basket total
+  const buyBox = document.querySelector('[data-auto="pdp-buy-box"]');
+  const scope = buyBox || document;
+
   // Look for common price selectors on Tesco HU product pages
   const selectors = [
     '[data-auto="price-value"]',
+    '.ddsweb-price_container',
     '.price-per-sellable-unit .value',
     '.price-control-wrapper .value',
     '.offer-text .value',
   ];
 
   for (const sel of selectors) {
-    const el = document.querySelector(sel);
+    const el = scope.querySelector(sel);
     if (el) {
       const num = parseInt(el.textContent.replace(/[^\d]/g, ""), 10);
       if (!isNaN(num) && num > 0) return num;
     }
   }
 
-  // Fallback: scan visible text for a pattern like "899 Ft"
-  const allText = document.body.innerText;
-  const match = allText.match(/(\d[\d\s]*)\s*Ft/i);
-  if (match) {
-    const num = parseInt(match[1].replace(/\s/g, ""), 10);
-    if (!isNaN(num) && num > 0) return num;
+  // Fallback: scan text within the buy box for a pattern like "3799 Ft"
+  if (buyBox) {
+    const match = buyBox.innerText.match(/(\d[\d\s]*)\s*Ft/i);
+    if (match) {
+      const num = parseInt(match[1].replace(/\s/g, ""), 10);
+      if (!isNaN(num) && num > 0) return num;
+    }
   }
 
   return null;
