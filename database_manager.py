@@ -34,7 +34,7 @@ _PROMO_FIELDS = ("price", "unit_price", "unit_measure",
 
 def init_db():
     coll = get_db()
-    coll.create_index("name", text=True)
+    coll.create_index([("name", "text")])
     coll.create_index("last_scraped_price")
     print("MongoDB indexes verified/created.")
 
