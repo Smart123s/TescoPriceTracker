@@ -12,11 +12,12 @@ services:
     - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME:-admin}
     - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD:-secretpassword}
     healthcheck:
-      test: echo 'db.runCommand("ping").ok' | mongosh -u root -p secretpassword localhost:27017/test
-        --quiet || exit 1
+      test: echo 'db.runCommand("ping").ok' | mongosh -u "$$MONGO_INITDB_ROOT_USERNAME"
+        -p "$$MONGO_INITDB_ROOT_PASSWORD" localhost:27017/admin --quiet || exit 1
       interval: 10s
       timeout: 10s
       retries: 5
+      start_period: 30s
   mongo-express:
     image: mongo-express:latest
     container_name: tesco_tracker_mongo_express
