@@ -11,6 +11,7 @@ from lxml import etree  # type: ignore[import-untyped]
 from config import API_URL, HEADERS, SITEMAP_INDEX_URL, DEFAULT_THREADS
 from queries import FULL_PRODUCT_QUERY, PRICE_ONLY_QUERY
 import database_manager as db
+import stats_manager
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
@@ -363,6 +364,8 @@ def run_scraper(specific_items=None, force=False, threads=DEFAULT_THREADS):
         state['finished_at'] = datetime.now().isoformat()
         db.save_run_state(state)
         logger.info(f"Daily scrape completed: {processed}/{len(all_items)} items.")
+        logger.info("Rebuilding stats cache...")
+        stats_manager.rebuild_all_cache()
     else:
         db.save_run_state(state)
         logger.info(f"Daily scrape partial: {processed}/{len(all_items)} items — will resume on next run.")

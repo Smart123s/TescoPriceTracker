@@ -207,6 +207,38 @@ def search_products(query):
     return results
 
 # ---------------------------------------------------------------------------
+# Stats cache helpers
+# ---------------------------------------------------------------------------
+
+def get_stats_collection():
+    get_db()
+    assert _db is not None
+    return _db['stats_cache']
+
+
+def get_cached_stat(key: str):
+    try:
+        coll = get_stats_collection()
+        doc = coll.find_one({"_id": key})
+        return doc["data"] if doc else None
+    except mongo_errors.PyMongoError as e:
+        logger.error(f"Error reading cache key {key}: {e}")
+        return None
+
+
+def set_cached_stat(key: str, data) -> None:
+    try:
+        coll = get_stats_collection()
+        coll.replace_one(
+            {"_id": key},
+            {"_id": key, "data": data, "computed_at": datetime.now().isoformat()},
+            upsert=True,
+        )
+    except mongo_errors.PyMongoError as e:
+        logger.error(f"Error writing cache key {key}: {e}")
+
+
+# ---------------------------------------------------------------------------
 # Run-state helpers (MongoDB-backed)
 # ---------------------------------------------------------------------------
 
