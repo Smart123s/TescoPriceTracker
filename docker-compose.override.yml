@@ -1,0 +1,68 @@
+version: '3.8'
+services:
+  mongo:
+    image: mongo:latest
+    container_name: tesco_tracker_mongo
+    restart: unless-stopped
+    volumes:
+    - mongo_data:/data/db
+    ports:
+    - 50100:27017
+    environment:
+    - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME:-admin}
+    - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD:-secretpassword}
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh -u root -p secretpassword localhost:27017/test
+        --quiet || exit 1
+      interval: 10s
+      timeout: 10s
+      retries: 5
+  mongo-express:
+    image: mongo-express:latest
+    container_name: tesco_tracker_mongo_express
+    restart: unless-stopped
+    ports:
+    - 50101:8081
+    environment:
+    - ME_CONFIG_MONGODB_ADMINUSERNAME=${MONGO_INITDB_ROOT_USERNAME:-admin}
+    - ME_CONFIG_MONGODB_ADMINPASSWORD=${MONGO_INITDB_ROOT_PASSWORD:-secretpassword}
+    - ME_CONFIG_MONGODB_URL=mongodb://${MONGO_INITDB_ROOT_USERNAME:-admin}:${MONGO_INITDB_ROOT_PASSWORD:-secretpassword}@mongo:27017/
+    - ME_CONFIG_BASICAUTH=true
+    - ME_CONFIG_BASICAUTH_USERNAME=${ME_CONFIG_BASICAUTH_USERNAME:-admin}
+    - ME_CONFIG_BASICAUTH_PASSWORD=${ME_CONFIG_BASICAUTH_PASSWORD:-secretpassword}
+    depends_on:
+      mongo:
+        condition: service_healthy
+  api:
+    container_name: tesco_tracker_api
+    restart: unless-stopped
+    command: uvicorn app:app --host 0.0.0.0 --port 50102
+    ports:
+    - 50102:50102
+    environment:
+    - MONGO_URI=mongodb://${MONGO_INITDB_ROOT_USERNAME:-admin}:${MONGO_INITDB_ROOT_PASSWORD:-secretpassword}@mongo:27017/
+    - TZ=Europe/Budapest
+    depends_on:
+      mongo:
+        condition: service_healthy
+    build: .
+  scheduler:
+    container_name: tesco_tracker_scheduler
+    restart: unless-stopped
+    command: python scheduler.py
+    environment:
+    - API_KEY=${API_KEY}
+    - MONGO_URI=mongodb://${MONGO_INITDB_ROOT_USERNAME:-admin}:${MONGO_INITDB_ROOT_PASSWORD:-secretpassword}@mongo:27017/
+    - TZ=Europe/Budapest
+    depends_on:
+      mongo:
+        condition: service_healthy
+    build: .
+  watchtower:
+    image: containrrr/watchtower
+    volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+    command: --interval 300
+    restart: always
+volumes:
+  mongo_data:
