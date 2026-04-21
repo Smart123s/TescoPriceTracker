@@ -8,7 +8,7 @@ services:
     volumes:
       - ${HOST_ROOT_PATH:?HOST_ROOT_PATH must be set in .env}/mongo:/data/db
     ports:
-      - "50100:27017" # Exposed to public on port 50100
+      - "${MONGO_PUBLIC_PORT:?MONGO_PUBLIC_PORT must be set in .env}:27017"
     environment:
       - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME:-admin}
       - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD:-secretpassword}
@@ -23,7 +23,7 @@ services:
     container_name: tesco_tracker_mongo_express
     restart: unless-stopped
     ports:
-      - "50101:8081" # Mongo express available on port 50101
+      - "${MONGO_EXPRESS_PUBLIC_PORT:?MONGO_EXPRESS_PUBLIC_PORT must be set in .env}:8081"
     environment:
       - ME_CONFIG_MONGODB_ADMINUSERNAME=${MONGO_INITDB_ROOT_USERNAME:-admin}
       - ME_CONFIG_MONGODB_ADMINPASSWORD=${MONGO_INITDB_ROOT_PASSWORD:-secretpassword}
@@ -36,12 +36,12 @@ services:
         condition: service_healthy
 
   api:
-    image: ghcr.io/smart123s/tescopricetracker:latest
+    image: ghcr.io/bogat25/tescopricetracker:latest
     container_name: tesco_tracker_api
     restart: unless-stopped
-    command: uvicorn app:app --host 0.0.0.0 --port 50102
+    command: uvicorn app:app --host 0.0.0.0 --port 50202
     ports:
-      - "50102:50102"
+      - "${API_PUBLIC_PORT:?API_PUBLIC_PORT must be set in .env}:50202"
     environment:
       - MONGO_URI=mongodb://${MONGO_INITDB_ROOT_USERNAME:-admin}:${MONGO_INITDB_ROOT_PASSWORD:-secretpassword}@mongo:27017/
       - TZ=Europe/Budapest
@@ -50,7 +50,7 @@ services:
         condition: service_healthy
 
   scheduler:
-    image: ghcr.io/smart123s/tescopricetracker:latest
+    image: ghcr.io/bogat25/tescopricetracker:latest
     container_name: tesco_tracker_scheduler
     restart: unless-stopped
     command: python scheduler.py

@@ -14,8 +14,8 @@ The project exposes a new REST API powered by **FastAPI** to serve both the lega
 ## How do I connect to MongoDB?
 
 ### 1. Connecting Programmatically or locally
-Because MongoDB is mapped to port `50100` in the `docker-compose.yml`, you can use any GUI like **MongoDB Compass** or local `mongosh` via the URI:
-`mongodb://admin:secretpassword@localhost:50100/`
+Because MongoDB is mapped to port `50200` in the `docker-compose.yml`, you can use any GUI like **MongoDB Compass** or local `mongosh` via the URI:
+`mongodb://admin:secretpassword@localhost:50200/`
 
 (Note: Ensure you update the username and password explicitly if you've changed the matching rules in your `.env`!)
 
@@ -23,7 +23,7 @@ Because MongoDB is mapped to port `50100` in the `docker-compose.yml`, you can u
 A lightweight web-based interface, **Mongo Express**, has been included in your Docker configuration. It gives you raw read/write capability to your datasets out-of-the-box.
 
 **How to Use:**
-1. Once the services start (via `docker-compose up -d` or `docker stack deploy`), navigate to **http://localhost:50101** in your browser.
+1. Once the services start (via `docker-compose up -d` or `docker stack deploy`), navigate to **http://localhost:50201** in your browser.
 2. When prompted for HTTP Basic Auth, log in (default credentials are `admin` / `secretpassword`, derived from `.env` or Compose variables).
 3. Select the `tesco_tracker` database.
 4. Access the `products` collection to see exactly what products exist, verify pricing metadata, and edit directly if manual intervention is suddenly required.

@@ -4,7 +4,7 @@ info:
   version: "1.0"
   description: API for retrieving tracked Tesco product pricing histories.
 servers:
-  - url: http://localhost:50102
+  - url: http://localhost:50202
     description: Local Docker API service
 paths:
   /health:
