@@ -79,12 +79,16 @@ def insert_daily_prices(tpnc, price_updates, metadata=None):
         data = {"tpnc": str(tpnc), "price_history": []}
 
     history = data.setdefault("price_history", [])
+    if isinstance(history, dict):
+        history = []
+        data["price_history"] = history
+
     today_str = datetime.now().strftime("%Y-%m-%d")
 
     # Find today's entry or create a blank one
     today_entry = None
     for entry in history:
-        if entry.get("date") == today_str:
+        if isinstance(entry, dict) and entry.get("date") == today_str:
             today_entry = entry
             break
 
@@ -118,6 +122,8 @@ def get_price_history(tpnc):
     if not data:
         return []
     history = data.get("price_history", [])
+    if isinstance(history, dict):
+        return []
     # Return newest first
     return list(reversed(history))
 
@@ -149,13 +155,15 @@ def get_product_stats(tpnc):
         return None
 
     history = data.get("price_history", [])
+    if isinstance(history, dict):
+        history = []
 
     stats = {}
     for category in ("normal", "discount", "clubcard"):
         prices = [
             entry[category]["price"]
             for entry in history
-            if entry.get(category) and entry[category].get("price") is not None
+            if isinstance(entry, dict) and entry.get(category) and entry[category].get("price") is not None
         ]
         if not prices:
             stats[category] = None
@@ -167,7 +175,7 @@ def get_product_stats(tpnc):
                 "current_price": prices[-1],  # history is oldest-first in storage
             }
 
-    sorted_history = sorted(history, key=lambda e: e.get("date", ""))
+    sorted_history = sorted(history, key=lambda e: e.get("date", "")) if isinstance(history, list) else []
     first_date = sorted_history[0]["date"] if sorted_history else None
     last_date = sorted_history[-1]["date"] if sorted_history else None
 

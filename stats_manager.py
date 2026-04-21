@@ -58,15 +58,17 @@ def _stddev(values):
 
 def _latest_entry(history):
     """Return the most recent daily entry from a price_history list, or None."""
-    if not history:
+    if not history or isinstance(history, dict):
         return None
     # History is stored oldest-first; last element is newest
     return history[-1]
 
 
 def _entry_for_date(history, date_str):
+    if isinstance(history, dict):
+        return None
     for entry in history:
-        if entry.get("date") == date_str:
+        if isinstance(entry, dict) and entry.get("date") == date_str:
             return entry
     return None
 
