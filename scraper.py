@@ -230,7 +230,7 @@ def process_product(tpnc, force=False, progress_prefix=""):
         }
 
     # ---- Single load/save for all categories + optional metadata ----
-    results = db.insert_all_prices(tpnc, price_updates, metadata=metadata)
+    results = db.insert_daily_prices(tpnc, price_updates, metadata=metadata)
 
     # ---- Logging ----
     change_status = "Changed" if any(results.values()) else "Unchanged"

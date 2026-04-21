@@ -1,5 +1,5 @@
 import os
-from datetime import datetime, timedelta
+from datetime import datetime
 from pymongo import MongoClient
 from pymongo import errors as mongo_errors
 import logging
@@ -25,11 +25,6 @@ def get_runs_collection():
     get_db()
     assert _db is not None
     return _db['runs']
-
-# Fields compared per category to detect changes
-_NORMAL_FIELDS = ("price", "unit_price", "unit_measure")
-_PROMO_FIELDS = ("price", "unit_price", "unit_measure",
-                 "promo_id", "promo_desc", "promo_start", "promo_end")
 
 
 def init_db():
@@ -59,65 +54,12 @@ def product_exists(tpnc):
     return coll.count_documents({"_id": str(tpnc)}, limit=1) > 0
 
 
-def _empty_history():
-    return {"normal": [], "discount": [], "clubcard": []}
-
-
 # ---------------------------------------------------------------------------
-# Core price insertion logic
+# Daily price insertion logic
 # ---------------------------------------------------------------------------
 
-def _compare_fields(old_entry, new_fields, category):
-    """Return True if all compared fields match between old entry and new data."""
-    keys = _PROMO_FIELDS if category in ("discount", "clubcard") else _NORMAL_FIELDS
-    for k in keys:
-        if old_entry.get(k) != new_fields.get(k):
-            return False
-    return True
-
-
-def _is_within_frequency(end_date_str):
-    """Return True if *end_date_str* (YYYY-MM-DD) is yesterday or today.
-
-    A period written on day N can be extended on day N+1 (yesterday counts).
-    Anything older than that is a gap and starts a new section.
-    """
-    try:
-        end_date = datetime.strptime(end_date_str, "%Y-%m-%d").date()
-        yesterday = (datetime.now() - timedelta(days=1)).date()
-        return end_date >= yesterday
-    except (ValueError, TypeError):
-        return False
-
-
-def _apply_period(periods, fields, category, today_str):
-    """Apply period logic in-memory (no I/O). Returns True if a new entry was created."""
-    if periods:
-        last = periods[-1]
-        same_data = _compare_fields(last, fields, category)
-
-        if same_data and _is_within_frequency(last.get("end_date", "")):
-            # Same data, recent end_date → extend the period
-            last["end_date"] = today_str
-            return False
-
-        if last.get("start_date") == today_str and last.get("end_date") == today_str:
-            # Data changed on the same day → overwrite with latest scrape
-            last.update(fields)
-            last["start_date"] = today_str
-            last["end_date"] = today_str
-            return True
-
-    # No previous entry, data changed, or gap → new entry
-    entry = dict(fields)
-    entry["start_date"] = today_str
-    entry["end_date"] = today_str
-    periods.append(entry)
-    return True
-
-
-def insert_all_prices(tpnc, price_updates, metadata=None):
-    """Insert/extend price periods for all categories in a single load/save.
+def insert_daily_prices(tpnc, price_updates, metadata=None):
+    """Store prices for today as a daily snapshot.
 
     Parameters
     ----------
@@ -130,26 +72,37 @@ def insert_all_prices(tpnc, price_updates, metadata=None):
 
     Returns
     -------
-    dict: {category: bool} — True if a new section was created for that category.
+    dict: {category: bool} — True if a new day entry was created, False if updated.
     """
     data = load_product_data(tpnc)
     if not data:
-        data = {"tpnc": str(tpnc), "price_history": _empty_history()}
+        data = {"tpnc": str(tpnc), "price_history": []}
 
-    history = data.setdefault("price_history", _empty_history())
+    history = data.setdefault("price_history", [])
     today_str = datetime.now().strftime("%Y-%m-%d")
 
-    results = {}
+    # Find today's entry or create a blank one
+    today_entry = None
+    for entry in history:
+        if entry.get("date") == today_str:
+            today_entry = entry
+            break
+
+    is_new_day = today_entry is None
+    if is_new_day:
+        today_entry = {"date": today_str, "normal": None, "discount": None, "clubcard": None}
+        history.append(today_entry)
+
     for category, fields in price_updates:
-        periods = history.setdefault(category, [])
-        results[category] = _apply_period(periods, fields, category, today_str)
+        today_entry[category] = dict(fields)
 
     if metadata:
         data.update(metadata)
 
     data["last_scraped_price"] = datetime.now().isoformat()
     save_product_data(tpnc, data)
-    return results
+
+    return {category: is_new_day for category, _ in price_updates}
 
 
 # ---------------------------------------------------------------------------
@@ -163,12 +116,70 @@ def get_product(tpnc):
 def get_price_history(tpnc):
     data = load_product_data(tpnc)
     if not data:
-        return {"normal": [], "discount": [], "clubcard": []}
-    history = data.get("price_history", _empty_history())
-    # Return each category reversed (newest first) for display
+        return []
+    history = data.get("price_history", [])
+    # Return newest first
+    return list(reversed(history))
+
+
+def get_all_product_ids(skip=0, limit=100):
+    """Return paginated list of all product TPNCs.
+
+    Returns
+    -------
+    dict with keys: ids (list of str), total (int), skip (int), limit (int)
+    """
+    coll = get_db()
+    assert coll is not None
+    total = coll.count_documents({})
+    cursor = coll.find({}, {"_id": 1}).skip(skip).limit(limit)
+    ids = [doc["_id"] for doc in cursor]
+    return {"ids": ids, "total": total, "skip": skip, "limit": limit}
+
+
+def get_product_stats(tpnc):
+    """Compute min/max/avg/current price per category across all daily history.
+
+    Returns
+    -------
+    dict or None if product not found.
+    """
+    data = load_product_data(tpnc)
+    if not data:
+        return None
+
+    history = data.get("price_history", [])
+
+    stats = {}
+    for category in ("normal", "discount", "clubcard"):
+        prices = [
+            entry[category]["price"]
+            for entry in history
+            if entry.get(category) and entry[category].get("price") is not None
+        ]
+        if not prices:
+            stats[category] = None
+        else:
+            stats[category] = {
+                "min_price": min(prices),
+                "max_price": max(prices),
+                "avg_price": round(sum(prices) / len(prices), 2),
+                "current_price": prices[-1],  # history is oldest-first in storage
+            }
+
+    sorted_history = sorted(history, key=lambda e: e.get("date", ""))
+    first_date = sorted_history[0]["date"] if sorted_history else None
+    last_date = sorted_history[-1]["date"] if sorted_history else None
+
     return {
-        cat: list(reversed(entries))
-        for cat, entries in history.items()
+        "tpnc": str(tpnc),
+        "name": data.get("name"),
+        "total_days": len(history),
+        "first_date": first_date,
+        "last_date": last_date,
+        "normal": stats["normal"],
+        "discount": stats["discount"],
+        "clubcard": stats["clubcard"],
     }
 
 
