@@ -1,3 +1,4 @@
+import os
 from datetime import datetime
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
@@ -198,4 +199,8 @@ def get_legacy_product_json(tpnc: str):
 
 
 if __name__ == "__main__":
-    uvicorn.run("app:app", host="0.0.0.0", port=5000)
+    uvicorn.run(
+        "app:app",
+        host="0.0.0.0",
+        port=int(os.getenv("API_PUBLIC_PORT", "50202")),
+    )
